@@ -451,7 +451,7 @@ def build():
     for v, slug, title, desc, kind in PAGES:
         url = SITE + PATH[v]
         og_rel = 'og/%s.png' % (slug or 'home')
-        image = SITE + '/' + og_rel if os.path.exists(os.path.join(ROOT, og_rel)) else SITE + '/og-image.png'
+        image = SITE + '/' + og_rel if os.path.exists(os.path.join(ROOT, og_rel)) else SITE + '/og-image.png?v=2'
         page_head = set_meta(head, title, desc, url, image, kind) + jsonld(title, desc, url, image, kind, h1s.get(v), updated)
         body = ''.join(full[x] if x == v else hollowed[x] for x, _, _ in bounds)
         doc = rewrite_links(page_head + pre_main + body + post_main, v, anchors).replace('%%CS_CONFIG%%', config_script(v, anchors))

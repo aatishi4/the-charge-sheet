@@ -184,6 +184,25 @@ main{min-height:70vh}
 @media (max-width:640px){.mb{grid-template-columns:1fr 3rem}.mb .t{grid-column:1/-1;grid-row:2}}
 
 .aboutteaser{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center;max-width:820px}
+/* ---------- Who built this ---------- */
+.hero-by{display:inline-flex;align-items:center;gap:.75rem;margin-top:2.2rem;padding:.45rem 1.1rem .45rem .45rem;border:1px solid var(--line);border-radius:999px;color:var(--slate);font-size:.98rem;line-height:1.35;text-align:left;max-width:100%}
+.hero-by:hover{text-decoration:none;border-color:var(--blue);background:var(--mist)}
+.hero-by img{width:44px;height:44px;border-radius:50%;flex:none;object-fit:cover}
+.hero-by b{color:var(--ink);font-weight:650}
+.letter{display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:3.5rem;align-items:center;max-width:1000px}
+.letter-photo{margin:0;border-radius:var(--r-l);overflow:hidden;aspect-ratio:4/5;background:var(--ice)}
+.letter-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.letter .kick{font-size:.82rem;font-weight:650;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin:0 0 .7rem}
+.letter-body>p:not(.kick):not(.sig){font-size:1.12rem;margin:0 0 1rem;max-width:36em}
+.letter .sig{font-size:1.55rem;font-weight:650;font-style:italic;letter-spacing:-.01em;margin:1.4rem 0 1.6rem}
+.letter-links{display:flex;flex-wrap:wrap;gap:.75rem}
+@media (max-width:760px){.letter{grid-template-columns:1fr;gap:1.8rem}.letter-photo{max-width:240px}}
+@media (max-width:640px){.hero-by{border-radius:20px}}
+.tool-head p.byline{display:flex;align-items:center;gap:.6rem;font-size:.95rem;margin:1.1rem 0 .2rem}
+.byline img{width:32px;height:32px;border-radius:50%;flex:none;object-fit:cover}
+.byline a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em}
+.word .by{font-weight:500;color:var(--slate);font-size:.88rem;letter-spacing:0}
+@media (max-width:1000px){.word .by{display:none}}
 @media (max-width:640px){.aboutteaser{grid-template-columns:1fr}}
 
 /* ---------- Page heads ---------- */
@@ -825,7 +844,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
   <div class="gnav-in">
     <a class="word" href="#home" aria-label="The Charge Sheet, home">
       <svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="7" fill="var(--blue)"/><path d="M4.5 12.5q1.6-3 3.2 0t3.2 0L14 12.5h5.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span>The Charge Sheet</span>
+      <span>The Charge Sheet</span><span class="by">by Aatish Patel</span>
     </a>
     <div class="gnav-r">
     <nav aria-label="Main">
@@ -851,11 +870,12 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
 <section id="view-home">
   <div class="hero">
     <h1>Charging stations look simple. Then the electric bill arrives.</h1>
-    <p>The Charge Sheet is a free, honest guide to how EV charging works, what it really costs, and whether it's worth doing. No sales pitch. Written by someone who built a charging company and learned most of this the expensive way.</p>
+    <p>The Charge Sheet is a free, honest guide to how EV charging works, what it really costs, and whether it's worth doing. No sales pitch, no signup, and nobody will call you.</p>
     <div class="cta">
       <a class="btn primary" href="#basics">Start learning</a>
       <a class="btn" href="#planner">Run the numbers</a>
     </div>
+    <a class="hero-by" href="#from-aatish"><img src="img/aatish-96.jpg" alt="" width="44" height="44"><span><b>Built by Aatish Patel</b>, founder of XCharge North America. Six years of expensive lessons, given away free.</span></a>
   </div>
   <svg class="cable" viewBox="0 0 1120 260" role="img" aria-label="A charger connected by a cable to a car, with current flowing and the battery filling from 30 to 85 percent">
     <rect class="unit" x="118" y="30" width="96" height="178" rx="18"/>
@@ -871,6 +891,21 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
     <rect class="soc" id="soc-fill" x="950" y="34" width="33.6" height="32" rx="7"/>
     <text class="soc-t" id="soc-t" x="1006" y="55" text-anchor="middle">30%</text>
   </svg>
+
+  <div class="band mist" id="from-aatish">
+    <div class="wrap letter">
+      <figure class="letter-photo"><img src="img/aatish.jpg" alt="Aatish Patel at a DC fast charger" width="800" height="1000" loading="lazy"></figure>
+      <div class="letter-body">
+        <p class="kick">A note from the person who built this</p>
+        <h2>Why I built this.</h2>
+        <p>I'm Aatish. In 2021 I founded XCharge North America, and for the next six years I did nearly every job a charging company has: product, sales, finance, hiring, logistics, and a trip to Nasdaq. Most of what I know, I learned by getting it wrong first.</p>
+        <p>None of it was secret. It was scattered across vendor brochures, utility tariff books and forum arguments, and most of it was trying to sell you something.</p>
+        <p>So I wrote it down and built the tools I wanted on day one. It's free, it's open source, and it's staying that way. Think of it as a thank-you to the industry that taught me, and a head start for whoever builds the next site.</p>
+        <p class="sig">Aatish Patel</p>
+        <div class="letter-links"><a class="btn" href="#about">Read my story</a><a class="btn quiet" href="https://www.linkedin.com/in/aatish-patel-2b9424a4/" rel="noopener">Connect on LinkedIn</a></div>
+      </div>
+    </div>
+  </div>
 
   <div class="band">
     <div class="wrap">
@@ -955,16 +990,6 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
     </div>
   </div>
 
-  <div class="band">
-    <div class="wrap aboutteaser">
-      <div class="portrait" style="width:140px;aspect-ratio:1;position:static;border-radius:50%"><span style="font-size:3rem" data-portrait-initial="square">A</span></div>
-      <div>
-        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem)">Who wrote this.</h2>
-        <p style="color:var(--slate);font-size:1.1rem;margin:0 0 1rem">Aatish founded a charging company's North American business, ran it for the better part of six years, and helped take the parent company public. Everything here is what he wishes someone had told him on day one.</p>
-        <a href="#about">Read the full story</a>
-      </div>
-    </div>
-  </div>
 <!--BLOG_LATEST-->
 </section>
 
@@ -973,9 +998,9 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
   <div class="about">
     <div class="portrait" id="portrait"><span data-portrait-initial>A</span></div>
     <div>
-      <h1>About</h1>
-      <p class="lede">I'm Aatish Patel. I build physical products and the businesses around them, and I've spent the last several years doing that in EV charging.</p>
-      <p>The Charge Sheet exists because most of what I know about charging, I learned by getting it wrong first, or by watching someone else do it. The information is out there, but it's scattered across vendor brochures, utility tariff books and forum arguments, and most of it is trying to sell you something. This isn't. It's free, it's open source, and it will stay that way.</p>
+      <h1>Hi, I'm Aatish. I built this.</h1>
+      <p class="lede">Aatish Patel, officially. I build physical products and the businesses around them, and I've spent the last six years doing that in EV charging.</p>
+      <p>The Charge Sheet exists because most of what I know about charging, I learned by getting it wrong first, or by watching someone else do it. The information is out there, but it's scattered across vendor brochures, utility tariff books and forum arguments, and most of it is trying to sell you something. This isn't. It's free, it's open source, and it will stay that way. Think of it as a gift to the industry that taught me.</p>
       <p>Wherever I could, the numbers come from real sites and real data. Where I had to assume something, the tools say so, and you can change it. If you think something here is wrong, you're probably right about something, and I'd like to hear it.</p>
 
       <h2>How I got here</h2>
@@ -1010,6 +1035,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
   <div class="tool-head">
     <h1>How EV charging works</h1>
     <p>Enough engineering to understand the business, and not a volt more. If you know why a session fails, you know why the money didn't turn up.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>By <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
     <div class="spot" aria-hidden="true"><svg viewBox="0 0 720 150" focusable="false"><path class="ln d" pathLength="1" d="M52,132 L70,30 L88,132 M40,44 H100 M46,62 H94 M58,96 H82 M62,74 L80,120 M78,74 L60,120" style="--d:0.00s"/><text x="70" y="148" text-anchor="middle">Grid</text><path class="lt" d="M108,84 q9.50,-16 19.00,0 t19.00,0 t19.00,0 t19.00,0 t19.00,0 t19.00,0 t19.00,0 t19.00,0"/><path class="lb flow" d="M108,84 q9.50,-16 19.00,0 t19.00,0 t19.00,0 t19.00,0 t19.00,0 t19.00,0 t19.00,0 t19.00,0"/><text x="184" y="120" text-anchor="middle" class="b">AC</text><rect class="ln d fw" pathLength="1" x="262" y="34" width="62" height="100" rx="12" style="--d:0.25s"/><rect class="fi fade" x="275" y="48" width="36" height="22" rx="4" style="--d:0.80s"/><circle class="fb fade" cx="293" cy="92" r="4" style="--d:0.90s"/><text x="293" y="148" text-anchor="middle">Charger</text><path class="lt" d="M324,84 H452"/><path class="lb flow" d="M324,84 H452"/><text x="388" y="120" text-anchor="middle" class="b">DC</text><rect class="ln d" pathLength="1" x="456" y="56" width="178" height="56" rx="10" style="--d:0.45s"/><rect class="ln" x="634" y="72" width="10" height="24" rx="3"/><rect class="fb growx" x="464" y="64" width="138" height="40" rx="5" style="--d:1.10s"/><path class="lt" d="M607,62 V106" stroke-dasharray="3 4"/><text x="607" y="54" text-anchor="middle">80%</text><text x="545" y="148" text-anchor="middle">Battery</text></svg></div>
   </div>
   <article class="prose">
@@ -1123,6 +1149,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
   <div class="tool-head">
     <h1>The business of EV charging</h1>
     <p>Selling electricity to people in a parking lot sounds like easy money. It isn't, and this is why.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>By <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
     <div class="spot" aria-hidden="true"><svg viewBox="0 0 720 150" focusable="false"><path class="ln d fw" pathLength="1" d="M40,18 H176 V124 l-11.33,8 -11.33,-8 -11.33,8 -11.33,-8 -11.33,8 -11.33,-8 -11.33,8 -11.33,-8 -11.33,8 -11.33,-8 -11.33,8 -11.33,-8 V18 Z" style="--d:0.00s"/><path class="lt" d="M58,44 H130 M58,62 H112 M58,80 H124"/><path class="la" d="M58,100 H100"/><text x="158" y="104" text-anchor="end" class="a">$$$</text><path class="lt" d="M214,132 H700"/><rect class="fb grow" x="222" y="118" width="10" height="14" rx="2" style="--d:0.30s"/><rect class="fb grow" x="238" y="114" width="10" height="18" rx="2" style="--d:0.33s"/><rect class="fb grow" x="254" y="120" width="10" height="12" rx="2" style="--d:0.35s"/><rect class="fb grow" x="270" y="110" width="10" height="22" rx="2" style="--d:0.38s"/><rect class="fb grow" x="286" y="116" width="10" height="16" rx="2" style="--d:0.40s"/><rect class="fb grow" x="302" y="112" width="10" height="20" rx="2" style="--d:0.42s"/><rect class="fb grow" x="318" y="121" width="10" height="11" rx="2" style="--d:0.45s"/><rect class="fb grow" x="334" y="117" width="10" height="15" rx="2" style="--d:0.47s"/><rect class="fb grow" x="350" y="108" width="10" height="24" rx="2" style="--d:0.50s"/><rect class="fb grow" x="366" y="113" width="10" height="19" rx="2" style="--d:0.53s"/><rect class="fb grow" x="382" y="119" width="10" height="13" rx="2" style="--d:0.55s"/><rect class="fb grow" x="398" y="115" width="10" height="17" rx="2" style="--d:0.57s"/><rect class="fb grow" x="414" y="111" width="10" height="21" rx="2" style="--d:0.60s"/><rect class="fb grow" x="430" y="118" width="10" height="14" rx="2" style="--d:0.62s"/><rect class="fb grow" x="446" y="114" width="10" height="18" rx="2" style="--d:0.65s"/><rect class="fb grow" x="462" y="116" width="10" height="16" rx="2" style="--d:0.68s"/><rect class="fa grow" x="478" y="36" width="10" height="96" rx="2" style="--d:0.70s"/><rect class="fb grow" x="494" y="112" width="10" height="20" rx="2" style="--d:0.73s"/><rect class="fb grow" x="510" y="117" width="10" height="15" rx="2" style="--d:0.75s"/><rect class="fb grow" x="526" y="120" width="10" height="12" rx="2" style="--d:0.78s"/><rect class="fb grow" x="542" y="113" width="10" height="19" rx="2" style="--d:0.80s"/><rect class="fb grow" x="558" y="109" width="10" height="23" rx="2" style="--d:0.82s"/><rect class="fb grow" x="574" y="118" width="10" height="14" rx="2" style="--d:0.85s"/><rect class="fb grow" x="590" y="115" width="10" height="17" rx="2" style="--d:0.88s"/><rect class="fb grow" x="606" y="119" width="10" height="13" rx="2" style="--d:0.90s"/><rect class="fb grow" x="622" y="111" width="10" height="21" rx="2" style="--d:0.93s"/><rect class="fb grow" x="638" y="116" width="10" height="16" rx="2" style="--d:0.95s"/><rect class="fb grow" x="654" y="114" width="10" height="18" rx="2" style="--d:0.98s"/><rect class="fb grow" x="670" y="120" width="10" height="12" rx="2" style="--d:1.00s"/><rect class="fb grow" x="686" y="117" width="10" height="15" rx="2" style="--d:1.03s"/><path class="la dash fade" d="M214,36 H700" style="--d:1.40s"/><text x="700" y="28" text-anchor="end" class="a fade" style="--d:1.60s">One busy afternoon sets the whole month</text><text x="214" y="148">Power drawn each day of the month</text></svg></div>
   </div>
 
@@ -1279,6 +1306,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
   <div class="tool-head">
     <h1>EV charging is a real estate business</h1>
     <p>The industry argues about chargers. The money is made or lost on the address. A charging site is a small real estate development that happens to sell electricity, and it lives or dies on the same thing every development does: location, location, location.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>By <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
     <div class="spot" aria-hidden="true"><svg viewBox="0 0 720 150" focusable="false"><rect class="fm" x="10" y="8" width="700" height="134" rx="14"/><path class="lt" d="M10,52 H710 M10,104 H710 M130,8 V142 M300,8 V142 M470,8 V142 M620,8 V142"/><path class="lt" d="M10,78 H710" style="stroke-width:7"/><g class="fade" style="--d:0.20s"><path class="fs" d="M215,70 c0,-14 -12,-16 -12,-26 a12,12 0 1 1 24,0 c0,10 -12,12 -12,26 z"/><circle class="fw" cx="215" cy="44" r="4.5"/></g><g class="fade" style="--d:0.40s"><path class="fs" d="M385,124 c0,-14 -12,-16 -12,-26 a12,12 0 1 1 24,0 c0,10 -12,12 -12,26 z"/><circle class="fw" cx="385" cy="98" r="4.5"/></g><g class="fade" style="--d:0.60s"><path class="fb" d="M545,44 c0,-14 -12,-16 -12,-26 a12,12 0 1 1 24,0 c0,10 -12,12 -12,26 z"/><circle class="fw" cx="545" cy="18" r="4.5"/></g><g class="fade" style="--d:0.80s"><path class="fs" d="M80,122 c0,-14 -12,-16 -12,-26 a12,12 0 1 1 24,0 c0,10 -12,12 -12,26 z"/><circle class="fw" cx="80" cy="96" r="4.5"/></g><circle class="lb ping" cx="545" cy="18" r="16" style="--d:1.20s"/><text x="560" y="36" class="b fade" style="--d:1.30s">Same box, busier address</text></svg></div>
   </div>
   <article class="prose">
@@ -1392,6 +1420,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
   <div class="tool-head">
     <h1>Paying for a charging site</h1>
     <p>A charging site is a capital project. Chargers, concrete, copper and patience all cost money up front, and the revenue arrives one session at a time. There are three ways to fund one, and the right one depends on who you are and what you already have.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>By <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
     <div class="spot" aria-hidden="true"><svg viewBox="0 0 720 150" focusable="false"><path class="ln d" pathLength="1" d="M40,56 L90,30 L140,56 Z M46,62 H134 M54,66 V108 M72,66 V108 M90,66 V108 M108,66 V108 M126,66 V108 M42,114 H138" style="--d:0.00s"/><text x="90" y="138" text-anchor="middle">Loan</text><path class="lt" d="M190,120 H560 M190,20 V120"/><path class="lb d" pathLength="1" d="M196,30 C270,34 330,52 390,74 S500,112 556,118" style="--d:0.40s"/><text x="196" y="138">Balance, year by year</text><ellipse class="fade fi" cx="640" cy="118" rx="34" ry="9" style="--d:0.80s"/><ellipse class="fade fas" cx="640" cy="106" rx="34" ry="9" style="--d:0.92s"/><ellipse class="fade fi" cx="640" cy="94" rx="34" ry="9" style="--d:1.04s"/><ellipse class="fade fas" cx="640" cy="82" rx="34" ry="9" style="--d:1.16s"/><ellipse class="fade fi" cx="640" cy="70" rx="34" ry="9" style="--d:1.28s"/><ellipse class="fade fas" cx="640" cy="58" rx="34" ry="9" style="--d:1.40s"/><ellipse class="fade fi" cx="640" cy="46" rx="34" ry="9" style="--d:1.52s"/><ellipse class="la fade" cx="640" cy="46" rx="34" ry="9" style="--d:1.70s"/><text x="640" y="138" text-anchor="middle">Cash and grants</text></svg></div>
   </div>
   <article class="prose">
@@ -1477,6 +1506,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
   <div class="tool-head">
     <h1>SBA loan check for charging sites</h1>
     <p>Put in the project, your business's cash flow and the loan terms, and see whether an SBA loan pencils: how much you'd borrow, what it costs a month, and whether the cash flow covers it the way a lender will want. A screening tool, not a credit decision.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>Built by <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
   </div>
   <div class="tool">
     <form class="inputs" id="l-inputs" onsubmit="return false"></form>
@@ -1515,6 +1545,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
   <div class="tool-head">
     <h1>Batteries at charging sites</h1>
     <p>Storage is the most oversold and most useful tool in charging. It fixes power problems. It does not fix energy problems, and confusing the two is how people end up with a very expensive wrong answer.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>By <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
     <div class="spot" aria-hidden="true"><svg viewBox="0 0 720 150" focusable="false"><defs><clipPath id="spot-peak"><rect x="0" y="0" width="720" height="62"/></clipPath></defs><path class="fi" d="M40,124 C110,122 150,112 200,96 C250,80 280,30 340,28 C400,26 430,82 480,98 C540,116 600,122 680,124 V130 H40 Z"/><path class="fas grow" d="M40,124 C110,122 150,112 200,96 C250,80 280,30 340,28 C400,26 430,82 480,98 C540,116 600,122 680,124 V130 H40 Z" clip-path="url(#spot-peak)" style="--d:1.20s"/><path class="lb d" pathLength="1" d="M40,124 C110,122 150,112 200,96 C250,80 280,30 340,28 C400,26 430,82 480,98 C540,116 600,122 680,124" style="--d:0.00s"/><path class="la dash" d="M30,62 H690"/><text x="690" y="54" text-anchor="end" class="a">Grid limit</text><text x="340" y="20" text-anchor="middle" class="a fade" style="--d:1.50s">The battery covers this part</text><path class="lt" d="M30,130 H690"/><text x="40" y="148">Midnight</text><text x="680" y="148" text-anchor="end">Midnight</text><g class="bob"><rect class="ln fw" x="560" y="10" width="60" height="30" rx="6"/><rect class="ln" x="620" y="18" width="6" height="14" rx="2"/><rect class="fa" x="566" y="16" width="30" height="18" rx="3"/></g></svg></div>
   </div>
   <article class="prose">
@@ -1672,6 +1703,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
   <div class="tool-head">
     <h1>Charger connectivity</h1>
     <p>A charger without a network connection is an expensive extension cord that can't take money. Connectivity is the least glamorous part of a site and the source of more "the charger is broken" complaints than anything with a power module in it.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>By <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
     <div class="spot" aria-hidden="true"><svg viewBox="0 0 720 150" focusable="false"><path class="ln d" pathLength="1" d="M70,134 L86,48 L102,134 M78,92 H94 M74,114 H98" style="--d:0.00s"/><circle class="fb" cx="86" cy="42" r="5"/><path class="lb ping" d="M100,28 a14,14 0 0 1 0,28" style="--d:0.0s"/><path class="lb ping" d="M100,28 a14,14 0 0 1 0,28" style="--d:0.8s"/><path class="lb ping" d="M100,28 a14,14 0 0 1 0,28" style="--d:1.6s"/><text x="86" y="150" text-anchor="middle">Carrier</text><path class="lt" d="M120,70 C220,70 260,96 330,96"/><path class="lb flow" d="M120,70 C220,70 260,96 330,96"/><rect class="ln d fw" pathLength="1" x="334" y="44" width="58" height="92" rx="11" style="--d:0.30s"/><rect class="fi" x="346" y="58" width="34" height="20" rx="4"/><circle class="fb" cx="363" cy="98" r="4"/><text x="363" y="150" text-anchor="middle">Charger</text><path class="lt" d="M392,70 C470,70 500,40 560,40"/><path class="lb flow" d="M392,70 C470,70 500,40 560,40" style="animation-direction:reverse"/><path class="ln d fw" pathLength="1" d="M570,58 h86 a18,18 0 0 0 -2,-36 a24,24 0 0 0 -44,-6 a18,18 0 0 0 -40,18 a13,13 0 0 0 0,24 z" style="--d:0.60s"/><text x="614" y="80" text-anchor="middle">Back office</text><path class="la dash" d="M540,112 H690"/><text x="615" y="130" text-anchor="middle" class="a">Payments, authorization, pricing</text></svg></div>
   </div>
   <article class="prose">
@@ -1777,6 +1809,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
   <div class="tool-head">
     <h1>Buying chargers without getting burned</h1>
     <p>Most of what goes wrong at a charging site was decided in a contract nobody read closely. This is the diligence list: what to ask, what a good answer sounds like, and what should end the conversation.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>By <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
     <div class="spot" aria-hidden="true"><svg viewBox="0 0 720 150" focusable="false"><g class="fade" style="--d:0.10s"><path class="fi" d="M60,128 l90,-14 l90,14 l-90,14 z" style="stroke:var(--ink);stroke-width:1.6;stroke-linejoin:round"/><text x="250" y="132">Service</text></g><g class="fade" style="--d:0.25s"><path class="fi" d="M60,110 l90,-14 l90,14 l-90,14 z" style="stroke:var(--ink);stroke-width:1.6;stroke-linejoin:round"/><text x="250" y="114">Installation</text></g><g class="fade" style="--d:0.40s"><path class="fi" d="M60,92 l90,-14 l90,14 l-90,14 z" style="stroke:var(--ink);stroke-width:1.6;stroke-linejoin:round"/><text x="250" y="96">Hardware</text></g><g class="fade" style="--d:0.55s"><path class="fas" d="M60,74 l90,-14 l90,14 l-90,14 z" style="stroke:var(--ink);stroke-width:1.6;stroke-linejoin:round"/><text x="250" y="78">Payments</text></g><g class="fade" style="--d:0.70s"><path class="fi" d="M60,56 l90,-14 l90,14 l-90,14 z" style="stroke:var(--ink);stroke-width:1.6;stroke-linejoin:round"/><text x="250" y="60">Software</text></g><g class="fade" style="--d:0.85s"><path class="fi" d="M60,38 l90,-14 l90,14 l-90,14 z" style="stroke:var(--ink);stroke-width:1.6;stroke-linejoin:round"/><text x="250" y="42">Your brand</text></g><rect class="ln fw" x="420" y="22" width="18" height="18" rx="4"/><path class="lt" d="M452,31 H600"/><rect class="ln fw" x="420" y="46" width="18" height="18" rx="4"/><path class="lt" d="M452,55 H560"/><rect class="ln fw" x="420" y="70" width="18" height="18" rx="4"/><path class="lt" d="M452,79 H520"/><rect class="ln fw" x="420" y="94" width="18" height="18" rx="4"/><path class="lt" d="M452,103 H600"/><rect class="ln fw" x="420" y="118" width="18" height="18" rx="4"/><path class="lt" d="M452,127 H560"/><path class="lb d" pathLength="1" d="M424,31 l5,5 l8,-10" style="--d:0.90s"/><path class="lb d" pathLength="1" d="M424,55 l5,5 l8,-10" style="--d:1.10s"/><path class="lb d" pathLength="1" d="M424,79 l5,5 l8,-10" style="--d:1.30s"/><path class="lb d" pathLength="1" d="M424,127 l5,5 l8,-10" style="--d:1.70s"/><path class="la d" pathLength="1" d="M424,98 l10,10 M434,98 l-10,10" style="--d:1.50s"/><text x="420" y="148">Questions to ask, by vendor</text></svg></div>
     <button type="button" class="btn print-btn" onclick="window.print()">Print this checklist</button>
   </div>
@@ -1957,6 +1990,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
   <div class="tool-head">
     <h1>Fleet EV charging</h1>
     <p>Public charging is a real estate business. Fleet charging is a logistics business. You control the cars, the schedule and the site, so the question becomes brutally simple: how many vehicles can you get through in a day, and are they ready when someone needs the keys?</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>By <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
     <div class="spot" aria-hidden="true"><svg viewBox="0 0 720 150" focusable="false"><path class="la dash" d="M30,40 H690"/><text x="30" y="26" class="a">80%, then the next van</text><rect class="fm" x="60" y="30" width="34" height="100" rx="6"/><rect class="fb grow" x="60" y="41" width="34" height="89" rx="6" style="--d:0.90s"/><path class="ln" d="M56,130 H190"/><path class="ln d fw" pathLength="1" d="M100,130 V96 q0,-10 10,-10 h54 q10,0 18,12 l14,14 q6,4 6,12 v6 z" style="--d:0.10s"/><circle class="ln fw" cx="122" cy="132" r="8"/><circle class="ln fw" cx="176" cy="132" r="8"/><rect class="fm" x="230" y="30" width="34" height="100" rx="6"/><rect class="fb grow" x="230" y="41" width="34" height="89" rx="6" style="--d:1.10s"/><path class="ln" d="M226,130 H360"/><path class="ln d fw" pathLength="1" d="M270,130 V96 q0,-10 10,-10 h54 q10,0 18,12 l14,14 q6,4 6,12 v6 z" style="--d:0.20s"/><circle class="ln fw" cx="292" cy="132" r="8"/><circle class="ln fw" cx="346" cy="132" r="8"/><rect class="fm" x="400" y="30" width="34" height="100" rx="6"/><rect class="fb grow" x="400" y="66" width="34" height="64" rx="6" style="--d:1.30s"/><path class="ln" d="M396,130 H530"/><path class="ln d fw" pathLength="1" d="M440,130 V96 q0,-10 10,-10 h54 q10,0 18,12 l14,14 q6,4 6,12 v6 z" style="--d:0.30s"/><circle class="ln fw" cx="462" cy="132" r="8"/><circle class="ln fw" cx="516" cy="132" r="8"/><rect class="fm" x="570" y="30" width="34" height="100" rx="6"/><rect class="fb grow" x="570" y="41" width="34" height="89" rx="6" style="--d:1.50s"/><path class="ln" d="M566,130 H700"/><path class="ln d fw" pathLength="1" d="M610,130 V96 q0,-10 10,-10 h54 q10,0 18,12 l14,14 q6,4 6,12 v6 z" style="--d:0.40s"/><circle class="ln fw" cx="632" cy="132" r="8"/><circle class="ln fw" cx="686" cy="132" r="8"/><text x="30" y="150">Throughput beats a full battery</text></svg></div>
   </div>
   <article class="prose">
@@ -2047,6 +2081,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
   <div class="tool-head">
     <h1>Fleet charging throughput</h1>
     <p>How many vehicles your site can charge in a day, and what's really limiting it. Pick the vehicles, the chargers and how you run the lot. The answer is usually less about the chargers than people expect.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>Built by <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
   </div>
   <div class="tool">
     <form class="inputs" id="q-inputs" onsubmit="return false"></form>
@@ -2083,6 +2118,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
   <div class="tool-head">
     <h1>What real charging sites actually do</h1>
     <p>Every number below comes from session-level data at operating US charging sites: tens of thousands of sessions across a dozen sites and a small-town network, over several years. Names, locations, hosts and operators are removed and details are generalized. The numbers are real.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>By <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
     <div class="spot" aria-hidden="true"><svg viewBox="0 0 720 150" focusable="false"><path class="lt" d="M40,120 H690"/><text x="40" y="140" text-anchor="middle">0.1</text><text x="214" y="140" text-anchor="middle">0.3</text><text x="406" y="140" text-anchor="middle">1</text><text x="580" y="140" text-anchor="middle">3</text><text x="690" y="140" text-anchor="middle">6</text><circle class="fb fade" cx="667.3" cy="96" r="9" style="--d:0.10s"/><circle class="fi fade" cx="462.3" cy="74" r="7" style="--d:0.18s"/><circle class="fi fade" cx="456.7" cy="52" r="7" style="--d:0.26s"/><circle class="fi fade" cx="453.2" cy="96" r="7" style="--d:0.34s"/><circle class="fi fade" cx="439.7" cy="74" r="7" style="--d:0.42s"/><circle class="fi fade" cx="416.3" cy="52" r="7" style="--d:0.50s"/><circle class="fi fade" cx="307.7" cy="96" r="7" style="--d:0.58s"/><circle class="fi fade" cx="238.9" cy="74" r="7" style="--d:0.66s"/><circle class="fi fade" cx="234.3" cy="52" r="7" style="--d:0.74s"/><circle class="fs fade" cx="172.2" cy="96" r="7" style="--d:0.82s"/><circle class="fs fade" cx="68.9" cy="74" r="7" style="--d:0.90s"/><path class="lb d" pathLength="1" d="M69,40 H688" style="--d:1.20s"/><path class="lb" d="M69,34 V46 M688,34 V46"/><text x="378" y="30" text-anchor="middle" class="b fade" style="--d:1.60s">About 40 to 1, best site to worst</text><text x="40" y="20">Sessions per port per day, real sites</text></svg></div>
   </div>
   <div class="bench-wrap">
@@ -2122,6 +2158,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
   <div class="tool-head">
     <h1>Method and sources</h1>
     <p>Every number on this site is either an input you can change or a formula written out below. If you disagree with an assumption, good. Change it.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>By <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
   </div>
   <article class="prose">
     <h2>How the forecast works</h2>
@@ -2207,6 +2244,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
   <div class="tool-head">
     <h1>EV charging glossary</h1>
     <p>54 terms that come up when you plan, finance or run a charging site, in plain English. If a vendor uses a word that isn't here, ask them what it means. If they can't say it simply, that is also an answer.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>By <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
   </div>
   <article class="prose">
     <ul class="toc" aria-label="On this page"><li><a href="#g-power-and-energy">Power and energy</a></li><li><a href="#g-the-utility-and-the-bill">The utility and the bill</a></li><li><a href="#g-hardware-and-standards">Hardware and standards</a></li><li><a href="#g-software-payments-and-networks">Software, payments and networks</a></li><li><a href="#g-measuring-a-site">Measuring a site</a></li><li><a href="#g-money">Money</a></li><li><a href="#g-fleets-and-connectivity">Fleets and connectivity</a></li></ul>
@@ -2217,6 +2255,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
   <div class="tool-head">
     <h1>EV charging site planner</h1>
     <p>A ballpark pro forma for a charging site: what it costs to build, what it costs to run, and how many sessions it needs before it stops losing money. The defaults are typical numbers. Swap in real quotes the moment you have them.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>Built by <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
   </div>
   <div class="tool">
     <form class="inputs" id="p-inputs" onsubmit="return false"></form>
@@ -2268,6 +2307,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
   <div class="tool-head">
     <h1>EV charger install cost estimator</h1>
     <p>The charger is the cheap part. The expensive part is the distance between it and the electrical room, and everything you have to dig through to cover it. This puts a rough number on that, and shows you how fast it grows.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>Built by <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
   </div>
   <div class="tool">
     <form class="inputs" id="e-inputs" onsubmit="return false"></form>
@@ -2319,6 +2359,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
   <div class="tool-head">
     <h1>EV charging utilization forecast</h1>
     <p>How busy a site is likely to be, worked out from the traffic or people already there and how many of them drive EVs. You get a range, because anyone who gives you a single number for a site that doesn't exist yet is either guessing or selling something.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>Built by <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
   </div>
   <div class="tool">
     <form class="inputs" id="f-inputs" onsubmit="return false"></form>
@@ -2358,6 +2399,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
   <div class="tool-head">
     <h1>Charger connectivity check</h1>
     <p>Grade the cellular signal where the charger will stand, and get a setup that holds up. Take readings at that exact spot, at roughly cabinet height, ideally when the site is busy. Readings from the charger or router itself are best. Phone readings work too, and the tool adjusts for the metal cabinet.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>Built by <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
   </div>
   <div class="tool">
     <form class="inputs" id="c-inputs" onsubmit="return false"></form>
@@ -2390,7 +2432,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
 </section>
 </main>
 <footer><div class="foot">
-  <div><b>The Charge Sheet</b><p>A free, open source guide to the business of EV charging. Ballpark numbers and honest opinions. Not financial advice.</p><p>Text CC BY 4.0. Code MIT.</p></div>
+  <div><b>The Charge Sheet</b><p>A free, open source guide to the business of EV charging, built and given away by <a href="#about">Aatish Patel</a>. Ballpark numbers and honest opinions. Not financial advice.</p><p>Text CC BY 4.0. Code MIT.</p></div>
   <div><b>Learn</b><a href="#basics">How charging works</a><a href="#primer">The business</a><a href="#realestate">Real estate</a><a href="#finance">Paying for it</a><a href="#storage">Batteries</a><a href="#connectivity">Connectivity</a><a href="#vendors">Buying</a><a href="#fleet">Fleet charging</a></div>
   <div><b>Tools</b><a href="#planner">Site planner</a><a href="#install">Install estimator</a><a href="#sbatool">SBA loan check</a><a href="#fleettool">Fleet throughput</a><a href="#forecast">Utilization forecast</a><a href="#sitecheck">Connectivity check</a></div>
   <div><b>More</b><a href="#benchmarks">Benchmarks</a><a href="#method">Method and sources</a><a href="#glossary">Glossary</a><a href="/blog/">Blog</a><a href="#about">About</a><a href="https://github.com/aatishi4/the-charge-sheet" rel="noopener">Source code</a></div>
