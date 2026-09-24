@@ -126,6 +126,8 @@ main{min-height:70vh}
 .fact b{display:block;font-size:clamp(2.4rem,4.6vw,3.6rem);font-weight:680;letter-spacing:-.04em;line-height:1;margin-bottom:.8rem;font-variant-numeric:tabular-nums}
 .fact p{margin:0 0 .7rem;color:var(--slate);font-size:1.02rem}
 .fact a{font-weight:600;font-size:.98rem}
+.fact .src{display:block;margin:-.2rem 0 .8rem;font-size:.86rem;color:var(--slate)}
+.fact .src a{font-weight:400;font-size:inherit;color:inherit;text-decoration:underline;text-underline-offset:2px}
 @media (max-width:820px){.facts{grid-template-columns:1fr;gap:2rem}}
 
 .path{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
@@ -849,11 +851,11 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
   <div class="band">
     <div class="wrap">
       <h2>Three things most people learn too late.</h2>
-      <p class="lead">All three come from real sites. None of them show up in a brochure.</p>
+      <p class="lead">Two come from public data on thousands of US fast chargers. The third is arithmetic your utility will happily do for you.</p>
       <div class="facts">
-        <div class="fact"><b>40 to 1</b><p>The gap in daily sessions per charger between the best and worst real sites we measured. Same kind of hardware. Very different lives.</p><a href="#benchmarks">See the benchmarks</a></div>
-        <div class="fact"><b>1 in 5</b><p>Charging attempts that failed at one real network, while it reported uptime in the high nineties. Uptime and working are not the same thing.</p><a href="#connectivity">Why that happens</a></div>
-        <div class="fact"><b>$2,253.60</b><p>One month's electric bill for a fast charger that ran exactly one session. Blame the demand charge, then learn how to beat it.</p><a href="#p-demand">Meet the demand charge</a></div>
+        <div class="fact"><b>3 vs. 28</b><p>Median daily sessions at US fast-charging stations with nothing nearby, versus stations with 11 or more places to shop or eat around them. Same kind of charger. Different address.</p><span class="src">4,105 stations, Q4 2025. <a href="https://electricera.tech/the-state-of-retail-first-ev-charging-report" rel="noopener">Electric Era, Paren and TEI</a>.</span><a href="#realestate">Why location wins</a></div>
+        <div class="fact"><b>12%</b><p>Public charging visits in 2026 that ended without a charge. The best result in six years of tracking, and still roughly one driver in eight leaving with nothing.</p><span class="src"><a href="https://www.jdpower.com/business/press-releases/2026-u-s-electric-vehicle-experience-evx-public-charging-study/" rel="noopener">J.D. Power 2026 EVX Public Charging Study</a>.</span><a href="#connectivity">Why chargers fail</a></div>
+        <div class="fact"><b>$2,253.60</b><p>One month's electric bill for a fast charger that ran exactly one session. Blame the demand charge, then learn how to beat it.</p><span class="src">150 kW of demand at $15 per kW, one 30 kWh session.</span><a href="#p-demand">Meet the demand charge</a></div>
       </div>
     </div>
   </div>
