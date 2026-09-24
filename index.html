@@ -21,6 +21,7 @@
 <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#2462F5">
+<script id="theme-boot">try{var t=localStorage.getItem('cs-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="preload" href="fonts/InstrumentSans-VF.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 @font-face{font-family:"Instrument Sans";src:url("fonts/InstrumentSans-VF.woff2") format("woff2");font-weight:400 700;font-stretch:75% 100%;font-style:normal;font-display:swap}
@@ -69,6 +70,15 @@ button{font-family:inherit}
 .gnav nav a{color:var(--slate);font-size:.92rem;font-weight:500;padding:.4rem .7rem;border-radius:999px}
 .gnav nav a:hover{color:var(--ink);text-decoration:none}
 .gnav nav a[aria-current="true"]{color:var(--ink);background:var(--mist)}
+.gnav-r{display:flex;align-items:center;gap:.2rem}
+.theme-t{display:inline-grid;place-items:center;flex:none;width:34px;height:34px;padding:0;border:0;border-radius:999px;background:none;color:var(--slate);cursor:pointer}
+.theme-t:hover{color:var(--ink);background:var(--mist)}
+.theme-t svg{width:18px;height:18px;display:block}
+.theme-t .i-sun{display:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .theme-t .i-sun{display:block}:root:not([data-theme="light"]) .theme-t .i-moon{display:none}}
+:root[data-theme="dark"] .theme-t .i-sun{display:block}
+:root[data-theme="dark"] .theme-t .i-moon{display:none}
+@media print{.theme-t{display:none}}
 
 /* ---------- Section sub-nav ---------- */
 .snav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 53px);z-index:25;background:var(--glass);-webkit-backdrop-filter:saturate(180%) blur(18px);backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid var(--line)}
@@ -85,6 +95,17 @@ button{font-family:inherit}
   .word span{display:none}
   .snav-t{display:none}
   .snav-in{padding:0 .75rem}
+}
+@media (max-width:440px){
+  .gnav-in{padding:0 .5rem 0 .75rem;gap:.35rem}
+  .gnav nav{gap:0}
+  .gnav nav a{padding:.35rem .36rem;font-size:.82rem}
+  .gnav-r{gap:0}
+  .theme-t{width:30px;height:30px}
+}
+@media (max-width:370px){
+  .gnav nav a{padding:.3rem .28rem;font-size:.78rem}
+  .word svg{width:20px;height:20px}
 }
 
 main{min-height:70vh}
@@ -806,6 +827,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
       <svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="7" fill="var(--blue)"/><path d="M4.5 12.5q1.6-3 3.2 0t3.2 0L14 12.5h5.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span>The Charge Sheet</span>
     </a>
+    <div class="gnav-r">
     <nav aria-label="Main">
       <a id="gn-learn" href="#basics">Learn</a>
       <a id="gn-data" href="#benchmarks">Benchmarks</a>
@@ -813,6 +835,8 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
       <a id="gn-blog" href="/blog/">Blog</a>
       <a id="gn-about" href="#about">About</a>
     </nav>
+    <button type="button" class="theme-t" id="theme-t" aria-label="Switch to dark mode" title="Switch to dark mode"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+    </div>
   </div>
 </header>
 <div class="snav" id="snav" hidden>
@@ -5349,6 +5373,22 @@ if (typeof document !== 'undefined') (function(){
   initAbout();
   route();
   if (localSummary()) liveStatus(localSummary(), true);
+})();
+
+/* ---------- Light / dark toggle (choice saved per browser; default follows the system) ---------- */
+(function(){
+  var btn = document.getElementById('theme-t'); if (!btn) return;
+  var root = document.documentElement, mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+  function current(){ return root.getAttribute('data-theme') || (mq && mq.matches ? 'dark' : 'light'); }
+  function sync(){ var label = current()==='dark' ? 'Switch to light mode' : 'Switch to dark mode'; btn.setAttribute('aria-label', label); btn.title = label; }
+  btn.addEventListener('click', function(){
+    var next = current()==='dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('cs-theme', next); } catch(e){}
+    sync();
+  });
+  if (mq){ if (mq.addEventListener) mq.addEventListener('change', sync); else if (mq.addListener) mq.addListener(sync); }
+  sync();
 })();
 
 </script>
