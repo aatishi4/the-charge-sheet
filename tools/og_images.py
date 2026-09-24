@@ -8,7 +8,7 @@ own font and colors. Run it after changing a page's headline below:
     pip install playwright && python -m playwright install chromium
     python3 tools/og_images.py
 
-The build picks up og/<slug>.png automatically. Home keeps og-image.png.
+The build picks up og/<slug>.png automatically. Home uses og-image.png (render_home, with the photo).
 """
 import base64, os, sys
 
@@ -80,9 +80,28 @@ def render(page, font, kicker, headline, desc, path):
     print(os.path.relpath(path, ROOT))
 
 
+HOME_BAND = ('<div class="band hb"><img src="data:image/jpeg;base64,%(photo)s" alt="">'
+             '<span><b>Built by Aatish Patel</b>, founder of XCharge North America. Free guides, real data and '
+             'planning tools for the business of EV charging.</span></div>')
+HOME_CSS = ('.hb{display:flex;align-items:center;gap:30px;padding-top:0}'
+            '.hb img{width:128px;height:128px;border-radius:50%%;object-fit:cover;flex:none;border:4px solid #fff}'
+            '.hb b{color:#0D1F36}.hb span{max-width:860px}</style>')
+
+
+def render_home(page, font, path):
+    """Home card (og-image.png): the site headline plus who built it, with a photo."""
+    photo = base64.b64encode(open(os.path.join(ROOT, 'img', 'aatish-square.jpg'), 'rb').read()).decode()
+    html = TEMPLATE.replace('</style>', HOME_CSS).replace('<div class="band"><span>%(desc)s</span></div>', HOME_BAND)
+    html = html.replace('<div class="kick">%(kicker)s</div>', '')
+    page.set_content(html % {'font': font, 'kicker': '', 'headline': 'Charging stations look simple. Then the electric bill arrives.', 'desc': '', 'photo': photo})
+    page.wait_for_timeout(200)
+    page.screenshot(path=path)
+    print(os.path.relpath(path, ROOT))
+
+
 def main():
     """python3 tools/og_images.py            pages, the blog card, and any post missing a card
-       python3 tools/og_images.py SLUG ...   just those pages or posts (post slugs without the date)"""
+       python3 tools/og_images.py SLUG ...   just those pages or posts (post slugs without the date); 'home' for og-image.png"""
     from playwright.sync_api import sync_playwright
     import blog
     font = base64.b64encode(open(os.path.join(ROOT, 'fonts', 'InstrumentSans-VF.woff2'), 'rb').read()).decode()
@@ -100,6 +119,8 @@ def main():
                 continue
             kicker, headline = CARDS[slug]
             render(page, font, kicker, headline, desc, os.path.join(out, slug + '.png'))
+        if not only or 'home' in only:
+            render_home(page, font, os.path.join(ROOT, 'og-image.png'))
         if not only or 'blog' in only:
             render(page, font, 'Blog', 'Notes from the business of EV charging.',
                    'What is changing, what it costs, and what I would do about it. Plus a weekly screen of the news that matters.',
