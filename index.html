@@ -1284,7 +1284,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
     <div class="note"><p><strong>Read the red bars carefully.</strong> They aren't a reason not to build. Every one of those sites uses the same equipment as the winner. They lose because they sit where demand isn't: a quiet street, a hidden garage, a property that most drivers never pass. Put the same chargers where drivers already are and the math changes completely. That's the point of this page, not a warning against the business.</p></div>
 
     <h2 id="r-why">Why location wins</h2>
-    <p>Look at what actually varies between charging sites. Hardware prices differ by maybe two to one. Prices to drivers differ by about the same. Utilization, in the real data on this site, differs by forty to one. When one input moves forty times more than everything else combined, that input is the business.</p>
+    <p>Look at what actually varies between charging sites. Hardware prices differ by maybe two to one. Prices to drivers differ by about the same. Demand is another story. Across 4,105 US fast-charging stations in late 2025, the median station with nothing nearby did 3 sessions a day, and the median station with 11 or more places to shop or eat around it did 28 (<a href="https://electricera.tech/the-state-of-retail-first-ev-charging-report" rel="noopener">Electric Era, Paren and TEI</a>). That's nine to one, comparing typical sites, not the extremes. When one input moves that much more than everything else, that input is the business.</p>
     <p>Location sets the ceiling. Hardware, pricing and operations decide how close you get to it. Good equipment can't fix a bad address, and a great address forgives a surprising amount.</p>
     <h3>What good looks like</h3>
     <p>A well-chosen urban site typically keeps its chargers busy 5% to 10% of the time. That doesn't sound like much, but on the box above it's the zone where the business works. With standard electric rates, a good urban site sits around break-even, and the top of the range earns back the build. Add an EV-friendly electric rate, which many utilities now offer, or price a little above the minimum, and most of the range makes money. Good real estate gets you into the game. Good execution wins it.</p>
@@ -1772,10 +1772,10 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
     <p>If the pitch leads with uptime, walk away. Ask about service and support instead, and make them walk you through their internal timelines, what triggers a dispatch, and who does the work.</p>
 </article>
   <div class="fig" id="upx"><div class="fig-in">
-    <div class="fig-top"><h3>Thirty days at a real network</h3><div class="seg" role="group" aria-label="View"><button type="button" data-up="up" aria-pressed="true">The uptime report</button><button type="button" data-up="s" aria-pressed="false">What drivers got</button></div></div>
+    <div class="fig-top"><h3>Thirty days: the report versus the driver</h3><div class="seg" role="group" aria-label="View"><button type="button" data-up="up" aria-pressed="true">The uptime report</button><button type="button" data-up="s" aria-pressed="false">What drivers got</button></div></div>
     <div class="upgrid"></div>
     <span class="upbig"></span><span class="upsub"></span>
-    <p class="fh" style="margin-top:.8rem">Illustrative days, matched to the small-town network in the benchmarks: uptime in the high nineties, about 81% of sessions successful.</p>
+    <p class="fh" style="margin-top:.8rem">Illustrative days. Uptime in the high nineties, and 88% of visits ending in a charge, the national figure in the <a href="https://www.jdpower.com/business/press-releases/2026-u-s-electric-vehicle-experience-evx-public-charging-study/" rel="noopener">J.D. Power 2026 EVX Public Charging Study</a>.</p>
   </div></div>
   <article class="prose">
     <h3>Hold vendors to what they actually control</h3>
@@ -2321,7 +2321,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
 
     <h2 id="fo-faq">Questions people ask</h2>
     <h3>How many sessions per day does a public charger get?</h3>
-    <p>Anywhere from under one to well into double digits. In the <a href="#benchmarks">benchmark data</a>, the best site did about forty times the daily sessions per charger of the worst, with the same kind of hardware. Location explains most of the gap.</p>
+    <p>Anywhere from under one per charger to well into double digits. Across 4,105 US fast-charging stations in late 2025, the median station did 9 sessions a day. Stations with nothing nearby did 3, and stations surrounded by shops and restaurants did 28 (<a href="https://electricera.tech/the-state-of-retail-first-ev-charging-report" rel="noopener">Electric Era, Paren and TEI</a>). Location explains most of the gap, and the <a href="#benchmarks">benchmark data</a> shows the same pattern site by site.</p>
 
     <h3>What is a good utilization rate?</h3>
     <p>It is a ceiling check, not a goal. Past about half the hours open, drivers start to queue or leave. Below that, profit depends as much on price, energy cost and the demand charge as on how busy the ports are. Send the forecast to the <a href="#planner">site planner</a> to see what it is worth.</p>
@@ -4017,11 +4017,11 @@ if (typeof document !== 'undefined') (function(){
     var days = [];
     for (var d=0; d<30; d++){
       var online = (d===11 || d===12) ? 0.6 : (d===23 ? 0.85 : 1);
-      var succ = Math.max(0.45, Math.min(1, 0.81 + (rnd()-0.5)*0.34 - (online<1 ? 0.15 : 0)));
+      var succ = Math.max(0.45, Math.min(1, 0.88 + (rnd()-0.5)*0.26 - (online<1 ? 0.15 : 0)));
       days.push({online:online, succ:succ});
     }
     var mean0 = days.reduce(function(a,x){ return a+x.succ; },0)/30;
-    days.forEach(function(x){ x.succ = Math.max(0.4, Math.min(1, x.succ + (0.81 - mean0))); });
+    days.forEach(function(x){ x.succ = Math.max(0.4, Math.min(1, x.succ + (0.88 - mean0))); });
     var up = days.reduce(function(a,x){ return a+x.online; },0)/30, sc = days.reduce(function(a,x){ return a+x.succ; },0)/30;
     var mode = 'up';
     function draw(){
@@ -4030,7 +4030,7 @@ if (typeof document !== 'undefined') (function(){
         return '<span class="upc" style="--d:'+(i*0.03).toFixed(2)+'s"><b style="height:'+(v*100).toFixed(0)+'%" class="'+(mode==='up'?'u':'s')+(v<0.7?' low':'')+'"></b></span>';
       }).join('');
       root.querySelector('.upbig').textContent = mode==='up' ? Math.round(up*100)+'% uptime' : Math.round(sc*100)+'% of sessions worked';
-      root.querySelector('.upsub').textContent = mode==='up' ? 'What the monthly report says. The chargers answered the network almost every hour of the month.' : 'What drivers actually got. Roughly one in five attempts delivered nothing, on chargers the report called healthy.';
+      root.querySelector('.upsub').textContent = mode==='up' ? 'What the monthly report says. The chargers answered the network almost every hour of the month.' : 'What drivers actually got. About one visit in eight delivered nothing, on chargers the report called healthy.';
       Array.prototype.forEach.call(root.querySelectorAll('[data-up]'), function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-up')===mode ? 'true':'false'); });
       if (!REDUCED){ var g = root.querySelector('.upgrid'); g.classList.remove('play'); void g.getBoundingClientRect(); g.classList.add('play'); }
     }
