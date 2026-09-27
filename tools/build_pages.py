@@ -79,6 +79,8 @@ PAGES = [
      'Forecast sessions per day for a charging site from road traffic or people on site and local EV share. Pulls state DOT traffic counts and nearby station counts.', 'tool'),
     ('sitecheck', 'ev-charger-cellular-signal-check', 'EV Charger Cellular Signal Check: RSRP, RSRQ, SINR',
      'Grade the cellular signal where a charger will stand using RSRP, RSRQ, and SINR readings from AT&T, T-Mobile, and Verizon, and get a setup that holds up.', 'tool'),
+    ('report', 'ev-charging-project-report', 'EV Charging Project Report: Your Inputs and Results, One Page',
+     'Save what you put into the site planner, install estimator, SBA loan check, fleet calculator, utilization forecast and connectivity check, and export one PDF for your project.', 'tool'),
     ('about', 'about', 'About The Charge Sheet and Aatish Patel',
      'Who wrote The Charge Sheet and why: lessons from building an EV charging company, written down so you can skip learning them the expensive way.', 'about'),
 ]

@@ -755,6 +755,52 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
   a{color:#000}
 }
 
+/* ---------- Project report ---------- */
+.rbar{max-width:1120px;margin:0 auto;padding:0 1.25rem .4rem;display:flex;flex-wrap:wrap;align-items:center;gap:.8rem 1.4rem}
+.rbar .status{flex-basis:100%;margin-top:0}
+.rtrack{display:flex;align-items:center;gap:.45rem;list-style:none;padding:0;margin:0}
+.rtrack li a{display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line);color:transparent;background:var(--white);font-size:0;text-decoration:none;transition:border-color .15s,background .15s}
+.rtrack li a svg{width:12px;height:12px;display:none}
+.rtrack li.on a{background:var(--blue);border-color:var(--blue);color:#fff}
+.rtrack li.on a svg{display:block}
+.rtrack li.here a{border-color:var(--blue);border-width:2px}
+.rtrack li a:hover{border-color:var(--blue)}
+.rtrack-l{font-size:.85rem;color:var(--slate)}
+.rtrack-l a{color:var(--blue);font-weight:600}
+.report{max-width:820px;margin:0 auto;padding:.5rem 1.25rem 2rem}
+.rprint{display:none}
+.report .rname{font:inherit;font-size:1.05rem;padding:.55rem .8rem;border:1px solid var(--line);border-radius:8px;background:var(--white);color:var(--ink);width:100%;max-width:26rem}
+.rsec{margin-top:2.6rem;padding-top:1.6rem;border-top:1px solid var(--line)}
+.rsec h2{margin:0 0 .2rem}
+.rsec .rmeta{font-size:.85rem;color:var(--slate);margin:0 0 1rem;display:flex;flex-wrap:wrap;gap:.3rem .9rem;align-items:center}
+.rsec .rmeta a{color:var(--blue);font-weight:600}
+.rsec .rmeta button{font:inherit;font-size:.85rem;color:var(--slate);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:.15em}
+.rsec h3{font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);margin:1.6rem 0 .6rem}
+.rsec .kpis{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+.rsec table.rin{width:100%;border-collapse:collapse;font-size:.9rem}
+.rsec table.rin td{padding:.35rem .5rem;border-bottom:1px solid var(--line);vertical-align:top}
+.rsec table.rin td:last-child{text-align:right;font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+.rsec table.rin td.rg{font-weight:700;color:var(--ink);padding-top:.9rem;border-bottom:0;text-align:left !important}
+.rsec .verdict{font-size:1.02rem;margin:.6rem 0}
+.rsec .flag{margin-top:.6rem}
+.rsec ul.recs{margin:.4rem 0 0;padding-left:1.2rem;font-size:.95rem}
+.rsec ul.recs li{margin:.3rem 0}
+.rmissing{margin-top:2.6rem;padding-top:1.6rem;border-top:1px solid var(--line)}
+.rmissing ul{list-style:none;padding:0;margin:.6rem 0 0;display:grid;gap:.4rem}
+.rmissing li a{color:var(--blue);font-weight:600}
+.rempty{padding:2.4rem 0;font-size:1.1rem;color:var(--slate);max-width:40em}
+@media (max-width:640px){.rsec .rmeta{font-size:.8rem}.report{padding-bottom:1rem}}
+@media print{
+  .rbar,.report .rnamef,.rmissing,.rsec .rmeta button,.report-empty{display:none !important}
+  .report{padding:0;max-width:none}
+  .rsec{break-inside:auto;border-top:1px solid #ccc}
+  .rsec h2{font-size:15pt}
+  .rsec .kpis{grid-template-columns:repeat(3,1fr);gap:.6rem}
+  .rsec .kpi .v{font-size:14pt}
+  .rsec table.rin td{border-color:#ddd}
+  .rprint{display:block !important;font-size:10pt;color:#444;margin:0 0 1rem}
+}
+
 /* ---------- Blog ---------- */
 .post-kicker{font-size:.9rem;color:var(--slate);margin:0 0 1rem;display:flex;flex-wrap:wrap;gap:.35rem .6rem;align-items:center}
 .post-kicker a{color:var(--blue);font-weight:600}
@@ -1508,6 +1554,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
     <p>Put in the project, your business's cash flow and the loan terms, and see whether an SBA loan pencils: how much you'd borrow, what it costs a month, and whether the cash flow covers it the way a lender will want. A screening tool, not a credit decision.</p>
     <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>Built by <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
   </div>
+  <div class="rbar" data-rtool="sbatool"></div>
   <div class="tool">
     <form class="inputs" id="l-inputs" onsubmit="return false"></form>
     <div class="results" id="l-results" aria-live="polite"></div>
@@ -2083,6 +2130,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
     <p>How many vehicles your site can charge in a day, and what's really limiting it. Pick the vehicles, the chargers and how you run the lot. The answer is usually less about the chargers than people expect.</p>
     <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>Built by <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
   </div>
+  <div class="rbar" data-rtool="fleettool"></div>
   <div class="tool">
     <form class="inputs" id="q-inputs" onsubmit="return false"></form>
     <div class="results" id="q-results" aria-live="polite"></div>
@@ -2257,6 +2305,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
     <p>A ballpark pro forma for a charging site: what it costs to build, what it costs to run, and how many sessions it needs before it stops losing money. The defaults are typical numbers. Swap in real quotes the moment you have them.</p>
     <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>Built by <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
   </div>
+  <div class="rbar" data-rtool="planner"></div>
   <div class="tool">
     <form class="inputs" id="p-inputs" onsubmit="return false"></form>
     <div class="results" id="p-results" aria-live="polite"></div>
@@ -2309,6 +2358,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
     <p>The charger is the cheap part. The expensive part is the distance between it and the electrical room, and everything you have to dig through to cover it. This puts a rough number on that, and shows you how fast it grows.</p>
     <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>Built by <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
   </div>
+  <div class="rbar" data-rtool="install"></div>
   <div class="tool">
     <form class="inputs" id="e-inputs" onsubmit="return false"></form>
     <div class="results" id="e-results" aria-live="polite"></div>
@@ -2361,6 +2411,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
     <p>How busy a site is likely to be, worked out from the traffic or people already there and how many of them drive EVs. You get a range, because anyone who gives you a single number for a site that doesn't exist yet is either guessing or selling something.</p>
     <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>Built by <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
   </div>
+  <div class="rbar" data-rtool="forecast"></div>
   <div class="tool">
     <form class="inputs" id="f-inputs" onsubmit="return false"></form>
     <div class="results" id="f-results" aria-live="polite"></div>
@@ -2401,6 +2452,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
     <p>Grade the cellular signal where the charger will stand, and get a setup that holds up. Take readings at that exact spot, at roughly cabinet height, ideally when the site is busy. Readings from the charger or router itself are best. Phone readings work too, and the tool adjusts for the metal cabinet.</p>
     <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>Built by <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
   </div>
+  <div class="rbar" data-rtool="sitecheck"></div>
   <div class="tool">
     <form class="inputs" id="c-inputs" onsubmit="return false"></form>
     <div class="results" id="c-results" aria-live="polite"></div>
@@ -2430,11 +2482,30 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
     <p>Many do, and they fail on their own schedule. If the terminal has its own modem, it needs good signal too, and a charger can be online while its terminal is not. Tell the check, and it adds that to the list.</p>
   </article>
 </section>
+<section id="view-report" hidden>
+  <div class="tool-head">
+    <h1>Project report</h1>
+    <p>Everything you put into the tools and everything they gave back, for one site, on one page. Hit "Save to report" on any tool and it lands here. Export it as a PDF for whoever has to say yes. It lives in this browser only, so nothing leaves your machine.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>Built by <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
+  </div>
+  <div class="rbar" data-rtool="report"></div>
+  <div class="report" id="r-body"></div>
+  <article class="prose">
+    <h2 id="r-how">How it works</h2>
+    <ul>
+      <li>Each tool has a "Save to report" button under its title. It copies the inputs you entered and the results on screen into the report, as of that moment.</li>
+      <li>One site per report. Saving a tool again replaces its earlier entry, so keep going until the numbers are the ones you believe.</li>
+      <li>The six dots show which tools are in the report. You don't need all six. A hotel doesn't need the fleet calculator.</li>
+      <li>Export uses your browser's print dialog. Choose "Save as PDF" as the printer.</li>
+      <li>Nothing is uploaded. The report is stored in your browser, on this device, until you clear it.</li>
+    </ul>
+  </article>
+</section>
 </main>
 <footer><div class="foot">
   <div><b>The Charge Sheet</b><p>A free, open source guide to the business of EV charging, built and given away by <a href="#about">Aatish Patel</a>. Ballpark numbers and honest opinions. Not financial advice.</p><p>Text CC BY 4.0. Code MIT.</p></div>
   <div><b>Learn</b><a href="#basics">How charging works</a><a href="#primer">The business</a><a href="#realestate">Real estate</a><a href="#finance">Paying for it</a><a href="#storage">Batteries</a><a href="#connectivity">Connectivity</a><a href="#vendors">Buying</a><a href="#fleet">Fleet charging</a></div>
-  <div><b>Tools</b><a href="#planner">Site planner</a><a href="#install">Install estimator</a><a href="#sbatool">SBA loan check</a><a href="#fleettool">Fleet throughput</a><a href="#forecast">Utilization forecast</a><a href="#sitecheck">Connectivity check</a></div>
+  <div><b>Tools</b><a href="#planner">Site planner</a><a href="#install">Install estimator</a><a href="#sbatool">SBA loan check</a><a href="#fleettool">Fleet throughput</a><a href="#forecast">Utilization forecast</a><a href="#sitecheck">Connectivity check</a><a href="#report">Project report</a></div>
   <div><b>More</b><a href="#benchmarks">Benchmarks</a><a href="#method">Method and sources</a><a href="#glossary">Glossary</a><a href="/blog/">Blog</a><a href="#about">About</a><a href="https://github.com/aatishi4/the-charge-sheet" rel="noopener">Source code</a></div>
 </div></footer>
 <script>
@@ -2941,11 +3012,11 @@ if (typeof document !== 'undefined') (function(){
 
   /* Router */
   /* ---------- Site structure and router ---------- */
-  var VIEWS = ['home','basics','primer','realestate','finance','storage','connectivity','vendors','fleet','benchmarks','method','planner','install','sbatool','fleettool','forecast','sitecheck','glossary','about'];
+  var VIEWS = ['home','basics','primer','realestate','finance','storage','connectivity','vendors','fleet','benchmarks','method','planner','install','sbatool','fleettool','forecast','sitecheck','report','glossary','about'];
   var GROUPS = {
     learn: {title:'Learn', nav:'gn-learn', pages:[['basics','How charging works'],['primer','The business'],['realestate','Real estate'],['finance','Paying for it'],['storage','Batteries'],['connectivity','Connectivity'],['vendors','Buying'],['fleet','Fleet charging']]},
     data:  {title:'Benchmarks', nav:'gn-data', pages:[['benchmarks','Benchmarks'],['method','Method and sources'],['glossary','Glossary']]},
-    tools: {title:'Tools', nav:'gn-tools', pages:[['planner','Site planner'],['install','Install estimator'],['sbatool','SBA loan check'],['fleettool','Fleet throughput'],['forecast','Utilization forecast'],['sitecheck','Connectivity check']]}
+    tools: {title:'Tools', nav:'gn-tools', pages:[['planner','Site planner'],['install','Install estimator'],['sbatool','SBA loan check'],['fleettool','Fleet throughput'],['forecast','Utilization forecast'],['sitecheck','Connectivity check'],['report','Project report']]}
   };
   var GROUP_OF = {}, NAME_OF = {home:'The Charge Sheet', about:'About'};
   Object.keys(GROUPS).forEach(function(g){ GROUPS[g].pages.forEach(function(p){ GROUP_OF[p[0]] = g; NAME_OF[p[0]] = p[1]; }); });
@@ -3028,6 +3099,8 @@ if (typeof document !== 'undefined') (function(){
     if (view==='fleettool'){ MEMO['q-results'] = null; renderFleet(); var tl = document.querySelector('#q-tl svg'); if (tl && !REDUCED) tl.classList.add('play'); }
     if (view==='sbatool'){ MEMO['l-results'] = null; renderLoan(); }
     if (['planner','forecast','install','fleettool','sbatool'].indexOf(view)>=0) drawCharts(view);
+    renderReportBar(view);
+    if (view==='report') renderReport();
   }
   window.addEventListener('hashchange', route);
 
@@ -4615,6 +4688,128 @@ if (typeof document !== 'undefined') (function(){
   function printPlan(){
     Array.prototype.forEach.call(document.querySelectorAll('#p-results details'), function(d){ d.setAttribute('open',''); });
     try { window.print(); } catch(e){ actStatus('p-act-status', 'Printing isn\u2019t available in this view. Download the spreadsheet instead.'); }
+  }
+
+
+  /* ---------- Project report ---------- */
+  var RTOOLS = [['planner','Site planner','p'],['install','Install estimator','e'],['sbatool','SBA loan check','l'],['fleettool','Fleet throughput','q'],['forecast','Utilization forecast','f'],['sitecheck','Connectivity check','c']];
+  var RPRIVATE = ['nrelKey','openeiKey','latlon','customUrl','rateUrl'];
+  var REPORT = null;
+  function loadReport(){
+    if (REPORT) return REPORT;
+    try { REPORT = JSON.parse(localStorage.getItem('cs-report') || 'null'); } catch(e){ REPORT = null; }
+    if (!REPORT || REPORT.v!==1) REPORT = {v:1, name:'', items:{}};
+    return REPORT;
+  }
+  function saveReport(){ try { localStorage.setItem('cs-report', JSON.stringify(loadReport())); } catch(e){} }
+  function esc(t){ return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function textOf(el){ return (el.textContent||'').replace(/\s+/g,' ').trim(); }
+  function captureTool(view){
+    var meta = null; RTOOLS.forEach(function(t){ if (t[0]===view) meta = t; });
+    if (!meta) return null;
+    var form = document.getElementById(meta[2]+'-inputs'), res = document.getElementById(meta[2]+'-results');
+    var item = {view:view, name:meta[1], at:new Date().toISOString(), inputs:[], kpis:[], notes:[], recs:[], tables:[]};
+    if (form){
+      var groupName = '';
+      Array.prototype.forEach.call(form.querySelectorAll('details > summary, .fld'), function(n){
+        if (n.tagName==='SUMMARY'){ groupName = textOf(n); return; }
+        var ctl = n.querySelector('input,select'); if (!ctl) return;
+        var key = ctl.getAttribute('data-key') || '';
+        if (RPRIVATE.indexOf(key)>=0 || /key|token|secret/i.test(key)) return;
+        var label = n.querySelector('.fl') ? textOf(n.querySelector('.fl')) : '';
+        if (!label) return;
+        var val = '';
+        if (ctl.tagName==='SELECT') val = ctl.options[ctl.selectedIndex] ? textOf(ctl.options[ctl.selectedIndex]) : '';
+        else if (ctl.type==='checkbox') val = ctl.checked ? 'Yes' : 'No';
+        else if (ctl.type==='number'){ if (ctl.value==='') return; var nv = Number(ctl.value); val = (isNaN(nv) ? ctl.value : nv.toLocaleString('en-US', {maximumFractionDigits:3})); var u = n.querySelector('.u') ? textOf(n.querySelector('.u')) : ''; if (u==='$') val = '$'+val; else if (u.charAt(0)==='$') val = '$'+val+u.slice(1); else if (u.charAt(0)==='%') val += u; else if (u) val += ' '+u; }
+        else { if (!ctl.value.trim()) return; val = ctl.value.trim(); }
+        if (groupName && (!item.inputs.length || item.inputs[item.inputs.length-1][2]!==groupName)) item.inputs.push([groupName, null, groupName]);
+        item.inputs.push([label, val, groupName]);
+      });
+    }
+    if (res){
+      Array.prototype.forEach.call(res.querySelectorAll('.kpi'), function(k){
+        var v = k.querySelector('.v'), l = k.querySelector('.l');
+        item.kpis.push([v ? textOf(v) : '', l ? textOf(l) : '', v && v.classList.contains('neg') ? 'neg' : v && v.classList.contains('pos') ? 'pos' : '']);
+      });
+      var empty = false;
+      Array.prototype.forEach.call(res.querySelectorAll('.verdict, .flag, .empty'), function(n){
+        if (n.classList.contains('empty')){ empty = true; return; }
+        var t = textOf(n); if (t) item.notes.push([n.classList.contains('flag') ? 'flag' : 'verdict', t]);
+      });
+      if (empty && !item.kpis.length) return null;
+      Array.prototype.forEach.call(res.querySelectorAll('ul.recs li'), function(n){ item.recs.push(textOf(n)); });
+      Array.prototype.forEach.call(res.querySelectorAll('table'), function(tb){
+        if (tb.closest('details') || tb.closest('.print-only') || tb.classList.contains('assume')) return;
+        var rows = []; Array.prototype.forEach.call(tb.querySelectorAll('tr'), function(tr){ if (rows.length>=24) return; rows.push(Array.prototype.map.call(tr.querySelectorAll('th,td'), function(c){ var f = c.querySelector('.fh'); if (f) f = f.cloneNode(true); return textOf(c).replace(f ? textOf(f) : '', '').trim(); })); });
+        var cap = tb.closest('.panel') && tb.closest('.panel').querySelector('h2') ? textOf(tb.closest('.panel').querySelector('h2')) : '';
+        if (rows.length>1) item.tables.push({title:cap, rows:rows});
+      });
+    }
+    if (!item.kpis.length && !item.notes.length && !item.tables.length) return null;
+    return item;
+  }
+  function saveToReport(view){
+    var R = loadReport(), item = captureTool(view);
+    var st = document.querySelector('.rbar[data-rtool="'+view+'"] .status');
+    if (!item){ if (st){ st.hidden = false; st.className = 'status'; st.textContent = 'Nothing to save yet. Fill in the inputs until the tool shows a result.'; } return; }
+    if (view==='planner' && P.siteName && !R.name) R.name = P.siteName;
+    R.items[view] = item; saveReport(); renderReportBar(view);
+    st = document.querySelector('.rbar[data-rtool="'+view+'"] .status');
+    if (st){ st.hidden = false; st.className = 'status ok'; st.innerHTML = 'Saved to the report. '+Object.keys(R.items).length+' of '+RTOOLS.length+' tools in it. <a href="'+viewHref('report')+'">Open the report</a>.'; }
+  }
+  function trackerHTML(view){
+    var R = loadReport(), n = Object.keys(R.items).length;
+    var dots = RTOOLS.map(function(t){
+      var on = !!R.items[t[0]];
+      return '<li class="'+(on?'on':'')+(t[0]===view?' here':'')+'"><a href="'+viewHref(t[0])+'" title="'+t[1]+(on?': in the report':': not in the report yet')+'" aria-label="'+t[1]+(on?', in the report':', not in the report yet')+'"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.5l2.3 2.3L9.5 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>';
+    }).join('');
+    var lbl = view==='report' ? (n ? n+' of '+RTOOLS.length+' tools saved.' : 'No tools saved yet.') : (n ? n+' of '+RTOOLS.length+' in the <a href="'+viewHref('report')+'">report</a>.' : 'Nothing in the <a href="'+viewHref('report')+'">report</a> yet.');
+    return '<ul class="rtrack" aria-label="Tools in the project report">'+dots+'</ul><span class="rtrack-l">'+lbl+'</span>';
+  }
+  function renderReportBar(view){
+    var bar = document.querySelector('.rbar[data-rtool="'+view+'"]'); if (!bar) return;
+    var R = loadReport();
+    if (view==='report'){
+      bar.innerHTML = trackerHTML(view) + '<div class="tool-actions" style="margin:0;margin-left:auto"><button type="button" class="btn small primary" id="r-export"'+(Object.keys(R.items).length?'':' disabled')+'>Export PDF</button><button type="button" class="btn small quiet" id="r-clear"'+(Object.keys(R.items).length?'':' disabled')+'>Clear report</button></div>';
+      var ex = document.getElementById('r-export'), cl = document.getElementById('r-clear');
+      if (ex) ex.onclick = function(){ try { window.print(); } catch(e){} };
+      if (cl) cl.onclick = function(){ if (!confirm('Clear the whole report? The tools keep their inputs.')) return; REPORT = {v:1, name:'', items:{}}; saveReport(); renderReportBar('report'); renderReport(); };
+      return;
+    }
+    var on = !!R.items[view];
+    bar.innerHTML = '<button type="button" class="btn small'+(on?' quiet':'')+'" data-rsave="'+view+'">'+(on ? 'Update in report' : 'Save to report')+'</button>' + trackerHTML(view) + '<div class="status" hidden></div>';
+    bar.querySelector('[data-rsave]').onclick = function(){ saveToReport(view); };
+  }
+  function renderReport(){
+    var el = document.getElementById('r-body'); if (!el) return;
+    var R = loadReport(), keys = RTOOLS.filter(function(t){ return !!R.items[t[0]]; });
+    var h = '<div class="rprint"><b>'+esc(R.name || 'Charging site')+'</b><br>Project report from The Charge Sheet, chargesheet.io, '+today()+'. Ballpark estimates from the site\u2019s free tools, using the inputs shown. Not financial, legal or engineering advice.</div>';
+    h += '<label class="fld wide rnamef" style="display:block;margin:.4rem 0 0"><span class="fl">Site or project name</span><span class="fi"><input class="rname" id="r-name" type="text" value="'+esc(R.name)+'" placeholder="e.g. Main Street grocery"></span><span class="fh">Printed at the top of the PDF.</span></label>';
+    if (!keys.length){
+      h += '<p class="rempty report-empty">Nothing here yet. Open a tool, put your numbers in, and hit "Save to report". Start with the <a href="'+viewHref('planner')+'">site planner</a> or the <a href="'+viewHref('forecast')+'">utilization forecast</a>.</p>';
+    }
+    keys.forEach(function(t){
+      var it = R.items[t[0]], d = new Date(it.at);
+      h += '<section class="rsec" id="r-'+t[0]+'"><h2>'+esc(it.name)+'</h2><p class="rmeta"><span>Saved '+esc(isNaN(d) ? '' : d.toLocaleDateString(undefined, {year:'numeric', month:'short', day:'numeric'})+' '+d.toLocaleTimeString(undefined, {hour:'numeric', minute:'2-digit'}))+'</span><a href="'+viewHref(t[0])+'">Open the tool</a><button type="button" data-rdel="'+t[0]+'">Remove</button></p>';
+      if (it.kpis.length){ h += '<h3>Results</h3><div class="kpis">'+it.kpis.map(function(k){ return '<div class="kpi"><span class="v'+(k[2]?' '+k[2]:'')+'">'+esc(k[0])+'</span><span class="l">'+esc(k[1])+'</span></div>'; }).join('')+'</div>'; }
+      it.notes.forEach(function(n){ h += '<p class="'+(n[0]==='flag'?'flag':'verdict')+'">'+esc(n[1])+'</p>'; });
+      if (it.recs.length) h += '<h3>What to do</h3><ul class="recs">'+it.recs.map(function(r){ return '<li>'+esc(r)+'</li>'; }).join('')+'</ul>';
+      it.tables.forEach(function(tb){
+        h += (tb.title ? '<h3>'+esc(tb.title)+'</h3>' : '') + '<div class="scroll"><table><thead><tr>'+tb.rows[0].map(function(c){ return '<th>'+esc(c)+'</th>'; }).join('')+'</tr></thead><tbody>'+
+          tb.rows.slice(1).map(function(r){ return '<tr>'+r.map(function(c){ return '<td>'+esc(c)+'</td>'; }).join('')+'</tr>'; }).join('')+'</tbody></table></div>';
+      });
+      if (it.inputs.length){ h += '<h3>Inputs</h3><table class="rin"><tbody>'+it.inputs.map(function(r){ return r[1]===null ? '<tr><td class="rg" colspan="2">'+esc(r[0])+'</td></tr>' : '<tr><td>'+esc(r[0])+'</td><td>'+esc(r[1])+'</td></tr>'; }).join('')+'</tbody></table>'; }
+      h += '</section>';
+    });
+    var missing = RTOOLS.filter(function(t){ return !R.items[t[0]]; });
+    if (keys.length && missing.length){
+      h += '<div class="rmissing"><p class="fh" style="margin:0"><b>Not in the report yet.</b> Add the ones that apply to this site.</p><ul>'+missing.map(function(t){ return '<li><a href="'+viewHref(t[0])+'">'+esc(t[1])+'</a></li>'; }).join('')+'</ul></div>';
+    }
+    el.innerHTML = h;
+    var nm = document.getElementById('r-name');
+    if (nm) nm.oninput = function(){ R.name = nm.value.trim(); saveReport(); var b = el.querySelector('.rprint b'); if (b) b.textContent = R.name || 'Charging site'; };
+    Array.prototype.forEach.call(el.querySelectorAll('[data-rdel]'), function(b){ b.onclick = function(){ delete R.items[b.getAttribute('data-rdel')]; saveReport(); renderReportBar('report'); renderReport(); }; });
   }
 
   /* ---------- Connectivity check ---------- */
