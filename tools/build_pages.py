@@ -286,7 +286,7 @@ BLOG_DESC = 'Notes from the business of EV charging: what is changing, what it c
 
 def post_item(p):
     kind = 'The week in charging' if p['kind'] == 'weekly' else '%d min read' % p['minutes']
-    badge = ' <span class="badge-draft">Draft</span>' if p['draft'] else ''
+    badge = (' <span class="badge-draft">%s</span>' % (('Scheduled ' + p['scheduled']) if p.get('scheduled') else 'Draft')) if p['draft'] else ''
     return ('<li><a href="/blog/%s/"><span class="pl-meta"><time datetime="%s">%s</time><br>%s</span>'
             '<b>%s%s</b><span class="pl-d">%s</span></a></li>') % (
         p['slug'], p['date'], blog.nice_date(p['date']), esc(kind), esc(p['title']), badge, esc(p['description']))
@@ -319,8 +319,8 @@ def build_blog(posts, head, pre_main, post_main, hollow_all, anchors, updated):
     items = ''.join(post_item(p) for p in posts)
     body = ('<section id="view-blog" class="read blog"><div class="tool-head"><h1>Blog</h1>'
             '<p>Notes from the business of EV charging: what is changing, what it costs, and what I would do about it. '
-            'Plus a weekly screen of the news that actually matters to people who own or plan charging sites.</p></div>'
-            '%s<div class="prose">%s<p class="feed-link"><a href="/blog/feed.xml">Subscribe with RSS</a></p></div></section>\n') % (
+            'Plus a weekly screen of the news that actually matters to people who own or plan charging sites.</p>%s</div>'
+            '<div class="prose">%s<p class="feed-link"><a href="/blog/feed.xml">Subscribe with RSS</a></p></div></section>\n') % (
         BLOG_ART, '<ul class="post-list">%s</ul>' % items if items else '<p class="blog-empty">The first posts are on the way.</p>')
     h = set_meta(head, BLOG_TITLE, BLOG_DESC, url, og_default, 'home')
     ld = {'@context': 'https://schema.org', '@type': 'Blog', 'name': 'The Charge Sheet blog', 'url': url, 'description': BLOG_DESC,
@@ -354,13 +354,13 @@ def build_blog(posts, head, pre_main, post_main, hollow_all, anchors, updated):
         more = ('<h2>More from the blog</h2><ul class="post-list">%s</ul>' % ''.join(post_item(q) for q in others)) if others else ''
         body = ('<section id="view-blogpost" class="read blog"><div class="tool-head">'
                 '<p class="post-kicker"><a href="/blog/">Blog</a><span class="dot">/</span><time datetime="%s">%s</time>'
-                '<span class="dot">/</span><span>%s</span>%s</p><h1>%s</h1>%s%s</div>'
+                '<span class="dot">/</span><span>%s</span>%s</p><h1>%s</h1>%s%s%s</div>'
                 '<article class="prose post">%s</article>'
                 '<div class="prose post-foot"><div class="post-author"><img src="/img/aatish-square.jpg" alt="" width="56" height="56">'
                 '<p><b>Aatish Patel</b><br>Built and ran a charging company for six years. <a href="/about/">More about me</a>.</p></div>%s'
                 '<p class="feed-link"><a href="/blog/">All posts</a> <span class="dot">/</span> <a href="/blog/feed.xml">RSS</a></p></div></section>\n') % (
-            p['date'], blog.nice_date(p['date']), esc(kind), ' <span class="badge-draft">Draft</span>' if p['draft'] else '',
-            esc(p['title']), '<p>%s</p>' % esc(p['description']) if p['description'] else '', tags, p['html'], more)
+            p['date'], blog.nice_date(p['date']), esc(kind), (' <span class="badge-draft">%s</span>' % (('Scheduled ' + p['scheduled']) if p.get('scheduled') else 'Draft')) if p['draft'] else '',
+            esc(p['title']), '<p>%s</p>' % esc(p['description']) if p['description'] else '', tags, p.get('art', ''), p['html'], more)
         d = os.path.join(OUT, 'blog', p['slug'])
         os.makedirs(d, exist_ok=True)
         open(os.path.join(d, 'index.html'), 'w', encoding='utf-8').write(
@@ -375,7 +375,7 @@ def build_blog(posts, head, pre_main, post_main, hollow_all, anchors, updated):
         '<item><title>%s</title><link>%s/blog/%s/</link><guid isPermaLink="true">%s/blog/%s/</guid><pubDate>%s</pubDate>'
         '<description>%s</description><content:encoded><![CDATA[%s]]></content:encoded>%s</item>' % (
             esc(p['title']), SITE, p['slug'], SITE, p['slug'], rfc822(p['date']), esc(p['description']),
-            p['html'].replace(']]>', ']]&gt;').replace('href="/', 'href="%s/' % SITE).replace('src="/', 'src="%s/' % SITE),
+            p.get('feed_html', p['html']).replace(']]>', ']]&gt;').replace('href="/', 'href="%s/' % SITE).replace('src="/', 'src="%s/' % SITE),
             ''.join('<category>%s</category>' % esc(t) for t in p['tags']))
         for p in posts if not p['draft'])
     feed = ('<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" '

@@ -1,0 +1,42 @@
+name: Scheduled publish
+
+# Blog posts with a `publish:` time stay off chargesheet.io until a build runs
+# after that time. This wakes up on Tuesdays and Thursdays around 9am Central
+# and rebuilds the site if a post is due but not in the live feed yet.
+# Two crons because GitHub schedules in UTC: 14:00 UTC is 9am CDT, 15:00 UTC is 9am CST.
+# The check makes the second run a no-op.
+
+on:
+  schedule:
+    - cron: '0 14 * * 2,4'
+    - cron: '0 15 * * 2,4'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Find posts that are due but not live
+        id: due
+        run: python3 tools/due_posts.py >> "$GITHUB_OUTPUT"
+      - name: Rebuild the site
+        if: steps.due.outputs.missing != ''
+        env:
+          HOOK: ${{ secrets.CF_DEPLOY_HOOK }}
+          MISSING: ${{ steps.due.outputs.missing }}
+        run: |
+          echo "Due and not live: $MISSING"
+          if [ -n "$HOOK" ]; then
+            # Cloudflare Pages deploy hook (Settings > Builds > Deploy hooks, branch main)
+            curl -fsS -X POST "$HOOK"
+          else
+            # No hook set: an empty commit on main makes Cloudflare Pages rebuild.
+            git config user.name "github-actions[bot]"
+            git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
+            git commit --allow-empty -m "Scheduled publish: $MISSING"
+            git push
+          fi

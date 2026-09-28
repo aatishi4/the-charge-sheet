@@ -1,0 +1,26 @@
+<svg viewBox="0 0 720 150" focusable="false">
+<path class="lt" d="M20,128 H700"/>
+<g class="bob"><path class="ln d fw" pathLength="1" d="M60,126 v-16 q0,-8 8,-8 h10 l12,-12 h34 l14,12 h6 q8,0 8,8 v16 z" style="--d:0.10s"/>
+<circle class="ln fw fade" cx="78" cy="126" r="7" style="--d:0.50s"/><circle class="ln fw fade" cx="130" cy="126" r="7" style="--d:0.50s"/></g>
+<rect class="ln d fw" pathLength="1" x="250" y="78" width="22" height="50" rx="4" style="--d:0.20s"/>
+<rect class="fi fade" x="254" y="86" width="14" height="10" rx="2" style="--d:0.70s"/>
+<path class="la d" pathLength="1" d="M272,100 c14,0 16,8 12,16" style="--d:0.90s"/>
+<circle class="fa fade" cx="284" cy="119" r="4" style="--d:1.30s"/>
+<rect class="ln d fw" pathLength="1" x="330" y="78" width="22" height="50" rx="4" style="--d:0.35s"/>
+<rect class="fi fade" x="334" y="86" width="14" height="10" rx="2" style="--d:0.85s"/>
+<path class="la d" pathLength="1" d="M352,100 c14,0 16,8 12,16" style="--d:1.05s"/>
+<circle class="fa fade" cx="364" cy="119" r="4" style="--d:1.45s"/>
+<rect class="ln d fw" pathLength="1" x="410" y="78" width="22" height="50" rx="4" style="--d:0.50s"/>
+<rect class="fi fade" x="414" y="86" width="14" height="10" rx="2" style="--d:1.00s"/>
+<path class="lb d" pathLength="1" d="M432,100 c14,0 16,8 12,16" style="--d:1.20s"/>
+<rect class="fb fade" x="441" y="115" width="6" height="9" rx="3" style="--d:1.60s"/>
+<rect class="ln d fw" pathLength="1" x="490" y="78" width="22" height="50" rx="4" style="--d:0.65s"/>
+<rect class="fi fade" x="494" y="86" width="14" height="10" rx="2" style="--d:1.15s"/>
+<path class="lb d" pathLength="1" d="M512,100 c14,0 16,8 12,16" style="--d:1.35s"/>
+<rect class="fb fade" x="521" y="115" width="6" height="9" rx="3" style="--d:1.75s"/>
+<g class="fade" style="--d:1.80s"><circle class="la" cx="596" cy="58" r="18"/><circle class="la" cx="588" cy="92" r="6"/><circle class="la" cx="604" cy="92" r="6"/><circle class="la" cx="589" cy="56" r="3"/><circle class="la" cx="603" cy="56" r="3"/></g>
+<g class="fade" style="--d:2.10s"><path class="lb" d="M664,42 c14,0 20,14 20,28 c0,16 -9,28 -20,28 c-11,0 -20,-12 -20,-28 c0,-14 6,-28 20,-28 z"/><circle class="lb" cx="657" cy="64" r="4"/><circle class="lb" cx="671" cy="64" r="4"/><circle class="lb" cx="664" cy="84" r="2.5"/></g>
+<text x="596" y="118" text-anchor="middle" class="a">CCS</text>
+<text x="664" y="118" text-anchor="middle" class="b">NACS</text>
+<text x="250" y="148">Four stalls, two plugs</text>
+</svg>

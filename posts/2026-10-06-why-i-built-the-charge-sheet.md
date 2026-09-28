@@ -1,9 +1,9 @@
 ---
 title: Why I built The Charge Sheet
 description: Six years of running a charging business, written down so the next person can make newer, more interesting mistakes.
-date: 2026-09-24
+date: 2026-10-06
+publish: 2026-10-06T09:00:00-05:00
 tags: [about, charging business]
-draft: true
 ---
 
 I spent the better part of six years building and running the North American business of a charging company. Product, sales, marketing, hiring, finance, logistics, and a public listing along the way. Most of what I know about charging, I learned by getting it wrong first, or by watching a customer get it wrong with my equipment.
