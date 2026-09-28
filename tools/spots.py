@@ -39,6 +39,7 @@ CSS = '''
   .spot .flow,.spot .ping,.spot .bob{animation:none}
   .spot .ping{opacity:0}
 }
+.js .spot.io:not(.play) *{animation-play-state:paused}
 @media print{.spot{display:none}}
 @media (max-width:640px){.spot{margin-top:1.2rem}.spot text{display:none}}
 '''

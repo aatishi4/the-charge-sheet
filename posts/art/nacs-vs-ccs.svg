@@ -1,0 +1,12 @@
+<svg viewBox="0 0 720 200" focusable="false">
+<text x="20" y="28">Installed non-Tesla base, 48,371 ports</text>
+<rect class="lt" x="20" y="38" width="600" height="28" rx="6"/>
+<rect class="fa growx" x="20" y="38" width="448" height="28" rx="6" style="--d:0.10s"/>
+<text x="480" y="58" class="a fade" style="--d:1.40s">CCS 74.6%</text>
+<text x="20" y="108">New non-Tesla connectors, Q2 2026</text>
+<rect class="lt" x="20" y="118" width="600" height="28" rx="6"/>
+<rect class="fb growx" x="20" y="118" width="137" height="28" rx="6" style="--d:0.50s"/>
+<text x="169" y="138" class="b fade" style="--d:1.80s">NACS 22.9%</text>
+<path class="lt dash" d="M20,168 H620"/>
+<text x="20" y="190" class="fade" style="--d:2.30s">Share of connectors. Source: Paren, Q2 2026</text>
+</svg>

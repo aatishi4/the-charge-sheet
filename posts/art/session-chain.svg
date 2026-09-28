@@ -1,0 +1,21 @@
+<svg viewBox="0 0 720 150" focusable="false">
+<path class="la d" pathLength="1" d="M400,48 V40 H512 V48" style="--d:0.10s"/>
+<text x="456" y="28" text-anchor="middle" class="a fade" style="--d:0.30s">What uptime sees</text>
+<rect class="ln d fw" pathLength="1" x="10" y="60" width="120" height="44" rx="8" style="--d:0.20s"/>
+<text x="70" y="87" text-anchor="middle" class="fade" style="--d:0.50s">Card</text>
+<rect class="ln d fw" pathLength="1" x="203" y="60" width="120" height="44" rx="8" style="--d:0.35s"/>
+<text x="263" y="87" text-anchor="middle" class="fade" style="--d:0.65s">Network</text>
+<rect class="lb d fw" pathLength="1" x="396" y="60" width="120" height="44" rx="8" style="--d:0.50s"/>
+<text x="456" y="87" text-anchor="middle" class="b fade" style="--d:0.80s">Charger</text>
+<rect class="ln d fw" pathLength="1" x="589" y="60" width="120" height="44" rx="8" style="--d:0.65s"/>
+<text x="649" y="87" text-anchor="middle" class="fade" style="--d:0.95s">Car</text>
+<path class="lb flow" d="M136,82 H195" style="--d:1.00s"/>
+<path class="lb flow" d="M329,82 H388" style="--d:1.10s"/>
+<path class="lb flow" d="M522,82 H581" style="--d:1.20s"/>
+<path class="la d" pathLength="1" d="M160,90 l13,13 M173,90 l-13,13" style="--d:1.60s"/>
+<text x="166" y="132" text-anchor="middle" class="a fade" style="--d:1.70s">declined</text>
+<path class="la d" pathLength="1" d="M353,90 l13,13 M366,90 l-13,13" style="--d:2.00s"/>
+<text x="360" y="132" text-anchor="middle" class="a fade" style="--d:2.10s">no reply</text>
+<path class="la d" pathLength="1" d="M546,90 l13,13 M559,90 l-13,13" style="--d:2.40s"/>
+<text x="552" y="132" text-anchor="middle" class="a fade" style="--d:2.50s">timed out</text>
+</svg>

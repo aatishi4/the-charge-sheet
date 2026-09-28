@@ -21,7 +21,7 @@
 <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#2462F5">
-<script id="theme-boot">try{var t=localStorage.getItem('cs-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script id="theme-boot">document.documentElement.classList.add('js');try{var t=localStorage.getItem('cs-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="preload" href="fonts/InstrumentSans-VF.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 @font-face{font-family:"Instrument Sans";src:url("fonts/InstrumentSans-VF.woff2") format("woff2");font-weight:400 700;font-stretch:75% 100%;font-style:normal;font-display:swap}
@@ -831,6 +831,15 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
 .post-author b{color:var(--ink)}
 .blog-latest .post-list{margin-top:1.5rem}
 .feed-link{font-size:.9rem;margin-top:1.5rem}
+.post-fig{margin:2.4rem 0}
+.post-fig .spot{margin:0;max-width:none}
+.post-fig .spot text{font-size:14px}
+.post-fig figcaption,.post-photo figcaption{font-size:.9rem;color:var(--slate);margin-top:.7rem;line-height:1.5}
+.post-fig figcaption a,.post-photo figcaption a{text-decoration:underline;text-underline-offset:.15em}
+.post-photo{margin:2rem 0}
+.post-photo img{display:block;width:100%;margin:0}
+.js .spot.io:not(.play) *{animation-play-state:paused}
+@media (max-width:640px){.post-fig .spot text{display:inline}}
 
 /* ---------- Header illustrations ---------- */
 .spot{margin:1.8rem 0 .4rem;max-width:720px}
@@ -3105,6 +3114,18 @@ if (typeof document !== 'undefined') (function(){
   window.addEventListener('hashchange', route);
 
   var REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Blog figures: play when scrolled into view ---------- */
+  (function blogFigures(){
+    var figs = document.querySelectorAll('.spot.io');
+    if (!figs.length) return;
+    function play(f){ f.classList.add('play'); }
+    if (REDUCED || !('IntersectionObserver' in window)){ Array.prototype.forEach.call(figs, play); return; }
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting){ play(e.target); io.unobserve(e.target); } });
+    }, {threshold:.35});
+    Array.prototype.forEach.call(figs, function(f){ io.observe(f); });
+  })();
 
   /* ---------- Home ---------- */
   (function heroSoc(){
