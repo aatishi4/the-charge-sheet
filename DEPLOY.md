@@ -71,3 +71,12 @@ In the Cloudflare Pages project, open **Metrics** and enable **Web Analytics**. 
 Edit `index.html` on GitHub (the pencil icon) or locally, and commit. Cloudflare rebuilds the pages and redeploys in about a minute.
 To change a page's search title, description or URL, edit `PAGES` in `tools/build_pages.py`. Changing a URL needs a redirect in the `_redirects` section of that script.
 Review incentives, SBA rules and tariffs each quarter, and bump "Last updated" on the Method page.
+
+## 8. The home side (residential charging, batteries, V2H)
+
+The home side lives in `index.html` between `<!--home-side-->` markers, with its data in `data/home-gear.json` and a small server function in `functions/api/rates.js`.
+
+- **Previews** (any branch other than main) always include it, with `noindex` and nothing in the sitemap. Locally: `SHOW_HOME=1 python3 tools/build_pages.py`.
+- **chargesheet.io** strips it until you set `HOME_LIVE = True` near the top of `tools/build_pages.py`. That one change adds the ten pages to the nav, the footer, the sitemap and search.
+- **ZIP code rate lookup.** Get a free key at openei.org/services/api/signup. In Cloudflare, open **Workers & Pages > the-charge-sheet > Settings > Variables and Secrets**, add `OPENEI_KEY` as a secret for both Production and Preview, then redeploy. Without it the calculator says the lookup isn't switched on and offers presets and manual entry instead. Answers are cached at the edge for a day per ZIP.
+- **Adding a product.** Append a record to the right list in `data/home-gear.json` (copy the closest one). Chargers, batteries and vehicles show up in the gear page and the tools with no code changes.
