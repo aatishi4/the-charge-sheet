@@ -1,8 +1,8 @@
 ---
 title: Half the cables should still be CCS
 description: Ionna opened its first NACS-only sites, the Tesla Semi hit volume production, and Colorado funded 270 fast-charging ports.
-date: 2026-10-13
-publish: 2026-10-13T09:00:00-05:00
+date: 2026-10-20
+publish: 2026-10-20T09:00:00-05:00
 tags: [nacs, networks, fleet, trucks, nevi]
 kind: weekly
 ---

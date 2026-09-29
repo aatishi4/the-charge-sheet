@@ -1,8 +1,8 @@
 ---
 title: Uptime says the charger is online. It doesn't say it works.
 description: A site can report great uptime and still send drivers away. The number that matters is whether the first charge attempt works.
-date: 2026-10-22
-publish: 2026-10-22T09:00:00-05:00
+date: 2026-10-29
+publish: 2026-10-29T09:00:00-05:00
 tags: [reliability, uptime, operations]
 kind: essay
 ---
