@@ -92,7 +92,7 @@ Every post gets line art in the site's style. Photos are optional.
 
 - Posts go live **Tuesdays and Thursdays at 9:00am Central**. Scheduled posts carry `publish: YYYY-MM-DDT09:00:00-05:00` in front matter (use `-05:00` during daylight time, `-06:00` from the first Sunday in November to the second Sunday in March), and `date:` and the file name match that day. Scheduled posts have no `draft: true`.
 - Until its publish time a post shows only on preview builds, with a "Scheduled <date>" badge. It is left out of the live blog, feed, sitemap and home page.
-- The Scheduled publish workflow (`.github/workflows/scheduled-publish.yml`) runs Tuesdays and Thursdays at 14:00 and 15:00 UTC (9am Central in daylight and standard time). If a due post isn't in the live feed, it triggers a rebuild: the Cloudflare deploy hook in the `CF_DEPLOY_HOOK` secret if set, otherwise an empty commit on main. `tools/due_posts.py` does the check; `BLOG_NOW=2026-10-06T14:05:00Z python3 tools/build_pages.py` shows what the live site will look like at a given time.
+- The Scheduled publish workflow (`.github/workflows/scheduled-publish.yml`) runs Tuesdays and Thursdays at 14:00 and 15:00 UTC (9am Central in daylight and standard time). If a due post isn't in the live feed, it triggers a rebuild: the Cloudflare deploy hook in the `CF_DEPLOY_HOOK` secret if set, otherwise an empty commit on main. `tools/due_posts.py` does the check; `BLOG_NOW=2026-10-13T14:05:00Z python3 tools/build_pages.py` shows what the live site will look like at a given time.
 - On "merge": remove `draft: true`, give the post the next open slot (rules below), rename the file to that date, set `date:` and `publish:`, and merge to main. The post goes live at 9am on its day, not at merge. Tell Aatish the date it landed on.
 - Slot rule: a weekly takes the earliest Tuesday that doesn't already hold a weekly, and any essay it displaces moves to the next open slot. Essays take the next open slot in order.
 - A weekly that goes out more than a few days after its news opens with "Three things from <period> worth your time..." instead of "this week", and cross-links earlier posts it builds on.
@@ -133,12 +133,12 @@ Every post gets line art in the site's style. Photos are optional.
 
 ## Topic log (one line per post; newest first)
 
-Schedule set 2026-09-28. Next open slot: Tue 2026-10-27.
+Schedule set 2026-09-28, shifted 7 days later on 2026-09-29. Next open slot: Tue 2026-11-03 (use -06:00 from Nov 1). "Why I built The Charge Sheet" (Tue Oct 13) is pinned as the first post: never displace it, even for a weekly.
 
-- 2026-10-22 Thu essay (scheduled): Uptime says the charger is online. It doesn't say it works (his take: uptime means reporting; failures are POS/CMS/charger handoffs, pre-auth holds, port timeouts; measure first-time charge success, 80%+ is good). About 600 words; wants one anonymized story before it goes out.
-- 2026-10-20 Tue essay (scheduled): Nobody gets ten sessions on day one (utilization ramp, with his one-a-week to two-to-three-a-day story over 2 to 2.5 years).
-- 2026-10-15 Thu essay (scheduled): What I'd tell a hotel owner about a free charger (own it, don't sublease; finance it).
-- 2026-10-13 Tue weekly (scheduled): Half the cables should still be CCS. Ionna's first NACS-only sites (his take: half the cables CCS until ~80% of new EVs have NACS); Tesla Semi volume production, 1.7 kWh/mile, 1.2 MW (his take: production isn't adoption); Colorado $23.2M for 270 ports at 35 sites (facts only).
-- 2026-10-08 Thu weekly (scheduled): 2,500 electric semis ordered, zero chargers announced. ZET SCALE order (his take: chicken and egg, infrastructure cost vs diesel); California SB 969 / SB 1283 / AB 1820 (facts only); Cox August new EVs -46.9%, used +14.7% (facts only).
-- 2026-10-06 Tue essay (scheduled, first post): Why I built The Charge Sheet.
+- 2026-10-29 Thu essay (scheduled): Uptime says the charger is online. It doesn't say it works (his take: uptime means reporting; failures are POS/CMS/charger handoffs, pre-auth holds, port timeouts; measure first-time charge success, 80%+ is good). About 600 words; wants one anonymized story before it goes out.
+- 2026-10-27 Tue essay (scheduled): Nobody gets ten sessions on day one (utilization ramp, with his one-a-week to two-to-three-a-day story over 2 to 2.5 years).
+- 2026-10-22 Thu essay (scheduled): What I'd tell a hotel owner about a free charger (own it, don't sublease; finance it).
+- 2026-10-20 Tue weekly (scheduled): Half the cables should still be CCS. Ionna's first NACS-only sites (his take: half the cables CCS until ~80% of new EVs have NACS); Tesla Semi volume production, 1.7 kWh/mile, 1.2 MW (his take: production isn't adoption); Colorado $23.2M for 270 ports at 35 sites (facts only).
+- 2026-10-15 Thu weekly (scheduled): 2,500 electric semis ordered, zero chargers announced. ZET SCALE order (his take: chicken and egg, infrastructure cost vs diesel); California SB 969 / SB 1283 / AB 1820 (facts only); Cox August new EVs -46.9%, used +14.7% (facts only).
+- 2026-10-13 Tue essay (scheduled, first post): Why I built The Charge Sheet.
 - 2026-09-25 weekly (draft, not scheduled): fast-charging price war (Ionna, Walmart pricing), build-out outrunning utilization. Uses Paren Q1 numbers; Q2 is out. Refresh or retire.

@@ -1,8 +1,8 @@
 ---
 title: 2,500 electric semis ordered, zero chargers announced
 description: The biggest US electric truck order yet says nothing about where the trucks plug in. That is the part that decides whether they beat diesel.
-date: 2026-10-08
-publish: 2026-10-08T09:00:00-05:00
+date: 2026-10-15
+publish: 2026-10-15T09:00:00-05:00
 tags: [fleet, trucks, policy, ev market]
 kind: weekly
 ---

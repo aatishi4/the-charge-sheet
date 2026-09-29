@@ -1,8 +1,8 @@
 ---
 title: What I'd tell a hotel owner about a free charger
 description: A no-cost charger deal means handing part of your property to someone else's business. If you control the land, own the chargers.
-date: 2026-10-15
-publish: 2026-10-15T09:00:00-05:00
+date: 2026-10-22
+publish: 2026-10-22T09:00:00-05:00
 tags: [hotels, site hosts, financing, ownership]
 kind: essay
 ---

@@ -1,8 +1,8 @@
 ---
 title: Why I built The Charge Sheet
 description: Six years of running a charging business, written down so the next person can make newer, more interesting mistakes.
-date: 2026-10-06
-publish: 2026-10-06T09:00:00-05:00
+date: 2026-10-13
+publish: 2026-10-13T09:00:00-05:00
 tags: [about, charging business]
 ---
 
