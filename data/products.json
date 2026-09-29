@@ -1,0 +1,1879 @@
+[
+ {
+  "id": "xcharge-c6am-208",
+  "oem": "XCharge North America",
+  "oemId": "xcharge",
+  "model": "C6AM 208V",
+  "short": "C6AM 208V",
+  "kind": "DC fast charger, 208 V",
+  "img": "/img/oem/xcharge-c6am.webp",
+  "maxKw": 95,
+  "kw": [
+   95,
+   75,
+   62.5,
+   50,
+   40,
+   30
+  ],
+  "amps": {
+   "95": 275,
+   "75": 225,
+   "62.5": 175,
+   "50": 150,
+   "40": 120,
+   "30": 90
+  },
+  "breaker": {
+   "95": 350,
+   "75": 250,
+   "62.5": 200,
+   "50": 175,
+   "40": 150,
+   "30": 125
+  },
+  "ports": 2,
+  "connectors": [
+   "CCS1 + CCS1",
+   "CCS1 + NACS",
+   "CCS1 + CHAdeMO 2.0"
+  ],
+  "price": 47500,
+  "blurb": "The one for buildings that already have power. Runs on a 208 V three-phase service, so a hotel or a strip retail site can add fast charging without a new utility service. 95 kW peak across two ports.",
+  "spec1": [
+   [
+    "Input",
+    "208 V, 3-phase, 60 Hz"
+   ],
+   [
+    "Max output",
+    "95 kW"
+   ],
+   [
+    "Ports",
+    "2, CCS1, NACS or CHAdeMO 2.0"
+   ],
+   [
+    "Output voltage",
+    "200 to 1000 V DC (CHAdeMO 150 to 500 V)"
+   ],
+   [
+    "Max output current",
+    "200 A per CCS1/NACS cable"
+   ],
+   [
+    "Max running load",
+    "275 A"
+   ],
+   [
+    "Recommended fuse",
+    "350 A"
+   ],
+   [
+    "Efficiency",
+    "95%"
+   ],
+   [
+    "Power factor",
+    "99%"
+   ],
+   [
+    "THD",
+    "under 5%"
+   ]
+  ],
+  "spec2": [
+   [
+    "Dimensions (H x W x D)",
+    "69 x 25 x 29 in (1752 x 635 x 737 mm)"
+   ],
+   [
+    "Net weight",
+    "871 lb (395 kg)"
+   ],
+   [
+    "Footprint",
+    "under 5.4 sq ft"
+   ],
+   [
+    "Cable length",
+    "3.2 m (5, 7 or 10 m optional)"
+   ],
+   [
+    "Protocol",
+    "OCPP 1.6J/S, 2.0.1 ready"
+   ],
+   [
+    "Connectivity",
+    "LTE, LAN, Wi-Fi optional"
+   ],
+   [
+    "Payment",
+    "RFID, QR, Payter, Nayax, Ingenico"
+   ],
+   [
+    "Display",
+    "15-inch touch screen, 60 status LEDs"
+   ],
+   [
+    "Operating temp",
+    "-15 to 130 °F (-40 with heat pump)"
+   ],
+   [
+    "Ingress and impact",
+    "IP54, IK10"
+   ],
+   [
+    "Noise",
+    "under 65 dB"
+   ]
+  ],
+  "certs": "UL 2202 (certificate U8 118947 0001), CSA C22.2 No. 107.1, TUV, CE, ISO 15118, DIN 70121, IEC 61851-1/-23/-24, IEC 62196-3, ISO 9001/14001/45001. Payment terminals from Payter, Nayax, Ingenico.",
+  "datasheet": "/datasheets/C6AM_95_kW_-_208V.pdf",
+  "source": "XCharge C6AM 208V datasheet",
+  "leadEmail": "sales@xcharge.us",
+  "sponsored": false,
+  "disclosure": "Aatish Patel co-founded XCharge North America and left the company in September 2026. Specs come from the linked datasheet, not from him. The Charge Sheet takes no fee for this listing.",
+  "type": "dc"
+ },
+ {
+  "id": "xcharge-c6am-480",
+  "oem": "XCharge North America",
+  "oemId": "xcharge",
+  "model": "C6AM 480V",
+  "short": "C6AM 480V",
+  "kind": "DC fast charger, 480 V",
+  "img": "/img/oem/xcharge-c6am.webp",
+  "maxKw": 200,
+  "kw": [
+   200,
+   150,
+   100,
+   75,
+   50,
+   40
+  ],
+  "amps": {
+   "200": 250,
+   "150": 200,
+   "100": 125,
+   "75": 100,
+   "50": 75,
+   "40": 50
+  },
+  "breaker": {
+   "200": 300,
+   "150": 250,
+   "100": 150,
+   "75": 125,
+   "50": 100,
+   "40": 75
+  },
+  "ports": 2,
+  "connectors": [
+   "CCS1 + CCS1",
+   "CCS1 + NACS",
+   "CCS1 + CHAdeMO 2.0"
+  ],
+  "price": 47500,
+  "blurb": "Same cabinet as the 208 V unit, twice the power on a 480 V service. Two ports, 200 kW peak, and the output can be turned down to whatever the utility will give you and turned back up later.",
+  "spec1": [
+   [
+    "Input",
+    "480 V, 3-phase, 60 Hz"
+   ],
+   [
+    "Max output",
+    "200 kW"
+   ],
+   [
+    "Ports",
+    "2, CCS1, NACS or CHAdeMO 2.0"
+   ],
+   [
+    "Output voltage",
+    "200 to 1000 V DC (CHAdeMO 150 to 500 V)"
+   ],
+   [
+    "Max output current",
+    "300 A per CCS1/NACS cable"
+   ],
+   [
+    "Max running load",
+    "250 A"
+   ],
+   [
+    "Recommended breaker",
+    "300 A"
+   ],
+   [
+    "Efficiency",
+    "95%"
+   ],
+   [
+    "Power factor",
+    "99%"
+   ],
+   [
+    "THD",
+    "under 5%"
+   ]
+  ],
+  "spec2": [
+   [
+    "Dimensions (H x W x D)",
+    "69 x 25 x 29 in (1752 x 635 x 737 mm)"
+   ],
+   [
+    "Net weight",
+    "871 lb (395 kg)"
+   ],
+   [
+    "Footprint",
+    "under 5.4 sq ft"
+   ],
+   [
+    "Cable length",
+    "3.2 m (5, 7 or 10 m optional)"
+   ],
+   [
+    "Protocol",
+    "OCPP 1.6J/S, 2.0.1 ready"
+   ],
+   [
+    "Connectivity",
+    "LTE, LAN, Wi-Fi optional"
+   ],
+   [
+    "Payment",
+    "RFID, QR, Payter, Nayax, Ingenico"
+   ],
+   [
+    "Display",
+    "15-inch touch screen, 60 status LEDs"
+   ],
+   [
+    "Operating temp",
+    "-15 to 130 °F (-40 with heat pump)"
+   ],
+   [
+    "Ingress and impact",
+    "IP54, IK10"
+   ],
+   [
+    "Noise",
+    "under 65 dB"
+   ]
+  ],
+  "certs": "UL 2202 (certificate U8 118947 0001, models C6AM60 through C6AM200), CSA C22.2 No. 107.1, TUV, CE, Energy Star, ISO 15118, DIN 70121, IEC 61851-1/-23/-24, IEC 62196-3, ISO 9001/14001/45001.",
+  "datasheet": "/datasheets/C6AM_200kW_-_480V.pdf",
+  "source": "XCharge C6AM 480V datasheet",
+  "leadEmail": "sales@xcharge.us",
+  "sponsored": false,
+  "disclosure": "Aatish Patel co-founded XCharge North America and left the company in September 2026. Specs come from the linked datasheet, not from him. The Charge Sheet takes no fee for this listing.",
+  "type": "dc"
+ },
+ {
+  "id": "xcharge-c7-hyperx",
+  "oem": "XCharge North America",
+  "oemId": "xcharge",
+  "model": "C7 HyperX",
+  "short": "C7 HyperX",
+  "kind": "High-power DC charger",
+  "img": "/img/oem/xcharge-c7.webp",
+  "maxKw": 400,
+  "kw": [
+   400,
+   320,
+   240,
+   160
+  ],
+  "amps": null,
+  "breaker": null,
+  "ports": 2,
+  "connectors": [
+   "CCS1 + CCS1",
+   "CCS1 + NACS",
+   "NACS + NACS"
+  ],
+  "price": 95000,
+  "blurb": "Corridor power in one cabinet. Up to 400 kW split between two cars in 40 kW steps, liquid-cooled cables at 500 A, and a 21.5-inch screen the operator can sell ads on. Barrier-free layout that meets ADA.",
+  "spec1": [
+   [
+    "Input",
+    "480 V, 3P+N, ±15%, 50/60 Hz"
+   ],
+   [
+    "Max output",
+    "400 kW"
+   ],
+   [
+    "Ports",
+    "2, CCS1 or NACS"
+   ],
+   [
+    "Output voltage",
+    "200 to 1000 V DC"
+   ],
+   [
+    "Max output current",
+    "500 A liquid-cooled cable, 400 A air-cooled"
+   ],
+   [
+    "Power allocation",
+    "120-40-40-40-40-120 kW modules, 40 kW steps"
+   ],
+   [
+    "Cable length",
+    "18 ft (5.5 m)"
+   ],
+   [
+    "Efficiency",
+    "94% or better"
+   ],
+   [
+    "THD",
+    "under 5%"
+   ],
+   [
+    "Metering",
+    "DC meter, AC input meter"
+   ]
+  ],
+  "spec2": [
+   [
+    "Dimensions (L x W x H)",
+    "2.62 x 3 x 6.5 ft (800 x 900 x 1992 mm)"
+   ],
+   [
+    "Weight",
+    "about 1,500 lb"
+   ],
+   [
+    "Protocol",
+    "OCPP 1.6J and 2.0.1, Modbus TCP"
+   ],
+   [
+    "Connectivity",
+    "Dual 4G LTE, Ethernet"
+   ],
+   [
+    "Payment",
+    "RFID, QR, credit card (Payter, Nayax, IDTech), ISO 15118 Plug & Charge"
+   ],
+   [
+    "Displays",
+    "13.3-inch HMI touch, 21.5-inch 1080p advertising"
+   ],
+   [
+    "Operating temp",
+    "-31 to 122 °F"
+   ],
+   [
+    "Ingress and impact",
+    "IP54, IK10"
+   ],
+   [
+    "Noise",
+    "under 70 dB at 1 m, silent mode available"
+   ],
+   [
+    "Cyber security",
+    "TLS 1.3"
+   ]
+  ],
+  "certs": "UL 2202, ISO 15118, DIN 70121, DIN 18040-3 (barrier-free), IEC 61851-1/-23/-24, IEC 62196-3. ADA-compliant connector and HMI height (85 to 105 cm).",
+  "datasheet": "/datasheets/C7_Final_Spec_Sheet_-_LQ_Up_to_400kW.pdf",
+  "source": "XCharge C7 HyperX datasheet",
+  "adaptNote": "The C7 datasheet doesn't publish an adaptive power table. The settings below are module counts (40 kW steps); breaker sizing is not from the datasheet, get it from XCharge.",
+  "leadEmail": "sales@xcharge.us",
+  "sponsored": false,
+  "disclosure": "Aatish Patel co-founded XCharge North America and left the company in September 2026. Specs come from the linked datasheet, not from him. The Charge Sheet takes no fee for this listing.",
+  "type": "dc"
+ },
+ {
+  "id": "xcharge-gridlink",
+  "oem": "XCharge North America",
+  "oemId": "xcharge",
+  "model": "GridLink",
+  "short": "GridLink",
+  "kind": "Battery-integrated DC charger, air-cooled",
+  "img": "/img/oem/xcharge-gridlink.webp",
+  "maxKw": 194,
+  "kw": [
+   194,
+   190,
+   185,
+   180,
+   175,
+   170,
+   165,
+   160
+  ],
+  "amps": {
+   "194": 76,
+   "190": 71,
+   "185": 65,
+   "180": 58,
+   "175": 52,
+   "170": 46,
+   "165": 39,
+   "160": 33
+  },
+  "breaker": {
+   "194": 100,
+   "190": 90,
+   "185": 90,
+   "180": 80,
+   "175": 70,
+   "170": 60,
+   "165": 50,
+   "160": 45
+  },
+  "ports": 2,
+  "connectors": [
+   "CCS1 + NACS",
+   "CCS1 + CCS1"
+  ],
+  "price": 185000,
+  "battery": "215 kWh LFP, extendable to 2 x 215 kWh",
+  "blurb": "Fast charging where the utility says no. A 215 kWh battery sits behind two ports, so the cabinet delivers 194 kW to cars off as little as a 15 kVA feed. It also shaves demand charges, runs the building in a blackout, and installs on a standard 60 kVA industrial socket.",
+  "spec1": [
+   [
+    "Input",
+    "208 V or 480 V, 3-phase, 60 Hz (45 to 250 A at 480 V)"
+   ],
+   [
+    "Grid feed",
+    "15 to 51 kVA, adjustable; 44 kW rectifier"
+   ],
+   [
+    "Max output",
+    "194 kW DC (150 kW from battery + 44 kW grid)"
+   ],
+   [
+    "Ports",
+    "2, CCS1 or NACS, 350 A continuous"
+   ],
+   [
+    "Output voltage",
+    "200 to 1000 V DC"
+   ],
+   [
+    "Battery",
+    "215 kWh LFP (L280K cells), 2 x 215 kWh option"
+   ],
+   [
+    "Battery charge / discharge",
+    "0.6C / 1C, 94.5% round-trip"
+   ],
+   [
+    "Battery-to-grid",
+    "2 x 22 kW bidirectional, UL 1741SB, IEEE 1547"
+   ],
+   [
+    "Off-grid",
+    "charges EVs and powers AC loads during outages"
+   ],
+   [
+    "Solar",
+    "30 kW DC direct, 300 to 740 V, MPPT"
+   ]
+  ],
+  "spec2": [
+   [
+    "Dimensions (W x D x H)",
+    "7.34 x 3.24 x 7.72 ft"
+   ],
+   [
+    "Weight",
+    "7,936 lb"
+   ],
+   [
+    "Cooling",
+    "air-cooled power modules, liquid-cooled battery packs"
+   ],
+   [
+    "Protocol",
+    "OCPP 1.6J and 2.0.1, ISO 15118 Plug & Charge"
+   ],
+   [
+    "Connectivity",
+    "LTE, GSM, LAN"
+   ],
+   [
+    "Payment",
+    "RFID, credit card"
+   ],
+   [
+    "Display",
+    "55-inch touch screen"
+   ],
+   [
+    "Operating temp",
+    "-22 to 131 °F"
+   ],
+   [
+    "Ingress",
+    "IP54"
+   ],
+   [
+    "Fire safety",
+    "UL 9540A, NFPA 855, on-board suppression, gas sensors per pack"
+   ]
+  ],
+  "certs": "UL 9540, UL 9540A, UL 2202, UL 1973, UL 2231-1, UL 1741SB, IEEE 1547/1547.1, NFPA 855, NFPA 69, FCC Part 15B, ICES-003, SRD 2.0.",
+  "datasheet": "/datasheets/GridLink_Spec_Sheet_8_14_25.pdf",
+  "source": "XCharge GridLink datasheet, 2025-08-14",
+  "adaptNote": "From the GridLink air-cooled adaptive power table. Amps are the grid input at 480 V; the battery adds 150 kW on top of the grid feed. Full charge from empty takes 5 to 21 hours depending on the feed.",
+  "leadEmail": "sales@xcharge.us",
+  "sponsored": false,
+  "disclosure": "Aatish Patel co-founded XCharge North America and left the company in September 2026. Specs come from the linked datasheet, not from him. The Charge Sheet takes no fee for this listing.",
+  "type": "dc"
+ },
+ {
+  "id": "xcharge-gridlink-xl",
+  "oem": "XCharge North America",
+  "oemId": "xcharge",
+  "model": "GridLink XL",
+  "short": "GridLink XL",
+  "kind": "Battery-integrated DC charger, liquid-cooled",
+  "img": "/img/oem/xcharge-gridlink.webp",
+  "maxKw": 300,
+  "kw": [
+   300,
+   280,
+   255,
+   230,
+   210,
+   200,
+   190
+  ],
+  "amps": {
+   "300": 188,
+   "280": 163,
+   "255": 131,
+   "230": 99,
+   "210": 73,
+   "200": 61,
+   "190": 48
+  },
+  "breaker": {
+   "300": 250,
+   "280": 225,
+   "255": 175,
+   "230": 125,
+   "210": 100,
+   "200": 80,
+   "190": 60
+  },
+  "ports": 2,
+  "connectors": [
+   "CCS1 + NACS",
+   "CCS1 + CCS1"
+  ],
+  "price": 285000,
+  "battery": "215 kWh LFP, extendable to 2 x 215 kWh",
+  "blurb": "The same battery-backed cabinet with liquid-cooled power modules: 300 kW to cars, 120 kW bidirectional to the grid, and 60 kW of direct solar. For a hub or depot that wants corridor power on a feed the utility can actually deliver.",
+  "spec1": [
+   [
+    "Input",
+    "480 V, 3-phase, 60 Hz (208 V up to a 39 kVA feed)"
+   ],
+   [
+    "Grid feed",
+    "18 to 135 kVA, adjustable; 120 kW rectifier"
+   ],
+   [
+    "Max output",
+    "300 kW DC (180 kW from battery + 120 kW grid)"
+   ],
+   [
+    "Ports",
+    "2, CCS1 or NACS, 400 A continuous"
+   ],
+   [
+    "Output voltage",
+    "300 to 1000 V DC constant power"
+   ],
+   [
+    "Battery",
+    "215 kWh LFP (L280K cells), 2 x 215 kWh option"
+   ],
+   [
+    "Battery charge / discharge",
+    "0.6C / 1C, 94.5% round-trip"
+   ],
+   [
+    "Battery-to-grid",
+    "2 x 60 kW bidirectional, UL 1741SB, IEEE 1547"
+   ],
+   [
+    "Off-grid",
+    "charges EVs and powers AC loads during outages"
+   ],
+   [
+    "Solar",
+    "60 kW DC direct, 300 to 900 V, MPPT"
+   ]
+  ],
+  "spec2": [
+   [
+    "Dimensions (W x D x H)",
+    "12.05 x 3.24 x 7.72 ft"
+   ],
+   [
+    "Weight",
+    "see datasheet (air-cooled unit is 7,936 lb)"
+   ],
+   [
+    "Cooling",
+    "liquid-cooled power modules and battery packs, built-in water tank"
+   ],
+   [
+    "Protocol",
+    "OCPP 1.6J and 2.0.1, ISO 15118 Plug & Charge"
+   ],
+   [
+    "Connectivity",
+    "LTE, GSM, LAN"
+   ],
+   [
+    "Payment",
+    "RFID, credit card"
+   ],
+   [
+    "Display",
+    "55-inch touch screen"
+   ],
+   [
+    "Operating temp",
+    "-22 to 131 °F"
+   ],
+   [
+    "Ingress",
+    "IP54"
+   ],
+   [
+    "Fire safety",
+    "UL 9540A, NFPA 855, on-board suppression, gas sensors per pack"
+   ]
+  ],
+  "certs": "UL 9540, UL 9540A, UL 2202, UL 1973, UL 2231-1, UL 1741SB, IEEE 1547/1547.1, NFPA 855, NFPA 69, FCC Part 15B, ICES-003, SRD 2.0.",
+  "datasheet": "/datasheets/GridLink_Spec_Sheet_8_14_25.pdf",
+  "source": "XCharge GridLink datasheet, 2025-08-14",
+  "adaptNote": "From the GridLink liquid-cooled adaptive power table. Amps are the grid input at 480 V; the battery adds 180 kW on top of the grid feed. Full charge from empty takes about 2 to 21 hours depending on the feed.",
+  "leadEmail": "sales@xcharge.us",
+  "sponsored": false,
+  "disclosure": "Aatish Patel co-founded XCharge North America and left the company in September 2026. Specs come from the linked datasheet, not from him. The Charge Sheet takes no fee for this listing.",
+  "type": "dc"
+ },
+ {
+  "id": "alpitronic-hyc200",
+  "oem": "Alpitronic",
+  "oemId": "alpitronic",
+  "model": "HYC200",
+  "short": "HYC200",
+  "kind": "DC fast charger, 480 V",
+  "img": "/img/oem/alpitronic-hyc200.webp",
+  "maxKw": 200,
+  "kw": [
+   200,
+   150,
+   100
+  ],
+  "amps": {
+   "200": 240,
+   "150": 180,
+   "100": 120
+  },
+  "breaker": null,
+  "ports": 2,
+  "connectors": [
+   "CCS1 + CCS1",
+   "CCS1 + NACS",
+   "NACS + NACS",
+   "CCS1 + CHAdeMO"
+  ],
+  "price": 70000,
+  "blurb": "The narrow one. A 16-inch-wide cabinet with up to 200 kW across two cars, 600 A on a cable, 97.5% efficiency, and power in 50 kW steps that can follow a site's limit over OCPP. Built on the same Power-Stack modules as the HYC400.",
+  "spec1": [
+   [
+    "Input",
+    "480 V, 3-phase, no neutral, 60 Hz"
+   ],
+   [
+    "Max output",
+    "200 kW (100 kW per Power-Stack, two stacks)"
+   ],
+   [
+    "Nominal input current",
+    "240 A at 200 kW"
+   ],
+   [
+    "Ports",
+    "2 simultaneous"
+   ],
+   [
+    "Output voltage",
+    "150 to 1000 V DC"
+   ],
+   [
+    "Max output current",
+    "300 A per stack, 600 A max"
+   ],
+   [
+    "Load management",
+    "50 kW granularity; static limit or dynamic via OCPP/Modbus"
+   ],
+   [
+    "Efficiency",
+    "up to 97.5% at full load"
+   ],
+   [
+    "Power factor",
+    "over 0.99"
+   ],
+   [
+    "THD",
+    "under 5%"
+   ],
+   [
+    "SCCR",
+    "65 kA"
+   ],
+   [
+    "Cable lengths",
+    "11.5, 16.4 or 25 ft; swing-arm cable management"
+   ]
+  ],
+  "spec2": [
+   [
+    "Dimensions (H x W x D)",
+    "86 x 16 x 26 in (2185 x 420 x 663 mm)"
+   ],
+   [
+    "Weight",
+    "717 to 1,019 lb depending on configuration"
+   ],
+   [
+    "Protocol",
+    "OCPP 1.6 and 2.0.1, Modbus, API"
+   ],
+   [
+    "Connectivity",
+    "Dual SIM 4G LTE, 10/100 Ethernet"
+   ],
+   [
+    "Vehicle protocols",
+    "DIN 70121, ISO 15118, Autocharge, Plug and Charge, CHAdeMO 1.2"
+   ],
+   [
+    "Payment",
+    "RFID/NFC; credit card reader optional (Payter, Nayax), EMV, tap to pay"
+   ],
+   [
+    "Display",
+    "15.6-inch, 4 buttons, RGB connector status, GUI in 27 languages"
+   ],
+   [
+    "Operating temp",
+    "-22 to 131 °F"
+   ],
+   [
+    "Enclosure and impact",
+    "NEMA 3R (IP54), IK10"
+   ],
+   [
+    "Noise",
+    "under 52 dBA at 10 ft"
+   ],
+   [
+    "Standby power",
+    "43 W"
+   ],
+   [
+    "Accessibility",
+    "meets ADA height and reach"
+   ]
+  ],
+  "certs": "UL 2202, UL 2231-1, UL 2231-2, CSA C22.2 No. 346.22, No. 281.1-12, No. 281.2-12 (file E515867), CTEP metering No. 5966-24, FCC Part 15B Class A, NEC Article 625.",
+  "datasheet": "/datasheets/USA_HYC200UL_Product_Data_Sheet_V1-2.pdf",
+  "source": "Alpitronic HYC200 UL datasheet V1",
+  "adaptNote": "Alpitronic doesn't publish a breaker table. Amps are the nominal AC input at each Power-Stack count (240 A at 200 kW per the datasheet, scaled by stack). Breaker sizing is the electrician's call.",
+  "leadEmail": null,
+  "website": "https://www.alpitronic.it/us",
+  "sponsored": false,
+  "disclosure": "The Charge Sheet has no relationship with Alpitronic. Specs come from the linked datasheet. The Charge Sheet takes no fee for this listing.",
+  "type": "dc"
+ },
+ {
+  "id": "alpitronic-hyc400",
+  "oem": "Alpitronic",
+  "oemId": "alpitronic",
+  "model": "HYC400",
+  "short": "HYC400",
+  "kind": "High-power DC charger, 480 V",
+  "img": "/img/oem/alpitronic-hyc400.webp",
+  "maxKw": 400,
+  "kw": [
+   400,
+   300,
+   200,
+   100
+  ],
+  "amps": {
+   "400": 480,
+   "300": 360,
+   "200": 240,
+   "100": 120
+  },
+  "breaker": null,
+  "ports": 2,
+  "connectors": [
+   "CCS1 + CCS1",
+   "CCS1 + NACS",
+   "NACS + NACS",
+   "CCS1 + CHAdeMO"
+  ],
+  "price": 120000,
+  "blurb": "Four Power-Stacks in one cabinet: 400 kW total, 600 A per cable, up to four outputs. The reference high-power charger on US corridors right now, and the NEVI datasheet carries a Build America, Buy America assessment.",
+  "spec1": [
+   [
+    "Input",
+    "480 V, 3-phase, no neutral, 60 Hz"
+   ],
+   [
+    "Max output",
+    "400 kW (100 kW per Power-Stack, four stacks)"
+   ],
+   [
+    "Nominal input current",
+    "480 A at 400 kW"
+   ],
+   [
+    "Ports",
+    "2 simultaneous (up to 4 outputs)"
+   ],
+   [
+    "Output voltage",
+    "150 to 1000 V DC"
+   ],
+   [
+    "Max output current",
+    "600 A per cable, 1200 A total"
+   ],
+   [
+    "Load management",
+    "50 kW granularity; static limit or dynamic via OCPP/Modbus"
+   ],
+   [
+    "Efficiency",
+    "up to 97.5% at full load"
+   ],
+   [
+    "Power factor",
+    "over 0.99"
+   ],
+   [
+    "THD",
+    "under 5%"
+   ],
+   [
+    "SCCR",
+    "65 kA"
+   ],
+   [
+    "Cable lengths",
+    "11.5, 16.4 or 25 ft; swing-arm cable management"
+   ]
+  ],
+  "spec2": [
+   [
+    "Dimensions (H x W x D)",
+    "88 x 29 x 26 in (2185 x 732 x 663 mm)"
+   ],
+   [
+    "Weight",
+    "1,235 to 1,965 lb depending on configuration"
+   ],
+   [
+    "Protocol",
+    "OCPP 1.6 and 2.0.1, Modbus, API"
+   ],
+   [
+    "Connectivity",
+    "Dual SIM 4G LTE, 10/100 Ethernet"
+   ],
+   [
+    "Vehicle protocols",
+    "DIN 70121, ISO 15118, Autocharge, Plug and Charge, CHAdeMO 1.2"
+   ],
+   [
+    "Payment",
+    "RFID/NFC; credit card reader optional (Payter, Nayax), EMV, tap to pay"
+   ],
+   [
+    "Display",
+    "15.6-inch, 4 buttons, RGB connector status, GUI in 27 languages"
+   ],
+   [
+    "Operating temp",
+    "-22 to 131 °F"
+   ],
+   [
+    "Enclosure and impact",
+    "NEMA 3R (IP54), IK10"
+   ],
+   [
+    "Noise",
+    "under 52 dBA at 10 ft"
+   ],
+   [
+    "Standby power",
+    "43 W"
+   ],
+   [
+    "Accessibility",
+    "meets ADA height and reach"
+   ]
+  ],
+  "certs": "UL 2202, UL 2231-1, UL 2231-2, CSA C22.2 No. 346.22, No. 281.1-12, No. 281.2-12 (file E515867), CTEP metering No. 5966-24, FCC Part 15B Class A, NEC Article 625. NEVI: Build America, Buy America assessment by PWC.",
+  "datasheet": "/datasheets/USA_HYC400UL_Product_Data_Sheet_V1-2.pdf",
+  "source": "Alpitronic HYC400 UL datasheet V1",
+  "adaptNote": "Alpitronic doesn't publish a breaker table. Amps are the nominal AC input at each Power-Stack count (480 A at 400 kW per the datasheet, scaled by stack). Breaker sizing is the electrician's call.",
+  "leadEmail": null,
+  "website": "https://www.alpitronic.it/us",
+  "sponsored": false,
+  "disclosure": "The Charge Sheet has no relationship with Alpitronic. Specs come from the linked datasheet. The Charge Sheet takes no fee for this listing.",
+  "type": "dc"
+ },
+ {
+  "id": "abb-a400",
+  "oem": "ABB E-mobility",
+  "oemId": "abb-e-mobility",
+  "model": "A400",
+  "short": "A400",
+  "kind": "High-power DC charger, 480 V",
+  "type": "dc",
+  "img": "/img/oem/abb-a400.webp",
+  "maxKw": 400,
+  "kw": [
+   400,
+   300,
+   200
+  ],
+  "amps": {
+   "400": 496,
+   "300": 383,
+   "200": 255
+  },
+  "breaker": null,
+  "ports": 2,
+  "connectors": [
+   "CCS1 + CCS1",
+   "CCS1 + NACS",
+   "NACS + NACS"
+  ],
+  "price": 110000,
+  "blurb": "The A-Series in its biggest trim: 400 kW, 600 A liquid-cooled cables, dynamic sharing in 50 kW steps, and a 32-inch screen built for branding. Field-upgradable, so a site can buy the A200 and grow into this cabinet.",
+  "spec1": [
+   [
+    "Input",
+    "480 V, 3-phase, no neutral, 60 Hz"
+   ],
+   [
+    "Max output",
+    "400 kW (A200 200 kW, A300 300 kW, upgradable)"
+   ],
+   [
+    "Nominal input current",
+    "496 A at 400 kW; 383 A at 300; 255 A at 200"
+   ],
+   [
+    "Ports",
+    "2"
+   ],
+   [
+    "Output voltage",
+    "150 to 980 V DC"
+   ],
+   [
+    "Max output current",
+    "600 A continuous liquid-cooled CCS/NACS; 375 A air-cooled NACS"
+   ],
+   [
+    "Load management",
+    "50 kW granularity, 100 kW minimum on A400"
+   ],
+   [
+    "Efficiency",
+    "up to 97%"
+   ],
+   [
+    "Power factor",
+    "over 0.99"
+   ],
+   [
+    "THD",
+    "under 3%"
+   ],
+   [
+    "SCCR",
+    "65 kA"
+   ],
+   [
+    "Standby power",
+    "156 W"
+   ]
+  ],
+  "spec2": [
+   [
+    "Dimensions (H x W x D)",
+    "88.8 x 31.1 x 31.9 in (2256 x 790 x 810 mm)"
+   ],
+   [
+    "Weight",
+    "1,610 lb (A400); 1,235 lb (A200)"
+   ],
+   [
+    "Protocol",
+    "OCPP 1.6J and 2.0.1"
+   ],
+   [
+    "Connectivity",
+    "3G/4G/5G, Ethernet, optional second modem"
+   ],
+   [
+    "Vehicle protocols",
+    "DIN 70121, ISO 15118-2/-3, Autocharge, Plug & Charge; 15118-20 in development"
+   ],
+   [
+    "Payment",
+    "RFID, credit/debit card, app"
+   ],
+   [
+    "Display",
+    "32-inch HD, 1300 nits, 4 buttons"
+   ],
+   [
+    "Cables",
+    "15.7 or 22.9 ft, two self-retracting swing arms"
+   ],
+   [
+    "Operating temp",
+    "-22 to 131 °F with derating"
+   ],
+   [
+    "Enclosure and impact",
+    "IP54, NEMA 3R in development, IK10, aluminum body"
+   ],
+   [
+    "Noise",
+    "65 dB(A) at 1 m, full power"
+   ],
+   [
+    "Manufactured",
+    "USA and Europe; 10-year expected lifespan"
+   ]
+  ],
+  "certs": "UL 2202, UL 2231-1, UL 2231-2, CSA 22.2 No. 346:22, CTEP/NTEP metering, FCC 47 CFR Part 15B Class A. A200 and A300 are ENERGY STAR.",
+  "datasheet": "/datasheets/abb-a400.pdf",
+  "source": "ABB A-Series datasheet V3-3",
+  "adaptNote": "ABB publishes nominal input current per model, not a breaker table. Amps are the NA nominal input at each power tier. Breaker sizing is the electrician's call.",
+  "leadEmail": "US-evci@abb.com",
+  "website": "https://e-mobility.abb.com/A400",
+  "sponsored": false,
+  "disclosure": "The Charge Sheet has no relationship with ABB. Specs come from the linked datasheet. The Charge Sheet takes no fee for this listing."
+ },
+ {
+  "id": "autel-dc-compact",
+  "oem": "Autel",
+  "oemId": "autel",
+  "model": "MaxiCharger DC Compact",
+  "short": "MaxiCharger DC Compact",
+  "kind": "Small DC charger, 480 V",
+  "type": "dc",
+  "img": "/img/oem/autel-dc-compact.webp",
+  "maxKw": 40,
+  "kw": [
+   40
+  ],
+  "amps": null,
+  "breaker": null,
+  "ports": 2,
+  "connectors": [
+   "CCS1 + CCS1",
+   "CCS1 + CHAdeMO",
+   "CCS1 only"
+  ],
+  "price": 30000,
+  "blurb": "Forty kW in a wall-mount box. Two outputs, a 21.5-inch screen, and a footprint that fits where a cabinet won't. The kind of DC unit a hotel or a dealership buys when it wants fast-ish charging without a new service.",
+  "spec1": [
+   [
+    "Input",
+    "480 V, 3-phase, no neutral, 60 Hz"
+   ],
+   [
+    "Max output",
+    "40 kW"
+   ],
+   [
+    "Ports",
+    "2 (CCS1 + CCS1, CCS1 + CHAdeMO, or single CCS1)"
+   ],
+   [
+    "Output voltage",
+    "150 to 950 V DC"
+   ],
+   [
+    "Max output current",
+    "133 A CCS1; 125 A CHAdeMO"
+   ],
+   [
+    "Efficiency",
+    "96% or better"
+   ],
+   [
+    "Power factor",
+    "0.99 or better"
+   ],
+   [
+    "THD",
+    "under 5%"
+   ]
+  ],
+  "spec2": [
+   [
+    "Dimensions (H x W x D)",
+    "39.4 x 21.7 x 10.4 in (1000 x 550 x 265 mm)"
+   ],
+   [
+    "Mounting",
+    "wall or floor pedestal"
+   ],
+   [
+    "Protocol",
+    "OCPP 1.6J, upgradable to 2.0.1"
+   ],
+   [
+    "Connectivity",
+    "4G, Wi-Fi, Ethernet"
+   ],
+   [
+    "Vehicle protocols",
+    "ISO 15118"
+   ],
+   [
+    "Payment",
+    "app, RFID, credit card optional"
+   ],
+   [
+    "Display",
+    "21.5-inch touch screen"
+   ],
+   [
+    "Cable length",
+    "18 ft standard, 24.6 ft optional"
+   ],
+   [
+    "Operating temp",
+    "-22 to 131 °F, derating above 113 °F"
+   ],
+   [
+    "Enclosure",
+    "NEMA 3S"
+   ],
+   [
+    "Warranty",
+    "24 months, extensions available"
+   ]
+  ],
+  "certs": "UL 2202, UL 2231-1, UL 2231-2, CSA No. 107.1-16, NEC Article 625, FCC Part 15 Class A.",
+  "datasheet": "/datasheets/autel-dc-compact.pdf",
+  "source": "Autel MaxiCharger DC Compact datasheet",
+  "adaptNote": "Fixed 40 kW output; no adjustable power table published.",
+  "leadEmail": null,
+  "website": "https://autelenergy.com",
+  "sponsored": false,
+  "disclosure": "The Charge Sheet has no relationship with Autel. Specs come from the linked datasheet. The Charge Sheet takes no fee for this listing."
+ },
+ {
+  "id": "autel-dc-fast",
+  "oem": "Autel",
+  "oemId": "autel",
+  "model": "MaxiCharger DC Fast",
+  "short": "MaxiCharger DC Fast",
+  "kind": "DC fast charger, 480 V, 60 to 240 kW",
+  "type": "dc",
+  "img": "/img/oem/autel-dc-fast.webp",
+  "maxKw": 240,
+  "kw": [
+   240,
+   220,
+   200,
+   180,
+   160,
+   140,
+   120,
+   100,
+   80,
+   60
+  ],
+  "amps": {
+   "240": 349,
+   "220": 321,
+   "200": 292,
+   "180": 263,
+   "160": 234,
+   "140": 206,
+   "120": 177,
+   "100": 148,
+   "80": 120,
+   "60": 91
+  },
+  "breaker": null,
+  "ports": 2,
+  "connectors": [
+   "CCS1 + CCS1",
+   "CCS1 + NACS",
+   "CCS1 Boost + CCS1"
+  ],
+  "price": 55000,
+  "blurb": "One cabinet, ten power ratings. Ordered at anything from 60 to 240 kW in 20 kW steps, with a 27-inch ad screen on the front and stainless housing. The workhorse of Autel's DC line.",
+  "spec1": [
+   [
+    "Input",
+    "480 V, 3-phase, no neutral, 60 Hz"
+   ],
+   [
+    "Max output",
+    "240 kW (ordered 60 to 240 kW in 20 kW steps)"
+   ],
+   [
+    "Max input current",
+    "349 A at 240 kW; 91 A at 60 kW (see table)"
+   ],
+   [
+    "Ports",
+    "2"
+   ],
+   [
+    "Output voltage",
+    "150 to 950 V DC"
+   ],
+   [
+    "Max output current",
+    "200 A CCS1; 300 A CCS1 Boost (400 A max)"
+   ],
+   [
+    "Efficiency",
+    "96% or better"
+   ],
+   [
+    "Power factor",
+    "0.98 or better"
+   ],
+   [
+    "THD",
+    "under 5%"
+   ],
+   [
+    "SCCR",
+    "65 kA"
+   ],
+   [
+    "Standby power",
+    "80 W"
+   ]
+  ],
+  "spec2": [
+   [
+    "Dimensions (H x W x D)",
+    "76.8 x 32.3 x 23.6 in (27.6 in deep for 140 kW and up)"
+   ],
+   [
+    "Weight",
+    "1,143 lb at 60 kW to 1,460 lb at 240 kW"
+   ],
+   [
+    "Protocol",
+    "OCPP 1.6J, 2.0.1 upgradable"
+   ],
+   [
+    "Connectivity",
+    "4G, Wi-Fi, Ethernet"
+   ],
+   [
+    "Vehicle protocols",
+    "ISO 15118 Plug & Charge, DIN 70121"
+   ],
+   [
+    "Payment",
+    "QR, RFID, credit card optional"
+   ],
+   [
+    "Display",
+    "27-inch touch screen (15.6 optional)"
+   ],
+   [
+    "Cable length",
+    "15 ft, 20 or 25 optional"
+   ],
+   [
+    "Operating temp",
+    "-31 to 131 °F, derating above 122 °F"
+   ],
+   [
+    "Enclosure and impact",
+    "NEMA 3R, IK10, stainless 430"
+   ],
+   [
+    "Noise",
+    "under 65 dB at 1 m"
+   ],
+   [
+    "Warranty",
+    "24 months, extensions available"
+   ]
+  ],
+  "certs": "UL 2202, UL 2231-1, UL 2231-2, NEC Article 625, CSA C22.2 No. 107.1-16, FCC Part 15 Class A (Class B optional).",
+  "datasheet": "/datasheets/autel-dc-fast.pdf",
+  "source": "Autel MaxiCharger DC Fast datasheet",
+  "adaptNote": "The power rating is set at order, not in the field. Amps are the datasheet's max input AC current for each rating. Breaker sizing is the electrician's call.",
+  "leadEmail": null,
+  "website": "https://autelenergy.com",
+  "sponsored": false,
+  "disclosure": "The Charge Sheet has no relationship with Autel. Specs come from the linked datasheet. The Charge Sheet takes no fee for this listing."
+ },
+ {
+  "id": "autel-dh480",
+  "oem": "Autel",
+  "oemId": "autel",
+  "model": "MaxiCharger DH480",
+  "short": "MaxiCharger DH480",
+  "kind": "All-in-one high-power DC charger, 480 V",
+  "type": "dc",
+  "img": "/img/oem/autel-dh480.webp",
+  "maxKw": 480,
+  "kw": [
+   480,
+   400,
+   320
+  ],
+  "amps": null,
+  "breaker": null,
+  "ports": 2,
+  "connectors": [
+   "CCS1 + CCS1",
+   "NACS + NACS",
+   "CCS1 + NACS",
+   "4 x CCS1",
+   "4 x NACS"
+  ],
+  "price": 77500,
+  "blurb": "All-in-one at 480 kW: two or four outputs from one cabinet, 500 A liquid-cooled cables, and power adjustable down to 40 kW. Sold at 320, 400 or 480 kW.",
+  "spec1": [
+   [
+    "Input",
+    "480 V, 3-phase, no neutral, 60 Hz, two routes"
+   ],
+   [
+    "Max output",
+    "480 kW (320 and 400 kW versions)"
+   ],
+   [
+    "Minimum adjustable power",
+    "40 kW"
+   ],
+   [
+    "Outputs",
+    "2 or 4"
+   ],
+   [
+    "Output voltage",
+    "150 to 1000 V DC"
+   ],
+   [
+    "Max output current",
+    "500 A liquid-cooled (650 A max); 400 A air-cooled (500 A max)"
+   ],
+   [
+    "Efficiency",
+    "96%"
+   ],
+   [
+    "Power factor",
+    "0.99 or better"
+   ],
+   [
+    "THD",
+    "under 5%"
+   ],
+   [
+    "Standby power",
+    "under 85 W"
+   ]
+  ],
+  "spec2": [
+   [
+    "Dimensions (W x D x H)",
+    "30.8 x 30.8 x 84.6 in (782 x 782 x 2150 mm)"
+   ],
+   [
+    "Protocol",
+    "OCPP 1.6J, 2.0.1 optional"
+   ],
+   [
+    "Connectivity",
+    "Dual SIM 4G/5G, Wi-Fi, Ethernet"
+   ],
+   [
+    "Vehicle protocols",
+    "ISO 15118 Plug & Charge, DIN 70121"
+   ],
+   [
+    "Payment",
+    "Nayax, Payter, PAX, Castles readers; RFID; app; QR"
+   ],
+   [
+    "Display",
+    "15.6-inch touch screen (8 or 27 optional)"
+   ],
+   [
+    "Cable length",
+    "16.4 ft, 24.6 ft optional; cable management standard"
+   ],
+   [
+    "Operating temp",
+    "-31 to 131 °F"
+   ],
+   [
+    "Enclosure",
+    "NEMA 3S; ADA height and reach"
+   ],
+   [
+    "Noise",
+    "under 55 dB, silent model"
+   ],
+   [
+    "Warranty",
+    "24 months, extensions available"
+   ]
+  ],
+  "certs": "UL 2202, UL 2231-1, UL 2231-2, NEC Article 625, CSA C22.2 No. 107.1-16, UL/cUL, FCC Class A.",
+  "datasheet": "/datasheets/autel-dh480.pdf",
+  "source": "Autel MaxiCharger DH480 datasheet",
+  "adaptNote": "No input-current table published. At 480 kW on 480 V expect roughly 600 A of input; get the number from Autel before sizing gear.",
+  "leadEmail": null,
+  "website": "https://autelenergy.com",
+  "sponsored": false,
+  "disclosure": "The Charge Sheet has no relationship with Autel. Specs come from the linked datasheet. The Charge Sheet takes no fee for this listing."
+ },
+ {
+  "id": "autel-a12-50a",
+  "oem": "Autel",
+  "oemId": "autel",
+  "model": "MaxiCharger AC 50A (A12)",
+  "short": "MaxiCharger AC 50A (A12)",
+  "kind": "Level 2, 50 A",
+  "type": "l2",
+  "img": "/img/oem/autel-a12-50a.webp",
+  "maxKw": 12,
+  "kw": [
+   12,
+   9.6,
+   7.7
+  ],
+  "amps": null,
+  "breaker": null,
+  "ports": 1,
+  "connectors": [
+   "J1772",
+   "NACS"
+  ],
+  "price": 800,
+  "blurb": "Commercial Level 2 at 50 A on a single phase, with a 5-inch screen or a plain digital display, NTEP metering, and load management across a whole lot over Wi-SUN. The pedestal is a separate line item.",
+  "spec1": [
+   [
+    "Input",
+    "208/240 V single phase, 50/60 Hz; HiLeg delta supported"
+   ],
+   [
+    "Max output",
+    "12 kW (240 V x 50 A); adjustable 6 to 50 A"
+   ],
+   [
+    "Ports",
+    "1"
+   ],
+   [
+    "Connector",
+    "J1772 or NACS"
+   ],
+   [
+    "Metering",
+    "1%, NTEP/CTEP certified"
+   ],
+   [
+    "Ground fault",
+    "20 mA CCID"
+   ],
+   [
+    "Vehicle protocols",
+    "ISO 15118-2/-20, Plug & Charge, Autocharge"
+   ]
+  ],
+  "spec2": [
+   [
+    "Dimensions (W x D x H)",
+    "6.7 x 4.6 x 12.4 in"
+   ],
+   [
+    "Weight",
+    "11.7 lb; pedestal 15 lb (ADA, sold separately)"
+   ],
+   [
+    "Protocol",
+    "OCPP 1.6J, 2.0.1"
+   ],
+   [
+    "Connectivity",
+    "4G, Wi-Fi, Ethernet, RS485, Wi-SUN"
+   ],
+   [
+    "Payment",
+    "app, RFID, third-party apps"
+   ],
+   [
+    "Display",
+    "5-inch touch screen or digital display"
+   ],
+   [
+    "Cable length",
+    "19 or 25 ft"
+   ],
+   [
+    "Operating temp",
+    "-31 to 122 °F, derating above 113 °F"
+   ],
+   [
+    "Enclosure and impact",
+    "NEMA 3S, IK10"
+   ],
+   [
+    "Lifespan and warranty",
+    "10 years; 5 years on the body, 1 on cable and connector"
+   ]
+  ],
+  "certs": "UL 2594, UL 2231-1, UL 2231-2, UL 1998, CSA C22.2 No. 280, FCC Part 15 Class B, ENERGY STAR, NEC Article 625.",
+  "datasheet": "/datasheets/autel-a12-50a.pdf",
+  "source": "Autel MaxiCharger AC 50A datasheet",
+  "adaptNote": null,
+  "leadEmail": null,
+  "website": "https://autelenergy.com",
+  "sponsored": false,
+  "disclosure": "The Charge Sheet has no relationship with Autel. Specs come from the linked datasheet. The Charge Sheet takes no fee for this listing."
+ },
+ {
+  "id": "autel-ac-pro-80a",
+  "oem": "Autel",
+  "oemId": "autel",
+  "model": "MaxiCharger AC Pro 80A",
+  "short": "MaxiCharger AC Pro 80A",
+  "kind": "Level 2, 80 A",
+  "type": "l2",
+  "img": "/img/oem/autel-ac-pro-80a.webp",
+  "maxKw": 19.2,
+  "kw": [
+   19.2,
+   16,
+   12,
+   9.6,
+   7.7
+  ],
+  "amps": null,
+  "breaker": null,
+  "ports": 1,
+  "connectors": [
+   "J1772",
+   "NACS"
+  ],
+  "price": 1100,
+  "blurb": "The fast end of Level 2: 80 A, 19.2 kW, on a 240 V single phase. A 7-inch screen, one-click install, and Wi-SUN load balancing across up to 200 chargers. Five-year warranty on the body.",
+  "spec1": [
+   [
+    "Input",
+    "208/240 V single phase, 50/60 Hz; HiLeg delta supported"
+   ],
+   [
+    "Max output",
+    "19.2 kW (240 V x 80 A); adjustable 6 to 80 A"
+   ],
+   [
+    "Ports",
+    "1"
+   ],
+   [
+    "Connector",
+    "J1772 or NACS"
+   ],
+   [
+    "Metering",
+    "1%, NTEP/CTEP certified"
+   ],
+   [
+    "Ground fault",
+    "20 mA CCID"
+   ],
+   [
+    "Vehicle protocols",
+    "ISO 15118-2/-20, Plug & Charge, Autocharge"
+   ]
+  ],
+  "spec2": [
+   [
+    "Dimensions (H x W x D)",
+    "14.5 x 8.5 x 5.1 in (368 x 216 x 130 mm)"
+   ],
+   [
+    "Weight",
+    "20.7 lb"
+   ],
+   [
+    "Mounting",
+    "wall, or ADA pedestal sold separately"
+   ],
+   [
+    "Protocol",
+    "OCPP 1.6J, 2.0.1, 2.1 upgradable"
+   ],
+   [
+    "Connectivity",
+    "4G, Wi-Fi, Ethernet, RS485, Wi-SUN"
+   ],
+   [
+    "Payment",
+    "app, RFID, third-party apps; POS kiosk option"
+   ],
+   [
+    "Display",
+    "7-inch touch screen or LED"
+   ],
+   [
+    "Cable length",
+    "19 or 25 ft"
+   ],
+   [
+    "Operating temp",
+    "-31 to 131 °F, derating above 113 °F"
+   ],
+   [
+    "Enclosure and impact",
+    "NEMA 4X, IK10"
+   ],
+   [
+    "Lifespan and warranty",
+    "10 years; 5 years on the body, 1 on cable and connector"
+   ]
+  ],
+  "certs": "UL 2594, UL 2231-1, UL 2231-2, UL 1998, CSA C22.2 No. 280, FCC Part 15 Class B, ENERGY STAR, OpenADR 2.0b, NEC Article 625.",
+  "datasheet": "/datasheets/autel-ac-pro-80a.pdf",
+  "source": "Autel MaxiCharger AC Pro 80A datasheet",
+  "adaptNote": null,
+  "leadEmail": null,
+  "website": "https://autelenergy.com",
+  "sponsored": false,
+  "disclosure": "The Charge Sheet has no relationship with Autel. Specs come from the linked datasheet. The Charge Sheet takes no fee for this listing."
+ },
+ {
+  "id": "autel-ac-ultra",
+  "oem": "Autel",
+  "oemId": "autel",
+  "model": "MaxiCharger AC Ultra",
+  "short": "MaxiCharger AC Ultra",
+  "kind": "Level 2, dual port, 2 x 80 A",
+  "type": "l2",
+  "img": "/img/oem/autel-ac-ultra.webp",
+  "maxKw": 19.2,
+  "kw": [
+   19.2,
+   16,
+   12,
+   9.6,
+   7.7
+  ],
+  "amps": null,
+  "breaker": null,
+  "ports": 2,
+  "connectors": [
+   "J1772 + J1772"
+  ],
+  "price": 3500,
+  "blurb": "Two 19.2 kW ports in one pedestal with an 8-inch ad screen. Power sharing between the ports means it can run on less than two full circuits. Priced per pedestal, so the planner splits it across two ports.",
+  "spec1": [
+   [
+    "Input",
+    "208 or 240 V single phase, 60 Hz"
+   ],
+   [
+    "Max output",
+    "2 x 19.2 kW (240 V x 80 A per port); adjustable 6 to 80 A"
+   ],
+   [
+    "Ports",
+    "2, with power sharing"
+   ],
+   [
+    "Connector",
+    "J1772, 16 or 25 ft"
+   ],
+   [
+    "Metering",
+    "1% from 1% to full scale"
+   ],
+   [
+    "Ground fault",
+    "20 mA CCID"
+   ]
+  ],
+  "spec2": [
+   [
+    "Dimensions (H x W x D)",
+    "24.6 x 12.6 x 6.7 in (625 x 320 x 170 mm) head; 74 in on pedestal"
+   ],
+   [
+    "Mounting",
+    "wall or floor pedestal, one-piece"
+   ],
+   [
+    "Protocol",
+    "OCPP 1.6J, upgradable to 2.0.1"
+   ],
+   [
+    "Connectivity",
+    "4G, Wi-Fi, Ethernet, Bluetooth, RS485"
+   ],
+   [
+    "Payment",
+    "app, RFID, credit card optional"
+   ],
+   [
+    "Display",
+    "8-inch touch screen"
+   ],
+   [
+    "Operating temp",
+    "-40 to 122 °F"
+   ],
+   [
+    "Enclosure",
+    "NEMA 3R"
+   ],
+   [
+    "Warranty",
+    "36 months, extensions available"
+   ]
+  ],
+  "certs": "UL 2594, UL 2231-1, UL 2231-2, UL 916, CSA C22.2, FCC Part 15 Class B, ENERGY STAR, OpenADR 2.0b, NEC Article 625.",
+  "datasheet": "/datasheets/autel-ac-ultra.pdf",
+  "source": "Autel MaxiCharger AC Ultra datasheet",
+  "adaptNote": null,
+  "leadEmail": null,
+  "website": "https://autelenergy.com",
+  "sponsored": false,
+  "disclosure": "The Charge Sheet has no relationship with Autel. Specs come from the linked datasheet. The Charge Sheet takes no fee for this listing."
+ },
+ {
+  "id": "tesla-universal-wall-connector",
+  "oem": "Tesla",
+  "oemId": "tesla",
+  "model": "Universal Wall Connector",
+  "short": "Universal Wall Connector",
+  "kind": "Level 2, 48 A",
+  "type": "l2",
+  "img": "/img/oem/tesla-universal-wall-connector.webp",
+  "maxKw": 11.5,
+  "kw": [
+   11.5,
+   9.6,
+   7.7
+  ],
+  "amps": null,
+  "breaker": null,
+  "ports": 1,
+  "connectors": [
+   "NACS with docked J1772 adapter"
+  ],
+  "price": 1200,
+  "blurb": "Tesla's wall box with a J1772 adapter docked on the side, so it charges anything. 48 A, Wi-Fi only, no OCPP, no card reader. Fine for a hotel that bills through the room or gives it away; not a networked commercial charger.",
+  "spec1": [
+   [
+    "Input",
+    "200 to 240 V single phase, 50/60 Hz"
+   ],
+   [
+    "Max output",
+    "11.5 kW (240 V x 48 A); adjustable by installer"
+   ],
+   [
+    "Ports",
+    "1"
+   ],
+   [
+    "Connector",
+    "NACS, with J1772 adapter"
+   ],
+   [
+    "Ground fault",
+    "integrated CCID20"
+   ],
+   [
+    "SCCR",
+    "14 kA"
+   ]
+  ],
+  "spec2": [
+   [
+    "Dimensions",
+    "13.6 x 6.1 x 5.9 in"
+   ],
+   [
+    "Weight",
+    "15 lb with bracket"
+   ],
+   [
+    "Protocol",
+    "none (Wi-Fi to Tesla; no OCPP)"
+   ],
+   [
+    "Connectivity",
+    "Wi-Fi 2.4 GHz"
+   ],
+   [
+    "Payment",
+    "none built in"
+   ],
+   [
+    "Cable length",
+    "24 ft (13.1 ft version available)"
+   ],
+   [
+    "Operating temp",
+    "-22 to 122 °F"
+   ],
+   [
+    "Enclosure",
+    "Type 3R"
+   ]
+  ],
+  "certs": "cULus E351001, UL 2594, UL 2231, ENERGY STAR (US).",
+  "datasheet": "/datasheets/tesla-universal-wall-connector.pdf",
+  "source": "Tesla Universal Wall Connector datasheet, 2023-12-12",
+  "adaptNote": null,
+  "leadEmail": null,
+  "website": "https://www.tesla.com",
+  "sponsored": false,
+  "disclosure": "The Charge Sheet has no relationship with Tesla. Specs come from the linked datasheet. The Charge Sheet takes no fee for this listing."
+ }
+]

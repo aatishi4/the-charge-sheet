@@ -21,6 +21,7 @@
 <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#2462F5">
+<script id="products-data" type="application/json">[]</script>
 <script id="theme-boot">document.documentElement.classList.add('js');try{var t=localStorage.getItem('cs-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="preload" href="fonts/InstrumentSans-VF.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -840,6 +841,20 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
 .post-photo img{display:block;width:100%;margin:0}
 .js .spot.io:not(.play) *{animation-play-state:paused}
 @media (max-width:640px){.post-fig .spot text{display:inline}}
+
+.hw{max-width:960px;margin:0 auto;padding:0 1.2rem 3rem}
+.hwgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:1rem}
+.hwcard{border:1px solid var(--line);border-radius:12px;padding:1rem;display:flex;flex-direction:column;gap:.2rem}
+.hwcard img,.hwhero img,.hwpick img{display:block;width:100%;background:var(--mist);border-radius:8px;padding:.5rem;box-sizing:border-box}
+.hwcard img{height:150px;object-fit:contain}
+.hwcard h2{margin:0;font-size:1.15rem}.hwcard b{font-size:1.4rem}.hwcard p.sub{flex:1}
+.hwhero{display:grid;grid-template-columns:1.2fr 1fr;gap:1.6rem;align-items:center;margin-top:.6rem}
+.hwstat{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:1rem 0}
+.hwstat div{border:1px solid var(--line);border-radius:10px;padding:.6rem .8rem}.hwstat b{display:block;font-size:1.25rem}.hwstat small{color:var(--slate)}
+.hwspec{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}.hwspec table{width:100%;font-size:.9rem}.hwspec th{width:40%;text-align:left;color:var(--slate);font-weight:500}
+.hwpick{display:grid;grid-template-columns:110px 1fr;gap:.9rem;align-items:start;grid-column:1/-1;margin:.2rem 0 .6rem;font-size:.9rem}
+.hwpick div{display:flex;flex-direction:column;gap:.2rem}.hwpick .fh{margin-top:.3rem}
+@media (max-width:700px){.hwhero,.hwspec{grid-template-columns:1fr}}
 
 /* ---------- Header illustrations ---------- */
 .spot{margin:1.8rem 0 .4rem;max-width:720px}
@@ -2491,6 +2506,14 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
     <p>Many do, and they fail on their own schedule. If the terminal has its own modem, it needs good signal too, and a charger can be online while its terminal is not. Tell the check, and it adds that to the list.</p>
   </article>
 </section>
+<section id="view-hardware" hidden>
+  <div class="tool-head">
+    <h1>EV chargers the planner can model</h1>
+    <p>Chargers with their specs transcribed from the manufacturer's datasheet, so the site planner can prefill power, ports and a hardware line instead of a guess. Nothing here is a recommendation. Every product page links the datasheet it came from.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>Built by <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
+  </div>
+  <div class="hw" id="hw-body"></div>
+</section>
 <section id="view-report" hidden>
   <div class="tool-head">
     <h1>Project report</h1>
@@ -2514,7 +2537,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
 <footer><div class="foot">
   <div><b>The Charge Sheet</b><p>A free, open source guide to the business of EV charging, built and given away by <a href="#about">Aatish Patel</a>. Ballpark numbers and honest opinions. Not financial advice.</p><p>Text CC BY 4.0. Code MIT.</p></div>
   <div><b>Learn</b><a href="#basics">How charging works</a><a href="#primer">The business</a><a href="#realestate">Real estate</a><a href="#finance">Paying for it</a><a href="#storage">Batteries</a><a href="#connectivity">Connectivity</a><a href="#vendors">Buying</a><a href="#fleet">Fleet charging</a></div>
-  <div><b>Tools</b><a href="#planner">Site planner</a><a href="#install">Install estimator</a><a href="#sbatool">SBA loan check</a><a href="#fleettool">Fleet throughput</a><a href="#forecast">Utilization forecast</a><a href="#sitecheck">Connectivity check</a><a href="#report">Project report</a></div>
+  <div><b>Tools</b><a href="#planner">Site planner</a><a href="#install">Install estimator</a><a href="#sbatool">SBA loan check</a><a href="#fleettool">Fleet throughput</a><a href="#forecast">Utilization forecast</a><a href="#sitecheck">Connectivity check</a><a href="#hardware">Chargers</a><a href="#report">Project report</a></div>
   <div><b>More</b><a href="#benchmarks">Benchmarks</a><a href="#method">Method and sources</a><a href="#glossary">Glossary</a><a href="/blog/">Blog</a><a href="#about">About</a><a href="https://github.com/aatishi4/the-charge-sheet" rel="noopener">Source code</a></div>
 </div></footer>
 <script>
@@ -2645,7 +2668,7 @@ function forecast(F){
 }
 
 var PDEF = {
-  dcCount:4, dcKw:150, dcHw:77500, dcHwAuto:true, dcSessions:6, dcKwh:40, dcPrice:0.55,
+  dcCount:4, dcKw:150, dcHw:77500, dcHwAuto:true, dcModel:'', l2Model:'', dcSessions:6, dcKwh:40, dcPrice:0.55,
   l2Ports:0, l2Kw:7.2, l2Hw:3500, l2Sessions:2, l2Kwh:14, l2Price:0.35,
   difficulty:'typical', utility:'transformer', utilityCost:75000, designPct:8, contingency:10,
   grant:0, makeReadyRebate:0,
@@ -2695,6 +2718,28 @@ function assessConn(C){
 var MAKE_READY = {easy:[175,2500], typical:[250,4500], hard:[450,8000]};
 var UTILITY = {none:0, transformer:75000, service:250000};
 function dcHwFor(kw){ return Math.round((10000 + 450*kw)/500)*500; }
+
+/* ---------- Charger catalog (data/products.json, injected by the build) ---------- */
+var PRODUCTS = (function(){ try { return JSON.parse(document.getElementById('products-data').textContent) || []; } catch(e){ return []; } })();
+function productById(id){ for (var i=0;i<PRODUCTS.length;i++) if (PRODUCTS[i].id===id) return PRODUCTS[i]; return null; }
+function applyProduct(P, pr){
+  if (pr.type==='l2'){
+    P.l2Model = pr.id; P.l2Kw = pr.maxKw; if (pr.price) P.l2Hw = Math.round(pr.price/(pr.ports||1));
+    if (!P.l2Ports) P.l2Ports = pr.ports||1;
+    return;
+  }
+  P.dcModel = pr.id; P.dcKw = pr.maxKw; P.dcHw = pr.price || P.dcHw; P.dcHwAuto = !pr.price;
+  if (pr.battery){
+    P.batteryMode = 'integrated'; P.battPerCharger = 215; P.battExtraPerCharger = 0;
+    P.gridPerCharger = pr.gridKw || 44; P.gridLimit = Math.max(10, Math.round(P.dcCount*P.gridPerCharger));
+  } else if (P.batteryMode==='integrated') { P.batteryMode = 'none'; }
+}
+function quoteHref(pr, P){
+  var n = pr.type==='l2' ? Math.ceil(P.l2Ports/(pr.ports||1)) : P.dcCount, kw = pr.type==='l2' ? P.l2Kw : P.dcKw, ports = pr.type==='l2' ? P.l2Ports : P.dcCount*pr.ports;
+  var body = 'Site planner configuration\n'+n+' x '+pr.oem+' '+pr.model+' at '+kw+' kW'+(pr.type==='l2'?' per port':' each')+', '+ports+' ports'+
+    (P.siteName?'\nSite: '+P.siteName:'')+'\nSent from chargesheet.io site planner';
+  return 'mailto:'+pr.leadEmail+'?subject='+encodeURIComponent('Quote request: '+pr.model+' via The Charge Sheet')+'&body='+encodeURIComponent(body);
+}
 
 function batterySpec(P){
   if (P.batteryMode==='site')       return {kwh:P.battKwh, kw:P.battKw, capex:P.battKwh*P.battCostKwh + P.battKw*P.battCostKw};
@@ -3025,7 +3070,7 @@ if (typeof document !== 'undefined') (function(){
   var GROUPS = {
     learn: {title:'Learn', nav:'gn-learn', pages:[['basics','How charging works'],['primer','The business'],['realestate','Real estate'],['finance','Paying for it'],['storage','Batteries'],['connectivity','Connectivity'],['vendors','Buying'],['fleet','Fleet charging']]},
     data:  {title:'Benchmarks', nav:'gn-data', pages:[['benchmarks','Benchmarks'],['method','Method and sources'],['glossary','Glossary']]},
-    tools: {title:'Tools', nav:'gn-tools', pages:[['planner','Site planner'],['install','Install estimator'],['sbatool','SBA loan check'],['fleettool','Fleet throughput'],['forecast','Utilization forecast'],['sitecheck','Connectivity check'],['report','Project report']]}
+    tools: {title:'Tools', nav:'gn-tools', pages:[['planner','Site planner'],['install','Install estimator'],['sbatool','SBA loan check'],['fleettool','Fleet throughput'],['forecast','Utilization forecast'],['sitecheck','Connectivity check'],['hardware','Chargers'],['report','Project report']]}
   };
   var GROUP_OF = {}, NAME_OF = {home:'The Charge Sheet', about:'About'};
   Object.keys(GROUPS).forEach(function(g){ GROUPS[g].pages.forEach(function(p){ GROUP_OF[p[0]] = g; NAME_OF[p[0]] = p[1]; }); });
@@ -3110,6 +3155,35 @@ if (typeof document !== 'undefined') (function(){
     if (['planner','forecast','install','fleettool','sbatool'].indexOf(view)>=0) drawCharts(view);
     renderReportBar(view);
     if (view==='report') renderReport();
+    if (view==='hardware') renderHardware();
+  }
+  function renderHardware(){
+    var el = document.getElementById('hw-body'); if (!el) return;
+    var q = (location.search.match(/[?&]p=([a-z0-9-]+)/)||[])[1] || (location.hash.match(/\?p=([a-z0-9-]+)/)||[])[1];
+    var pr = q && productById(q);
+    if (!PRODUCTS.length){ el.innerHTML = '<p class="sub">No chargers in the catalog yet.</p>'; return; }
+    if (pr){
+      var rows = function(list){ return '<table>'+list.map(function(r){ return '<tr><th>'+r[0]+'</th><td>'+r[1]+'</td></tr>'; }).join('')+'</table>'; };
+      var adapt = pr.amps ? '<details><summary>Adaptive power: what the site\'s service can support</summary><p class="sub">'+(pr.adaptNote||'The unit\'s output can be set below its maximum without changing hardware. From the datasheet.')+'</p><div class="scroll"><table><thead><tr><th>Output setting</th><th>Max draw</th>'+(pr.breaker?'<th>Breaker</th>':'')+'</tr></thead><tbody>'+
+        pr.kw.map(function(k){ return '<tr><td>'+k+' kW</td><td>'+pr.amps[k]+' A</td>'+(pr.breaker?'<td>'+pr.breaker[k]+' A</td>':'')+'</tr>'; }).join('')+'</tbody></table></div></details>' : '';
+      el.innerHTML = '<p class="sub"><a href="'+viewHref('hardware')+'">All chargers</a> <span class="dot">/</span> '+pr.model+'</p>'+
+        '<div class="hwhero"><img src="'+pr.img+'" alt="'+pr.model+' render"><div><p class="sub">'+pr.oem+'</p><h2>'+pr.model+'</h2><p>'+pr.blurb+'</p>'+
+        '<div class="hwstat"><div><b>'+pr.maxKw+' kW</b><small>'+(pr.type==='l2'?'per port':'max output')+'</small></div><div><b>'+pr.ports+'</b><small>'+(pr.ports>1?'ports':'port')+'</small></div><div><b>'+pr.spec1[0][1].split(',')[0]+'</b><small>input</small></div><div><b>'+(pr.battery?pr.battery.split(' ')[0]+' kWh':'down to '+pr.kw[pr.kw.length-1]+' kW')+'</b><small>'+(pr.battery?'battery':'adjustable output')+'</small></div></div>'+
+        '<p><a class="btn" href="'+viewHref('planner')+'?model='+pr.id+'">Use in site planner</a> <a class="btn secondary" href="'+pr.datasheet+'" target="_blank" rel="noopener">Datasheet PDF</a></p></div></div>'+
+        '<h2>Specifications</h2><div class="hwspec">'+rows(pr.spec1)+rows(pr.spec2)+'</div>'+adapt+
+        '<details><summary>Certifications and standards</summary><p>'+pr.certs+'</p></details>'+
+        '<p class="sub">Specs transcribed from the '+pr.source+'. '+pr.disclosure+'</p>';
+    } else {
+      var card = function(pr){
+        return '<div class="hwcard"><img src="'+pr.img+'" alt="'+pr.model+'" loading="lazy"><span class="sub">'+pr.oem+'</span><h2>'+pr.model+'</h2><b>'+pr.maxKw+' kW'+(pr.type==='l2'&&pr.ports>1?' x '+pr.ports:'')+'</b>'+
+          '<p class="sub">'+pr.kind+(pr.type==='l2'?'':', '+pr.ports+' ports')+(pr.battery?', '+pr.battery.split(',')[0]+' battery':'')+'.</p>'+
+          '<p><a class="btn small" href="'+viewHref('hardware')+'?p='+pr.id+'">Specs</a> <a class="btn secondary small" href="'+viewHref('planner')+'?model='+pr.id+'">Use in planner</a></p></div>';
+      };
+      var dc = PRODUCTS.filter(function(pr){ return pr.type!=='l2'; }), l2 = PRODUCTS.filter(function(pr){ return pr.type==='l2'; });
+      el.innerHTML = '<h2>DC fast chargers</h2><div class="hwgrid">'+dc.map(card).join('')+'</div>'+
+        (l2.length ? '<h2 style="margin-top:2rem">Level 2</h2><div class="hwgrid">'+l2.map(card).join('')+'</div>' : '');
+    }
+    polish(el);
   }
   window.addEventListener('hashchange', route);
 
@@ -4662,8 +4736,10 @@ if (typeof document !== 'undefined') (function(){
   function today(){ return new Date().toISOString().slice(0,10); }
   function planAssumptions(){
     var a = [];
+    if (P.dcCount>0 && P.dcModel && productById(P.dcModel)) a.push(['Charger model', productById(P.dcModel).oem+' '+productById(P.dcModel).model, '']);
     if (P.dcCount>0) a.push(['DC fast chargers', P.dcCount, ''], ['Power per DC charger', P.dcKw, 'kW'], ['DC hardware per charger', P.dcHw, '$'],
       ['DC sessions per port per day, year 1', P.dcSessions, ''], ['Energy per DC session', P.dcKwh, 'kWh'], ['DC price to driver', P.dcPrice, '$/kWh']);
+    if (P.l2Ports>0 && P.l2Model && productById(P.l2Model)) a.push(['Level 2 charger model', productById(P.l2Model).oem+' '+productById(P.l2Model).model, '']);
     if (P.l2Ports>0) a.push(['Level 2 ports', P.l2Ports, ''], ['Power per Level 2 port', P.l2Kw, 'kW'], ['Level 2 hardware per port', P.l2Hw, '$'],
       ['Level 2 sessions per port per day, year 1', P.l2Sessions, ''], ['Energy per Level 2 session', P.l2Kwh, 'kWh'], ['Level 2 price to driver', P.l2Price, '$/kWh']);
     a.push(P.difficulty==='custom' ? ['Make-ready, from install estimator', P.makeReadyCustom, '$'] : ['Make-ready difficulty', P.difficulty, ''], ['Utility upgrade cost', P.utilityCost, '$'], ['Grants', P.grant, '$'], ['Make-ready rebate', P.makeReadyRebate, '% of make-ready'],
@@ -5334,10 +5410,18 @@ if (typeof document !== 'undefined') (function(){
   }
 
   /* ---------- Planner ---------- */
+  function productCard(pr, P){
+  return '<div class="hwpick"><img src="'+pr.img+'" alt="'+pr.model+'" loading="lazy"><div><b>'+pr.oem+' '+pr.model+'</b>'+
+    '<span>'+pr.kind+'. '+pr.ports+(pr.ports>1?' ports':' port')+', up to '+pr.maxKw+' kW'+(pr.type==='l2'?' per port':'')+(pr.battery?', '+pr.battery.split(',')[0]+' battery':'')+'.'+(pr.type==='l2'&&pr.ports>1?' Target price is per unit; the planner divides it by '+pr.ports+' ports.':'')+'</span>'+
+    '<span><a href="'+viewHref('hardware')+'?p='+pr.id+'">Specs</a> <span class="dot">/</span> <a href="'+pr.datasheet+'" target="_blank" rel="noopener">Datasheet</a> <span class="dot">/</span> '+(pr.leadEmail?'<a href="'+quoteHref(pr,P)+'">Request a quote</a>':'<a href="'+pr.website+'" target="_blank" rel="noopener">Manufacturer site</a>')+'</span>'+
+    '<span class="fh">'+pr.disclosure+'</span></div></div>';
+}
   function renderPlanInputs(){
     var h = '<div style="padding-top:.9rem">' + txt('P','siteName','Site name','e.g. Main Street grocery','Shows up on the printout, the spreadsheet and the share link.') + '</div>';
     h += group('DC fast chargers', true,
       fld('P','dcCount','Chargers (one port each)','','',1) +
+      (PRODUCTS.length ? sel('P','dcModel','Charger model', [['','Your own numbers']].concat(PRODUCTS.filter(function(pr){ return pr.type!=='l2'; }).map(function(pr){ return [pr.id, pr.oem+' '+pr.model+' ('+pr.maxKw+' kW)']; })), 'Prefills power and a target hardware price from the datasheet. Overwrite anything.', true) : '') +
+      (P.dcModel && productById(P.dcModel) ? productCard(productById(P.dcModel), P) : '') +
       fld('P','dcKw','Power per charger','kW','',25) +
       fld('P','dcHw','Hardware per charger','$','Updates with power until you type your own quote.',500) +
       fld('P','dcSessions','Sessions per port per day, year 1','','',0.5) +
@@ -5346,6 +5430,8 @@ if (typeof document !== 'undefined') (function(){
     );
     h += group('Level 2 chargers', P.l2Ports>0,
       fld('P','l2Ports','Ports','','',1) +
+      (PRODUCTS.some(function(pr){ return pr.type==='l2'; }) ? sel('P','l2Model','Charger model', [['','Your own numbers']].concat(PRODUCTS.filter(function(pr){ return pr.type==='l2'; }).map(function(pr){ return [pr.id, pr.oem+' '+pr.model+' ('+pr.maxKw+' kW'+(pr.ports>1?', '+pr.ports+' ports':'')+')']; })), 'Prefills power per port and a target price per port from the datasheet.', true) : '') +
+      (P.l2Model && productById(P.l2Model) ? productCard(productById(P.l2Model), P) : '') +
       fld('P','l2Kw','Power per port','kW','',0.1) +
       fld('P','l2Hw','Hardware per port','$','',100) +
       fld('P','l2Sessions','Sessions per port per day, year 1','','',0.5) +
@@ -5564,6 +5650,16 @@ if (typeof document !== 'undefined') (function(){
         save(); renderForecastInputs(); renderForecastResults(); return;
       }
       if (objName==='P' && key==='difficulty'){ save(); renderPlanInputs(); renderPlanResults(); return; }
+      if (objName==='P' && key==='dcModel'){
+        var pr = productById(t.value);
+        if (pr) applyProduct(P, pr); else { P.dcModel = ''; P.dcHwAuto = true; P.dcHw = dcHwFor(P.dcKw); }
+        save(); renderPlanInputs(); renderPlanResults(); return;
+      }
+      if (objName==='P' && key==='l2Model'){
+        var pl = productById(t.value);
+        if (pl) applyProduct(P, pl); else P.l2Model = '';
+        save(); renderPlanInputs(); renderPlanResults(); return;
+      }
       if (objName==='P' && key==='batteryMode'){
         if (t.value==='integrated') P.gridLimit = Math.max(10, Math.round(P.dcCount*P.gridPerCharger));
         else if (t.value==='site') P.gridLimit = Math.max(10, Math.round((P.dcCount*P.dcKw + P.l2Ports*P.l2Kw)*0.35/10)*10);
@@ -5585,6 +5681,8 @@ if (typeof document !== 'undefined') (function(){
         var hw = document.querySelector('[data-obj="P"][data-key="dcHw"]'); if (hw) hw.value = P.dcHw;
       }
       if (objName==='P' && key==='dcHw') P.dcHwAuto = false;
+      if (objName==='P' && (key==='dcHw' || key==='dcKw') && P.dcModel){ P.dcModel = ''; save(); renderPlanInputs(); }
+      if (objName==='P' && (key==='l2Hw' || key==='l2Kw') && P.l2Model){ P.l2Model = ''; save(); renderPlanInputs(); }
     }
     save();
     if (objName==='F') renderForecastResults(); else if (objName==='C') renderConnResults(); else if (objName==='B') renderBattCalc(); else if (objName==='E') renderInstall(); else if (objName==='Q') renderFleet(); else if (objName==='L') renderLoan(); else renderPlanResults();
@@ -5596,6 +5694,7 @@ if (typeof document !== 'undefined') (function(){
 
   loadLocal();
   applySharedState();
+  (function(){ var m = (location.search.match(/[?&]model=([a-z0-9-]+)/)||[])[1]; var pr = m && productById(m); if (pr){ applyProduct(P, pr); save(); } })();
   renderBench();
   renderConnInputs();
   renderConnResults();

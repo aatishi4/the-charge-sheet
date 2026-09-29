@@ -79,6 +79,8 @@ PAGES = [
      'Forecast sessions per day for a charging site from road traffic or people on site and local EV share. Pulls state DOT traffic counts and nearby station counts.', 'tool'),
     ('sitecheck', 'ev-charger-cellular-signal-check', 'EV Charger Cellular Signal Check: RSRP, RSRQ, SINR',
      'Grade the cellular signal where a charger will stand using RSRP, RSRQ, and SINR readings from AT&T, T-Mobile, and Verizon, and get a setup that holds up.', 'tool'),
+    ('hardware', 'ev-chargers', 'EV Chargers the Site Planner Can Model: Specs from the Datasheet',
+     'DC fast chargers with specs transcribed from the manufacturer datasheet, so the site planner can prefill power, ports and hardware cost. Adjustable output tables and certifications.', 'tool'),
     ('report', 'ev-charging-project-report', 'EV Charging Project Report: Your Inputs and Results, One Page',
      'Save what you put into the site planner, install estimator, SBA loan check, fleet calculator, utilization forecast and connectivity check, and export one PDF for your project.', 'tool'),
     ('about', 'about', 'About The Charge Sheet and Aatish Patel',
@@ -420,6 +422,14 @@ def build():
     month = datetime.date.fromisoformat(updated).strftime('%B %Y')
     src = re.sub(r'Last updated [A-Z][a-z]+ \d{4}\.', 'Last updated %s.' % month, src)
 
+    # charger catalog: data/products.json goes into the products-data script so every page has it
+    try:
+        products = open(os.path.join(ROOT, 'data', 'products.json'), encoding='utf-8').read().strip()
+        json.loads(products)
+    except Exception:
+        products = '[]'
+    src = src.replace('<script id="products-data" type="application/json">[]</script>',
+                      '<script id="products-data" type="application/json">%s</script>' % products.replace('</', r'<\/'), 1)
     # sections, anchors, h1s
     bounds = section_bounds(src)
     missing = set(VIEWS) - set(b[0] for b in bounds)
@@ -491,7 +501,7 @@ def build():
     open(os.path.join(OUT, '_redirects'), 'w').write('\n'.join(redirects) + '\n')
 
     # static files
-    for d in ('fonts', 'img', 'data', 'og'):
+    for d in ('fonts', 'img', 'data', 'og', 'datasheets'):
         if os.path.isdir(os.path.join(ROOT, d)):
             shutil.copytree(os.path.join(ROOT, d), os.path.join(OUT, d))
     for f in ('favicon.svg', 'favicon-32.png', 'apple-touch-icon.png', 'og-image.png'):
