@@ -86,6 +86,37 @@ PAGES = [
     ('about', 'about', 'About The Charge Sheet and Aatish Patel',
      'Who wrote The Charge Sheet and why: lessons from building an EV charging company, written down so you can skip learning them the expensive way.', 'about'),
 ]
+# The home side (residential charging, batteries, V2H). Built into previews always; on chargesheet.io only once
+# HOME_LIVE is True. Until then everything between <!--home-side--> markers in index.html is stripped from the
+# production build, and preview pages carry noindex and stay out of the sitemap.
+HOME_LIVE = False
+HOME_ON = HOME_LIVE or os.environ.get('CF_PAGES_BRANCH', 'main') != 'main' or os.environ.get('SHOW_HOME') == '1'
+HOME_PAGES = [
+    ('hhub', 'home', 'EV Charging at Home, Home Batteries and V2H: The Charge Sheet',
+     'Charging an EV at home, what your panel can take, time-of-use rates, home batteries, and cars that can power the house. Free guides and calculators.', 'guide'),
+    ('hbasics', 'home/ev-charging-at-home', 'Charging an EV at Home: Level 1 vs Level 2, Plug-In vs Hardwired',
+     'Level 1 or Level 2, 32 or 48 amps, a NEMA 14-50 or hardwired, a mobile cord or a wall box. What home EV charging needs and what it gets wrong.', 'guide'),
+    ('hcost', 'home/home-ev-charging-cost', 'How Much Does It Cost to Charge an EV at Home? Rates and Time of Use',
+     'The math behind home charging costs, time-of-use and EV rate plans, the 4pm trap, and how home charging compares with gas and public fast charging.', 'guide'),
+    ('hbattery', 'home/home-battery-backup', 'Home Batteries: What They Do, What They Don\u2019t, and What They Cost',
+     'Backup power, time shifting and solar storage. kW versus kWh, surge and air conditioners, whole-home versus essentials, 2026 prices and tax credits.', 'guide'),
+    ('hvtoh', 'home/vehicle-to-home-v2h', 'Vehicle-to-Home (V2H), V2L and V2G: Which EVs Can Power a House',
+     'Which EVs can run a house today, the hardware in between, what it costs, and the pros and cons of using your car as a home battery.', 'guide'),
+    ('hcharge', 'home/ev-charging-cost-calculator', 'Home EV Charging Cost Calculator with Time-of-Use Rates',
+     'Your car, your arrival charge, your plug-in time and your utility rate. Finds the cheapest charging hours and the cost per night, month and year.', 'tool'),
+    ('hinstall', 'home/home-ev-charger-installation-cost', 'Home EV Charger Installation Cost Estimator and Panel Load Check',
+     'Estimate a home charger install from panel size, free spaces, breaker, distance and route. Checks the NEC 220.83 load and prices the fixes if it does not fit.', 'tool'),
+    ('hbackup', 'home/home-battery-backup-calculator', 'Home Battery Backup Calculator: Size a Battery for an Outage',
+     'Pick what stays on in an outage. Get running power, start-up surge and energy, then see which home batteries cover it and how many you need.', 'tool'),
+    ('hvcompare', 'home/v2h-vs-home-battery', 'V2H vs Home Battery: Can Your EV Replace a Powerwall?',
+     'Compare a bidirectional EV with a home battery for backup: usable energy, power, days of backup, cost, and the trade-offs.', 'tool'),
+    ('hgear', 'home/home-ev-chargers-batteries', 'Home EV Chargers, Home Batteries and Bidirectional EVs',
+     'Home Level 2 chargers, home batteries and every US EV that can send power out, with specs, prices and honest notes on what works today.', 'tool'),
+]
+HOME_IDS = [p[0] for p in HOME_PAGES]
+GEAR_TAG = ['']  # filled in build(); only the home pages carry the gear data
+if HOME_ON:
+    PAGES = PAGES + HOME_PAGES
 VIEWS = [p[0] for p in PAGES]
 PATH = {p[0]: ('/' + p[1] + '/' if p[1] else '/') for p in PAGES}
 
@@ -278,8 +309,8 @@ def jsonld(title, desc, url, image, kind, h1, updated):
 
 
 def config_script(page, anchors):
-    return '<script>window.CS_PAGE=%s;window.CS_PATHS=%s;window.CS_ANCHORS=%s;</script>\n' % (
-        json.dumps(page), json.dumps(PATH), json.dumps(anchors))
+    return '<script>window.CS_PAGE=%s;window.CS_PATHS=%s;window.CS_ANCHORS=%s;window.CS_HOME_LIVE=%s;</script>\n' % (
+        json.dumps(page), json.dumps(PATH), json.dumps(anchors), 'true' if HOME_LIVE else 'false')
 
 
 BLOG_TITLE = 'Blog: The Charge Sheet'
@@ -395,6 +426,9 @@ BLOG_ART = spots.BLOG
 
 def build():
     src = open(SRC, encoding='utf-8').read()
+    if not HOME_ON:
+        src = re.sub(r'<!--home-side-->.*?<!--/home-side-->', '', src, flags=re.S)
+        src = re.sub(r'/\*home-side\*/.*?/\*/home-side\*/', '', src, flags=re.S)
     updated = last_updated()
     if os.path.isdir(OUT):
         shutil.rmtree(OUT)
@@ -430,6 +464,13 @@ def build():
         products = '[]'
     src = src.replace('<script id="products-data" type="application/json">[]</script>',
                       '<script id="products-data" type="application/json">%s</script>' % products.replace('</', r'<\/'), 1)
+    if HOME_ON:
+        try:
+            gear = open(os.path.join(ROOT, 'data', 'home-gear.json'), encoding='utf-8').read().strip()
+            json.loads(gear)
+        except Exception:
+            gear = '{}'
+        GEAR_TAG[0] = '<script id="home-gear-data" type="application/json">%s</script>' % gear.replace('</', r'<\/')
     # sections, anchors, h1s
     bounds = section_bounds(src)
     missing = set(VIEWS) - set(b[0] for b in bounds)
@@ -462,15 +503,22 @@ def build():
     sitemap = []
     for v, slug, title, desc, kind in PAGES:
         url = SITE + PATH[v]
-        og_rel = 'og/%s.png' % (slug or 'home')
+        og_rel = 'og/%s.png' % ((slug or 'home') if v not in HOME_IDS else ('home-hub' if v == 'hhub' else slug.replace('/', '-')))
         image = SITE + '/' + og_rel if os.path.exists(os.path.join(ROOT, og_rel)) else SITE + '/og-image.png?v=2'
         page_head = set_meta(head, title, desc, url, image, kind) + jsonld(title, desc, url, image, kind, h1s.get(v), updated)
         body = ''.join(full[x] if x == v else hollowed[x] for x, _, _ in bounds)
-        doc = rewrite_links(page_head + pre_main + body + post_main, v, anchors).replace('%%CS_CONFIG%%', config_script(v, anchors))
+        if v in HOME_IDS and not HOME_LIVE:
+            page_head = page_head.replace('content="index, follow, max-image-preview:large"', 'content="noindex"')
+        pm = pre_main.replace('<html lang="en">', '<html lang="en" data-side="home">') if v in HOME_IDS else pre_main
+        ph = page_head.replace('<html lang="en">', '<html lang="en" data-side="home">') if v in HOME_IDS else page_head
+        doc = rewrite_links(ph + pm + body + post_main, v, anchors).replace('%%CS_CONFIG%%', config_script(v, anchors))
+        if v in HOME_IDS and GEAR_TAG[0]:
+            doc = doc.replace('<script id="home-gear-data" type="application/json">[]</script>', GEAR_TAG[0], 1)
         dest = os.path.join(OUT, slug, 'index.html') if slug else os.path.join(OUT, 'index.html')
         os.makedirs(os.path.dirname(dest), exist_ok=True)
         open(dest, 'w', encoding='utf-8').write(doc)
-        sitemap.append('  <url><loc>%s</loc><lastmod>%s</lastmod></url>' % (url, updated))
+        if v not in HOME_IDS or HOME_LIVE:
+            sitemap.append('  <url><loc>%s</loc><lastmod>%s</lastmod></url>' % (url, updated))
 
     # 404: every section hollowed and hidden, plus a short note
     links = ''.join('<li><a href="%s">%s</a></li>' % (PATH[p[0]], esc(h1s.get(p[0]) or p[2])) for p in PAGES if p[4] in ('guide', 'tool'))

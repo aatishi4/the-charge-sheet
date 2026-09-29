@@ -29,6 +29,16 @@ No sign-up, no sales pitch, no tracking cookies. Open source.
 
 **Benchmarks** from real sites: session-level data from operating chargers, anonymized and cleaned. Not forecasts.
 
+## At home (preview)
+
+A second side of the site, switched in the header between **Business** and **Home**, for people charging at home:
+
+- Four guides: charging at home (Level 1 and 2, plug-in or hardwired, cord or wall box), what it costs (time of use and EV rates), home batteries, and V2L, V2H and V2G.
+- Four tools: a home charging cost and schedule calculator with a ZIP code utility rate lookup, a home install estimator with an NEC 220.83 panel load check and a pro mode, a backup battery sizer, and a V2H versus home battery comparison.
+- A gear page of home chargers, home batteries and bidirectional EVs, from `data/home-gear.json`.
+
+It builds on preview branches now and goes live on chargesheet.io when `HOME_LIVE` is set in `tools/build_pages.py`. See DEPLOY.md, step 8.
+
 ## Running it
 
 `index.html` is the whole site and works on its own:

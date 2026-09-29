@@ -22,6 +22,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#2462F5">
 <script id="products-data" type="application/json">[]</script>
+<!--home-side--><script id="home-gear-data" type="application/json">[]</script><!--/home-side-->
 <script id="theme-boot">document.documentElement.classList.add('js');try{var t=localStorage.getItem('cs-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="preload" href="fonts/InstrumentSans-VF.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -907,6 +908,245 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
 :root[data-theme="dark"] .btn.primary,:root[data-theme="dark"] .stepper .lane.on,:root[data-theme="dark"] .owpill.o{color:#0A1322}
 :root[data-theme="dark"] .tile.big .go{color:#1F4FD1}
 :root[data-theme="dark"] .badge-draft{color:var(--amber)}
+/*home-side*/
+/* ---------- Home side ---------- */
+.sidesw{display:inline-flex;background:var(--mist);border:1px solid var(--line);border-radius:999px;padding:2px;margin-right:.35rem}
+.sidesw a{font-size:.84rem;font-weight:600;color:var(--slate);padding:.3rem .8rem;border-radius:999px;white-space:nowrap}
+.sidesw a:hover{text-decoration:none;color:var(--ink)}
+.sidesw a[aria-current="true"]{background:var(--ink);color:var(--white)}
+.snav .sidesw{display:none}
+@media (max-width:720px){.gnav .sidesw{display:none}.snav .sidesw{display:inline-flex;flex:none;margin:0}.snav-in{justify-content:flex-start;gap:.6rem}}
+.gnav nav a.side-h{display:none}
+:root[data-side="home"] .gnav nav a.side-h{display:inline-block}
+:root[data-side="home"] .gnav nav a.side-b{display:none}
+.hprev{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);background:var(--amber-soft);box-shadow:inset 0 0 0 1px var(--amber);border-radius:999px;padding:.12rem .55rem;margin-left:.4rem;vertical-align:middle}
+.hhero{text-align:center;padding:5rem 1.25rem .5rem;max-width:980px;margin:0 auto}
+.hhero h1{font-size:clamp(2.4rem,6vw,4.8rem);line-height:1.03;letter-spacing:-.035em;font-weight:680;margin:0 auto 1.2rem;max-width:17ch;text-wrap:balance}
+.hhero p{font-size:clamp(1.12rem,1.9vw,1.35rem);line-height:1.5;color:var(--slate);max-width:36em;margin:0 auto 1.8rem;text-wrap:pretty}
+.hhero .hkick{font-size:.82rem;font-weight:650;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin:0 0 1rem}
+.spot.hhouse{max-width:1000px;margin:2.5rem auto 0;padding:0 1.25rem}
+.hhouse text{font-size:13px}
+.hhouse .hh-car{animation:hhcar 2.2s cubic-bezier(.3,.6,.2,1) both .6s}
+.hhouse .hh-soc{transform-box:fill-box;transform-origin:0 50%;animation:hhsoc 7s ease-in-out infinite 2s}
+.hhouse .hh-batt{transform-box:fill-box;transform-origin:50% 100%;animation:hhbatt 7s ease-in-out infinite 2s}
+.hhouse .hh-v2h,.hhouse .hh-v2h-t{opacity:0;animation:hhv2h 7s ease-in-out infinite 2s}
+.hhouse .hh-sun{transform-box:fill-box;transform-origin:center;animation:hhsun 24s linear infinite}
+@keyframes hhcar{from{transform:translateX(-160px);opacity:0}to{transform:none;opacity:1}}
+@keyframes hhsoc{0%{transform:scaleX(.2)}45%,70%{transform:scaleX(1)}100%{transform:scaleX(.2)}}
+@keyframes hhbatt{0%,30%{transform:scaleY(.35)}55%,75%{transform:scaleY(1)}100%{transform:scaleY(.35)}}
+@keyframes hhv2h{0%,68%{opacity:0}76%,94%{opacity:1}100%{opacity:0}}
+@keyframes hhsun{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion: reduce){.hhouse .hh-car,.hhouse .hh-soc,.hhouse .hh-batt,.hhouse .hh-sun{animation:none}.hhouse .hh-v2h,.hhouse .hh-v2h-t{animation:none;opacity:1}}
+@media (max-width:640px){.hhero{padding-top:3rem}.spot.hhouse{padding:0 .5rem}}
+.htiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.1rem}
+.htile{border-radius:var(--r-l);padding:1.6rem 1.7rem;background:var(--white);border:1px solid var(--line);color:var(--ink);display:flex;flex-direction:column;gap:.45rem}
+.htile:hover{text-decoration:none;border-color:var(--blue)}
+.htile svg{width:120px;height:70px;margin-bottom:.4rem}
+.htile.wide{grid-column:1/-1;flex-direction:row;align-items:center;gap:1.6rem}
+.htile.wide svg{width:220px;flex:none}
+.htile h3{margin:0;font-size:1.35rem;font-weight:650;letter-spacing:-.02em}
+.htile p{margin:0;color:var(--slate);font-size:1rem}
+.htile .go{margin-top:auto;padding-top:.4rem;font-weight:600;color:var(--blue);font-size:.96rem}
+.htile .ln,.hg svg .ln,.hgicon .ln{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.htile .lt{fill:none;stroke:var(--line);stroke-width:2}
+.htile .lb,.hg svg .lb,.hgicon .lb{fill:none;stroke:var(--blue);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.htile .la{fill:none;stroke:var(--amber);stroke-width:2.2}
+.htile .dash{stroke-dasharray:4 5}
+.htile .fw,.hg svg .fw,.hgicon .fw{fill:var(--white)}
+.htile .fb,.hg svg .fb,.hgicon .fb{fill:var(--blue)}
+.htile .fa{fill:var(--amber)}
+.htile .fs{fill:var(--line)}
+.htile .fi,.hg svg .fi,.hgicon .fi{fill:var(--ice)}
+.htile .vs{font:700 14px var(--font);fill:var(--slate)}
+@media (max-width:820px){.htiles{grid-template-columns:1fr}.htile.wide{flex-direction:column;align-items:flex-start}}
+
+/* tools */
+.hseg{margin:.7rem 0}
+.hseg .fl{display:block;margin-bottom:.35rem}
+.hseg .seg{display:flex;width:100%}
+.hseg .seg button{flex:1;padding:.42rem .5rem}
+.hpro-t{display:flex;align-items:center;gap:.8rem;margin:.9rem 0 .4rem;cursor:pointer;padding:.7rem .8rem;background:var(--white);border-radius:12px;border:1px solid var(--line)}
+.hpro-t input{position:absolute;opacity:0;width:1px;height:1px}
+.hpro-t .sw{flex:none;width:38px;height:22px;border-radius:999px;background:var(--line);position:relative;transition:background .2s}
+.hpro-t .sw::after{content:"";position:absolute;left:3px;top:3px;width:16px;height:16px;border-radius:50%;background:var(--white);transition:transform .2s;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.hpro-t input:checked + .sw{background:var(--blue)}
+.hpro-t input:checked + .sw::after{transform:translateX(16px)}
+.hpro-t input:focus-visible + .sw{outline:3px solid var(--blue);outline-offset:2px}
+.hpro-t b{display:block;font-size:.95rem}
+.hpro-t small{display:block;color:var(--slate);font-size:.8rem;line-height:1.3}
+.hrates{display:grid;gap:.4rem;margin-top:.7rem;max-height:320px;overflow:auto}
+.hrate{display:flex;gap:.6rem;align-items:flex-start;background:var(--white);border:1px solid var(--line);border-radius:10px;padding:.55rem .7rem;cursor:pointer;font-size:.88rem}
+.hrate:has(input:checked){border-color:var(--blue);box-shadow:0 0 0 2px var(--ice)}
+.hrate input{margin-top:.25rem;accent-color:var(--blue)}
+.hrate b{display:block;font-weight:650;line-height:1.3}
+.hrate small{display:block;color:var(--slate);font-size:.8rem;line-height:1.35}
+.hctl{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin:0 0 .8rem}
+.hctl .fi{width:auto}
+.hctl .fi select{padding:.4rem .6rem}
+.htl{width:100%;height:auto;display:block;overflow:visible}
+.htl .px{fill:var(--amber)}
+.htl .trk{fill:var(--mist)}
+.htl .chg.nw{fill:var(--slate)}
+.htl .chg.sm{fill:var(--blue)}
+.htl text{font-family:var(--font)}
+.htl .lab{fill:var(--ink);font-size:12.5px;font-weight:600}
+.htl .val{fill:var(--ink);font-size:12.5px;font-weight:700}
+.htl .axis{fill:var(--slate);font-size:11px}
+.hgrow{transform-box:fill-box;transform-origin:0 50%}
+.play .hgrow{animation:hgrow .7s cubic-bezier(.3,.6,.2,1) both;animation-delay:var(--d,0s)}
+@keyframes hgrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (prefers-reduced-motion: reduce){.play .hgrow{animation:none}}
+.hmonths{display:grid;grid-template-columns:repeat(12,1fr);gap:.4rem;height:140px;align-items:end}
+.hm{display:flex;flex-direction:column;align-items:center;height:100%;gap:.3rem}
+.hm .t{flex:1;width:100%;position:relative;display:block}
+.hm b{position:absolute;bottom:0;left:15%;right:15%;border-radius:5px 5px 2px 2px;transition:height .8s cubic-bezier(.2,.7,.2,1)}
+.hm b.nw{background:var(--line)}
+.hm b.sm{background:var(--blue);left:28%;right:28%}
+.hm small{font-size:.75rem;color:var(--slate)}
+/* install diagram */
+.hdiag{width:100%;height:auto;display:block;overflow:visible;margin-top:.4rem}
+.hdiag .ground{stroke:var(--line);stroke-width:2;fill:none}
+.hdiag .ln{fill:none;stroke:var(--ink);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.hdiag .lt{fill:none;stroke:var(--line);stroke-width:2}
+.hdiag .d{stroke-dasharray:1;stroke-dashoffset:0}
+.hdiag.play .d{stroke-dashoffset:1;animation:spotdraw 1.1s cubic-bezier(.3,.6,.2,1) forwards;animation-delay:var(--d,0s)}
+.hdiag .fade{opacity:1}
+.hdiag.play .fade{opacity:0;animation:spotfade .5s ease forwards;animation-delay:var(--d,0s)}
+.hdiag .joist{stroke:var(--line);stroke-width:6;stroke-dasharray:3 9;fill:none}
+.hdiag .dry{stroke:var(--line);stroke-width:5;fill:none}
+.hdiag .trench{stroke:var(--amber);stroke-width:10;opacity:.25;fill:none;stroke-linecap:round}
+.hdiag .drive{fill:var(--line)}
+.hdiag .pnl{fill:var(--white);stroke:var(--ink);stroke-width:2}
+.hdiag .chgr{fill:var(--white);stroke:var(--ink);stroke-width:2}
+.hdiag .led{fill:var(--blue)}
+.hdiag .wire{fill:none;stroke:var(--line);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.hdiag .wire-d{fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:0}
+.hdiag.play .wire-d{stroke-dashoffset:1;animation:spotdraw 1.4s cubic-bezier(.3,.6,.2,1) forwards .4s}
+.hdiag .wire-f{fill:none;stroke:var(--blue);stroke-width:3;stroke-linecap:round;stroke-dasharray:3 14;animation:spotflow 1.4s linear infinite}
+.hdiag .pill{fill:var(--mist);stroke:var(--line)}
+.hdiag text{font-family:var(--font)}
+.hdiag .tag{fill:var(--ink);font-size:13px;font-weight:650}
+.hdiag .lab{fill:var(--slate);font-size:11.5px}
+@media (prefers-reduced-motion: reduce){.hdiag.play .d,.hdiag.play .wire-d{animation:none;stroke-dashoffset:0}.hdiag.play .fade{animation:none;opacity:1}.hdiag .wire-f{animation:none}}
+.hgauge .t{position:relative;display:flex;height:22px;background:var(--mist);border-radius:999px;overflow:visible;margin:1.4rem 0 .6rem}
+.hgauge .t b{display:block;height:100%;transition:width .9s cubic-bezier(.2,.7,.2,1)}
+.hgauge .t b.a{background:var(--blue);border-radius:999px 0 0 999px}
+.hgauge .t b.n{background:var(--amber);border-radius:0 999px 999px 0}
+.hgauge .svc{position:absolute;top:-8px;bottom:-8px;width:0;border-left:2px dashed var(--ink)}
+.hgauge .svc span{position:absolute;bottom:100%;left:-2px;transform:translateX(-50%);font-size:.78rem;font-weight:650;white-space:nowrap;font-style:normal;padding-bottom:2px}
+.hgauge.over .t b.n{background:repeating-linear-gradient(45deg,var(--amber) 0 6px,var(--neg) 6px 12px)}
+.hopts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.8rem}
+.hopt{background:var(--mist);border-radius:var(--r-m);padding:1rem 1.1rem}
+.hopt b{display:block;font-size:1rem}
+.hopt .p{display:block;font-size:1.3rem;font-weight:680;letter-spacing:-.02em;margin:.2rem 0 .4rem;font-variant-numeric:tabular-nums}
+.hopt p{margin:0;font-size:.9rem;color:var(--slate)}
+.hpropanel{border-top:2px solid var(--blue);padding-top:1rem}
+.hpropanel th{text-align:left;font-weight:650;white-space:nowrap;vertical-align:top;padding-right:1rem}
+.hwork td:last-child{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.hwork tr.sub td{font-weight:700;border-top:1px solid var(--line)}
+/* backup */
+.hpresets{margin:.9rem 0 .2rem}
+.hpresets .fl{display:block;margin-bottom:.35rem}
+.hpresets .seg{display:flex}.hpresets .seg button{flex:1;padding:.42rem .4rem}
+.happs{display:grid;gap:.3rem;margin:.3rem 0}
+.happ{display:grid;grid-template-columns:auto 1fr auto;gap:.55rem;align-items:center;font-size:.88rem;padding:.4rem .55rem;border-radius:9px;background:var(--white);border:1px solid var(--line);cursor:pointer}
+.happ.on{border-color:var(--blue);box-shadow:0 0 0 2px var(--ice)}
+.happ input{accent-color:var(--blue);margin:0}
+.happ .w{color:var(--slate);font-size:.8rem;font-variant-numeric:tabular-nums;text-align:right}
+.happ .w em{font-style:normal;color:var(--amber)}
+.hdrain .area{fill:var(--band)}
+.hbt td,.hbt th{white-space:nowrap}
+.hbt td:first-child{white-space:normal}
+.hbt td:not(:first-child),.hbt th:not(:first-child){text-align:right;font-variant-numeric:tabular-nums}
+/* v2h compare */
+.hvhead{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:center;margin-bottom:1.2rem}
+.hvhead>div:not(.vs){background:var(--mist);border-radius:var(--r-m);padding:1rem 1.1rem}
+.hvhead small{display:block;color:var(--slate);font-size:.82rem}
+.hvhead b{display:block;font-size:1.15rem;letter-spacing:-.01em;margin:.1rem 0 .45rem;line-height:1.25}
+.hvhead .vs{font-weight:700;color:var(--slate)}
+.hvrows{display:grid;gap:.9rem}
+.hvrow{display:grid;grid-template-columns:minmax(8rem,12rem) 1fr 1fr;gap:1rem;align-items:center;font-size:.92rem}
+.hvrow.hvcols{font-size:.8rem;font-weight:650;color:var(--slate);text-transform:uppercase;letter-spacing:.05em}
+.hvrow .c{display:grid;gap:.25rem}
+.hvrow .t{display:block;height:10px;background:var(--mist);border-radius:999px;overflow:hidden}
+.hvrow .t b{display:block;height:100%;border-radius:999px;transition:width .9s cubic-bezier(.2,.7,.2,1)}
+.hvrow .t b.car{background:var(--blue)} .hvrow .t b.bat{background:var(--amber)}
+.hvrow .tw{font-weight:650;font-variant-numeric:tabular-nums}
+@media (max-width:560px){.hvrow{grid-template-columns:1fr 1fr}.hvrow .l{grid-column:1/-1}.hvhead{grid-template-columns:1fr}.hvhead .vs{display:none}}
+.hpcgrid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.6rem 0}
+.hpcgrid>div{background:var(--mist);border-radius:var(--r-m);padding:1rem 1.2rem}
+.hpcgrid h3{margin:0 0 .4rem;font-size:1rem}
+.hpcgrid ul{margin:0;padding-left:1.1rem;font-size:.95rem}
+.hpcgrid li{margin:.35rem 0}
+.hpro li::marker{color:var(--pos)} .hcon li::marker{color:var(--neg)}
+@media (max-width:640px){.hpcgrid{grid-template-columns:1fr}}
+/* gear */
+.hgear{padding-bottom:3rem}
+.hgtabs{margin:0 0 1.2rem;flex-wrap:wrap}
+.hgfilt{display:flex;flex-wrap:wrap;gap:.45rem;margin:0 0 .6rem}
+.toc-b{font:inherit;font-size:.85rem;padding:.38rem .85rem;border-radius:999px;background:var(--mist);color:var(--ink);border:0;cursor:pointer}
+.toc-b[aria-pressed="true"]{background:var(--ink);color:var(--white)}
+.hwcard.hg{color:var(--ink)}
+.hwcard.hg:hover{text-decoration:none;border-color:var(--blue)}
+.hwcard.hg svg{display:block;width:100%;height:120px;background:var(--mist);border-radius:8px;padding:.6rem;box-sizing:border-box;margin-bottom:.5rem}
+.hwcard.hg b{font-size:1.05rem}
+.hgfoot{margin-top:.4rem;font-weight:650;font-size:.92rem}
+.hgd{display:grid;grid-template-columns:minmax(0,260px) 1fr;gap:2rem;align-items:center;margin:1rem 0 2rem}
+.hgicon svg{display:block;width:100%;background:var(--mist);border-radius:14px;padding:1rem;box-sizing:border-box}
+.hgd h2{margin:.1rem 0 .6rem;font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-.02em}
+@media (max-width:700px){.hgd{grid-template-columns:1fr}.hgicon{max-width:220px}}
+.hgear table th{text-align:left;padding-right:1.2rem;white-space:nowrap;vertical-align:top}
+/* guide figures */
+.hn-row{display:grid;grid-template-columns:9rem 1fr 7rem;gap:1rem;align-items:center;margin:.7rem 0;font-size:.95rem}
+.hn-t{position:relative;display:block;height:14px;background:var(--white);border-radius:999px}
+.hn-t b{display:block;height:100%;background:var(--blue);border-radius:999px;transition:width .9s cubic-bezier(.2,.7,.2,1)}
+.hn-t b.a{background:var(--amber)}
+.hn-v{text-align:right;font-weight:680;font-variant-numeric:tabular-nums}
+.hn-c{position:absolute;top:-6px;bottom:-6px;border-left:2px dashed var(--ink)}
+.hn-c span{position:absolute;top:100%;left:0;transform:translateX(-50%);font-size:.75rem;font-style:normal;color:var(--slate);white-space:nowrap;padding-top:4px}
+.hn-clock{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;margin:1.8rem 0 .2rem 10rem;max-width:calc(100% - 18rem)}
+.hn-clock i{display:block;height:6px;border-radius:999px;background:var(--sky);opacity:0;animation:spotfade .3s ease forwards;animation-delay:calc(var(--i) * .08s)}
+@media (max-width:560px){.hn-row{grid-template-columns:1fr 5.5rem}.hn-t{grid-column:1/-1;grid-row:2}.hn-clock{margin-left:0;max-width:none}}
+.htou{width:100%;height:auto;display:block}
+.htou .op{fill:var(--sky);opacity:.55}
+.htou .pk{fill:var(--amber)}
+.htou .ch{fill:var(--blue)}
+.htou .axis{fill:var(--slate);font:11px var(--font)}
+.htap-loads{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.2rem}
+.htap-loads button{font:inherit;font-size:.86rem;font-weight:600;border:1px solid var(--line);background:var(--white);color:var(--ink);padding:.45rem .8rem;border-radius:12px;cursor:pointer;text-align:left;line-height:1.2}
+.htap-loads button small{display:block;font-weight:500;color:var(--slate);font-size:.75rem}
+.htap-loads button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+.htap-loads button[aria-pressed="true"] small{color:rgba(255,255,255,.8)}
+.htap-meters.trip .hn-t b{background:var(--neg)}
+.htap-meters.trip{animation:htrip .4s ease 2}
+@keyframes htrip{50%{transform:translateX(4px)}}
+@media (prefers-reduced-motion: reduce){.htap-meters.trip{animation:none}}
+.hdays-ctl{display:grid;grid-template-columns:1fr 1fr;gap:1rem 2rem;margin-top:1rem}
+.hdays-ctl label{display:grid;grid-template-columns:1fr auto;gap:.3rem .8rem;font-size:.9rem;align-items:center}
+.hdays-ctl input{grid-column:1/-1;accent-color:var(--blue);width:100%}
+.hdays-ctl output{font-weight:650;font-variant-numeric:tabular-nums}
+@media (max-width:560px){.hdays-ctl{grid-template-columns:1fr}}
+.hpc td:first-child{font-weight:650;white-space:nowrap}
+.nextpage .hnext2{margin-top:1.4rem}
+:root[data-theme="dark"] .sidesw a[aria-current="true"]{color:#0A1322}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .sidesw a[aria-current="true"]{color:#0A1322}}
+.hband{display:grid;grid-template-columns:1fr 280px;gap:3rem;align-items:center}
+.hband .lead{margin-bottom:1.6rem}
+.hband-art{width:100%;height:auto}
+.hband-art .ln{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.hband-art .lt{fill:none;stroke:var(--line);stroke-width:2}
+.hband-art .lb{fill:none;stroke:var(--blue);stroke-width:3;stroke-linecap:round;stroke-dasharray:3 10;animation:spotflow 1.4s linear infinite}
+.hband-art .fw{fill:var(--white)} .hband-art .fb{fill:var(--blue)}
+@media (max-width:760px){.hband{grid-template-columns:1fr}.hband-art{max-width:220px}}
+@media (prefers-reduced-motion: reduce){.hband-art .lb{animation:none}}
+@media (min-width:761px){.foot{grid-template-columns:1.2fr 1fr 1fr 1fr 1fr}}
+.foot p a{display:inline}
+.hdiag .carw{fill:var(--white)}
+.htap-loads button[aria-pressed="true"] small{color:#fff}
+:root[data-theme="dark"] .htap-loads button[aria-pressed="true"],:root[data-theme="dark"] .htap-loads button[aria-pressed="true"] small,:root[data-theme="dark"] .chip.g3{color:#0A1322}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .htap-loads button[aria-pressed="true"],:root:not([data-theme="light"]) .htap-loads button[aria-pressed="true"] small,:root:not([data-theme="light"]) .chip.g3{color:#0A1322}}
+.results .recs a,.results .fh a,.hgear .fh a{text-decoration:underline;text-underline-offset:.18em}
+/*/home-side*/
 </style>
 </head>
 <body>
@@ -917,10 +1157,11 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
       <span>The Charge Sheet</span><span class="by">by Aatish Patel</span>
     </a>
     <div class="gnav-r">
+    <!--home-side--><div class="sidesw" role="group" aria-label="Which kind of charging"><a class="sw-biz" href="#home">Business</a><a class="sw-home" href="#hhub">Home</a></div><!--/home-side-->
     <nav aria-label="Main">
-      <a id="gn-learn" href="#basics">Learn</a>
-      <a id="gn-data" href="#benchmarks">Benchmarks</a>
-      <a id="gn-tools" href="#planner">Tools</a>
+      <a id="gn-learn" class="side-b" href="#basics">Learn</a>
+      <a id="gn-data" class="side-b" href="#benchmarks">Benchmarks</a>
+      <a id="gn-tools" class="side-b" href="#planner">Tools</a><!--home-side--><a id="gn-hlearn" class="side-h" href="#hhub">Learn</a><a id="gn-htools" class="side-h" href="#hcharge">Tools</a><!--/home-side-->
       <a id="gn-blog" href="/blog/">Blog</a>
       <a id="gn-about" href="#about">About</a>
     </nav>
@@ -930,7 +1171,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
 </header>
 <div class="snav" id="snav" hidden>
   <div class="snav-in">
-    <span class="snav-t" id="snav-t"></span>
+    <!--home-side--><div class="sidesw" role="group" aria-label="Which kind of charging"><a class="sw-biz" href="#home">Business</a><a class="sw-home" href="#hhub">Home</a></div><!--/home-side--><span class="snav-t" id="snav-t"></span>
     <nav class="snav-links" id="snav-links" aria-label="In this section"></nav>
   </div>
 </div>
@@ -1060,7 +1301,18 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
     </div>
   </div>
 
-<!--BLOG_LATEST-->
+<!--home-side-->
+  <div class="band"><div class="wrap">
+    <div class="hband">
+      <div>
+        <h2>Charging at home? There's a whole other side.</h2>
+        <p class="lead">Level 1 or Level 2, what your panel can take, time-of-use rates, home batteries, and cars that can run the house. Same honesty, smaller electrical bill.</p>
+        <p><a class="btn primary" href="#hhub">Go to the home side</a> <a class="btn" href="#hcharge">Charging cost calculator</a></p>
+      </div>
+      <svg viewBox="0 0 260 170" aria-hidden="true" class="hband-art"><path class="ln" d="M20,150 V70 L90,26 L160,70 V150"/><path class="ln" d="M160,150 V84 H240 V150"/><path class="lt" d="M10,150 H250"/><rect class="ln fw" x="120" y="96" width="14" height="22" rx="2"/><path class="lb flow" d="M134,106 H200"/><rect class="ln fw" x="200" y="96" width="14" height="24" rx="4"/><circle class="fb" cx="207" cy="104" r="2"/><rect class="ln fw" x="36" y="96" width="30" height="24" rx="3"/></svg>
+    </div>
+  </div></div>
+<!--/home-side--><!--BLOG_LATEST-->
 </section>
 
 <!-- ABOUT -->
@@ -2533,12 +2785,643 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
     </ul>
   </article>
 </section>
+<!--home-side-->
+<!-- HOME SIDE: HUB -->
+<section id="view-hhub" hidden>
+  <div class="hhero">
+    <p class="hkick">The Charge Sheet, at home <span class="hprev" data-hprev>Preview</span></p>
+    <h1>Your garage is about to become a small power company.</h1>
+    <p>Charging at home, batteries, and cars that can run the house. What it costs, what it needs from your panel, and what the brochure left out. Free tools, no sales pitch, and nobody will call you.</p>
+    <div class="cta"><a class="btn primary" href="#hbasics">Start with charging</a><a class="btn" href="#hcharge">Run your numbers</a></div>
+  </div>
+  <div class="spot hhouse" aria-hidden="true">
+    <svg viewBox="0 0 1000 380" focusable="false">
+      <path class="lt" d="M20,340 H980"/>
+      <!-- sun and panels -->
+      <g class="hh-sun"><circle class="ln" cx="880" cy="62" r="20"/><path class="la" d="M880,26 V34 M880,90 V98 M844,62 H852 M908,62 H916 M855,37 L861,43 M899,81 L905,87 M855,87 L861,81 M899,43 L905,37"/></g>
+      <!-- house -->
+      <path class="ln d" pathLength="1" d="M120,340 V170 L300,60 L480,170 V340" style="--d:0s"/>
+      <path class="ln d" pathLength="1" d="M96,184 L300,52 L504,184" style="--d:.2s"/>
+      <g class="fade" style="--d:1.2s"><path class="fi" d="M336,82 L417,131.5 L423,121.3 L342,71.8 Z"/><path class="lb" d="M336,82 L417,131.5 L423,121.3 L342,71.8 Z M356,94.2 L362,84 M376,106.4 L382,96.2 M396,118.6 L402,108.4"/></g>
+      <rect class="ln fw d" pathLength="1" x="160" y="210" width="70" height="56" rx="4" style="--d:.4s"/>
+      <path class="lt" d="M195,210 V266 M160,238 H230"/>
+      <rect class="ln d" pathLength="1" x="270" y="250" width="44" height="90" rx="3" style="--d:.5s"/>
+      <!-- panel inside -->
+      <rect class="ln fw fade" x="400" y="214" width="40" height="60" rx="4" style="--d:.8s"/>
+      <path class="lt fade" d="M408,226 H432 M408,236 H432 M408,246 H432 M408,256 H432" style="--d:.9s"/>
+      <text x="420" y="292" text-anchor="middle" class="fade" style="--d:1s">Panel</text>
+      <!-- garage -->
+      <path class="ln d" pathLength="1" d="M480,190 H760 V340" style="--d:.6s"/>
+      <path class="lt" d="M500,190 L760,190"/>
+      <!-- wire from panel to charger -->
+      <path class="lt" d="M440,236 H520 V270 H620"/>
+      <path class="lb flow" d="M440,236 H520 V270 H620"/>
+      <!-- charger -->
+      <rect class="ln fw fade" x="620" y="244" width="30" height="50" rx="7" style="--d:1s"/>
+      <circle class="fb fade" cx="635" cy="262" r="3.5" style="--d:1.2s"/>
+      <path class="ln" d="M635,294 C635,318 616,318 598,312"/>
+      <!-- car in garage -->
+      <g class="hh-car"><path class="ln" d="M500,332 V318 Q503,306 520,304 L548,292 Q556,288 568,288 H612 Q626,288 632,298 L642,306 Q654,308 656,318 V332 Z"/><circle class="ln fw" cx="532" cy="334" r="11"/><circle class="ln fw" cx="620" cy="334" r="11"/>
+        <rect class="fs" x="560" y="310" width="50" height="8" rx="4"/><rect class="fb hh-soc" x="560" y="310" width="50" height="8" rx="4"/></g>
+      <!-- battery on the wall -->
+      <rect class="ln fw fade" x="690" y="236" width="44" height="72" rx="8" style="--d:1.1s"/>
+      <rect class="fb hh-batt" x="698" y="250" width="28" height="48" rx="4"/>
+      <text x="712" y="326" text-anchor="middle" class="fade" style="--d:1.3s">Battery</text>
+      <!-- grid -->
+      <path class="ln d" pathLength="1" d="M860,340 L878,170 L896,340 M850,190 H906 M856,220 H900" style="--d:.3s"/>
+      <path class="lt" d="M878,172 C700,150 560,120 480,176"/>
+      <path class="la flow" d="M878,172 C700,150 560,120 480,176"/>
+      <text x="878" y="360" text-anchor="middle">Grid</text>
+      <!-- V2H return path -->
+      <path class="lb dash hh-v2h" d="M598,312 C570,300 530,300 520,280"/>
+      <text x="560" y="372" text-anchor="middle" class="b hh-v2h-t">...and back again, if the car can</text>
+    </svg>
+  </div>
+  <div class="band"><div class="wrap">
+    <h2>Four things to read.</h2>
+    <p class="lead">In order, or not. Each one ends with a tool that runs the numbers for your house.</p>
+    <ol class="path">
+      <li><a href="#hbasics"><span class="pn">01</span><span><span class="pt">Charging at home</span><span class="pd">Level 1 or Level 2, plug in or hardwire, a cord or a wall box, and why the car gets a vote.</span></span><span class="pm">8 min</span></a></li>
+      <li><a href="#hcost"><span class="pn">02</span><span><span class="pt">What it costs</span><span class="pd">Your rate, time of use, EV plans, and the 4pm trap your utility set for you.</span></span><span class="pm">7 min</span></a></li>
+      <li><a href="#hbattery"><span class="pn">03</span><span><span class="pt">Home batteries</span><span class="pd">What a battery does, what it doesn't, and why kilowatts and kilowatt-hours are not the same thing.</span></span><span class="pm">8 min</span></a></li>
+      <li><a href="#hvtoh"><span class="pn">04</span><span><span class="pt">Your car as a battery</span><span class="pd">V2L, V2H and V2G, which cars can actually do it today, and the catch nobody mentions.</span></span><span class="pm">7 min</span></a></li>
+    </ol>
+  </div></div>
+  <div class="band mist"><div class="wrap">
+    <h2>Four tools, and a shelf of gear.</h2>
+    <p class="lead">Built for homeowners, with a pro mode for the electrician who has to make it pass inspection.</p>
+    <div class="htiles">
+      <a class="htile" href="#hcharge"><svg viewBox="0 0 120 70" aria-hidden="true"><path class="lt" d="M6,58 H114"/><rect class="fs" x="10" y="36" width="20" height="22" rx="2"/><rect class="fs" x="34" y="36" width="20" height="22" rx="2"/><rect class="fa" x="58" y="18" width="20" height="40" rx="2"/><rect class="fb" x="82" y="44" width="20" height="14" rx="2"/><path class="ln" d="M84,30 l6,-8 l6,8"/></svg><h3>Charging cost and schedule</h3><p>Your car, your rate, your plug-in time. Finds the cheapest hours and what it costs a year.</p><span class="go">Open the calculator</span></a>
+      <a class="htile" href="#hinstall"><svg viewBox="0 0 120 70" aria-hidden="true"><rect class="ln fw" x="10" y="14" width="22" height="34" rx="3"/><path class="lt" d="M15,22 H27 M15,28 H27 M15,34 H27"/><path class="lb" d="M32,30 H70 V44 H90"/><rect class="ln fw" x="90" y="32" width="16" height="26" rx="4"/><path class="la dash" d="M32,62 H106"/></svg><h3>Install estimator</h3><p>Panel size, free spaces, distance and route. Checks the load math and prices the fixes.</p><span class="go">Estimate an install</span></a>
+      <a class="htile" href="#hbackup"><svg viewBox="0 0 120 70" aria-hidden="true"><rect class="ln fw" x="12" y="12" width="30" height="48" rx="6"/><rect class="fb" x="18" y="30" width="18" height="24" rx="3"/><path class="ln" d="M60,56 V30 L78,18 L96,30 V56 Z"/><rect class="fa" x="72" y="40" width="12" height="16"/></svg><h3>Backup sizer</h3><p>Pick what has to stay on. Get the power, the surge and the kilowatt-hours, then the batteries that fit.</p><span class="go">Size a battery</span></a>
+      <a class="htile" href="#hvcompare"><svg viewBox="0 0 120 70" aria-hidden="true"><path class="ln" d="M8,50 V42 Q10,36 18,35 L28,30 Q31,28 36,28 H52 Q58,28 60,33 L64,37 Q70,38 70,44 V50 Z"/><circle class="ln fw" cx="22" cy="51" r="5"/><circle class="ln fw" cx="56" cy="51" r="5"/><text x="80" y="46" class="vs">vs</text><rect class="ln fw" x="96" y="18" width="18" height="36" rx="4"/><rect class="fb" x="100" y="28" width="10" height="22" rx="2"/></svg><h3>V2H vs a home battery</h3><p>Pick a bidirectional car, keep enough to drive, and see how it stacks up against a Powerwall.</p><span class="go">Compare them</span></a>
+      <a class="htile wide" href="#hgear"><svg viewBox="0 0 220 70" aria-hidden="true"><rect class="ln fw" x="14" y="12" width="26" height="44" rx="6"/><circle class="fb" cx="27" cy="26" r="3"/><rect class="ln fw" x="70" y="10" width="34" height="50" rx="7"/><rect class="fb" x="78" y="26" width="18" height="28" rx="3"/><path class="ln" d="M130,52 V42 Q133,34 144,33 L158,26 Q163,24 170,24 H192 Q200,24 204,31 L208,36 Q214,37 214,44 V52 Z"/><circle class="ln fw" cx="150" cy="53" r="6"/><circle class="ln fw" cx="198" cy="53" r="6"/></svg><div><h3>The gear</h3><p>Home chargers, home batteries and every US car that can send power back, with honest notes on which ones actually can today.</p><span class="go">Browse the shelves</span></div></a>
+    </div>
+  </div></div>
+</section>
+<!-- HOME SIDE: CHARGING AT HOME -->
+<section id="view-hbasics" class="read" hidden>
+  <div class="tool-head">
+    <h1>Charging an EV at home</h1>
+    <p>Most EV charging happens in a garage, overnight, while nobody is looking. It is the cheapest and least dramatic fuel you will ever buy, as long as nobody talks you into a service upgrade you didn't need.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>By <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
+    <div class="spot" aria-hidden="true"><svg viewBox="0 0 720 150" focusable="false">
+      <path class="lt" d="M20,134 H700"/>
+      <path class="ln d" pathLength="1" d="M60,134 V46 H250 V134" style="--d:0s"/>
+      <path class="lt" d="M60,60 H250"/>
+      <rect class="ln fw d" pathLength="1" x="76" y="70" width="26" height="36" rx="3" style="--d:.2s"/>
+      <path class="lt" d="M81,78 H97 M81,86 H97 M81,94 H97"/>
+      <text x="89" y="124" text-anchor="middle">Panel</text>
+      <path class="lt" d="M102,86 H200"/><path class="lb flow" d="M102,86 H200"/>
+      <rect class="ln fw d" pathLength="1" x="200" y="70" width="24" height="40" rx="6" style="--d:.4s"/>
+      <circle class="fb fade" cx="212" cy="84" r="3" style="--d:1s"/>
+      <path class="ln" d="M212,110 C212,128 250,128 290,116"/>
+      <g class="fade" style="--d:.6s"><path class="ln" d="M280,134 V118 Q284,106 300,104 L330,92 Q338,88 350,88 H402 Q416,88 424,100 L436,108 Q450,110 452,120 V134 Z"/><circle class="ln fw" cx="316" cy="136" r="11"/><circle class="ln fw" cx="414" cy="136" r="11"/></g>
+      <rect class="fs" x="340" y="112" width="70" height="8" rx="4"/><rect class="fb growx" x="340" y="112" width="70" height="8" rx="4" style="--d:1.2s"/>
+      <text x="484" y="106" class="b fade" style="--d:1.4s">Level 2: about 25 miles an hour</text>
+      <text x="484" y="128" class="fade" style="--d:1.6s">Level 1: about 4</text>
+      <g class="ping"><circle class="lb" cx="520" cy="44" r="8"/></g>
+      <path class="ln d" pathLength="1" d="M504,44 A16,16 0 1 0 536,44 A16,16 0 1 0 504,44 M520,32 V44 L528,50" style="--d:.8s"/>
+      <text x="548" y="48">Overnight</text>
+    </svg></div>
+  </div>
+  <article class="prose">
+    <ul class="toc" aria-label="On this page">
+      <li><a href="#h-b-short">The short version</a></li><li><a href="#h-b-l1">Level 1</a></li><li><a href="#h-b-l2">Level 2</a></li>
+      <li><a href="#h-b-car">The car has a say</a></li><li><a href="#h-b-plug">Plug in or hardwire</a></li><li><a href="#h-b-cord">Cord or wall box</a></li>
+      <li><a href="#h-b-smart">Smart features</a></li><li><a href="#h-b-nacs">Plugs</a></li><li><a href="#h-b-where">Where it goes</a></li>
+    </ul>
+    <h2 id="h-b-short">The short version</h2>
+    <ul>
+      <li>Most households want a 240 volt circuit and a charger set somewhere between 32 and 48 amps. That refills a normal day of driving in two or three hours.</li>
+      <li>A plain wall outlet, called Level 1, is enough for more people than the internet admits. Plug-in hybrids especially.</li>
+      <li>The charger is the cheap part. The wire, the panel and the electrician are where the money goes.</li>
+      <li>The car decides the top speed, not the box on the wall. A 48 amp charger will not make a car with a 7 kW onboard charger go any faster.</li>
+      <li>If your panel looks full, don't panic yet. There are cheaper fixes than a new service, and the <a href="#hinstall">install estimator</a> prices them.</li>
+    </ul>
+
+    <h2 id="h-b-l1">Level 1: the outlet you already have</h2>
+    <p>A normal 120 volt outlet and the cord that came with the car. It pulls 12 amps, which is about 1.4 kW, and adds roughly four miles of range an hour. That sounds pathetic until you remember the car sits in the garage for thirteen hours a night. Plugged in from 6pm to 7am, that's about fifty miles. The average American drives about 37 a day.</p>
+    <ul>
+      <li>It costs nothing, if the outlet is already there.</li>
+      <li>It's fine for plug-in hybrids, short commutes, and anyone who works from home and mostly drives to lunch.</li>
+      <li>It falls behind in a cold winter, on a long commute, or after a road trip, when you arrive home with nothing left and want it back by morning.</li>
+      <li>Use an outlet on its own circuit if you can. Twelve amps for thirteen hours is a real test for a tired old receptacle that shares a circuit with the freezer. If the plug is warm to the touch, stop and have the outlet replaced.</li>
+    </ul>
+  </article>
+  <div class="fig" id="h-fig-night"><div class="fig-in">
+    <div class="fig-top"><h3>Plugged in from 7pm to 7am</h3>
+      <div class="seg" role="group" aria-label="Charging level" id="h-night-seg">
+        <button type="button" data-a="12v" aria-pressed="false">Level 1</button><button type="button" data-a="16" aria-pressed="false">16 A</button><button type="button" data-a="32" aria-pressed="true">32 A</button><button type="button" data-a="48" aria-pressed="false">48 A</button>
+      </div></div>
+    <div class="hnight" id="h-night" aria-live="polite"></div>
+    <p class="fig-cap" id="h-night-cap"></p>
+  </div></div>
+  <article class="prose">
+    <h2 id="h-b-l2">Level 2: 240 volts, the proper stuff</h2>
+    <p>The same voltage as an electric dryer, on a dedicated circuit. The charger's current setting decides the speed. The breaker has to be 25% bigger than the charger, because a car charging for hours is what the electrical code calls a continuous load, and continuous loads get headroom.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Charger setting</th><th>Breaker</th><th>Power</th><th>Range added per hour</th></tr></thead>
+      <tbody>
+        <tr><td>16 A</td><td>20 A</td><td>3.8 kW</td><td>about 11 miles</td></tr>
+        <tr><td>24 A</td><td>30 A</td><td>5.8 kW</td><td>about 17 miles</td></tr>
+        <tr><td>32 A</td><td>40 A</td><td>7.7 kW</td><td>about 23 miles</td></tr>
+        <tr><td>40 A</td><td>50 A</td><td>9.6 kW</td><td>about 29 miles</td></tr>
+        <tr><td>48 A</td><td>60 A</td><td>11.5 kW</td><td>about 34 miles</td></tr>
+        <tr><td>80 A</td><td>100 A</td><td>19.2 kW</td><td>about 57 miles</td></tr>
+      </tbody>
+    </table></div>
+    <p class="fh">Range assumes 3.3 miles per kWh and 90% of the power making it into the battery. A pickup truck gets a lot less. Apartments and some condos run on 208 volts, which is about 13% slower at the same amps.</p>
+    <p>More amps isn't automatically better. A 48 amp charger needs a 60 amp circuit and thicker wire, and on a busy 100 amp panel it may not fit at all. If the car sleeps at home for ten hours, 32 amps refills a 100 mile day with hours to spare.</p>
+
+    <h2 id="h-b-car">The car has a say</h2>
+    <p>Home charging is AC. The car turns it into DC with its onboard charger, and that box has a size. Most EVs top out around 11 kW, which is 48 amps. Some trucks go to 19.2 kW. Older and cheaper cars stop at 6.6 or 7.2 kW, and plug-in hybrids often at 3.3. You get the smaller of the charger and the car, so check the car before you pay for amps it can't use.</p>
+    <p>Then there's the last bit of the battery. Charging slows as it gets full, and most manufacturers suggest stopping at 80% for everyday driving. Cars with LFP batteries are the exception: Tesla, for one, tells LFP owners to charge to 100% at least weekly. Your owner's manual knows which you have.</p>
+
+    <h2 id="h-b-plug">Plug in, or hardwire</h2>
+    <p>A wall box can plug into a NEMA 14-50 outlet, the big one an electric range uses, or be wired straight to the circuit. It sounds like a detail. It decides your top speed, your breaker, and whether you wake up to a full car.</p>
+    <div class="scroll"><table class="hpc">
+      <thead><tr><th></th><th>Plugged into a 14-50</th><th>Hardwired</th></tr></thead>
+      <tbody>
+        <tr><td>Top speed</td><td>40 A. A 50 A outlet can only carry 40 A of continuous load, and there's no common 60 A outlet.</td><td>48 A, or 80 A with the right charger and car.</td></tr>
+        <tr><td>Breaker</td><td>A GFCI breaker, required for EV outlets. Around $100 to $150.</td><td>A normal breaker. The charger has ground-fault protection built in.</td></tr>
+        <tr><td>Nuisance trips</td><td>Can happen. The breaker and the charger both watch for ground faults and sometimes disagree, usually at 2am.</td><td>Rare.</td></tr>
+        <tr><td>Moving house</td><td>Unplug it and take it.</td><td>An electrician takes it off the wall.</td></tr>
+        <tr><td>Weak point</td><td>The outlet. Cheap ones overheat under hours of heavy load.</td><td>Fewer connections to loosen and heat up.</td></tr>
+        <tr><td>Outdoors</td><td>Needs an in-use weatherproof cover and a GFCI.</td><td>Better. Fewer things for rain to find.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note"><p><strong>About that outlet.</strong> A $12 hardware-store 14-50 is built for an oven that's plugged in once and forgotten, not a car that pulls 40 amps for six hours every night and gets unplugged every morning. Use an industrial-grade receptacle, Hubbell or Bryant, about $70, and have it torqued to spec. Nearly every melted-outlet photo on the forums starts with a cheap receptacle.</p></div>
+    <p>The rule of thumb: if you want 48 amps, or it's going outside, hardwire it. If it's a 40 amp charger in a garage and you might move, a plug is fine. Just buy the good outlet.</p>
+
+    <h2 id="h-b-cord">A cord, or a wall box</h2>
+    <p>Many EVs come with a mobile connector, or offer one: a cable with a control box that plugs into a 120 or 240 volt outlet. Plenty of owners never buy anything else.</p>
+    <div class="scroll"><table class="hpc">
+      <thead><tr><th></th><th>Mobile cord</th><th>Wall box</th></tr></thead>
+      <tbody>
+        <tr><td>Speed</td><td>Usually 32 A on a 14-50, about 23 miles an hour</td><td>Up to 48 A, or 80 A on some</td></tr>
+        <tr><td>Price</td><td>$250 to $520, often included</td><td>$300 to $650, plus a bit more to install</td></tr>
+        <tr><td>Install</td><td>An outlet</td><td>An outlet or hardwired</td></tr>
+        <tr><td>Road trips</td><td>Comes with you, with adapters for other outlets</td><td>Stays on the wall</td></tr>
+        <tr><td>Smart features</td><td>None. The car does the scheduling.</td><td>Apps, power sharing, load management on some</td></tr>
+        <tr><td>Daily life</td><td>Lives coiled on the floor unless you buy a holster</td><td>Hangs on the wall, cable on a hook</td></tr>
+      </tbody>
+    </table></div>
+    <p>A mobile cord on a 14-50 adds around 23 miles an hour, which covers most people. If you use it every night, buy a second one for the car, so the home one never leaves the wall.</p>
+
+    <h2 id="h-b-smart">Smart features worth paying for</h2>
+    <ul>
+      <li><strong>Load management.</strong> Worth real money if your panel is full. A charger that watches the whole house and backs off when the oven and the dryer are running can save you a service upgrade. More on that in the <a href="#hinstall">install estimator</a>.</li>
+      <li><strong>Power sharing.</strong> Two EVs on one circuit, splitting it between them. Cheaper than two circuits.</li>
+      <li><strong>Utility programs.</strong> Some utilities pay rebates or bill credits if the charger or the car reports in and lets them nudge the timing.</li>
+      <li><strong>Scheduling.</strong> Useful, but your car almost certainly does it for free.</li>
+      <li><strong>An app that tells you it's charging.</strong> So does the car.</li>
+    </ul>
+    <div class="note"><p><strong>A cautionary tale.</strong> In October 2024 the company behind JuiceBox pulled out of the US and switched off its app and cloud. Thousands of smart chargers became dumb ones overnight. They still charge, which is the point: buy something that keeps working if the company that made it doesn't.</p></div>
+
+    <h2 id="h-b-nacs">Plugs: NACS and J1772</h2>
+    <p>Since 2025 most carmakers have switched to Tesla's plug, now standardized as SAE J3400 and usually called NACS. Older non-Tesla cars use J1772. Most home chargers come in either flavor, adapters work fine for AC charging at home, and the Tesla Universal Wall Connector has both built in. Buy the plug that suits the car you'll own next, not just the one you own now.</p>
+
+    <h2 id="h-b-where">Where it goes</h2>
+    <ul>
+      <li>Measure from the car's charge port to the wall, then add a few feet. Cables run 18 to 25 feet. Check which corner the port is on, and where it might be on the next car.</li>
+      <li>Close to the panel is cheaper, and the route matters more than the distance. Twenty feet along an open garage wall is cheap. Twenty feet fished through a finished living room is not.</li>
+      <li>Outside needs a weather-rated unit, a proper cover, and somewhere to hang the cable so nobody drives over it.</li>
+      <li>Renters and condo owners: a number of states have right-to-charge laws that stop a landlord or HOA from unreasonably refusing a charger. The details vary a lot by state, so look up yours before the first conversation.</li>
+    </ul>
+    <p>Next, the money. What you pay per kWh depends less on how much you charge than on when.</p>
+  </article>
+</section>
+<!-- HOME SIDE: WHAT IT COSTS -->
+<section id="view-hcost" class="read" hidden>
+  <div class="tool-head">
+    <h1>What charging at home really costs</h1>
+    <p>It's cheaper than gas almost everywhere. How much cheaper depends on when you plug in, and your utility would very much prefer you didn't do it at six o'clock.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>By <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
+    <div class="spot" aria-hidden="true"><svg viewBox="0 0 720 150" focusable="false">
+      <path class="lt" d="M40,120 H680"/>
+      <rect class="fb grow" x="44" y="96" width="92" height="24" rx="3" style="--d:.1s"/>
+      <rect class="fb grow" x="140" y="100" width="92" height="20" rx="3" style="--d:.2s"/>
+      <rect class="fi grow" x="236" y="80" width="92" height="40" rx="3" style="--d:.3s"/>
+      <rect class="fi grow" x="332" y="72" width="92" height="48" rx="3" style="--d:.4s"/>
+      <rect class="fa grow" x="428" y="30" width="92" height="90" rx="3" style="--d:.5s"/>
+      <rect class="fi grow" x="524" y="70" width="92" height="50" rx="3" style="--d:.6s"/>
+      <rect class="fb grow" x="620" y="92" width="56" height="28" rx="3" style="--d:.7s"/>
+      <text x="44" y="140">Midnight</text><text x="428" y="140">4pm to 9pm</text><text x="676" y="140" text-anchor="end">Midnight</text>
+      <text x="474" y="22" text-anchor="middle" class="a fade" style="--d:1.2s">Everyone else is home</text>
+      <text x="90" y="86" text-anchor="middle" class="b fade" style="--d:1.4s">Your car is</text>
+      <path class="lb d" pathLength="1" d="M90,92 V94" style="--d:1.4s"/>
+    </svg></div>
+  </div>
+  <article class="prose">
+    <ul class="toc" aria-label="On this page">
+      <li><a href="#h-c-math">The math</a></li><li><a href="#h-c-bill">What's on the bill</a></li><li><a href="#h-c-tou">Time of use</a></li>
+      <li><a href="#h-c-ev">EV rate plans</a></li><li><a href="#h-c-vs">Versus gas and public charging</a></li><li><a href="#h-c-solar">Solar</a></li><li><a href="#h-c-inc">Incentives</a></li>
+    </ul>
+    <h2 id="h-c-math">The math</h2>
+    <p>Four numbers: how far you drive, how far the car goes on a kWh, how much gets lost on the way in, and what you pay per kWh.</p>
+    <div class="note"><p><strong>Cost per month = miles ÷ miles per kWh ÷ charging efficiency × price per kWh.</strong></p><p>For example: 1,000 miles, at 3.5 miles per kWh, is 286 kWh in the battery. Charging loses about 10% on Level 2, so 317 kWh from the wall. At 18 cents that's about $57. The national average residential price was 18.3 cents in July 2026, per the EIA, and your own rate is the only one that matters.</p></div>
+    <p>Miles per kWh ranges from about 4 for an efficient sedan to under 2 for a big electric pickup. Winter cuts it by a fifth or more, because the heater runs on the same battery. Level 1 loses more on the way in than Level 2, closer to 15 to 20%, because the car's electronics stay awake for longer.</p>
+
+    <h2 id="h-c-bill">What's actually on your bill</h2>
+    <ul>
+      <li><strong>Energy.</strong> Priced per kWh. On many bills it's split into supply, which is the electricity, and delivery, which is the wires. Charging pays both.</li>
+      <li><strong>Tiers.</strong> Some utilities charge more once you pass a monthly baseline. An EV can push you into the expensive tier, and then every kWh the house uses costs more, not just the car's.</li>
+      <li><strong>A fixed charge.</strong> A flat monthly fee for being connected. Charging doesn't change it. Some utilities have raised these a lot recently, which makes each kWh look cheaper while the bill doesn't.</li>
+      <li><strong>Time of use.</strong> The price per kWh changes with the hour. This is where the money is.</li>
+    </ul>
+    <p>Homes almost never pay demand charges, the per-kW fees that wreck commercial charging sites. If yours does, you're on an unusual rate, and the <a href="#primer">business guide</a> explains why that should worry you.</p>
+
+    <h2 id="h-c-tou">Time of use, and the 4pm trap</h2>
+    <p>The grid is busiest in the late afternoon and early evening, when people get home, cook, and turn on the air. Power is expensive to supply then, so a time-of-use rate charges more for it. Everywhere else, and especially overnight, it's cheap.</p>
+  </article>
+  <div class="fig" id="h-fig-tou"><div class="fig-in">
+    <div class="fig-top"><h3>One summer weekday on a time-of-use rate</h3>
+      <div class="seg" role="group" aria-label="When you charge" id="h-tou-seg">
+        <button type="button" data-m="now" aria-pressed="true">Plug in and go</button><button type="button" data-m="smart" aria-pressed="false">Scheduled</button>
+      </div></div>
+    <div id="h-tou" aria-live="polite"></div>
+    <p class="fig-cap" id="h-tou-cap"></p>
+  </div></div>
+  <article class="prose">
+    <p>The trap: most people get home around 5:30, plug in, and the car starts charging straight into the most expensive hours of the day. On a rate like the one above, that can more than double the cost of the same kWh. The fix costs nothing. Tell the car, or the charger, to start after the peak ends, or to finish by the time you leave.</p>
+    <ul>
+      <li><strong>Peak windows vary.</strong> 4 to 9pm is common in California. Others run 2 to 7pm, 5 to 9pm, or only on summer weekdays. Read yours off the rate sheet, not a blog.</li>
+      <li><strong>Weekends are often all off-peak.</strong> Check before you plan around it.</li>
+      <li><strong>Some plans have a super off-peak.</strong> Midnight to 6am, or the middle of a sunny day where there's a lot of solar. These are the cheapest kWh you can buy.</li>
+      <li><strong>Time of use is whole-house on most plans.</strong> Running the dryer at 6pm costs more too. Most households shift easily. Some don't, and should stay where they are.</li>
+    </ul>
+
+    <h2 id="h-c-ev">EV rate plans</h2>
+    <p>Many utilities offer a plan built for EV owners: a very cheap overnight price in exchange for an expensive peak. A few examples, as of 2026:</p>
+    <ul>
+      <li><strong>PG&amp;E EV2-A</strong> (Northern California): off-peak from midnight to 3pm at about 23 cents, peak 4 to 9pm at 41 to 54 cents.</li>
+      <li><strong>SDG&amp;E EV-TOU-5</strong> (San Diego): super off-peak around 13 cents overnight and late morning, peak around 80 cents.</li>
+      <li><strong>Georgia Power Overnight Advantage</strong>: 11pm to 7am at about 2 cents per kWh of energy, with a steep summer afternoon peak.</li>
+      <li><strong>ComEd Residential Time of Day</strong> (northern Illinois): overnight all-in around 6 cents against about 28 cents in the summer afternoon peak.</li>
+      <li><strong>Texas "free nights" plans</strong> from retail providers: the energy is free overnight, but delivery charges still apply, and some plans exclude homes with EVs, solar or batteries. Read the fact sheet.</li>
+    </ul>
+    <p>Some plans require a second meter just for the charger. That can cost more to install than it saves unless you drive a lot. Most don't, and price the whole house instead.</p>
+    <p>Rates change every year. The <a href="#hcharge">charging calculator</a> can look up your utility's current plans by ZIP code and find the cheapest hours for your car.</p>
+
+    <h2 id="h-c-vs">Versus gas, and versus public charging</h2>
+    <p>Gas: divide the price per gallon by the car's miles per gallon to get cost per mile. At $4.40 a gallon and 28 mpg, that's about 16 cents a mile. For an EV, divide the price per kWh by miles per kWh, then allow for charging losses: at 18 cents and 3.5 miles per kWh, about 6 cents a mile. On a cheap overnight rate, less than that.</p>
+    <p>Public DC fast charging usually runs 40 to 60 cents per kWh, because the station owner is paying for a very expensive charger, a demand charge, and a parking space. That's more per mile than charging at home, and sometimes more than gas. Fast charging is for road trips. Home is for living.</p>
+    <p>The calculator runs this comparison for your car, your rate, and today's gas price, so we don't have to pretend one example fits everybody.</p>
+
+    <h2 id="h-c-solar">Solar changes the timing</h2>
+    <p>If you have solar, the cheapest kWh is the one your roof makes while the car is home. That's easy for anyone who works from home and awkward for anyone whose car is at the office all day. Under net billing rules like California's, exporting solar at midday earns much less than it costs to buy power back at night, which is why people add batteries, or cars that can act like one. The <a href="#hbattery">batteries guide</a> covers that.</p>
+
+    <h2 id="h-c-inc">Incentives</h2>
+    <ul>
+      <li>The federal 30C credit for home chargers ended for chargers placed in service after June 30, 2026.</li>
+      <li>Many utilities still pay rebates for a charger or the wiring, sometimes several hundred dollars, sometimes more for a panel upgrade. Some require a qualified charger or an EV rate. Check before you buy, because most won't pay retroactively.</li>
+      <li>Some states and cities add their own. The list changes too often to publish here, so ask your utility first, then your state energy office.</li>
+    </ul>
+    <p>This is general information, not financial or tax advice.</p>
+  </article>
+</section>
+<!-- HOME SIDE: HOME BATTERIES -->
+<section id="view-hbattery" class="read" hidden>
+  <div class="tool-head">
+    <h1>Home batteries: what they do, and what they don't</h1>
+    <p>A home battery is a very good way to keep the fridge, the internet and the furnace running through an outage. It is a very expensive way to run central air for a week. Most disappointment comes from confusing the two.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>By <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
+    <div class="spot" aria-hidden="true"><svg viewBox="0 0 720 150" focusable="false">
+      <path class="lt" d="M20,134 H700"/>
+      <path class="ln d" pathLength="1" d="M60,134 V62 L150,20 L240,62 V134" style="--d:0s"/>
+      <rect class="ln fw d" pathLength="1" x="98" y="80" width="30" height="24" rx="3" style="--d:.2s"/>
+      <rect class="fa fade" x="102" y="84" width="22" height="16" rx="2" style="--d:1.4s"/>
+      <path class="ln d" pathLength="1" d="M300,40 L350,40 M320,30 L330,52 L318,52 L328,74" style="--d:.4s"/>
+      <path class="la dash d" pathLength="1" d="M258,40 H296" style="--d:.5s"/>
+      <text x="324" y="96" text-anchor="middle" class="a fade" style="--d:.7s">Grid down</text>
+      <rect class="ln fw d" pathLength="1" x="420" y="44" width="56" height="90" rx="10" style="--d:.5s"/>
+      <rect class="fb" x="430" y="58" width="36" height="66" rx="5"/>
+      <rect class="fw hdrain" x="430" y="58" width="36" height="66" rx="5"/>
+      <path class="lt" d="M420,110 C340,120 280,112 240,112"/>
+      <path class="lb flow" d="M420,110 C340,120 280,112 240,112"/>
+      <text x="448" y="148" text-anchor="middle">Battery</text>
+      <text x="520" y="64" class="b fade" style="--d:1s">kW: how much at once</text>
+      <text x="520" y="86" class="fade" style="--d:1.2s">kWh: for how long</text>
+    </svg></div>
+  </div>
+  <article class="prose">
+    <ul class="toc" aria-label="On this page">
+      <li><a href="#h-a-does">What it does</a></li><li><a href="#h-a-doesnt">What it doesn't</a></li><li><a href="#h-a-kw">kW and kWh</a></li>
+      <li><a href="#h-a-surge">Surge</a></li><li><a href="#h-a-whole">Essentials or whole home</a></li><li><a href="#h-a-kinds">Kinds</a></li>
+      <li><a href="#h-a-cost">Cost and credits</a></li><li><a href="#h-a-gen">Or a generator</a></li><li><a href="#h-a-ask">Ask the installer</a></li>
+    </ul>
+    <h2 id="h-a-does">What a home battery does</h2>
+    <ul>
+      <li><strong>Backup.</strong> When the grid goes down, a gateway disconnects the house from the street and the battery runs whatever it's wired to. Done properly, you notice a flicker, or nothing.</li>
+      <li><strong>Time shifting.</strong> Charge when power is cheap, from the grid overnight or from solar at midday, and run the house from the battery through the expensive evening peak.</li>
+      <li><strong>Solar self-consumption.</strong> Where exporting solar pays little, like California under net billing, storing it for the evening is worth far more than selling it at noon.</li>
+      <li><strong>Getting paid.</strong> Some utilities and aggregators pay you to let them discharge your battery on a handful of stressed evenings a year. These virtual power plant programs can pay real money. Read the fine print on how much backup they leave you.</li>
+    </ul>
+
+    <h2 id="h-a-doesnt">What it doesn't do</h2>
+    <ul>
+      <li><strong>Run a big house for days.</strong> A single battery holds 10 to 15 kWh. A typical American home uses about 30 kWh a day, far more with air conditioning or electric heat. The math is not on your side.</li>
+      <li><strong>Pay for itself on a flat rate.</strong> If your price per kWh is the same all day and exports pay fairly, a battery is insurance. That's fine, but call it that.</li>
+      <li><strong>Go off-grid.</strong> Without solar to refill it, a battery is a very large, very expensive flashlight. It runs down and stays down.</li>
+      <li><strong>Start everything at once.</strong> Motors need a big kick to start. More on that below, because it's the thing that catches people out.</li>
+    </ul>
+
+    <h2 id="h-a-kw">Kilowatts and kilowatt-hours</h2>
+    <p>Think of a water tank with a tap. The kilowatt-hours are how much water is in the tank. The kilowatts are how wide the tap opens. A battery needs enough of both: the tap has to open wide enough to run everything that's on at the same time, and the tank has to last until the grid comes back or the sun comes up.</p>
+  </article>
+  <div class="fig" id="h-fig-tap"><div class="fig-in">
+    <div class="fig-top"><h3>Turn things on. Watch the battery.</h3>
+      <label class="fld wide" style="margin:0;min-width:220px"><span class="fi"><select id="h-tap-b" aria-label="Battery">
+        <option value="enphase-5p">One 5 kWh battery, 3.8 kW</option>
+        <option value="enphase-10c">One 10 kWh battery, 7.1 kW</option>
+        <option value="powerwall-3" selected>One 13.5 kWh battery, 11.5 kW</option>
+        <option value="franklin-apower2x2">Two 15 kWh batteries, 20 kW</option>
+      </select></span></label></div>
+    <div class="htap" id="h-tap"></div>
+    <p class="fig-cap" id="h-tap-cap"></p>
+  </div></div>
+  <article class="prose">
+    <h2 id="h-a-surge">Surge, the part that catches people out</h2>
+    <p>An air conditioner running at 3 kW can need five or six times that for a split second to start its compressor. Well pumps, sump pumps and fridges do the same on a smaller scale. Electricians call it locked-rotor current, and batteries rate it as surge or peak power. If the battery can't supply that kick, the compressor doesn't start, and the battery may shut down to protect itself.</p>
+    <ul>
+      <li>Check the battery's surge rating, not only its continuous kW. Some publish a locked-rotor amps number, and 185 amps is roughly the class that starts a typical central air unit.</li>
+      <li>A soft starter on the air conditioner, a few hundred dollars installed, cuts the starting kick by half or more. It's often the cheapest way to make a smaller battery work.</li>
+      <li>Only one big motor usually starts at a time, so you size for the running load plus the single biggest kick, not the sum of every kick.</li>
+    </ul>
+
+    <h2 id="h-a-whole">Essentials, or the whole home</h2>
+    <p>There are two ways to wire a backup battery. Essentials backup moves the important circuits to a separate panel the battery can always handle: fridge, lights, internet, furnace fan, a few outlets. Whole-home backup puts the battery in front of the entire house, and relies on you, or the system, to not run the dryer, the oven and the air conditioner at once during an outage.</p>
+    <p>Whole-home is simpler to wire and nicer to live with, but needs more battery. Essentials is cheaper and hard to overload. Some systems split the difference with smart breakers that shed big loads automatically when the grid is down.</p>
+    <p>The <a href="#hbackup">backup sizer</a> works out the running power, the surge and the kilowatt-hours for the things you pick, then lists which batteries cover them and how many you'd need.</p>
+
+    <h2 id="h-a-kinds">The kinds of battery</h2>
+    <div class="scroll"><table>
+      <thead><tr><th></th><th>What it means</th><th>Why you'd care</th></tr></thead>
+      <tbody>
+        <tr><td>AC coupled</td><td>The battery has its own inverter and connects like any other appliance.</td><td>Easy to add to an existing solar system.</td></tr>
+        <tr><td>DC coupled, or hybrid</td><td>One inverter for the solar and the battery.</td><td>More efficient for new solar-plus-battery installs. Harder to mix brands.</td></tr>
+        <tr><td>LFP chemistry</td><td>Lithium iron phosphate.</td><td>Long life, stable, a bit heavier. Most new home batteries use it.</td></tr>
+        <tr><td>NMC chemistry</td><td>Nickel manganese cobalt.</td><td>More compact. Common in older units.</td></tr>
+        <tr><td>Portable power stations</td><td>Big battery packs on wheels, wired in through a smart panel.</td><td>Cheaper per kWh and portable. Shorter warranties, smaller inverters.</td></tr>
+        <tr><td>Battery as a service</td><td>A company installs and owns the battery, you pay a fee or buy power from them.</td><td>Low upfront cost. You don't own it, and the contract matters more than the hardware.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="h-a-cost">What it costs, and what the government pays</h2>
+    <p>Installed prices in 2026 cluster between about $900 and $1,400 per kWh. EnergySage's first-half 2026 median was $15,647 for a 13.5 kWh system, before any incentives. Additional units in the same install usually cost less than the first, because the gateway and the electrician's first day are already paid for.</p>
+    <ul>
+      <li><strong>The 25D residential credit is gone for new installs.</strong> It doesn't apply to systems whose installation was completed after December 31, 2025. Buying in 2025 but installing in 2026 doesn't count.</li>
+      <li><strong>Leases and power purchase agreements can still carry a credit.</strong> The company that owns the battery may claim the 48E business credit and fold some of it into your price. That's one reason battery-as-a-service offers look cheap. Ask what happens at the end of the term.</li>
+      <li><strong>States and utilities still pay.</strong> Some pay upfront per kWh, some pay per year for grid events. These change often. Ask your utility first.</li>
+    </ul>
+    <p>Not tax advice. A tax professional can tell you what applies to you.</p>
+
+    <h2 id="h-a-gen">Or a generator</h2>
+    <div class="scroll"><table class="hpc">
+      <thead><tr><th></th><th>Home battery</th><th>Standby generator</th></tr></thead>
+      <tbody>
+        <tr><td>How long it runs</td><td>Hours to a day or two, longer with solar</td><td>As long as there's natural gas or propane</td></tr>
+        <tr><td>Switchover</td><td>Near instant</td><td>Ten to thirty seconds</td></tr>
+        <tr><td>Everyday value</td><td>Time shifting, solar, grid programs</td><td>None. It waits.</td></tr>
+        <tr><td>Upkeep</td><td>Very little</td><td>Oil changes, weekly self-test runs</td></tr>
+        <tr><td>Noise and fumes</td><td>None</td><td>Yes, and it has to sit outside with clearances</td></tr>
+        <tr><td>Big loads</td><td>Needs a lot of battery for central air or electric heat</td><td>A 22 kW unit runs most houses</td></tr>
+      </tbody>
+    </table></div>
+    <p>If your outages last days, not hours, and you have gas, a generator still makes a lot of sense. Plenty of people end up with both: a battery for the daily savings and the short outages, a generator for the ice storm.</p>
+
+    <h2 id="h-a-ask">What to ask the installer</h2>
+    <ul>
+      <li>Is this whole-home or essentials backup, and which circuits are on it?</li>
+      <li>Will it start my air conditioner, well pump or sump pump? Do I need a soft starter?</li>
+      <li>How much of the battery do I keep for backup when it's also doing time shifting or grid events?</li>
+      <li>Can it recharge from solar during an outage, and from a generator?</li>
+      <li>What does the warranty cover: years, cycles, throughput, and the capacity left at the end?</li>
+      <li>Who services it, and what happens if the installer goes out of business?</li>
+      <li>Does my utility or state pay anything, and does that change how the battery runs?</li>
+    </ul>
+  </article>
+</section>
+<!-- HOME SIDE: V2H -->
+<section id="view-hvtoh" class="read" hidden>
+  <div class="tool-head">
+    <h1>Your car as a battery: V2L, V2H and V2G</h1>
+    <p>An electric pickup carries about ten home batteries' worth of energy and spends most of its life parked. So yes, it can run your house. Some of them, with the right hardware, in some states, today. The rest is press releases.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>By <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
+    <div class="spot" aria-hidden="true"><svg viewBox="0 0 720 150" focusable="false">
+      <path class="lt" d="M20,134 H700"/>
+      <g class="fade" style="--d:.1s"><path class="ln" d="M40,134 V116 Q44,102 62,100 L96,86 Q104,82 118,82 H176 Q192,82 200,96 L212,104 Q228,106 230,118 V134 Z"/><circle class="ln fw" cx="78" cy="136" r="12"/><circle class="ln fw" cx="190" cy="136" r="12"/></g>
+      <rect class="fs" x="104" y="108" width="80" height="9" rx="4.5"/><rect class="fb" x="104" y="108" width="80" height="9" rx="4.5"/>
+      <path class="lt" d="M230,112 H300"/><path class="lb flow" d="M230,112 H300"/>
+      <text x="265" y="100" text-anchor="middle" class="b">V2L</text>
+      <rect class="ln fw d" pathLength="1" x="300" y="98" width="28" height="30" rx="4" style="--d:.3s"/>
+      <text x="314" y="148" text-anchor="middle">Fridge</text>
+      <path class="lt" d="M160,82 C200,40 340,30 420,70"/><path class="lb flow" d="M160,82 C200,40 340,30 420,70"/>
+      <text x="300" y="36" text-anchor="middle" class="b">V2H</text>
+      <path class="ln d" pathLength="1" d="M420,134 V70 L500,28 L580,70 V134" style="--d:.2s"/>
+      <rect class="fa fade" x="484" y="84" width="32" height="26" rx="3" style="--d:1.2s"/>
+      <path class="lt" d="M580,90 H640"/><path class="la flow" d="M580,90 H640"/>
+      <text x="610" y="78" text-anchor="middle" class="a">V2G</text>
+      <path class="ln d" pathLength="1" d="M650,134 L664,40 L678,134 M644,56 H684 M648,78 H680" style="--d:.4s"/>
+    </svg></div>
+  </div>
+  <article class="prose">
+    <ul class="toc" aria-label="On this page">
+      <li><a href="#h-v-words">V2L, V2H, V2G</a></li><li><a href="#h-v-how">How much</a></li><li><a href="#h-v-kit">The hardware</a></li>
+      <li><a href="#h-v-who">Which cars, today</a></li><li><a href="#h-v-pc">Pros and cons</a></li><li><a href="#h-v-catch">The catch</a></li><li><a href="#h-v-safe">Don't do this</a></li>
+    </ul>
+    <h2 id="h-v-words">Three acronyms, three very different things</h2>
+    <ul>
+      <li><strong>V2L, vehicle to load.</strong> Outlets on the car, or an adapter in the charge port, that you plug things into. Extension cords to the fridge. Cheap, simple, and surprisingly useful. Usually 1.5 to 3.6 kW, up to 9.6 kW on some trucks.</li>
+      <li><strong>V2H, vehicle to home.</strong> The car feeds the house through its electrical panel, with hardware that disconnects the house from the grid first. From the house's point of view, the car is a very large battery.</li>
+      <li><strong>V2G, vehicle to grid.</strong> The car sends power back to the utility, usually during grid emergencies, usually for a payment. In the US this is almost entirely pilot programs so far.</li>
+    </ul>
+
+    <h2 id="h-v-how">How much is in there</h2>
+    <p>A Powerwall holds 13.5 kWh. A mid-size electric SUV holds 80 to 100. The big trucks carry 120 to 200. Even if you keep half for driving, that's several home batteries parked in the garage, and you already paid for it.</p>
+  </article>
+  <div class="fig" id="h-fig-days"><div class="fig-in">
+    <div class="fig-top"><h3>How long could it run the house?</h3>
+      <label class="fld wide" style="margin:0;min-width:240px"><span class="fi"><select id="h-days-v" aria-label="Vehicle"></select></span></label></div>
+    <div class="hdays" id="h-days"></div>
+    <div class="hdays-ctl">
+      <label><span>Keep for driving</span><input type="range" id="h-days-r" min="10" max="80" step="5" value="30"><output id="h-days-ro">30%</output></label>
+      <label><span>House uses per day</span><input type="range" id="h-days-l" min="8" max="60" step="1" value="20"><output id="h-days-lo">20 kWh</output></label>
+    </div>
+    <p class="fig-cap" id="h-days-cap"></p>
+  </div></div>
+  <article class="prose">
+    <p>A normal house averages about 30 kWh a day, but nobody runs a normal day during an outage. Keep the fridge, the lights, the internet and the furnace fan going, skip the dryer, and 15 to 20 kWh a day is realistic. At that rate a truck with half its battery left keeps the lights on for days.</p>
+
+    <h2 id="h-v-kit">The hardware in the middle</h2>
+    <p>A car can't just push power into the house's wiring. Something has to disconnect the house from the grid first, so you aren't feeding the line a utility crew is working on, and something has to turn the car's DC into the house's AC.</p>
+    <ul>
+      <li><strong>AC bidirectional.</strong> The car's own electronics make household AC, and a special charger and transfer switch route it to the panel. Tesla's Powershare and Ford's original Lightning system work this way.</li>
+      <li><strong>DC bidirectional.</strong> The wall unit does the conversion, like a battery inverter, and talks to the car over the fast-charging plug. Wallbox's Quasar 2 and dcbel's Ara work this way.</li>
+      <li><strong>Either way you need an isolation device.</strong> A transfer switch, a backup gateway, or a home hub that opens the connection to the grid. It's the same safety job a home battery's gateway does.</li>
+    </ul>
+    <p>All-in, installed, figure on $5,000 to $15,000 depending on the car, the house, and how much of the panel has to change. That's before the car, which you were buying anyway.</p>
+
+    <h2 id="h-v-who">Which cars can do it today</h2>
+    <p>As of September 2026, in the US:</p>
+    <ul>
+      <li><strong>GM's Ultium cars</strong>: Silverado EV, Sierra EV, Equinox EV, Blazer EV, Lyriq, Escalade IQ, Hummer EV and others, with GM Energy's V2H bundle, about $9,000 before installation. Eligibility varies by trim and year, so use GM's checker.</li>
+      <li><strong>Tesla Cybertruck</strong>, with the Powershare Gateway and Universal Wall Connector, up to 11.5 kW. Not the Model 3 or Model Y, whatever you read elsewhere.</li>
+      <li><strong>Kia EV9</strong>, with Wallbox's Quasar 2 and Power Recovery Unit, in a handful of states. The car stops exporting at 20%.</li>
+      <li><strong>Volvo EX90 (2025), Polestar 3 and the older Nissan Leaf</strong>, through dcbel's Ara, mainly in California so far.</li>
+      <li><strong>Ford F-150 Lightning</strong>: the original V2H setup, Charge Station Pro plus Home Integration System, was discontinued in 2026. Existing owners are supported. New ones are pointed to a manual transfer switch on the truck's outlets.</li>
+      <li><strong>Announced, not shipping</strong>: Kia EV6, Hyundai Ioniq 9, Lucid, Rivian's R2, Scout. Treat dates as hopes.</li>
+    </ul>
+    <p>The full list, with battery sizes and export power, is on <a href="#hgear">the gear page</a>. The <a href="#hvcompare">comparison tool</a> puts any of them next to a home battery.</p>
+
+    <h2 id="h-v-pc">Pros and cons</h2>
+    <div class="hpcgrid">
+      <div class="hpro"><h3>For</h3><ul>
+        <li>Enormous capacity. Days of essentials, not hours.</li>
+        <li>The expensive part, the battery, is already paid for.</li>
+        <li>Often more export power than an essentials battery.</li>
+        <li>You can drive away from a regional outage, or drive to where the power is and come back full.</li>
+        <li>V2G programs, where they exist, can pay for it.</li>
+      </ul></div>
+      <div class="hcon"><h3>Against</h3><ul>
+        <li>The car has to be home. Outages don't check your calendar.</li>
+        <li>Most setups are backup only. A home battery also saves money every day on time of use; most US V2H doesn't do daily cycling yet.</li>
+        <li>The hardware works with one brand, sometimes one model.</li>
+        <li>Some carmakers set a minimum charge or limit export, and warranty language on extra cycling varies. Read yours.</li>
+        <li>Availability is patchy by state, and one early system has already been discontinued.</li>
+      </ul></div>
+    </div>
+
+    <h2 id="h-v-catch">The catch nobody puts in the ad</h2>
+    <p>A home battery is always home. A car is home when you are, which is exactly when you need the power least. The case for V2H is strongest when the car mostly sits at home, when outages are long and rare, and when you'd otherwise buy a big battery or a generator you'll use twice a year. It's weakest when the car commutes every day and you want daily savings from time of use. For that, a home battery still wins, and some people end up with both.</p>
+
+    <h2 id="h-v-safe">Please don't do this</h2>
+    <div class="note"><p><strong>Never backfeed a house through an outlet.</strong> A cord with two male plugs, from a car's outlet or a generator into a dryer socket, is known in the trade as a suicide cord, for good reason. It energizes the utility's lines, which can kill a line worker, and it energizes the exposed prongs of the plug in your hand. If you want to run the house from a car's outlets, have an electrician install a proper transfer switch or interlock. It's a few hundred dollars. It's the cheapest thing on this page.</p></div>
+  </article>
+</section>
+<!-- HOME SIDE: CHARGING COST AND SCHEDULE -->
+<section id="view-hcharge" hidden>
+  <div class="tool-head">
+    <h1>Home EV charging cost calculator</h1>
+    <p>Tell it your car, how much is left when you get home, when you plug in and when you leave. It finds the cheapest hours on your rate, and what charging costs you a night, a month and a year.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>Built by <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
+  </div>
+  <div class="tool">
+    <form class="inputs" id="h-c-in" onsubmit="return false"></form>
+    <div class="results" id="h-c-out" aria-live="polite"></div>
+  </div>
+  <article class="prose">
+    <h2 id="h-cc-how">How it works</h2>
+    <p>Energy needed is the gap between your arrival and target charge, times the battery size. The charger's power is the smaller of what the wall box delivers and what the car's onboard charger accepts. About 10% is lost on the way in on Level 2, and closer to 18% on Level 1.</p>
+    <p>The time between plugging in and leaving is cut into fifteen-minute slots, each priced from your rate for that month and day. "Plug in and go" fills slots from the moment you arrive. "Scheduled" fills the cheapest slots first, which is what the charging schedule in your car or charger does if you set it right. The year adds up every month, weekdays and weekends separately, for the number of nights a week you plug in.</p>
+    <h3>Rates</h3>
+    <ul>
+      <li>The ZIP lookup reads residential rates from the Utility Rate Database run by OpenEI, a US Department of Energy project. It lists the plans your utility has filed. It doesn't know which one you're on. Your bill does.</li>
+      <li>Tiered rates are simplified to their first tier, and holidays are treated as weekdays.</li>
+      <li>Fixed monthly charges are shown but not added to the cost of charging, because you pay them with or without a car.</li>
+      <li>Presets are examples from 2026 rate sheets, energy prices only. Check your utility's current tariff before you switch plans.</li>
+    </ul>
+    <h3>Questions people ask</h3>
+    <p><strong>Should I charge to 100%?</strong> Most carmakers suggest 80% for everyday driving and 100% before a road trip. Cars with LFP batteries are the exception and are fine at 100%. Your manual says which you have.</p>
+    <p><strong>Does a faster charger save money?</strong> Not per kWh. It lets you fit the charging into a shorter cheap window, which matters on plans with a short super off-peak.</p>
+    <p><strong>Car schedule or charger schedule?</strong> Use one, not both. Two schedules fighting each other is the most common reason a car isn't charged in the morning.</p>
+  </article>
+</section>
+
+<!-- HOME SIDE: INSTALL ESTIMATOR -->
+<section id="view-hinstall" hidden>
+  <div class="tool-head">
+    <h1>Home EV charger installation cost estimator</h1>
+    <p>Your panel, the distance to the charger, and the route the wire takes decide most of the bill. This puts a number on it, checks whether the panel can take the load, and prices the ways around it if it can't.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>Built by <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
+  </div>
+  <div class="tool">
+    <form class="inputs" id="h-i-in" onsubmit="return false"></form>
+    <div class="results" id="h-i-out" aria-live="polite"></div>
+  </div>
+  <article class="prose">
+    <h2 id="h-ic-panel">Will your panel take it?</h2>
+    <p>The number on your main breaker is the service size: 100, 150, 200, or 400 amps (often sold as 320). It's how much the house can draw at once, not how much you use. A charger adds a big, long load, so an electrician checks the rest of the house first.</p>
+    <p>The usual check for an existing home is a load calculation from the electrical code, known by its section number, 220.83. Add up the house: 3 watts per square foot for lights and outlets, 1,500 for each kitchen and laundry circuit, and the nameplate of every big appliance, counting the larger of heating or cooling. The first 8,000 watts count in full and everything above that at 40%, because nobody runs everything at once. Add the new charger, divide by 240 volts, and compare with the service.</p>
+    <p>The alternative, section 220.87, uses a year of your actual peak demand from the utility, plus 25%. Some utilities can pull that for you. It often shows more room than the calculation, because real houses use less than the worst case.</p>
+    <h3>If it doesn't fit</h3>
+    <ul>
+      <li><strong>Turn the charger down.</strong> Most wall boxes can be set to a lower current at install. The code accepts the lower setting when only the installer can change it. Free, and usually enough.</li>
+      <li><strong>Load management.</strong> A device that watches the main feed and throttles the charger when the house is busy. The code lets you count the charger at whatever the device allows. Hundreds of dollars, not thousands.</li>
+      <li><strong>A service upgrade.</strong> The utility gets involved, and so does their calendar. Sometimes the right answer, especially if a heat pump or a second EV is coming.</li>
+      <li><strong>A smart splitter.</strong> Shares the dryer's outlet with the car and pauses the car when the dryer runs. Cheap. Not pretty, but it works.</li>
+    </ul>
+    <h3>Spaces, breakers and old panels</h3>
+    <ul>
+      <li>A 240 volt charger needs a two-pole breaker, which takes two spaces. No spaces? Tandem breakers can free some up where the panel allows them, or a small subpanel adds more.</li>
+      <li>Breaker prices vary by brand more than you'd think. The brand has to match the panel. Mixing brands is a code violation, not a bargain.</li>
+      <li>An outlet for EV charging needs GFCI protection, usually a GFCI breaker. A hardwired charger doesn't, because it has its own.</li>
+      <li>Federal Pacific Stab-Lok and Zinsco panels have a long history of breakers that don't trip when they should. Many electricians will want to replace one before adding a big new load, and so will your insurer.</li>
+    </ul>
+    <h3>Pro mode</h3>
+    <p>Pro mode shows the conductor sizing (125% of the charger for continuous load, NM-B from the 60°C column, THHN in conduit from the 75°C column), the voltage drop, the equipment ground, the full 220.83 worksheet, and a toggle for the 2026 code, which counts a new EV charger at 80% instead of folding it into the 40% bucket. It takes a measured peak for 220.87 too.</p>
+    <h3>Limits</h3>
+    <p>A screening estimate in 2026 dollars. It doesn't know what's inside your walls, how your utility handles upgrades, or what your inspector likes. Local amendments change the answer. A licensed electrician does the real design, and this helps you know whether their quote is sane.</p>
+  </article>
+</section>
+
+<!-- HOME SIDE: BACKUP SIZER -->
+<section id="view-hbackup" hidden>
+  <div class="tool-head">
+    <h1>Home battery backup calculator</h1>
+    <p>Pick what has to stay on in an outage. It works out how much power that takes at once, the kick to start the motors, and the kilowatt-hours to get through, then lists the batteries that cover it and how many you'd need.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>Built by <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
+  </div>
+  <div class="tool">
+    <form class="inputs" id="h-b-in" onsubmit="return false"></form>
+    <div class="results" id="h-b-out" aria-live="polite"></div>
+  </div>
+  <article class="prose">
+    <h2 id="h-bc-how">How it works</h2>
+    <ul>
+      <li><strong>Running power</strong> adds up what you picked, allowing for the fact that big loads rarely all run together: everything up to 5 kW counts in full, and 60% of the rest.</li>
+      <li><strong>Surge</strong> is the running power plus the start-up kick of the single biggest motor, because motors rarely start in the same instant. A soft starter shrinks the kick from an air conditioner or heat pump.</li>
+      <li><strong>Energy</strong> is each appliance's running power times how much of the day it actually runs, for the season you pick. A fridge runs about a third of the time. An air conditioner in July, about half.</li>
+      <li><strong>Batteries</strong> are sized to clear all three, keeping 5% in reserve. Solar, if you add it, refills during the day. Tesla's expansion units add energy but no power, so the tool uses them where energy is the only shortfall.</li>
+    </ul>
+    <p>Prices are typical installed figures for 2026, before incentives, and vary a lot by region and installer. Surge ratings come from the manufacturers' datasheets. Where a manufacturer doesn't publish one, the tool says so.</p>
+  </article>
+</section>
+
+<!-- HOME SIDE: V2H VS BATTERY -->
+<section id="view-hvcompare" hidden>
+  <div class="tool-head">
+    <h1>V2H vs home battery: which backs up your house better?</h1>
+    <p>Pick a car that can send power home, decide how much to keep for driving, and put it next to a home battery. Energy, power, days of backup, cost, and the things a spreadsheet won't tell you.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>Built by <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
+  </div>
+  <div class="tool">
+    <form class="inputs" id="h-v-in" onsubmit="return false"></form>
+    <div class="results" id="h-v-out" aria-live="polite"></div>
+  </div>
+  <article class="prose">
+    <h2 id="h-vc-how">How it works</h2>
+    <p>The car's usable backup is its battery size minus the share you keep for driving, or the carmaker's floor if that's higher. The battery's is its rated capacity less a 5% reserve. Days of backup divide each by what the house uses in a day during an outage. Power is the most either can deliver at once. Cost is the V2H hardware plus typical installation for the car, and the installed price for the battery.</p>
+    <p>Battery sizes for cars are approximate, because most carmakers don't publish usable capacity. V2H availability changes fast: check the carmaker's own eligibility page before you buy anything.</p>
+  </article>
+</section>
+
+<!-- HOME SIDE: GEAR -->
+<section id="view-hgear" hidden>
+  <div class="tool-head">
+    <h1>Home EV chargers, home batteries and bidirectional EVs</h1>
+    <p>The gear behind the home tools, with specs from the manufacturers and honest notes on what's actually for sale. Prices are 2026 list or typical installed figures, and change often.</p>
+  </div>
+  <div class="wrap hgear" id="h-gear"></div>
+</section>
+<!--/home-side-->
 </main>
 <footer><div class="foot">
   <div><b>The Charge Sheet</b><p>A free, open source guide to the business of EV charging, built and given away by <a href="#about">Aatish Patel</a>. Ballpark numbers and honest opinions. Not financial advice.</p><p>Text CC BY 4.0. Code MIT.</p></div>
   <div><b>Learn</b><a href="#basics">How charging works</a><a href="#primer">The business</a><a href="#realestate">Real estate</a><a href="#finance">Paying for it</a><a href="#storage">Batteries</a><a href="#connectivity">Connectivity</a><a href="#vendors">Buying</a><a href="#fleet">Fleet charging</a></div>
   <div><b>Tools</b><a href="#planner">Site planner</a><a href="#install">Install estimator</a><a href="#sbatool">SBA loan check</a><a href="#fleettool">Fleet throughput</a><a href="#forecast">Utilization forecast</a><a href="#sitecheck">Connectivity check</a><a href="#hardware">Chargers</a><a href="#report">Project report</a></div>
-  <div><b>More</b><a href="#benchmarks">Benchmarks</a><a href="#method">Method and sources</a><a href="#glossary">Glossary</a><a href="/blog/">Blog</a><a href="#about">About</a><a href="https://github.com/aatishi4/the-charge-sheet" rel="noopener">Source code</a></div>
+  <!--home-side--><div><b>At home</b><a href="#hhub">Overview</a><a href="#hbasics">Charging at home</a><a href="#hcost">What it costs</a><a href="#hbattery">Home batteries</a><a href="#hvtoh">Your car as a battery</a><a href="#hcharge">Charging cost</a><a href="#hinstall">Home install estimator</a><a href="#hbackup">Backup sizer</a><a href="#hvcompare">V2H vs battery</a><a href="#hgear">Home gear</a></div><!--/home-side--><div><b>More</b><a href="#benchmarks">Benchmarks</a><a href="#method">Method and sources</a><a href="#glossary">Glossary</a><a href="/blog/">Blog</a><a href="#about">About</a><a href="https://github.com/aatishi4/the-charge-sheet" rel="noopener">Source code</a></div>
 </div></footer>
 <script>
 
@@ -3066,11 +3949,15 @@ if (typeof document !== 'undefined') (function(){
 
   /* Router */
   /* ---------- Site structure and router ---------- */
-  var VIEWS = ['home','basics','primer','realestate','finance','storage','connectivity','vendors','fleet','benchmarks','method','planner','install','sbatool','fleettool','forecast','sitecheck','report','glossary','about'];
+  var VIEWS = ['home','basics','primer','realestate','finance','storage','connectivity','vendors','fleet','benchmarks','method','planner','install','sbatool','fleettool','forecast','sitecheck','report','glossary','about',
+    'hhub','hbasics','hcost','hbattery','hvtoh','hcharge','hinstall','hbackup','hvcompare','hgear'];
+  var HOME_VIEWS = ['hhub','hbasics','hcost','hbattery','hvtoh','hcharge','hinstall','hbackup','hvcompare','hgear'];
   var GROUPS = {
     learn: {title:'Learn', nav:'gn-learn', pages:[['basics','How charging works'],['primer','The business'],['realestate','Real estate'],['finance','Paying for it'],['storage','Batteries'],['connectivity','Connectivity'],['vendors','Buying'],['fleet','Fleet charging']]},
     data:  {title:'Benchmarks', nav:'gn-data', pages:[['benchmarks','Benchmarks'],['method','Method and sources'],['glossary','Glossary']]},
-    tools: {title:'Tools', nav:'gn-tools', pages:[['planner','Site planner'],['install','Install estimator'],['sbatool','SBA loan check'],['fleettool','Fleet throughput'],['forecast','Utilization forecast'],['sitecheck','Connectivity check'],['hardware','Chargers'],['report','Project report']]}
+    tools: {title:'Tools', nav:'gn-tools', pages:[['planner','Site planner'],['install','Install estimator'],['sbatool','SBA loan check'],['fleettool','Fleet throughput'],['forecast','Utilization forecast'],['sitecheck','Connectivity check'],['hardware','Chargers'],['report','Project report']]},
+    hlearn: {title:'At home', nav:'gn-hlearn', pages:[['hhub','Overview'],['hbasics','Charging at home'],['hcost','What it costs'],['hbattery','Home batteries'],['hvtoh','Car as a battery']]},
+    htools: {title:'Home tools', nav:'gn-htools', pages:[['hcharge','Charging cost'],['hinstall','Install estimator'],['hbackup','Backup sizer'],['hvcompare','V2H vs battery'],['hgear','Gear']]}
   };
   var GROUP_OF = {}, NAME_OF = {home:'The Charge Sheet', about:'About'};
   Object.keys(GROUPS).forEach(function(g){ GROUPS[g].pages.forEach(function(p){ GROUP_OF[p[0]] = g; NAME_OF[p[0]] = p[1]; }); });
@@ -3129,10 +4016,16 @@ if (typeof document !== 'undefined') (function(){
     var view = MPA ? window.CS_PAGE : viewOf(h);
     VIEWS.forEach(function(v){ var s = document.getElementById('view-'+v); if (s) s.hidden = (v!==view); });
     var g = GROUP_OF[view] || null;
-    ['gn-learn','gn-data','gn-tools','gn-about'].forEach(function(id){
+    ['gn-learn','gn-data','gn-tools','gn-about','gn-hlearn','gn-htools'].forEach(function(id){
+      var n = document.getElementById(id); if (!n) return;
       var on = (g && GROUPS[g].nav===id) || (view==='about' && id==='gn-about');
-      document.getElementById(id).setAttribute('aria-current', on ? 'true' : 'false');
+      n.setAttribute('aria-current', on ? 'true' : 'false');
     });
+    var side = HOME_VIEWS.indexOf(view)>=0 ? 'home' : (GROUP_OF[view] || view==='home') ? 'biz' : null;
+    try { if (side) sessionStorage.setItem('cs-side', side); else side = sessionStorage.getItem('cs-side') || 'biz'; } catch(e){ side = side || 'biz'; }
+    if (!document.getElementById('view-hhub')) side = 'biz';
+    document.documentElement.setAttribute('data-side', side);
+    Array.prototype.forEach.call(document.querySelectorAll('.sidesw a'), function(a){ a.setAttribute('aria-current', String(a.classList.contains(side==='home'?'sw-home':'sw-biz'))); });
     var sn = document.getElementById('snav');
     if (g){
       sn.hidden = false;
@@ -3156,6 +4049,7 @@ if (typeof document !== 'undefined') (function(){
     renderReportBar(view);
     if (view==='report') renderReport();
     if (view==='hardware') renderHardware();
+    if (window.CSHOME) window.CSHOME.route(view);
   }
   function renderHardware(){
     var el = document.getElementById('hw-body'); if (!el) return;
@@ -5692,6 +6586,8 @@ if (typeof document !== 'undefined') (function(){
     $(id).addEventListener('change', onInput);
   });
 
+  window.CSK = {viewHref:viewHref, goView:goView, polish:polish, group:group, kpi:kpi, bars:bars, reduced:REDUCED,
+    current:function(){ return MPA ? window.CS_PAGE : viewOf(location.hash.replace('#','').split('?')[0]); }};
   loadLocal();
   applySharedState();
   (function(){ var m = (location.search.match(/[?&]model=([a-z0-9-]+)/)||[])[1]; var pr = m && productById(m); if (pr){ applyProduct(P, pr); save(); } })();
@@ -5732,6 +6628,1134 @@ if (typeof document !== 'undefined') (function(){
   if (localSummary()) liveStatus(localSummary(), true);
 })();
 
+/* HOME-SIDE-JS *//*home-side*/
+/* ========== HOME SIDE: pure model code (no DOM) ========== */
+var HG = {chargers:[], batteries:[], vehicles:[]};
+function hgById(list, id){ for (var i=0;i<list.length;i++) if (list[i].id===id) return list[i]; return null; }
+
+/* ---------- Rates: everything becomes {name, fixed ($/month), wd, we} with 12x24 $/kWh grids ---------- */
+function grid(fill){ var g=[]; for (var m=0;m<12;m++){ var r=[]; for (var h=0;h<24;h++) r.push(fill); g.push(r); } return g; }
+function inWin(h, a, b){ return a<=b ? (h>=a && h<b) : (h>=a || h<b); }
+/* A preset: seasons [{months:[6,7,8,9], base:0.26, wd:[[16,21,0.61]], we:[[16,21,0.39]]}] (months 1-12, hours 0-24, windows can wrap midnight) */
+function rateFromPreset(p){
+  var wd = grid(0), we = grid(0);
+  p.seasons.forEach(function(s){
+    s.months.forEach(function(mo){
+      for (var h=0;h<24;h++){
+        var a = s.base, b = s.base;
+        (s.wd||[]).forEach(function(w){ if (inWin(h,w[0],w[1])) a = w[2]; });
+        (s.we||s.wd||[]).forEach(function(w){ if (inWin(h,w[0],w[1])) b = w[2]; });
+        wd[mo-1][h] = a; we[mo-1][h] = b;
+      }
+    });
+  });
+  return {name:p.name, utility:p.utility||'', fixed:p.fixed||0, wd:wd, we:we, note:p.note||'', src:p.src||'', tou:true};
+}
+/* Manual: flat, or one peak window plus an optional cheap overnight window */
+function rateManual(M){
+  var p = {name:'Your rate', fixed:Number(M.fixed)||0, seasons:[{months:[1,2,3,4,5,6,7,8,9,10,11,12], base:Number(M.offPrice)||0, wd:[], we:[]}]};
+  if (M.kind==='flat'){ p.seasons[0].base = Number(M.flatPrice)||0; }
+  else {
+    var s = p.seasons[0];
+    if (M.superOn) s.wd.push([Number(M.superStart), Number(M.superEnd), Number(M.superPrice)||0]);
+    s.wd.push([Number(M.peakStart), Number(M.peakEnd), Number(M.peakPrice)||0]);
+    s.we = M.peakWeekends ? s.wd.slice() : s.wd.filter(function(w){ return w[2]!==Number(M.peakPrice); });
+  }
+  var r = rateFromPreset(p); r.tou = M.kind!=='flat'; return r;
+}
+/* OpenEI URDB rate (trimmed by our proxy or raw) */
+function rateFromUrdb(r){
+  var per = (r.energyratestructure||[]).map(function(tiers){ var t = tiers && tiers[0]; return t ? Number(t.rate||0)+Number(t.adj||0) : 0; });
+  var tiered = (r.energyratestructure||[]).some(function(t){ return t && t.length>1; });
+  function map(s){ return (s||[]).map(function(row){ return row.map(function(i){ return per[i]!==undefined ? per[i] : (per[0]||0); }); }); }
+  var wd = map(r.energyweekdayschedule), we = map(r.energyweekendschedule);
+  if (wd.length!==12){ var flat = per.length ? per[0] : 0; wd = grid(flat); }
+  if (we.length!==12) we = wd;
+  var fixed = Number(r.fixedchargefirstmeter||0), u = String(r.fixedchargeunits||'$/month').toLowerCase();
+  if (u.indexOf('day')>=0) fixed *= 30.4; else if (u.indexOf('year')>=0) fixed /= 12;
+  var uniq = {}; per.forEach(function(x){ uniq[x.toFixed(4)] = 1; });
+  return {name:r.name||'Unnamed rate', utility:r.utility||'', fixed:fixed, wd:wd, we:we, tiered:tiered,
+          tou:Object.keys(uniq).length>1, uri:r.uri||('https://apps.openei.org/USURDB/rate/view/'+(r.label||'')), label:r.label||''};
+}
+function rateRange(rate){
+  var lo = Infinity, hi = 0;
+  rate.wd.concat(rate.we).forEach(function(row){ row.forEach(function(v){ if (v<lo) lo=v; if (v>hi) hi=v; }); });
+  return {lo:lo===Infinity?0:lo, hi:hi};
+}
+
+/* ---------- Charging one night ----------
+   o: {needKwh (into battery), wallKw, eff, plug (hour, may be fractional), dep, month (0-11), weekend, rate, mode 'now'|'smart'}
+   Time runs in 15-minute slots from plug-in to departure. */
+function nightPlan(o){
+  var start = o.plug, end = o.dep<=o.plug ? o.dep+24 : o.dep, SL = 0.25, slots = [];
+  for (var t=start; t<end-1e-9; t+=SL){
+    var span = Math.min(SL, end-t), hod = Math.floor(t)%24, nextDay = t>=24;
+    var we = nextDay ? o.weekendNext : o.weekend;
+    var price = (we ? o.rate.we : o.rate.wd)[o.month][hod];
+    slots.push({t:t, span:span, price:price, kwh:0});
+  }
+  var needWall = o.needKwh / o.eff, left = needWall, order = slots.slice();
+  if (o.mode==='smart') order.sort(function(a,b){ return (a.price-b.price) || (a.t-b.t); });
+  order.forEach(function(s){ if (left<=1e-9) return; var k = Math.min(left, o.wallKw*s.span); s.kwh = k; left -= k; });
+  var cost = 0, wall = 0, first = null, last = null;
+  slots.forEach(function(s){ if (s.kwh>0){ cost += s.kwh*s.price; wall += s.kwh; if (first===null) first = s.t; last = s.t+s.span*(s.kwh/(o.wallKw*s.span)); } });
+  return {slots:slots, cost:cost, wallKwh:wall, batteryKwh:wall*o.eff, short:Math.max(0,left)*o.eff, done:left<=1e-6,
+          hours:end-start, needHours:needWall/o.wallKw, first:first, last:last, avg: wall ? cost/wall : 0};
+}
+/* A year of it. sessionsWk: nights per week you plug in. */
+function yearPlan(o){
+  var days = [31,28,31,30,31,30,31,31,30,31,30,31], res = {now:0, smart:0, wallKwh:0, months:[]};
+  var perNight = o.sessionsWk/7;
+  for (var m=0;m<12;m++){
+    var wdN = days[m]*5/7*perNight, weN = days[m]*2/7*perNight;
+    var a = nightPlan(Object.assign({}, o, {month:m, weekend:false, weekendNext:false, mode:'now'}));
+    var b = nightPlan(Object.assign({}, o, {month:m, weekend:false, weekendNext:false, mode:'smart'}));
+    var c = nightPlan(Object.assign({}, o, {month:m, weekend:true, weekendNext:true, mode:'now'}));
+    var d = nightPlan(Object.assign({}, o, {month:m, weekend:true, weekendNext:true, mode:'smart'}));
+    var now = a.cost*wdN + c.cost*weN, smart = b.cost*wdN + d.cost*weN;
+    res.now += now; res.smart += smart; res.wallKwh += a.wallKwh*(wdN+weN);
+    res.months.push({now:now, smart:smart});
+  }
+  return res;
+}
+function chargeLevelKw(amps, volts){ return amps*volts/1000; }
+
+/* ---------- Home install estimate ---------- */
+var HNM = [ // NM-B copper, 60C column (334.80): size, ampacity, ohm/kft, $/ft for /3 cable
+  ['8',40,0.778,3.0],['6',55,0.491,4.6],['4',70,0.308,8.5],['2',95,0.194,12.5]];
+var HTHHN = [ // THHN/THWN copper in conduit, 75C column: size, ampacity, ohm/kft, $/ft per conductor
+  ['10',35,1.21,0.55],['8',50,0.778,0.85],['6',65,0.491,1.45],['4',85,0.308,2.25],['3',100,0.245,2.8],['2',115,0.194,3.4],['1',130,0.154,4.3]];
+var HOCPD = [15,20,25,30,35,40,45,50,60,70,80,90,100,110,125];
+function hStd(a){ for (var i=0;i<HOCPD.length;i++) if (HOCPD[i]>=a-1e-9) return HOCPD[i]; return 125; }
+function hEgc(ocpd){ return ocpd<=20 ? '12' : ocpd<=60 ? '10' : ocpd<=100 ? '8' : '6'; }
+var HBRAND = {
+  hom:{name:'Square D Homeline', std:[22,95], gfci:115, tandem:true},
+  qo:{name:'Square D QO', std:[48,140], gfci:160, tandem:true},
+  siemens:{name:'Siemens', std:[25,100], gfci:120, tandem:true},
+  br:{name:'Eaton BR', std:[24,95], gfci:115, tandem:true},
+  ch:{name:'Eaton CH', std:[55,150], gfci:175, tandem:false},
+  ge:{name:'GE', std:[28,105], gfci:125, tandem:true},
+  leviton:{name:'Leviton', std:[45,130], gfci:150, tandem:false},
+  fpe:{name:'Federal Pacific (Stab-Lok)', std:[90,220], gfci:240, tandem:false, bad:true},
+  zinsco:{name:'Zinsco or Sylvania', std:[90,220], gfci:240, tandem:false, bad:true},
+  unknown:{name:'Not sure', std:[30,110], gfci:130, tandem:false}
+};
+var HROUTE = {
+  garage:{name:'Garage wall next to the panel, exposed', hPerFt:0.05, wet:false},
+  unfinished:{name:'Through an unfinished basement, attic or crawlspace', hPerFt:0.07, wet:false},
+  finished:{name:'Fished through finished walls and ceilings', hPerFt:0.13, wet:false, patch:350},
+  exterior:{name:'Outside wall, in conduit', hPerFt:0.1, wet:true},
+  trench:{name:'Buried, to a detached garage or driveway post', hPerFt:0.06, wet:true, trench:true}
+};
+/* Labor index by state, national average 100. Rough, from electrician wage levels; adjust to a real quote. */
+var HLABOR = {AL:88,AK:118,AZ:96,AR:86,CA:128,CO:104,CT:118,DE:104,DC:122,FL:92,GA:92,HI:125,ID:92,IL:118,IN:98,IA:96,KS:94,KY:92,LA:92,ME:98,MD:106,MA:124,MI:104,MN:112,MS:84,MO:102,MT:98,NE:94,NV:108,NH:104,NJ:124,NM:92,NY:126,NC:90,ND:98,OH:100,OK:88,OR:112,PA:106,RI:112,SC:88,SD:88,TN:90,TX:92,UT:96,VT:100,VA:98,WA:118,WV:92,WI:104,WY:96};
+
+/* NEC 220.83 optional calculation for an existing dwelling, 2023 NEC by default.
+   Returns the list of loads (VA), the demand (VA), and amps at 240 V. */
+function homeLoadList(H){
+  var L = [];
+  L.push(['General lighting and receptacles, 3 VA per sq ft', 3*(Number(H.sqft)||0)]);
+  L.push(['Kitchen small-appliance circuits (2) and laundry circuit', 4500]);
+  if (H.range==='elec') L.push(['Electric range or oven', 12000]);
+  if (H.dryer==='elec') L.push(['Electric dryer', 5000]);
+  if (H.wh==='tank') L.push(['Electric water heater', 4500]);
+  if (H.wh==='hpwh') L.push(['Heat pump water heater', 4500]);
+  if (H.wh==='tankless') L.push(['Electric tankless water heater', 27000]);
+  L.push(['Dishwasher, disposal, microwave and other fixed appliances', 3600]);
+  var cool = (Number(H.acTons)||0)*1700, heat = 0, heatName = '';
+  if (H.heat==='hp'){ heat = Math.max(cool, (Number(H.acTons)||3)*1700) + (Number(H.stripKw)||0)*1000; heatName = 'Heat pump with backup heat strips'; }
+  else if (H.heat==='electric'){ heat = (Number(H.stripKw)||10)*1000 + 800; heatName = 'Electric furnace or baseboard heat'; }
+  else if (H.heat==='gas'){ heat = 800; heatName = 'Furnace blower'; }
+  // 220.60: count the larger of heating and cooling
+  if (cool>=heat && cool>0) L.push(['Central air conditioning ('+H.acTons+' ton), the larger of heating and cooling', cool]);
+  else if (heat>0) L.push([heatName+', the larger of heating and cooling', heat]);
+  if (H.pool) L.push(['Pool pump', 1500]);
+  if (H.spa) L.push(['Hot tub', 6000]);
+  if (H.well) L.push(['Well pump', 2000]);
+  if (Number(H.existingEv)) L.push(['Existing EV charger ('+H.existingEv+' A)', Math.max(7200, 240*Number(H.existingEv))]);
+  if (Number(H.otherVa)) L.push(['Other large loads you listed', Number(H.otherVa)]);
+  return L;
+}
+function demand83(existingVA, newEvVA, code){
+  if (code==='2026'){ // 2026 NEC 120.83: existing loads 8 kVA at 100% and the rest at 40%; new EVSE at 80%
+    return Math.min(existingVA,8000) + 0.4*Math.max(existingVA-8000,0) + 0.8*newEvVA;
+  }
+  var t = existingVA + newEvVA; return Math.min(t,8000) + 0.4*Math.max(t-8000,0);
+}
+function evseVA(amps, volts){ return volts===120 ? amps*120 : Math.max(7200, amps*240); }
+/* Largest charger setting (amps, in 8 A steps down to 16) that fits the service without management */
+function maxAmpsThatFit(existingVA, svcAmps, code, measuredA){
+  var steps = [80,64,48,40,32,24,16];
+  for (var i=0;i<steps.length;i++){
+    var a = steps[i];
+    var need = measuredA!==null ? measuredA + 1.25*a : demand83(existingVA, evseVA(a,240), code)/240;
+    if (need<=svcAmps) return a;
+  }
+  return 0;
+}
+function pickConductor(minAmp, L, I, useNm, maxVd){
+  var tbl = useNm ? HNM : HTHHN;
+  for (var i=0;i<tbl.length;i++){
+    if (tbl[i][1] < minAmp) continue;
+    var vd = 2*L*tbl[i][2]*I/1000, pct = vd/240*100;
+    if (pct<=maxVd || i===tbl.length-1) return {size:tbl[i][0], amp:tbl[i][1], ohm:tbl[i][2], cost:tbl[i][3], vd:pct, nm:useNm, upsized: tbl.findIndex(function(r){ return r[1]>=minAmp; })<i};
+  }
+  return null;
+}
+function homeInstall(H){
+  var out = {lines:[], notes:[], flags:[], pro:{}};
+  var L1 = H.mount==='l1', volts = L1 ? 120 : 240;
+  var amps = L1 ? 12 : Number(H.amps)||40;
+  var plug = H.mount==='plug1450' || H.mount==='plug650';
+  if (plug && amps>40){ out.flags.push('A plug-in charger tops out at 40 amps. A 50 amp outlet can carry 40 amps of continuous load, and nobody makes a common 60 amp outlet. The estimate uses 40 amps. For 48, hardwire it.'); amps = 40; }
+  var ocpd = L1 ? 20 : hStd(1.25*amps), minAmp = L1 ? 20 : 1.25*amps;
+  var route = HROUTE[H.route] || HROUTE.garage, dist = Math.max(3, Number(H.distance)||0);
+  var useNm = !route.wet && H.wire!=='thhn' && amps<=64;
+  var maxVd = Number(H.maxVd)||3;
+  var c = pickConductor(minAmp, dist, amps, useNm, maxVd);
+  if (!c){ c = pickConductor(minAmp, dist, amps, false, maxVd); useNm = false; }
+  var brand = HBRAND[H.brand] || HBRAND.unknown;
+  var gfci = plug || H.breaker==='gfci';
+  var smart = H.breaker==='smart';
+  var labIdx = (Number(H.laborIdx)||100)/100, rate = 115*labIdx;
+  // ---- materials ----
+  var wire;
+  if (L1) wire = dist*1.1*1.1;
+  else if (useNm) wire = dist*1.1*c.cost*(plug ? 1 : 0.85);
+  else wire = dist*1.1*(c.cost*(plug?3:2) + 0.45); // hots (+neutral) plus a ground
+  var conduit = route.wet ? dist*1.1*1.6 : (H.route==='garage' && !useNm ? dist*1.1 : 0);
+  var brk = smart ? 320 : gfci ? brand.gfci : (ocpd>60 ? brand.std[1] : brand.std[0]);
+  var rec = L1 ? 25 : plug ? 75 : 0;
+  var misc = 45 + (route.wet ? 45 : 0) + (plug && route.wet ? 35 : 0);
+  // ---- labor ----
+  var hours = (L1 ? 1.5 : 2.5) + dist*route.hPerFt + (plug ? 0.3 : 0.4);
+  var trench = 0, patch = route.patch || 0, bore = 0;
+  if (route.trench){ trench = (Number(H.trenchFt)||dist)*9*labIdx; if (H.driveway) bore = 650*labIdx; }
+  // ---- panel space ----
+  var spaceCost = 0, spaceNote = '';
+  var need = L1 ? 1 : 2, have = Number(H.spaces);
+  if (have<need){
+    if (brand.tandem && H.spaceFix!=='subpanel'){ spaceCost = 140 + 1.2*rate; spaceNote = 'Make room with tandem breakers, where the panel label allows them'; }
+    else { spaceCost = 1300*labIdx; spaceNote = 'A small subpanel to make room'; }
+  }
+  if (brand.bad) out.flags.push(brand.name+' panels have a long record of breakers that fail to trip, and insurers know it. Most electricians will quote replacing the panel before adding a charger. Budget roughly $2,500 to $4,500 for that on its own.');
+  var permit = Number(H.permit); if (isNaN(permit)) permit = 250;
+  var charger = Number(H.chargerPrice)||0;
+  var laborCost = hours*rate;
+  var lines = [
+    ['Wire'+(L1?'':' ('+(c.nm?c.size+' AWG NM-B cable':'#'+c.size+' copper THHN in conduit')+')'), wire],
+    ['Conduit and fittings', conduit],
+    [(smart?'Smart EV breaker':gfci?'GFCI breaker, 2-pole '+ocpd+' A':(L1?'20 A breaker':'Breaker, 2-pole '+ocpd+' A')), brk],
+    [L1?'20 A outlet':plug?'Industrial-grade '+(H.mount==='plug650'?'6-50':'14-50')+' outlet':'', rec],
+    ['Boxes, connectors, straps', misc],
+    ['Electrician labor, about '+(Math.round(hours*2)/2)+' hours', laborCost],
+    ['Trenching', trench], ['Driveway crossing', bore], ['Drywall patching', patch],
+    [spaceNote, spaceCost],
+    ['Permit and inspection', permit],
+    ['The charger itself', charger]
+  ].filter(function(l){ return l[0] && l[1]>0; });
+  var sub = lines.reduce(function(a,l){ return a+l[1]; }, 0);
+  out.lines = lines; out.total = sub; out.low = sub*0.8; out.high = sub*1.3;
+  out.circuit = {amps:amps, ocpd:ocpd, volts:volts, conductor:c, egc:hEgc(ocpd), gfci:gfci, plug:plug, L1:L1, kw:amps*volts/1000};
+  // ---- load calculation ----
+  var list = homeLoadList(H), existingVA = list.reduce(function(a,l){ return a+l[1]; }, 0);
+  var newVA = evseVA(amps, volts), svc = Number(H.panelAmps)||200, code = H.code||'2023';
+  var measured = Number(H.measuredKw) > 0 ? Number(H.measuredKw)*1000/240*1.25 : null;
+  var demand = demand83(existingVA, newVA, code), dA = demand/240;
+  var before = demand83(existingVA, 0, code)/240;
+  var needA = measured!==null && H.useMeasured ? measured + 1.25*amps : dA;
+  out.load = {list:list, existingVA:existingVA, newVA:newVA, demandVA:demand, amps:dA, beforeA:before, svc:svc, code:code,
+              measuredA:measured, needA:needA, method: measured!==null && H.useMeasured ? '220.87' : '220.83',
+              fits: needA<=svc, pct: needA/svc,
+              maxFit: maxAmpsThatFit(existingVA, svc, code, measured!==null && H.useMeasured ? measured : null)};
+  if (!out.load.fits && !L1){
+    var up = svc<200 ? [2500,4500,'Service upgrade to 200 amps, with the utility'] : [6000,12000,'Service upgrade to 320/400 amps, with the utility'];
+    out.options = [
+      out.load.maxFit>=16 ? {name:'Turn the charger down to '+out.load.maxFit+' A', low:0, high:0, note:'Free. Most wall boxes can be set lower during install, and the code lets the lower setting count when it can only be changed by the installer. '+out.load.maxFit+' amps still adds about '+Math.round(out.load.maxFit*0.24*0.9*3.3)+' miles an hour to a typical EV.'} : null,
+      {name:'Load management', low:450, high:1600, note:'A device (or a charger with it built in) that watches the whole house and turns the charger down when the house is busy. The code lets you count only what the device allows. Emporia Pro has it built in; DCC-9 and similar boxes add it to any charger.'},
+      {name:up[2], low:up[0]*labIdx, high:up[1]*labIdx, note:'Slow and expensive, and the utility sets the timeline. Worth it if you are also adding a heat pump, induction range or more EVs.'}
+    ].filter(Boolean);
+  }
+  return out;
+}
+
+/* ---------- Backup sizing ---------- */
+/* Appliance library. w: running watts. s: extra start-up kVA for motors (0 for resistive). duty: share of the time it is running, summer/winter. */
+var HAPPS = [
+  {id:'fridge', name:'Refrigerator', w:180, s:1.2, duty:[.4,.35], ess:true},
+  {id:'freezer', name:'Chest freezer', w:120, s:0.8, duty:[.35,.3]},
+  {id:'lights', name:'LED lights, most rooms', w:200, s:0, duty:[.25,.35], ess:true},
+  {id:'net', name:'Internet, phones, laptops', w:80, s:0, duty:[1,1], ess:true},
+  {id:'tv', name:'TV and streaming', w:120, s:0, duty:[.2,.25]},
+  {id:'micro', name:'Microwave', w:1200, s:0, duty:[.02,.02], ess:true},
+  {id:'blower', name:'Gas furnace blower', w:600, s:1.2, duty:[0,.4], ess:true},
+  {id:'sump', name:'Sump pump', w:800, s:2.0, duty:[.08,.12]},
+  {id:'well', name:'Well pump (1 hp)', w:1100, s:3.5, duty:[.08,.08]},
+  {id:'ac2', name:'Central AC, 2 ton', w:2000, s:12, duty:[.5,0], soft:5},
+  {id:'ac3', name:'Central AC, 3 ton', w:3000, s:18, duty:[.5,0], soft:7.5},
+  {id:'ac4', name:'Central AC, 4 ton', w:4000, s:24, duty:[.5,0], soft:10},
+  {id:'hp3', name:'Heat pump, 3 ton (heating)', w:3500, s:18, duty:[0,.55], soft:7.5},
+  {id:'mini', name:'Ductless mini-split, one room', w:900, s:0.3, duty:[.5,.5]},
+  {id:'whtr', name:'Electric water heater', w:4500, s:0, duty:[.08,.1]},
+  {id:'range', name:'Electric range or oven', w:3000, s:0, duty:[.04,.05]},
+  {id:'dryer', name:'Electric dryer', w:5000, s:0, duty:[.03,.03]},
+  {id:'washer', name:'Washer', w:500, s:1.0, duty:[.03,.03]},
+  {id:'dish', name:'Dishwasher', w:1200, s:0, duty:[.04,.04]},
+  {id:'garage', name:'Garage door opener', w:400, s:1.0, duty:[.005,.005]},
+  {id:'medical', name:'Medical device (CPAP, oxygen)', w:300, s:0, duty:[.35,.35], ess:true},
+  {id:'pool', name:'Pool pump', w:1500, s:2.5, duty:[.3,.1]},
+  {id:'ev', name:'EV charging, Level 2 at 32 A', w:7700, s:0, duty:[.1,.1]}
+];
+function backupNeed(sel, o){
+  var season = o.season==='winter' ? 1 : 0, peak = 0, maxMotorRun = 0, maxMotorSurge = 0, day = 0, rows = [];
+  HAPPS.forEach(function(a){
+    var q = Number(sel[a.id])||0; if (!q) return;
+    var surge = a.soft && o.softStart ? a.soft : a.s;
+    var run = a.w*q/1000, d = a.duty[season];
+    if (d<=0 && !o.allYear) { rows.push({a:a, q:q, run:run, kwh:0}); return; }
+    peak += run; day += run*d*24;
+    if (surge>0 && surge>maxMotorSurge){ maxMotorSurge = surge; maxMotorRun = a.w/1000; }
+    rows.push({a:a, q:q, run:run, kwh:run*d*24});
+  });
+  // Not everything runs at once: big resistive loads rarely overlap. Use full sum up to 5 kW, then 60% of the rest.
+  var coincident = Math.min(peak,5) + 0.6*Math.max(peak-5,0);
+  var surgeNeed = coincident + maxMotorSurge;
+  var billDay = Number(o.billKwh) > 0 ? Number(o.billKwh)/30.4 : 0;
+  var outageKwh = day*(o.hours/24);
+  var solarDay = (Number(o.pvKw)||0) * (season ? 2.8 : 4.8);
+  return {rows:rows, peakKw:coincident, sumKw:peak, surgeKw:surgeNeed, motorSurge:maxMotorSurge, dayKwh:day, billDay:billDay,
+          outageKwh:outageKwh, solarDay:solarDay, netDay:Math.max(0, day - solarDay)};
+}
+function batteryFit(b, need, o, exp){
+  if (!b.kw) return null;
+  var byKw = Math.ceil(need.peakKw/b.kw - 1e-9);
+  var bySurge = b.surgeKw ? Math.ceil(need.surgeKw/b.surgeKw - 1e-9) : byKw;
+  var energy = Math.max(0, need.outageKwh - need.solarDay*(o.hours/24)) / 0.95;
+  var byKwh = Math.ceil(energy/b.kwh - 1e-9);
+  if (b.kwFixed){ // one inverter; extra units add energy only
+    var u = Math.max(1, byKwh), over = byKw>1 || bySurge>1 || u>b.stackMax;
+    var kw2 = u*b.kwh, hr = need.dayKwh>need.solarDay ? kw2*0.95/((need.dayKwh-need.solarDay)/24) : Infinity;
+    return {b:b, units:u, extra:0, kwh:kw2, kw:b.kw, surge:b.surgeKw, cost:b.price+(u-1)*b.addPrice,
+            limit: byKw>1 ? 'power' : bySurge>1 ? 'surge' : 'energy', hours:hr, over:over, unknownSurge:!b.surgeKw};
+  }
+  var units = Math.max(1, byKw, bySurge), extra = 0;
+  if (byKwh>units){
+    if (exp && b.id==='powerwall-3'){ extra = Math.min(units*3, byKwh-units); units = Math.max(units, byKwh-extra); }
+    else units = byKwh;
+  }
+  var kwh = units*b.kwh + extra*(exp?exp.kwh:0);
+  var cost = b.price + (units-1)*b.addPrice + extra*(exp?exp.addPrice:0);
+  var limit = byKw>=bySurge && byKw>=byKwh ? 'power' : bySurge>=byKwh ? 'surge' : 'energy';
+  var hoursRun = need.dayKwh>need.solarDay ? kwh*0.95/((need.dayKwh-need.solarDay)/24) : Infinity;
+  return {b:b, units:units, extra:extra, kwh:kwh, kw:units*b.kw, surge:b.surgeKw?units*b.surgeKw:null, cost:cost,
+          limit:limit, hours:hoursRun, over:units>b.stackMax, unknownSurge:!b.surgeKw};
+}
+
+/* ---------- V2H vs a battery ---------- */
+function v2hUsable(v, reservePct){ var r = Math.max(reservePct, v.floor||0); return v.kwh*(1-r/100); }
+/* ========== HOME SIDE: DOM ========== */
+if (typeof document !== 'undefined') (function(){
+  var K = window.CSK; if (!K) return;
+  if (!document.getElementById('view-hhub')) return; // home side not in this build
+  function $(s){ return document.querySelector(s); }
+  function el(id){ return document.getElementById(id); }
+  var REDUCED = K.reduced;
+  function esc(s){ return String(s===undefined||s===null?'':s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function hm(h){ h = ((h%24)+24)%24; var H = Math.floor(h), M = Math.round((h-H)*60); if (M===60){ H=(H+1)%24; M=0; } var ap = H<12?'am':'pm', h12 = H%12===0?12:H%12; return h12+(M?':'+(M<10?'0':'')+M:'')+ap; }
+  function toH(t){ var m = /^(\d{1,2}):(\d{2})/.exec(t||''); return m ? Number(m[1])+Number(m[2])/60 : 0; }
+  function fromH(h){ h = ((h%24)+24)%24; var H = Math.floor(h), M = Math.round((h-H)*60); if (M===60){H=(H+1)%24;M=0;} return (H<10?'0':'')+H+':'+(M<10?'0':'')+M; }
+  function cents(v){ return (v*100).toFixed(v<0.1?1:0)+'¢'; }
+
+  /* ---------- Data ---------- */
+  function loadGear(done){
+    var s = el('home-gear-data'), d = null;
+    try { d = s ? JSON.parse(s.textContent) : null; } catch(e){ d = null; }
+    if (d && d.vehicles && d.vehicles.length){ HG = d; done(); return; }
+    if (location.protocol==='file:' || ['hhub','hbasics','hcost','hbattery','hvtoh','hcharge','hinstall','hbackup','hvcompare','hgear'].indexOf(K.current())<0){ done(); return; }
+    fetch((window.CS_PAGE?'/':'')+'data/home-gear.json').then(function(r){ return r.json(); }).then(function(j){ HG = j; done(); }).catch(function(){ done(); });
+  }
+
+  /* ---------- State ---------- */
+  var DEF = {
+    c:{veh:'tesla-model-y', kwh:75, obc:11.5, eff:3.6, by:'soc', arrive:55, target:80, miles:40, plug:'18:00', dep:'07:30', nights:5,
+       level:'32', volts:240, rsrc:'preset', preset:'sce-prime', zip:'', rateIdx:-1,
+       mKind:'tou', flatPrice:0.18, peakPrice:0.45, offPrice:0.22, peakStart:16, peakEnd:21, peakWeekends:false, superOn:true, superPrice:0.12, superStart:0, superEnd:6, fixed:15,
+       month:6, weekend:false, mpg:28, gas:4.40, dcfc:0.50},
+    i:{mount:'hardwire', amps:48, charger:'', chargerPrice:0, panelAmps:200, spaces:'2', brand:'hom', breaker:'std', distance:25, route:'garage', trenchFt:40, driveway:false,
+       sqft:2200, range:'gas', dryer:'elec', wh:'gas', acTons:3, heat:'gas', stripKw:10, pool:false, spa:false, well:false, existingEv:0, otherVa:0,
+       state:'TX', laborIdx:92, permit:250, code:'2023', wire:'auto', maxVd:3, measuredKw:0, useMeasured:false},
+    b:{sel:{fridge:1, lights:1, net:1, micro:1, blower:1}, season:'summer', hours:24, softStart:false, pvKw:0, billKwh:0},
+    v:{veh:'chevy-silverado-ev', reserve:30, load:20, peak:5, batt:'powerwall-3', units:1, showAll:false},
+    pro:false, gearTab:'chargers', gearFilter:'all'
+  };
+  var S;
+  try { S = JSON.parse(localStorage.getItem('cs-home-v1')||'null'); } catch(e){ S = null; }
+  function merge(d, s){ var o = {}; Object.keys(d).forEach(function(k){ o[k] = (d[k] && typeof d[k]==='object' && !Array.isArray(d[k])) ? Object.assign({}, d[k], (s&&s[k])||{}) : (s && s[k]!==undefined ? s[k] : d[k]); }); return o; }
+  S = merge(DEF, S||{});
+  if (!S.b.sel || typeof S.b.sel!=='object') S.b.sel = Object.assign({}, DEF.b.sel);
+  function save(){ try { localStorage.setItem('cs-home-v1', JSON.stringify(S)); } catch(e){} }
+
+  /* ---------- Field builders (same look as the rest of the site) ---------- */
+  function f(o, k, label, unit, hint, step, min, max){
+    var v = S[o][k]; v = (v===null||v===undefined) ? '' : v;
+    return '<label class="fld"><span class="fl">'+label+'</span><span class="fi"><input type="number" inputmode="decimal" data-h="'+o+'" data-k="'+k+'" value="'+v+'" step="'+(step||'any')+'" min="'+(min===undefined?0:min)+'"'+(max!==undefined?' max="'+max+'"':'')+'>'+(unit?'<span class="u">'+unit+'</span>':'')+'</span>'+(hint?'<span class="fh">'+hint+'</span>':'')+'</label>';
+  }
+  function sl(o, k, label, opts, hint, wide){
+    var cur = S[o][k];
+    return '<label class="fld'+(wide?' wide':'')+'"><span class="fl">'+label+'</span><span class="fi"><select data-h="'+o+'" data-k="'+k+'">'+
+      opts.map(function(p){ return p[0]==='__g' ? '<optgroup label="'+esc(p[1])+'">' : p[0]==='__/g' ? '</optgroup>' : '<option value="'+esc(p[0])+'"'+(String(p[0])===String(cur)?' selected':'')+'>'+esc(p[1])+'</option>'; }).join('')+
+      '</select></span>'+(hint?'<span class="fh">'+hint+'</span>':'')+'</label>';
+  }
+  function tm(o, k, label, hint){
+    return '<label class="fld"><span class="fl">'+label+'</span><span class="fi"><input type="time" data-h="'+o+'" data-k="'+k+'" data-time="1" value="'+esc(S[o][k])+'" step="900"></span>'+(hint?'<span class="fh">'+hint+'</span>':'')+'</label>';
+  }
+  function tx(o, k, label, ph, hint){
+    return '<label class="fld"><span class="fl">'+label+'</span><span class="fi"><input type="text" data-h="'+o+'" data-k="'+k+'" data-text="1" value="'+esc(S[o][k])+'" placeholder="'+esc(ph||'')+'" inputmode="numeric" autocomplete="postal-code"></span>'+(hint?'<span class="fh">'+hint+'</span>':'')+'</label>';
+  }
+  function ck(o, k, label){ return '<label class="chk"><input type="checkbox" data-h="'+o+'" data-k="'+k+'"'+(S[o][k]?' checked':'')+'> '+label+'</label>'; }
+  function segH(o, k, opts, label){
+    return '<div class="hseg"><span class="fl">'+label+'</span><div class="seg" role="group" aria-label="'+esc(label)+'">'+opts.map(function(p){
+      return '<button type="button" data-h="'+o+'" data-k="'+k+'" data-v="'+p[0]+'" aria-pressed="'+(String(S[o][k])===String(p[0]))+'">'+p[1]+'</button>'; }).join('')+'</div></div>';
+  }
+  var group = K.group, kpi = K.kpi;
+
+  /* ---------- Rate presets (energy only, 2026 rate sheets; check before switching) ---------- */
+  var ALL = [1,2,3,4,5,6,7,8,9,10,11,12], SUM = [6,7,8,9], WIN = [1,2,3,4,5,10,11,12];
+  var PRESETS = {
+    'flat-us': {name:'US average, flat', utility:'EIA, July 2026', fixed:0, note:'The national average residential price, 18.3 cents per kWh. Same price every hour.', seasons:[{months:ALL, base:0.183}]},
+    'sce-prime': {name:'SCE TOU-D-PRIME', utility:'Southern California Edison', fixed:24, note:'Peak 4 to 9pm. Summer weekday peak about 61 cents, winter super off-peak 8am to 4pm about 24 cents.',
+      seasons:[{months:SUM, base:0.26, wd:[[16,21,0.61]], we:[[16,21,0.39]]},{months:WIN, base:0.30, wd:[[8,16,0.24],[16,21,0.45]], we:[[8,16,0.24],[16,21,0.45]]}]},
+    'pge-ev2a': {name:'PG&E EV2-A', utility:'Pacific Gas and Electric', fixed:24, note:'Off-peak midnight to 3pm, part-peak 3 to 4pm and 9pm to midnight, peak 4 to 9pm. March 2026 prices.',
+      seasons:[{months:SUM, base:0.23, wd:[[15,16,0.43],[16,21,0.54],[21,24,0.43]]},{months:WIN, base:0.23, wd:[[15,16,0.39],[16,21,0.41],[21,24,0.39]]}]},
+    'sdge-evtou5': {name:'SDG&E EV-TOU-5', utility:'San Diego Gas & Electric', fixed:24, note:'Super off-peak midnight to 6am and 10am to 2pm on weekdays, midnight to 2pm on weekends. Peak 4 to 9pm.',
+      seasons:[{months:ALL, base:0.496, wd:[[0,6,0.131],[10,14,0.131],[16,21,0.802]], we:[[0,14,0.131],[16,21,0.802]]}]},
+    'comed-tod': {name:'ComEd Residential Time of Day', utility:'ComEd, northern Illinois', fixed:17, note:'Supply plus delivery, summer 2026. Overnight 9pm to 6am, mid-day peak 1 to 7pm.',
+      seasons:[{months:ALL, base:0.09, wd:[[21,6,0.062],[6,13,0.09],[13,19,0.284],[19,21,0.11]], we:[[21,6,0.062],[6,13,0.09],[13,19,0.284],[19,21,0.11]]}]},
+    'gpc-overnight': {name:'Georgia Power Overnight Advantage', utility:'Georgia Power', fixed:14, note:'Super off-peak 11pm to 7am, on-peak 2 to 7pm on summer weekdays. Energy only; riders add a few cents.',
+      seasons:[{months:SUM, base:0.1017, wd:[[23,7,0.0219],[14,19,0.2979]], we:[[23,7,0.0219]]},{months:[1,2,3,4,5,10,11,12], base:0.1017, wd:[[23,7,0.0219]]}]},
+    'xcel-co': {name:'Xcel Energy Colorado RE-TOU', utility:'Xcel Energy, Colorado', fixed:8, note:'On-peak 5 to 9pm on non-holiday weekdays. Base energy only; riders are extra.',
+      seasons:[{months:SUM, base:0.0788, wd:[[17,21,0.2128]], we:[]},{months:[1,2,3,4,5,10,11,12], base:0.0679, wd:[[17,21,0.1833]], we:[]}]},
+    'tx-free': {name:'Texas free nights plan (example)', utility:'ERCOT retail provider', fixed:10, note:'Energy free 9pm to 5am, delivery of about 5.5 cents still applies. Some free-nights plans exclude homes with EVs, solar or batteries.',
+      seasons:[{months:ALL, base:0.19, wd:[[21,5,0.055]]}]}
+  };
+  var URDB = [];
+  function currentRate(){
+    var C = S.c;
+    if (C.rsrc==='zip' && URDB[C.rateIdx]) return URDB[C.rateIdx];
+    if (C.rsrc==='manual') return rateManual({kind:C.mKind, flatPrice:C.flatPrice, peakPrice:C.peakPrice, offPrice:C.offPrice, peakStart:C.peakStart, peakEnd:C.peakEnd,
+      peakWeekends:C.peakWeekends, superOn:C.superOn, superPrice:C.superPrice, superStart:C.superStart, superEnd:C.superEnd, fixed:C.fixed});
+    var p = PRESETS[C.preset] || PRESETS['sce-prime'];
+    return rateFromPreset(p);
+  }
+  var LEVELS = {'12v':{a:12, v:120, name:'Level 1, 12 A at 120 V'}, '16v':{a:16, v:120, name:'Level 1, 16 A at 120 V'},
+    '16':{a:16, name:'16 A (20 A circuit)'}, '24':{a:24, name:'24 A (30 A circuit)'}, '32':{a:32, name:'32 A (40 A circuit), typical mobile cord on a 14-50'},
+    '40':{a:40, name:'40 A (50 A circuit), plugged into a 14-50'}, '48':{a:48, name:'48 A (60 A circuit), hardwired'}, '64':{a:64, name:'64 A (80 A circuit)'}, '80':{a:80, name:'80 A (100 A circuit)'}};
+  function chargerKw(C){ var L = LEVELS[C.level] || LEVELS['32']; var v = L.v || Number(C.volts)||240; return {kw:L.a*v/1000, l1:v===120, a:L.a, v:v}; }
+
+  function vehOpts(filter){
+    var o = [['custom','Something else (enter below)']];
+    var groups = {};
+    (HG.vehicles||[]).forEach(function(v){ if (filter && !filter(v)) return; (groups[v.make]=groups[v.make]||[]).push(v); });
+    Object.keys(groups).sort().forEach(function(m){ o.push(['__g', m]); groups[m].forEach(function(v){ o.push([v.id, v.model+(v.years?' ('+v.years+')':'')]); }); o.push(['__/g']); });
+    return o;
+  }
+
+  /* ================= Tool 1: charging cost and schedule ================= */
+  function renderCIn(){
+    var C = S.c, form = el('h-c-in'); if (!form) return;
+    var h = '';
+    h += group('Your car', true,
+      sl('c','veh','Vehicle', vehOpts(), '', true) +
+      f('c','kwh','Battery, usable','kWh','',1,1) +
+      f('c','obc','Onboard charger, max','kW','The most AC power the car accepts. It caps home charging speed.',0.1,1) +
+      f('c','eff','Efficiency','mi/kWh','Lower in winter.',0.1,0.5));
+    h += group('Tonight', true,
+      segH('c','by',[['soc','Battery %'],['miles','Miles driven']],'Work it out from') +
+      (C.by==='soc' ? f('c','arrive','Charge when you get home','%','',1,0,100) : f('c','miles','Miles driven today','miles','',1,0)) +
+      f('c','target','Charge to','%','80% for everyday driving, unless your car has an LFP battery.',1,1,100) +
+      tm('c','plug','Plug in at') + tm('c','dep','Leave at') +
+      f('c','nights','Nights a week you plug in','','',1,1,7));
+    h += group('Your charger', true,
+      sl('c','level','Charger', Object.keys(LEVELS).map(function(k){ return [k, LEVELS[k].name]; }), '', true) +
+      (chargerKw(C).l1 ? '' : sl('c','volts','Voltage', [['240','240 V, most houses'],['208','208 V, many apartments and condos']], '', true)));
+    var rsrc = segH('c','rsrc',[['zip','Look up'],['preset','Examples'],['manual','My own']],'Your electricity rate');
+    var rb = '';
+    if (C.rsrc==='zip'){
+      rb = tx('c','zip','ZIP code','e.g. 60477') + '<div class="tool-actions"><button type="button" class="btn small" id="h-zip-go">Find my utility’s rates</button></div><div class="status" id="h-zip-st" hidden></div><div id="h-zip-list"></div>';
+    } else if (C.rsrc==='preset'){
+      rb = sl('c','preset','Example rate', Object.keys(PRESETS).map(function(k){ return [k, PRESETS[k].name]; }), (PRESETS[C.preset]||{}).note, true);
+    } else {
+      rb = segH('c','mKind',[['flat','Flat'],['tou','Time of use']],'Kind of rate');
+      if (C.mKind==='flat') rb += f('c','flatPrice','Price','$/kWh','All in: supply plus delivery, from your bill.',0.01);
+      else rb += f('c','offPrice','Off-peak price','$/kWh','',0.01) + f('c','peakPrice','Peak price','$/kWh','',0.01) +
+        f('c','peakStart','Peak starts','hour, 0-23','',1,0,23) + f('c','peakEnd','Peak ends','hour, 0-24','',1,0,24) + ck('c','peakWeekends','Peak applies on weekends too') +
+        ck('c','superOn','There’s a cheaper overnight window') + (C.superOn ? f('c','superPrice','Overnight price','$/kWh','',0.01) + f('c','superStart','Overnight starts','hour','',1,0,23) + f('c','superEnd','Overnight ends','hour','',1,0,24) : '');
+      rb += f('c','fixed','Fixed monthly charge','$','Shown, not added to charging cost.',1);
+    }
+    h += group('Your electricity rate', true, rsrc + rb);
+    h += group('Compare with', false,
+      f('c','mpg','A gas car that gets','mpg','',1,1) + f('c','gas','Gas price','$/gal','AAA national average was about $4.46 on September 29, 2026.',0.05) +
+      f('c','dcfc','Public DC fast charging','$/kWh','Typical 2026 prices run 40 to 60 cents.',0.01));
+    h += '<div class="tool-actions"><button type="button" class="btn" id="h-c-reset">Reset</button></div>';
+    form.innerHTML = h;
+    el('h-c-reset').onclick = function(){ S.c = Object.assign({}, DEF.c); URDB = []; save(); renderCIn(); renderC(); };
+    var go = el('h-zip-go'); if (go) go.onclick = lookupZip;
+    if (C.rsrc==='zip' && URDB.length) renderZipList();
+  }
+  function zipStatus(msg, ok){ var s = el('h-zip-st'); if (!s) return; s.hidden = false; s.className = 'status'+(ok?' ok':''); s.innerHTML = msg; }
+  function lookupZip(){
+    var z = String(S.c.zip||'').trim();
+    if (!/^\d{5}$/.test(z)){ zipStatus('Enter a five-digit US ZIP code.'); return; }
+    if (location.protocol==='file:'){ zipStatus('The lookup works on the live site. Opened as a file, use the examples or your own rate.'); return; }
+    zipStatus('Looking up residential rates for '+z+'...');
+    fetch('/api/rates?zip='+z).then(function(r){
+      return r.json().catch(function(){ return {error:'bad', status:r.status}; }).then(function(j){ j.status = j.status || r.status; return j; });
+    }).then(function(j){
+      if (j.error){
+        if (j.error==='not_configured' || j.status===404 || j.status===405) zipStatus('The utility lookup isn’t switched on here yet. Use the examples, or type your rate from your bill.');
+        else zipStatus('The rate database didn’t answer this time ('+esc(j.error)+'). Try again in a minute, or type your rate from your bill.');
+        return;
+      }
+      URDB = (j.items||[]).map(rateFromUrdb).filter(function(r){ return r.wd && r.wd.length===12; });
+      URDB.sort(function(a,b){ return (b.tou - a.tou) || (/ev|electric vehicle/i.test(b.name) - /ev|electric vehicle/i.test(a.name)); });
+      if (!URDB.length){ zipStatus('No current residential rates found for that ZIP. Try a neighboring one, or type your rate.'); return; }
+      S.c.rateIdx = 0; save(); renderZipList(); renderC();
+    }).catch(function(){ zipStatus('Couldn’t reach the rate lookup. Check your connection, or use the examples.'); });
+  }
+  function renderZipList(){
+    var box = el('h-zip-list'); if (!box) return;
+    zipStatus('Found '+URDB.length+' residential plan'+(URDB.length>1?'s':'')+'. Time-of-use and EV plans are listed first. Pick the one on your bill.', true);
+    box.innerHTML = '<div class="hrates">'+URDB.map(function(r,i){
+      var rg = rateRange(r);
+      return '<label class="hrate"><input type="radio" name="h-rate" value="'+i+'"'+(i===S.c.rateIdx?' checked':'')+'><span><b>'+esc(r.name)+'</b><small>'+esc(r.utility)+(r.tou?', time of use':', flat')+(r.tiered?', tiered':'')+' · '+cents(rg.lo)+(rg.hi>rg.lo+0.001?' to '+cents(rg.hi):'')+'/kWh</small></span></label>';
+    }).join('')+'</div>';
+    Array.prototype.forEach.call(box.querySelectorAll('input[name=h-rate]'), function(inp){
+      inp.onchange = function(){ S.c.rateIdx = Number(inp.value); save(); renderC(); };
+    });
+  }
+
+  function chargeInputs(){
+    var C = S.c, ch = chargerKw(C);
+    var wallKw = Math.min(ch.kw, Number(C.obc)||ch.kw), eff = ch.l1 ? 0.82 : 0.9;
+    var need = C.by==='soc' ? Math.max(0, (Number(C.target)-Number(C.arrive))/100*Number(C.kwh)) : Math.min(Number(C.kwh)*Number(C.target)/100, (Number(C.miles)||0)/(Number(C.eff)||3));
+    return {needKwh:need, wallKw:wallKw, eff:eff, plug:toH(C.plug), dep:toH(C.dep), rate:currentRate(), sessionsWk:Number(C.nights)||0, ch:ch};
+  }
+  var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  function timelineSVG(a, b, o){
+    var narrow = window.innerWidth < 560, W = narrow ? 400 : 640, L = narrow ? 84 : 118, R = 10, rows = [[(narrow?'Now':'Plug in and go'), a], [(narrow?'Scheduled':'Scheduled'), b]], rowH = 30, top = 34, H = top + rows.length*(rowH+12) + 28;
+    var start = o.plug, end = o.dep<=o.plug ? o.dep+24 : o.dep, span = end-start;
+    function x(t){ return L + (W-L-R)*(t-start)/span; }
+    var rg = rateRange(o.rate), lo = rg.lo, hi = rg.hi;
+    var s = '<svg class="htl" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Charging timeline from plug-in to departure, with the price of electricity in each hour">';
+    s += '<text class="lab" x="0" y="'+(top-14)+'">Price</text>';
+    a.slots.forEach(function(sl){
+      var n = hi>lo ? (sl.price-lo)/(hi-lo) : 0;
+      s += '<rect class="px" x="'+x(sl.t).toFixed(1)+'" y="'+(top-26)+'" width="'+(x(sl.t+sl.span)-x(sl.t)+0.4).toFixed(1)+'" height="16" style="opacity:'+(0.12+0.8*n).toFixed(2)+'"><title>'+hm(sl.t)+': '+cents(sl.price)+'/kWh</title></rect>';
+    });
+    rows.forEach(function(r, i){
+      var y = top + i*(rowH+12) + 6, P = r[1];
+      s += '<text class="lab" x="0" y="'+(y+rowH/2+4)+'">'+r[0]+'</text><rect class="trk" x="'+L+'" y="'+y+'" width="'+(W-L-R)+'" height="'+rowH+'" rx="6"/>';
+      var runs = [], cur = null;
+      P.slots.forEach(function(sl){
+        if (!(sl.kwh>0)) return;
+        var w = Math.min(sl.span, sl.kwh/o.wallKw);
+        if (cur && Math.abs(cur.e - sl.t)<1e-6) cur.e = sl.t + w;
+        else { cur = {s:sl.t, e:sl.t + w}; runs.push(cur); }
+      });
+      runs.forEach(function(rn, j){ s += '<rect class="chg '+(i?'sm':'nw')+' hgrow" x="'+x(rn.s).toFixed(1)+'" y="'+(y+4)+'" width="'+Math.max(1.5, x(rn.e)-x(rn.s)).toFixed(1)+'" height="'+(rowH-8)+'" rx="4" style="--d:'+(0.15+i*0.35+j*0.08).toFixed(2)+'s"/>'; });
+      s += '<text class="val" x="'+(W-R-6)+'" y="'+(y+rowH/2+4)+'" text-anchor="end">'+money(P.cost,2)+'</text>';
+    });
+    var yb = H-6, stepH = span>14 ? 3 : 2;
+    for (var t=Math.ceil(start); t<=end+1e-9; t+=1){ if ((t-Math.ceil(start))%stepH) continue; s += '<text class="axis" x="'+x(t).toFixed(1)+'" y="'+yb+'" text-anchor="middle">'+hm(t)+'</text>'; }
+    return s+'</svg>';
+  }
+  function renderC(){
+    var out = el('h-c-out'); if (!out) return;
+    var C = S.c, o = chargeInputs();
+    if (!(o.needKwh>0)){ out.innerHTML = '<p class="empty">Nothing to charge tonight. Set the charge when you get home below the target.</p>'; return; }
+    var m = Number(C.month), we = !!C.weekend;
+    var base = Object.assign({}, o, {month:m, weekend:we, weekendNext:we});
+    var a = nightPlan(Object.assign({}, base, {mode:'now'})), b = nightPlan(Object.assign({}, base, {mode:'smart'}));
+    var y = yearPlan(o), perMonthSmart = y.smart/12;
+    var miles = o.needKwh*(Number(C.eff)||3), cpmHome = miles ? b.cost/miles : 0, cpmGas = (Number(C.gas)||0)/(Number(C.mpg)||1);
+    var socEnd = C.by==='soc' ? Number(C.arrive) + (b.batteryKwh/Number(C.kwh))*100 : null;
+    var h = '<div class="kpis">' +
+      kpi(money(b.cost,2), 'Tonight, scheduled. Plugging in and going: '+money(a.cost,2)) +
+      kpi(money(y.smart,0), 'A year, scheduled ('+money(perMonthSmart,0)+' a month)') +
+      kpi(cents(cpmHome), 'Per mile at home, against '+cents(cpmGas)+' in a '+C.mpg+' mpg car') + '</div>';
+    var v;
+    if (!b.done){
+      var got = C.by==='soc' ? Math.round(socEnd)+'%' : Math.round(b.batteryKwh*(Number(C.eff)||3))+' miles';
+      v = 'Not enough time. At <strong>'+o.wallKw.toFixed(1)+' kW</strong> you need '+o.needKwh.toFixed(1)+' kWh in the battery, which takes <strong>'+b.needHours.toFixed(1)+' hours</strong>, and you’re plugged in for '+b.hours.toFixed(1)+'. You’d leave with '+got+'. A faster charger, or plugging in earlier, fixes it.';
+    } else {
+      var save1 = a.cost - b.cost;
+      v = 'You need <strong>'+o.needKwh.toFixed(1)+' kWh</strong>, which is <strong>'+b.needHours.toFixed(1)+' hours</strong> at '+o.wallKw.toFixed(1)+' kW. ';
+      if (save1 > 0.05) v += 'Set the car to start at <strong>'+hm(b.first)+'</strong>'+(b.last && b.last-b.first>b.needHours+0.3 ? ' (the cheap hours aren’t all in one block, so “finish by '+hm(o.dep)+'” does the same job)':'')+'. It saves '+money(save1,2)+' tonight and about '+money(y.now-y.smart,0)+' a year over plugging in and going.';
+      else v += 'On this rate it doesn’t matter when you charge, so plug in and forget about it.';
+    }
+    h += '<p class="verdict">'+v+'</p>';
+    if (o.ch.kw > Number(C.obc)+0.05) h += '<p class="flag">The car accepts '+Number(C.obc).toFixed(1)+' kW at most, so a '+o.ch.kw.toFixed(1)+' kW charger won’t make it faster. You could save on the charger and the wiring.</p>';
+    if (o.rate.tiered) h += '<p class="flag">This plan is tiered. The price shown is the first tier. Heavy use can push the rest of the month into a higher tier.</p>';
+    if (C.rsrc==='preset' && C.preset==='tx-free') h += '<p class="flag">Read the plan’s fact sheet before you sign. Some free-nights plans exclude homes with EVs, solar or batteries, and the daytime price is usually higher to pay for the free nights.</p>';
+    h += '<div class="panel"><h2>Tonight, hour by hour</h2><p class="sub">Darker means more expensive. '+esc(o.rate.name)+(o.rate.utility?', '+esc(o.rate.utility):'')+'.</p>' +
+      '<div class="hctl"><label class="fi"><select data-h="c" data-k="month" aria-label="Month">'+MONTHS.map(function(n,i){ return '<option value="'+i+'"'+(i===m?' selected':'')+'>'+n+'</option>'; }).join('')+'</select></label>' +
+      '<div class="seg" role="group" aria-label="Day"><button type="button" data-h="c" data-k="weekend" data-v="false" aria-pressed="'+(!we)+'">Weekday</button><button type="button" data-h="c" data-k="weekend" data-v="true" aria-pressed="'+we+'">Weekend</button></div></div>' +
+      timelineSVG(a, b, base) + '<div class="legend"><span><i style="background:var(--amber);opacity:.8"></i>Expensive hours</span><span><i style="background:var(--slate)"></i>Plug in and go</span><span><i style="background:var(--blue)"></i>Scheduled</span></div></div>';
+    // year by month
+    var mx = Math.max.apply(null, y.months.map(function(q){ return q.now; }).concat([1]));
+    h += '<div class="panel"><h2>Month by month</h2><p class="sub">'+(Number(C.nights)||0)+' nights a week. The grey is what plugging in and going would cost.</p><div class="hmonths">'+
+      y.months.map(function(q,i){ return '<div class="hm"><span class="t"><b class="nw" style="height:'+(q.now/mx*100).toFixed(1)+'%"></b><b class="sm" style="height:'+(q.smart/mx*100).toFixed(1)+'%"></b></span><small>'+MONTHS[i].slice(0,1)+'</small></div>'; }).join('')+'</div></div>';
+    // comparison
+    var yrMiles = miles*(Number(C.nights)||0)*52;
+    var gasYr = yrMiles/(Number(C.mpg)||1)*(Number(C.gas)||0), dcYr = yrMiles/(Number(C.eff)||3)*(Number(C.dcfc)||0);
+    h += '<div class="panel"><h2>The same miles, other ways</h2><p class="sub">About '+num(Math.round(yrMiles/100)*100)+' miles a year.</p>'+
+      K.bars([['Home, scheduled', y.smart], ['Home, plug in and go', y.now], ['Public DC fast', dcYr], ['Gas, '+C.mpg+' mpg', gasYr]], 'Gas, '+C.mpg+' mpg')+'</div>';
+    if (o.rate.fixed) h += '<p class="fh">This rate also has a fixed charge of about '+money(o.rate.fixed,0)+' a month, which you pay with or without a car.</p>';
+    h += '<p class="fh" style="margin-top:1.2rem">Estimates. Charging losses assumed at '+Math.round((1-o.eff)*100)+'%. Rates change, and your bill has the final word.</p>';
+    out.innerHTML = h; K.polish(out);
+    if (!REDUCED){ var svg = out.querySelector('.htl'); if (svg){ svg.classList.remove('play'); void svg.getBoundingClientRect(); svg.classList.add('play'); } }
+  }
+
+  /* ================= Tool 2: install estimator ================= */
+  var STATES = [['AL','Alabama'],['AK','Alaska'],['AZ','Arizona'],['AR','Arkansas'],['CA','California'],['CO','Colorado'],['CT','Connecticut'],['DE','Delaware'],['DC','District of Columbia'],['FL','Florida'],['GA','Georgia'],['HI','Hawaii'],['ID','Idaho'],['IL','Illinois'],['IN','Indiana'],['IA','Iowa'],['KS','Kansas'],['KY','Kentucky'],['LA','Louisiana'],['ME','Maine'],['MD','Maryland'],['MA','Massachusetts'],['MI','Michigan'],['MN','Minnesota'],['MS','Mississippi'],['MO','Missouri'],['MT','Montana'],['NE','Nebraska'],['NV','Nevada'],['NH','New Hampshire'],['NJ','New Jersey'],['NM','New Mexico'],['NY','New York'],['NC','North Carolina'],['ND','North Dakota'],['OH','Ohio'],['OK','Oklahoma'],['OR','Oregon'],['PA','Pennsylvania'],['RI','Rhode Island'],['SC','South Carolina'],['SD','South Dakota'],['TN','Tennessee'],['TX','Texas'],['UT','Utah'],['VT','Vermont'],['VA','Virginia'],['WA','Washington'],['WV','West Virginia'],['WI','Wisconsin'],['WY','Wyoming']];
+  function renderIIn(){
+    var I = S.i, form = el('h-i-in'); if (!form) return;
+    var l1 = I.mount==='l1', plug = I.mount==='plug1450' || I.mount==='plug650';
+    var h = '<label class="hpro-t"><input type="checkbox" data-h="root" data-k="pro"'+(S.pro?' checked':'')+'><span class="sw" aria-hidden="true"></span><span><b>Pro mode</b><small>Wire sizing, voltage drop, the full load calculation, code edition</small></span></label>';
+    h += group('The charger', true,
+      sl('i','mount','How it connects', [['hardwire','Hardwired wall box'],['plug1450','Plugged into a NEMA 14-50'],['plug650','Plugged into a NEMA 6-50'],['l1','Level 1, a 120 V outlet']], plug ? 'EV outlets need GFCI protection, and a plug-in charger tops out at 40 A.' : '', true) +
+      (l1 ? '' : sl('i','amps','Charger setting', [[16,'16 A, 3.8 kW'],[24,'24 A, 5.8 kW'],[32,'32 A, 7.7 kW'],[40,'40 A, 9.6 kW'],[48,'48 A, 11.5 kW'],[64,'64 A, 15.4 kW'],[80,'80 A, 19.2 kW']], '', true)) +
+      sl('i','charger','Include a charger', [['','No, just the install']].concat((HG.chargers||[]).filter(function(c){ return !c.bidirectional && c.install!=='cord'; }).map(function(c){ return [c.id, c.oem+' '+c.model+', '+money(c.price)]; })), '', true));
+    h += group('Your panel', true,
+      sl('i','panelAmps','Service size', [[100,'100 A'],[125,'125 A'],[150,'150 A'],[200,'200 A'],[400,'320/400 A']], 'The number on the main breaker.', true) +
+      sl('i','spaces','Free breaker spaces', [['0','None'],['1','One'],['2','Two or more']], l1 ? '' : 'A 240 V charger needs two.', true) +
+      sl('i','brand','Panel brand', Object.keys(HBRAND).map(function(k){ return [k, HBRAND[k].name]; }), 'On the label inside the panel door.', true) +
+      (l1 || plug ? '' : sl('i','breaker','Breaker', [['std','Standard two-pole'],['gfci','GFCI two-pole'],['smart','Smart EV breaker (energy management)']], '', true)));
+    h += group('The route', true,
+      f('i','distance','Wire length, panel to charger','feet','Along the route, up and down included. Not the straight line.',5,3) +
+      sl('i','route','The wire goes', Object.keys(HROUTE).map(function(k){ return [k, HROUTE[k].name]; }), '', true) +
+      (I.route==='trench' ? f('i','trenchFt','Of that, trenched','feet','',5,0) + ck('i','driveway','Has to cross a driveway or walk') : ''));
+    h += group('Your house', !S.pro ? false : true,
+      '<p class="fh">For the load check. Big electric appliances matter most.</p>' +
+      f('i','sqft','Living space','sq ft','',100,0) +
+      sl('i','range','Range and oven', [['gas','Gas or none'],['elec','Electric or induction']], '', true) +
+      sl('i','dryer','Clothes dryer', [['gas','Gas or none'],['elec','Electric']], '', true) +
+      sl('i','wh','Water heater', [['gas','Gas or none'],['tank','Electric tank'],['hpwh','Heat pump water heater'],['tankless','Electric tankless']], '', true) +
+      sl('i','acTons','Central air', [[0,'None'],[1.5,'1.5 ton'],[2,'2 ton'],[2.5,'2.5 ton'],[3,'3 ton'],[4,'4 ton'],[5,'5 ton']], '', true) +
+      sl('i','heat','Heating', [['gas','Gas furnace or boiler'],['hp','Heat pump'],['electric','Electric furnace or baseboard'],['none','Other or none']], '', true) +
+      (I.heat==='hp' || I.heat==='electric' ? f('i','stripKw','Electric heat strips','kW','',1,0) : '') +
+      ck('i','pool','Pool pump') + ck('i','spa','Hot tub') + ck('i','well','Well pump') +
+      sl('i','existingEv','EV charger already installed', [[0,'None'],[32,'32 A'],[40,'40 A'],[48,'48 A']], '', true) +
+      f('i','otherVa','Other big loads','watts','Shop tools, a sauna, an electric car lift.',100,0));
+    h += group('Where you live', false,
+      sl('i','state','State', STATES, 'Sets a starting labor rate. Adjust to a real quote.', true) +
+      f('i','laborIdx','Local labor cost','% of average','',5,40) +
+      f('i','permit','Permit and inspection','$','Anywhere from $50 to $800. $250 is typical.',25,0));
+    if (S.pro) h += group('Pro', true,
+      sl('i','code','Code edition', [['2023','2023 NEC (220.83)'],['2026','2026 NEC (120.83)']], '2026 counts a new EV charger at 80% instead of folding it into the 40% bucket.', true) +
+      sl('i','wire','Wiring method', [['auto','NM-B where allowed, else THHN in conduit'],['thhn','THHN in conduit throughout']], '', true) +
+      f('i','maxVd','Maximum voltage drop','%','3% is the usual design target.',0.5,1) +
+      f('i','measuredKw','Highest 15-minute demand, last 12 months','kW','From the utility, for 220.87. Leave at 0 to skip.',0.1,0) +
+      ck('i','useMeasured','Use measured demand (220.87) instead of the calculation'));
+    h += '<div class="tool-actions"><button type="button" class="btn" id="h-i-reset">Reset</button></div>';
+    form.innerHTML = h;
+    el('h-i-reset').onclick = function(){ S.i = Object.assign({}, DEF.i); save(); renderIIn(); renderI(); };
+  }
+  function installDiagram(R, I){
+    var W = 640, H = 250, c = R.circuit, route = I.route, dist = Math.round(Number(I.distance)||0);
+    var wlab = c.L1 ? '12 AWG' : (c.conductor.nm ? c.conductor.size+' AWG NM-B' : '#'+c.conductor.size+' THHN in conduit');
+    var s = '<svg class="hdiag" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Diagram of the wire route from the panel to the charger">';
+    s += '<path class="ground" d="M10,214 H630"/>';
+    var px, py, cx, cy, path;
+    // house
+    if (route==='trench'){
+      s += '<path class="ln d" pathLength="1" d="M30,214 V96 L140,40 L250,96 V214"/><path class="ln d" pathLength="1" d="M430,214 V120 H600 V214" style="--d:.2s"/><path class="lt" d="M430,120 L515,86 L600,120"/>';
+      s += '<text class="lab" x="140" y="236" text-anchor="middle">House</text><text class="lab" x="515" y="236" text-anchor="middle">Detached garage or post</text>';
+      px = 200; py = 150; cx = 470; cy = 160;
+      path = 'M'+(px+10)+','+(py+10)+' V204 H250 V226 H'+(cx-10)+' V206 H'+(cx+10)+' V'+(cy+22);
+      s += '<path class="trench" d="M250,222 H'+(cx-14)+'"/>';
+      if (I.driveway) s += '<rect class="drive" x="320" y="208" width="60" height="10" rx="2"/><text class="lab" x="350" y="200" text-anchor="middle">Driveway</text>';
+    } else {
+      s += '<path class="ln d" pathLength="1" d="M30,214 V96 L170,30 L310,96 V214"/><path class="ln d" pathLength="1" d="M310,214 V110 H610 V214" style="--d:.2s"/>';
+      s += '<text class="lab" x="170" y="236" text-anchor="middle">House</text><text class="lab" x="460" y="236" text-anchor="middle">Garage</text>';
+      s += '<g class="fade" style="--d:.6s"><path class="ln" d="M400,212 V200 Q403,190 418,189 L444,178 Q451,175 462,175 H506 Q518,175 524,184 L534,191 Q546,193 548,202 V212 Z"/><circle class="ln carw" cx="428" cy="213" r="9"/><circle class="ln carw" cx="520" cy="213" r="9"/></g>';
+      if (route!=='unfinished' && route!=='finished') s += '<rect class="lt" x="70" y="120" width="50" height="40" rx="3"/><rect class="lt" x="200" y="150" width="34" height="64" rx="3"/>';
+      if (route==='garage'){ px = 346; py = 130; cx = 560; cy = 150; path = 'M'+(px+26)+','+(py+18)+' H'+(cx-4)+' V'+(cy+4); }
+      else if (route==='unfinished'){ s += '<path class="joist" d="M40,196 H300"/><text class="lab" x="60" y="190">Basement or crawlspace</text>'; px = 60; py = 140; cx = 560; cy = 150;
+        path = 'M'+(px+10)+','+(py+30)+' V200 H316 V170 H'+(cx-4)+' V'+(cy+4); }
+      else if (route==='finished'){ s += '<path class="dry" d="M40,120 H300 M150,120 V214"/><text class="lab" x="60" y="112">Finished walls and ceilings</text>'; px = 60; py = 150; cx = 560; cy = 150;
+        path = 'M'+(px+10)+','+py+' V124 H150 V170 H316 V168 H'+(cx-4)+' V'+(cy+4); }
+      else { /* exterior */ px = 250; py = 140; cx = 640-20; cy = 160; cx = 596;
+        s += '<text class="lab" x="600" y="100" text-anchor="end">Outside wall</text>';
+        path = 'M'+(px+10)+','+(py+30)+' V190 H'+(cx+18)+' V'+(cy+4); }
+    }
+    // panel
+    s += '<g class="fade" style="--d:.3s"><rect class="pnl" x="'+px+'" y="'+py+'" width="26" height="40" rx="3"/><path class="lt" d="M'+(px+5)+','+(py+9)+' h16 M'+(px+5)+','+(py+16)+' h16 M'+(px+5)+','+(py+23)+' h16 M'+(px+5)+','+(py+30)+' h16"/></g>';
+    s += '<text class="tag" x="'+(px+13)+'" y="'+(py-8)+'" text-anchor="middle">'+(I.panelAmps>=400?'320/400':I.panelAmps)+' A panel</text>';
+    // wire
+    s += '<path class="wire" d="'+path+'"/><path class="wire-d" pathLength="1" d="'+path+'"/><path class="wire-f" d="'+path+'"/>';
+    // charger
+    s += '<g class="fade" style="--d:1s"><rect class="chgr" x="'+(cx-12)+'" y="'+(cy-14)+'" width="24" height="36" rx="6"/><circle class="led" cx="'+cx+'" cy="'+(cy-3)+'" r="2.6"/></g>';
+    s += '<text class="tag" x="'+cx+'" y="'+(cy-22)+'" text-anchor="middle">'+(c.L1?'120 V outlet':c.amps+' A, '+c.kw.toFixed(1)+' kW')+'</text>';
+    // labels on the wire
+    s += '<g class="fade" style="--d:1.4s"><rect class="pill" x="'+((W/2)-110)+'" y="4" width="220" height="44" rx="10"/><text class="tag" x="'+(W/2)+'" y="22" text-anchor="middle">'+dist+' ft of '+wlab+'</text><text class="lab" x="'+(W/2)+'" y="38" text-anchor="middle">'+(c.L1?'20 A circuit':c.ocpd+' A '+(c.gfci?'GFCI ':'')+'breaker'+(c.conductor && !c.L1?', '+c.conductor.vd.toFixed(1)+'% drop':''))+'</text></g>';
+    return s+'</svg>';
+  }
+  function gaugeHTML(Ld){
+    var max = Math.max(Ld.svc, Ld.needA)*1.12, before = Ld.method==='220.87' ? (Ld.measuredA||0) : Ld.beforeA, add = Math.max(0, Ld.needA - before);
+    var over = Ld.needA > Ld.svc;
+    return '<div class="hgauge'+(over?' over':'')+'"><div class="t"><b class="a" style="width:'+(before/max*100).toFixed(1)+'%"></b><b class="n" style="width:'+(add/max*100).toFixed(1)+'%"></b>'+
+      '<i class="svc" style="left:'+(Ld.svc/max*100).toFixed(1)+'%"><span>'+Ld.svc+' A service</span></i></div>'+
+      '<div class="legend"><span><i style="background:var(--blue)"></i>The house, '+Math.round(before)+' A</span><span><i style="background:var(--amber)"></i>New charger, +'+Math.round(add)+' A</span><span><b>'+Math.round(Ld.needA)+' A</b> by '+Ld.method+'</span></div></div>';
+  }
+  function renderI(){
+    var out = el('h-i-out'); if (!out) return;
+    var I = S.i, R = homeInstall(I), c = R.circuit, Ld = R.load;
+    var mph = c.L1 ? Math.round(c.kw*0.82*3.3) : Math.round(c.kw*0.9*3.3);
+    var h = '<div class="kpis">' +
+      kpi(moneyK(R.low)+' to '+moneyK(R.high), 'Likely installed cost'+(Number(I.chargerPrice)?', charger included':', before the charger')) +
+      kpi(c.kw.toFixed(1)+' kW', 'About '+mph+' miles of range an hour') +
+      kpi(Math.round(Ld.needA)+' A', 'Load on your '+(Ld.svc>=400?'320/400':Ld.svc)+' A service, with the charger', Ld.fits ? '' : 'neg') + '</div>';
+    var v = c.L1 ? 'A dedicated 120 V outlet. Cheap, slow, and often all a plug-in hybrid needs.' :
+      Ld.fits ? (Ld.pct>0.9 ? 'It fits, just. The calculation lands at '+Math.round(Ld.pct*100)+'% of your service. Legal, but a second EV or a heat pump later will need a plan.' : 'The panel has room. <strong>'+Math.round(Ld.needA)+' A</strong> against a '+Ld.svc+' A service, by the '+Ld.method+' method.') :
+      'On paper, the panel is full. The calculation comes to <strong>'+Math.round(Ld.needA)+' A</strong> against a '+Ld.svc+' A service. That doesn’t mean a new service. Cheaper options below.';
+    h += '<p class="verdict">'+v+'</p>';
+    R.flags.forEach(function(x){ h += '<p class="flag">'+x+'</p>'; });
+    if (c.plug) h += '<p class="flag">Outlets for EV charging need GFCI protection, which is included. The breaker and the charger’s own protection occasionally disagree and trip. If that happens, hardwiring is the usual fix.</p>';
+    if (c.conductor && c.conductor.upsized && !c.L1) h += '<p class="flag">The run is long enough that the wire goes up a size to keep voltage drop under '+I.maxVd+'%.</p>';
+    h += '<div class="panel"><h2>The route</h2>'+installDiagram(R, I)+'</div>';
+    if (!c.L1) h += '<div class="panel"><h2>The load check</h2><p class="sub">'+(Ld.method==='220.87' ? 'Your measured peak plus 25%, plus the charger at 125%.' : 'The standard calculation for adding a load to an existing house: first 8 kVA in full, the rest at 40%.')+'</p>'+gaugeHTML(Ld)+'</div>';
+    if (R.options){
+      h += '<div class="panel"><h2>Ways around a full panel</h2><div class="hopts">'+R.options.map(function(op){
+        return '<div class="hopt"><b>'+op.name+'</b><span class="p">'+(op.high ? moneyK(op.low)+' to '+moneyK(op.high) : 'Free')+'</span><p>'+op.note+'</p></div>'; }).join('')+'</div></div>';
+    }
+    h += '<div class="panel"><h2>Where the money goes</h2><p class="sub">Midpoint '+moneyK(R.total)+'. Real quotes land anywhere from 20% under to 30% over, depending on the walls, the electrician and the week.</p>'+K.bars(R.lines.map(function(l){ return [l[0], l[1]]; }), '')+'</div>';
+    // checklist
+    var ask = [];
+    if (!c.L1) ask.push('Did you do a load calculation, and which method? Can I see it?');
+    ask.push(c.L1 ? 'Is this outlet on its own circuit?' : 'What size wire and breaker, and is the wire rated for '+(c.amps*1.25)+' A continuous?');
+    if (c.plug) ask.push('Is the outlet industrial grade (Hubbell or Bryant), and is it torqued to spec?');
+    if (!Ld.fits && !c.L1) ask.push('Can we turn the charger down, or add load management, instead of upgrading the service?');
+    if (Number(I.spaces) < (c.L1?1:2)) ask.push('Where does the breaker go if there are no free spaces? Are tandems allowed in this panel?');
+    if (HBRAND[I.brand] && HBRAND[I.brand].bad) ask.push('Should this panel be replaced first, and what does that cost on its own?');
+    ask.push('Is the permit included, and who schedules the inspection?');
+    ask.push('Does my utility offer a rebate, and does it need a particular charger or rate?');
+    h += '<div class="panel"><h2>What to ask your electrician</h2><ul class="recs">'+ask.map(function(a){ return '<li>'+a+'</li>'; }).join('')+'</ul></div>';
+    if (S.pro && !c.L1){
+      var cd = c.conductor;
+      h += '<div class="panel hpropanel"><h2>Pro: the circuit</h2><div class="scroll"><table><tbody>'+
+        '<tr><th>EVSE rating</th><td>'+c.amps+' A continuous, '+c.kw.toFixed(2)+' kW at '+c.volts+' V</td></tr>'+
+        '<tr><th>Overcurrent protection</th><td>'+c.ocpd+' A two-pole'+(c.gfci?', GFCI (625.54'+(c.plug?', 210.8(A)':'')+')':'')+'. 125% of the EVSE rating (625.41), next standard size (240.6).</td></tr>'+
+        '<tr><th>Conductors</th><td>'+(cd.nm?cd.size+' AWG copper NM-B, 60°C column (334.80): '+cd.amp+' A':'#'+cd.size+' AWG copper THHN/THWN-2 in conduit, 75°C column: '+cd.amp+' A')+'. Needs at least '+(c.amps*1.25)+' A (210.19(A)(1)).</td></tr>'+
+        '<tr><th>Equipment ground</th><td>#'+c.egc+' AWG copper (Table 250.122)'+(cd.upsized?', increased in proportion to the upsized conductors (250.122(B))':'')+'</td></tr>'+
+        '<tr><th>Voltage drop</th><td>2 × '+Math.round(I.distance)+' ft × '+cd.ohm+' Ω/kft × '+c.amps+' A = '+(cd.vd*2.4).toFixed(2)+' V, '+cd.vd.toFixed(2)+'% (target '+I.maxVd+'%)</td></tr>'+
+        '<tr><th>Individual branch circuit</th><td>Required over 16 A or 120 V (625.40)</td></tr>'+
+        '</tbody></table></div></div>';
+      h += '<div class="panel hpropanel"><h2>Pro: the load calculation</h2><p class="sub">'+(Ld.code==='2026'?'2026 NEC 120.83: existing loads 8 kVA at 100% plus 40% of the remainder; the new EVSE at 80%.':'2023 NEC 220.83(A): existing plus new loads, 8 kVA at 100% plus 40% of the remainder. EVSE counted at the larger of 7,200 VA or nameplate (220.57).')+'</p><div class="scroll"><table class="hwork"><tbody>'+
+        Ld.list.map(function(l){ return '<tr><td>'+l[0]+'</td><td>'+num(l[1])+' VA</td></tr>'; }).join('')+
+        '<tr class="sub"><td>Existing load</td><td>'+num(Ld.existingVA)+' VA</td></tr>'+
+        '<tr><td>New EVSE</td><td>'+num(Ld.newVA)+' VA</td></tr>'+
+        '<tr class="sub"><td>Calculated demand</td><td>'+num(Math.round(Ld.demandVA))+' VA ÷ 240 V = '+Ld.amps.toFixed(1)+' A</td></tr>'+
+        (Ld.measuredA!==null ? '<tr><td>220.87: measured peak × 1.25, plus EVSE × 1.25</td><td>'+Ld.measuredA.toFixed(1)+' A + '+(1.25*c.amps).toFixed(1)+' A = '+(Ld.measuredA+1.25*c.amps).toFixed(1)+' A</td></tr>' : '')+
+        '<tr class="sub"><td>Service</td><td>'+Ld.svc+' A, '+(Ld.fits?'OK':'exceeded')+'</td></tr>'+
+        '</tbody></table></div><p class="fh">With an energy management system (750.30), 220.70 and 625.42 let the EVSE count at the system’s maximum setpoint. Largest setting that fits without one: '+(Ld.maxFit?Ld.maxFit+' A':'none of the standard settings')+'. Local amendments and the AHJ have the final word.</p></div>';
+    }
+    h += '<p class="fh" style="margin-top:1.4rem">Screening estimate in 2026 dollars, labor at about '+money(115*(Number(I.laborIdx)||100)/100)+' an hour. Doesn’t include utility work, surprises inside walls, or local code amendments.</p>';
+    out.innerHTML = h; K.polish(out);
+    var dg = out.querySelector('.hdiag'); if (dg && !REDUCED){ dg.classList.remove('play'); void dg.getBoundingClientRect(); dg.classList.add('play'); } else if (dg) dg.classList.add('play');
+  }
+
+  /* ================= Tool 3: backup sizer ================= */
+  var BPRESET = {
+    ess:{fridge:1, lights:1, net:1, micro:1, blower:1},
+    essac:{fridge:1, lights:1, net:1, micro:1, blower:1, ac3:1, tv:1},
+    whole:{fridge:1, freezer:1, lights:1, net:1, tv:1, micro:1, blower:1, ac3:1, whtr:1, range:1, dryer:1, washer:1, dish:1, garage:1}
+  };
+  function renderBIn(){
+    var B = S.b, form = el('h-b-in'); if (!form) return;
+    var h = '<div class="hpresets"><span class="fl">Start from</span><div class="seg" role="group" aria-label="Start from">'+
+      [['ess','Essentials'],['essac','Plus AC'],['whole','Whole home']].map(function(p){ return '<button type="button" data-bpre="'+p[0]+'">'+p[1]+'</button>'; }).join('')+'</div></div>';
+    h += group('What stays on', true, '<div class="happs">'+HAPPS.map(function(a){
+      var q = Number(B.sel[a.id])||0;
+      return '<label class="happ'+(q?' on':'')+'"><input type="checkbox" data-app="'+a.id+'"'+(q?' checked':'')+'><span class="n">'+a.name+'</span><span class="w">'+(a.w>=1000?(a.w/1000).toFixed(1)+' kW':a.w+' W')+(S.pro && a.s ? ' <em>+'+a.s+' kVA start</em>':'')+'</span></label>';
+    }).join('')+'</div>');
+    h += group('The outage', true,
+      segH('b','season',[['summer','Summer'],['winter','Winter']],'Season') +
+      sl('b','hours','How long', [[8,'8 hours, an evening'],[24,'24 hours, a day'],[72,'3 days, a bad storm'],[168,'A week']], '', true) +
+      ck('b','softStart','Soft starter on the AC or heat pump'));
+    h += group('Optional', false,
+      f('b','pvKw','Solar on the roof','kW','Refills the battery on sunny days. 0 if none.',0.5,0) +
+      f('b','billKwh','Monthly use from your bill','kWh','Shows how your picks compare with a normal day.',10,0));
+    h += '<div class="tool-actions"><button type="button" class="btn" id="h-b-reset">Reset</button></div>';
+    form.innerHTML = h;
+    el('h-b-reset').onclick = function(){ S.b = JSON.parse(JSON.stringify(DEF.b)); save(); renderBIn(); renderB(); };
+    Array.prototype.forEach.call(form.querySelectorAll('[data-bpre]'), function(b){
+      b.onclick = function(){ S.b.sel = Object.assign({}, BPRESET[b.getAttribute('data-bpre')]); S.b.touched = true; save(); renderBIn(); renderB(); };
+    });
+  }
+  function drainSVG(fit, need, o){
+    var W = 640, H = 200, L = 44, R = 12, T = 14, Bm = 28, hrs = o.hours, cap = fit.kwh*0.95;
+    var pts = [], lvl = cap, start = 18, died = null, hourly = need.dayKwh/24;
+    var prof = [0.8,0.7,0.65,0.6,0.6,0.7,0.9,1.1,1.0,0.95,0.95,1.0,1.05,1.1,1.15,1.2,1.3,1.45,1.5,1.45,1.35,1.2,1.0,0.9]; // relative use by hour of day
+    var ps = prof.reduce(function(a,b){ return a+b; },0)/24;
+    var sun = [0,0,0,0,0,0,0.02,0.06,0.1,0.13,0.15,0.16,0.16,0.14,0.11,0.07,0.03,0.01,0,0,0,0,0,0];
+    pts.push([0, lvl]);
+    for (var t=0; t<hrs; t++){
+      var hod = (start+t)%24, use = hourly*prof[hod]/ps, gen = need.solarDay*sun[hod]/0.94;
+      lvl = Math.min(cap, lvl - use + gen);
+      if (lvl<=0 && died===null) died = t+1;
+      lvl = Math.max(0, lvl); pts.push([t+1, lvl]);
+    }
+    function x(t){ return L + (W-L-R)*t/hrs; } function y(v){ return T + (H-T-Bm)*(1 - v/cap); }
+    var s = '<svg class="hdrain chart" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Battery charge through the outage">';
+    [0, .5, 1].forEach(function(k){ s += '<line class="grid" x1="'+L+'" x2="'+(W-R)+'" y1="'+y(cap*k)+'" y2="'+y(cap*k)+'"/><text class="axis" x="'+(L-6)+'" y="'+(y(cap*k)+4)+'" text-anchor="end">'+Math.round(k*100)+'%</text>'; });
+    var step = hrs<=24 ? 6 : hrs<=72 ? 12 : 24;
+    for (var t2=0; t2<=hrs; t2+=step) s += '<text class="axis" x="'+x(t2)+'" y="'+(H-8)+'" text-anchor="middle">'+(t2===0?'6pm':hm(start+t2).replace(':00',''))+(t2>=24&&t2%24===0?' +'+(t2/24)+'d':'')+'</text>';
+    s += '<path class="area" d="M'+x(0)+','+y(0)+' '+pts.map(function(p){ return 'L'+x(p[0]).toFixed(1)+','+y(p[1]).toFixed(1); }).join(' ')+' L'+x(hrs)+','+y(0)+' Z"/>';
+    s += '<polyline class="line" points="'+pts.map(function(p){ return x(p[0]).toFixed(1)+','+y(p[1]).toFixed(1); }).join(' ')+'"/>';
+    if (died!==null) s += '<line class="zero" x1="'+x(died)+'" x2="'+x(died)+'" y1="'+T+'" y2="'+(H-Bm)+'" stroke-dasharray="4 4"/><text class="lbl" x="'+(x(died)+6)+'" y="'+(T+12)+'">Empty</text>';
+    return {svg:s+'</svg>', died:died};
+  }
+  function renderB(){
+    var out = el('h-b-out'); if (!out) return;
+    var B = S.b, o = {season:B.season, hours:Number(B.hours), softStart:B.softStart, pvKw:B.pvKw, billKwh:B.billKwh};
+    var need = backupNeed(B.sel, o);
+    if (!need.sumKw){ out.innerHTML = '<p class="empty">Pick at least one thing to keep running.</p>'; return; }
+    var exp = hgById(HG.batteries||[], 'powerwall-3x');
+    var fits = (HG.batteries||[]).map(function(b){ return batteryFit(b, need, o, exp); }).filter(Boolean).sort(function(a,b){ return a.cost-b.cost; });
+    var best = fits.filter(function(q){ return !q.over && !q.unknownSurge; })[0] || fits[0];
+    var h = '<div class="kpis">' + kpi(need.peakKw.toFixed(1)+' kW', 'Running at once, allowing for things that don’t overlap') +
+      kpi(need.surgeKw.toFixed(1)+' kW', 'Surge to start the biggest motor'+(need.motorSurge? '' : ' (no big motors)')) +
+      kpi(Math.round(need.outageKwh)+' kWh', 'Energy for '+(o.hours>=24?(o.hours/24)+' day'+(o.hours>24?'s':''):o.hours+' hours')+(need.solarDay?', before solar':'')) + '</div>';
+    var v = 'These loads use about <strong>'+need.dayKwh.toFixed(1)+' kWh a day</strong>'+(need.billDay?', against the '+need.billDay.toFixed(0)+' kWh your house averages':'')+'. ';
+    if (best) v += 'The cheapest fit here is <strong>'+(best.units>1?best.units+' × ':'')+esc(best.b.oem+' '+best.b.model)+(best.extra?' plus '+best.extra+' expansion'+(best.extra>1?'s':''):'')+'</strong>, about '+moneyK(best.cost)+' installed, limited by '+({power:'running power',surge:'start-up surge',energy:'energy'})[best.limit]+'.';
+    h += '<p class="verdict">'+v+'</p>';
+    if (need.motorSurge>=12 && !o.softStart) h += '<p class="flag">An air conditioner or heat pump is setting the surge. A soft starter, usually a few hundred dollars installed, would cut it roughly in half and may save a whole battery.</p>';
+    if (best){
+      var d = drainSVG(best, need, o);
+      h += '<div class="panel"><h2>Through the outage</h2><p class="sub">'+(best.units>1?best.units+' × ':'')+esc(best.b.model)+(best.extra?' + '+best.extra+' expansion'+(best.extra>1?'s':''):'')+', starting full at 6pm'+(need.solarDay?', with '+B.pvKw+' kW of solar refilling it by day':'')+'. '+(d.died!==null?'It runs out after about '+d.died+' hours.':'It makes it through.')+'</p>'+d.svg+'</div>';
+    }
+    h += '<div class="panel"><h2>Batteries that cover it</h2><p class="sub">Sorted by installed cost. Units needed to clear running power, surge and energy together.</p><div class="scroll"><table class="hbt"><thead><tr><th>Battery</th><th>Units</th><th>kWh</th><th>kW</th><th>Surge</th><th>Installed</th></tr></thead><tbody>'+
+      fits.map(function(q){
+        var tag = q.over ? '<span class="chip g1">over the stacking limit</span>' : q.unknownSurge ? '<span class="chip gn">surge not published</span>' : q===best ? '<span class="chip g3">cheapest fit</span>' : '';
+        return '<tr><td><a href="'+gearHref(q.b.id)+'">'+esc(q.b.oem+' '+q.b.model)+'</a> '+tag+'<br><span class="fh">Limited by '+({power:'running power',surge:'surge',energy:'energy'})[q.limit]+'</span></td><td>'+q.units+(q.extra?' + '+q.extra+' exp.':'')+'</td><td>'+Math.round(q.kwh)+'</td><td>'+q.kw.toFixed(1)+'</td><td>'+(q.surge?Math.round(q.surge)+' kW':'?')+'</td><td>'+moneyK(q.cost)+'</td></tr>';
+      }).join('')+'</tbody></table></div></div>';
+    h += '<div class="panel"><h2>Or</h2><ul class="recs">'+
+      '<li>A <strong>standby generator</strong>, around 22 kW, typically $12,000 to $18,000 installed with a transfer switch. Runs as long as the gas does. No daily savings.</li>'+
+      '<li>A <strong>car that can run the house</strong>. <a href="#hvcompare">Compare one</a> against the battery above.</li>'+
+      '<li><strong>Fewer loads.</strong> Every item you untick is cheaper than another battery.</li></ul></div>';
+    h += '<p class="fh" style="margin-top:1.2rem">Running watts and duty cycles are typical values, not your appliances. Nameplates and a clamp meter beat any calculator. Prices are 2026 installed estimates before incentives.</p>';
+    out.innerHTML = h; K.polish(out);
+    if (B.touched){ S.v.load = Math.max(5, Math.round(need.dayKwh)); S.v.peak = Math.round(need.peakKw*10)/10; save(); }
+  }
+
+  /* ================= Tool 4: V2H vs battery ================= */
+  var V2H_LABEL = {yes:'Can run a house today', legacy:'Discontinued, existing owners only', announced:'Announced, not shipping', no:'No V2H in the US'};
+  function renderVIn(){
+    var V = S.v, form = el('h-v-in'); if (!form) return;
+    var filt = V.showAll ? null : function(v){ return v.v2h==='yes' || v.v2h==='legacy'; };
+    var h = group('The car', true,
+      sl('v','veh','Vehicle', vehOpts(filt).filter(function(o){ return o[0]!=='custom'; }), '', true) + ck('v','showAll','Show every EV, including announced and V2L-only') +
+      f('v','reserve','Keep for driving','%','Some carmakers set their own floor.',5,0,95));
+    h += group('The house in an outage', true,
+      f('v','load','Energy per day','kWh','Essentials run 12 to 20. The backup sizer fills this in.',1,1) +
+      f('v','peak','Running at once','kW','',0.5,0.5));
+    h += group('The battery to compare', true,
+      sl('v','batt','Home battery', (HG.batteries||[]).filter(function(b){ return b.kw>0; }).map(function(b){ return [b.id, b.oem+' '+b.model]; }), '', true) +
+      f('v','units','How many','',  '',1,1,16));
+    form.innerHTML = h;
+  }
+  function renderV(){
+    var out = el('h-v-out'); if (!out) return;
+    var V = S.v, v = hgById(HG.vehicles||[], V.veh), b = hgById(HG.batteries||[], V.batt);
+    if (!v || !b){ out.innerHTML = '<p class="empty">Loading the vehicle list...</p>'; return; }
+    var units = Math.max(1, Math.round(Number(V.units)||1)), load = Math.max(1, Number(V.load)||20), peak = Number(V.peak)||0;
+    var floor = Math.max(Number(V.reserve)||0, v.floor||0);
+    var carKwh = v2hUsable(v, Number(V.reserve)||0), carKw = v.v2hKw || 0;
+    var carCost = (v.v2hCost||0) + (v.v2hInstall||0);
+    var bKwh = b.kwh*units*0.95, bKw = b.kw*units, bCost = b.price + (units-1)*b.addPrice;
+    var carDays = carKw ? carKwh/load : 0, bDays = bKwh/load;
+    var can = v.v2h==='yes' || v.v2h==='legacy';
+    var mx = function(a,b2){ return Math.max(a,b2,0.0001); };
+    function row(label, a, b2, fmt, better){
+      var m = mx(a,b2);
+      return '<div class="hvrow"><span class="l">'+label+'</span><span class="c"><span class="t"><b class="car" style="width:'+(a/m*100).toFixed(1)+'%"></b></span><span class="tw">'+fmt(a)+'</span></span><span class="c"><span class="t"><b class="bat" style="width:'+(b2/m*100).toFixed(1)+'%"></b></span><span class="tw">'+fmt(b2)+'</span></span></div>';
+    }
+    var h = '<div class="hvhead"><div class="car"><small>'+esc(v.make)+'</small><b>'+esc(v.model)+'</b><span class="chip '+(v.v2h==='yes'?'g3':v.v2h==='legacy'?'g1':'gn')+'">'+V2H_LABEL[v.v2h]+'</span></div><div class="vs">vs</div><div class="bat"><small>'+esc(b.oem)+'</small><b>'+(units>1?units+' × ':'')+esc(b.model)+'</b><span class="chip g2">Home battery</span></div></div>';
+    h += '<div class="hvrows"><div class="hvrow hvcols"><span class="l"></span><span class="c">Car</span><span class="c">Battery</span></div>'+
+      row('Energy for the house', can?carKwh:0, bKwh, function(x){ return Math.round(x)+' kWh'; }) +
+      row('Days of backup at '+load+' kWh a day', can?carDays:0, bDays, function(x){ return x>=10 ? Math.round(x)+' days' : x.toFixed(1)+' days'; }) +
+      row('Power at once', carKw, bKw, function(x){ return x ? x.toFixed(1)+' kW' : 'none'; }) +
+      row('Hardware and install', carCost, bCost, function(x){ return x ? moneyK(x) : 'n/a'; }) +
+      row('Cost per kWh of backup', can && carKwh ? carCost/carKwh : 0, bCost/bKwh, function(x){ return x ? money(x,0) : 'n/a'; }) + '</div>';
+    var v1;
+    if (!can) v1 = esc(v.make+' '+v.model)+' can’t run a house in the US today'+(v.v2h==='announced'?', though it has been announced':'')+'. '+(v.v2l?'Its '+v.v2l+' kW outlets can run a fridge and some lights on extension cords, which is V2L, not V2H.':'');
+    else {
+      v1 = 'Keeping '+floor+'% for driving, the '+esc(v.model)+' holds <strong>'+Math.round(carKwh)+' kWh</strong> for the house, '+(carKwh>bKwh ? '<strong>'+(carKwh/bKwh).toFixed(1)+' times</strong> the battery’s' : 'less than the battery’s')+'. ';
+      v1 += carCost < bCost ? 'It also costs less to set up, because the expensive part is already in the garage.' : 'The battery costs less to set up here.';
+    }
+    h += '<p class="verdict">'+v1+'</p>';
+    if (can && peak > carKw) h += '<p class="flag">The house needs about '+peak+' kW at once, and the car exports '+carKw+' kW. Some loads would have to wait, or be left off the backup panel.</p>';
+    if (peak > bKw) h += '<p class="flag">The house needs about '+peak+' kW at once, more than '+(units>1?'these batteries':'this battery')+' can deliver ('+bKw.toFixed(1)+' kW). Add a unit or trim the loads.</p>';
+    if (v.floor && Number(V.reserve) < v.floor) h += '<p class="flag">This car stops exporting at '+v.floor+'%, so that’s the floor used.</p>';
+    if (v.note) h += '<p class="fh">'+esc(v.note)+'</p>';
+    var pros = [], cons = [];
+    if (can){
+      pros.push(Math.round(carKwh)+' kWh available, without buying a battery.');
+      if (v.seamless) pros.push('Switches over automatically when the grid drops, with the right hardware.');
+      if (v.v2g) pros.push('V2G: '+esc(v.v2g)+'.');
+      cons.push('Only works when the car is home and plugged in.');
+      cons.push('Backup only, in most US setups today. No daily time-of-use savings.');
+      if (v.v2h==='legacy') cons.push('The home hardware is discontinued. Existing owners only.');
+      if (v.floor) cons.push('Stops at '+v.floor+'% charge.');
+    }
+    pros.push('Battery: always home, cycles every day on time of use, and pays into grid programs where they exist.');
+    cons.push('Battery: '+Math.round(bKwh)+' kWh is less than most cars carry, and '+moneyK(bCost)+' is a lot of insurance.');
+    h += '<div class="hpcgrid"><div class="hpro"><h3>For</h3><ul>'+pros.map(function(p){ return '<li>'+p+'</li>'; }).join('')+'</ul></div><div class="hcon"><h3>Against</h3><ul>'+cons.map(function(p){ return '<li>'+p+'</li>'; }).join('')+'</ul></div></div>';
+    if (can) h += '<p class="fh" style="margin-top:1rem">Hardware: '+esc((hgById(HG.chargers||[], v.v2hHw)||{}).model||'')+', about '+money(v.v2hCost||0)+' plus a typical '+money(v.v2hInstall||0)+' to install. Houses vary a lot.</p>';
+    out.innerHTML = h; K.polish(out);
+  }
+
+  /* ================= Gear ================= */
+  function gearHref(id){ return window.CS_PAGE ? K.viewHref('hgear')+'?p='+id : '#hgear?p='+id; }
+  var ICON = {
+    wall:'<svg viewBox="0 0 120 90" aria-hidden="true"><rect class="ln fw" x="42" y="8" width="36" height="58" rx="9"/><rect class="fi" x="50" y="18" width="20" height="12" rx="3"/><circle class="fb" cx="60" cy="44" r="3.5"/><path class="ln" d="M60,66 C60,84 30,84 22,74"/><rect class="ln fw" x="12" y="66" width="14" height="10" rx="3"/></svg>',
+    cord:'<svg viewBox="0 0 120 90" aria-hidden="true"><rect class="ln fw" x="44" y="30" width="32" height="22" rx="6"/><circle class="fb" cx="60" cy="41" r="3"/><path class="ln" d="M44,41 C24,41 20,20 12,20 M76,41 C100,41 100,70 106,70"/><rect class="ln fw" x="4" y="14" width="10" height="12" rx="2"/><rect class="ln fw" x="104" y="64" width="12" height="12" rx="3"/></svg>',
+    bidi:'<svg viewBox="0 0 120 90" aria-hidden="true"><rect class="ln fw" x="40" y="8" width="40" height="62" rx="9"/><path class="lb" d="M52,30 H68 l-5,-5 M68,42 H52 l5,5"/><path class="ln" d="M60,70 C60,86 30,86 22,76"/></svg>',
+    batt:'<svg viewBox="0 0 120 90" aria-hidden="true"><rect class="ln fw" x="36" y="6" width="48" height="78" rx="10"/><rect class="fb" x="46" y="30" width="28" height="44" rx="4"/><circle class="fi" cx="60" cy="18" r="3"/></svg>',
+    car:'<svg viewBox="0 0 120 90" aria-hidden="true"><path class="ln" d="M8,64 V54 Q11,44 24,43 L40,34 Q46,31 54,31 H80 Q90,31 95,39 L100,45 Q110,47 112,55 V64 Z"/><circle class="ln fw" cx="30" cy="65" r="9"/><circle class="ln fw" cx="92" cy="65" r="9"/></svg>',
+    truck:'<svg viewBox="0 0 120 90" aria-hidden="true"><path class="ln" d="M6,64 V48 Q8,42 16,42 L30,30 Q34,28 40,28 H62 V42 H112 V64 Z M62,42 V28"/><circle class="ln fw" cx="28" cy="65" r="9"/><circle class="ln fw" cx="92" cy="65" r="9"/></svg>'
+  };
+  function vIcon(v){ return /Silverado|Sierra|Lightning|Cybertruck|Hummer|R1T/.test(v.model) ? ICON.truck : ICON.car; }
+  function renderGear(){
+    var box = el('h-gear'); if (!box) return;
+    var q = (location.search.match(/[?&]p=([a-z0-9-]+)/)||[])[1] || (location.hash.match(/\?p=([a-z0-9-]+)/)||[])[1];
+    var all = [].concat((HG.chargers||[]).map(function(x){ return ['chargers',x]; }), (HG.batteries||[]).map(function(x){ return ['batteries',x]; }), (HG.vehicles||[]).map(function(x){ return ['vehicles',x]; }));
+    var hit = q && all.filter(function(p){ return p[1].id===q; })[0];
+    if (hit){ box.innerHTML = gearDetail(hit[0], hit[1]); K.polish(box); return; }
+    var tab = S.gearTab, h = '<div class="hgtabs seg" role="group" aria-label="Shelf">'+[['chargers','Home chargers'],['batteries','Home batteries'],['vehicles','Bidirectional EVs']].map(function(t){
+      return '<button type="button" data-gtab="'+t[0]+'" aria-pressed="'+(tab===t[0])+'">'+t[1]+'</button>'; }).join('')+'</div>';
+    if (tab==='chargers'){
+      h += '<div class="hwgrid">'+(HG.chargers||[]).map(function(c){
+        var ic = c.bidirectional ? ICON.bidi : c.install==='cord' ? ICON.cord : ICON.wall;
+        return '<a class="hwcard hg" href="'+gearHref(c.id)+'">'+ic+'<span class="sub">'+esc(c.oem)+' · '+esc(c.kind)+'</span><h2>'+esc(c.model)+'</h2><b>'+[c.amps?c.amps+' A':'', c.exportKw?c.exportKw+' kW out':''].filter(Boolean).join(' · ')+'</b><p class="sub">'+esc(c.blurb)+'</p><span class="hgfoot">'+money(c.price)+(c.status!=='available'?' <span class="chip '+(c.status==='discontinued'?'g1':'gn')+'">'+c.status+'</span>':'')+'</span></a>';
+      }).join('')+'</div>';
+    } else if (tab==='batteries'){
+      h += '<div class="hwgrid">'+(HG.batteries||[]).map(function(b){
+        return '<a class="hwcard hg" href="'+gearHref(b.id)+'">'+ICON.batt+'<span class="sub">'+esc(b.oem)+' · '+esc(b.chem)+'</span><h2>'+esc(b.model)+'</h2><b>'+b.kwh+' kWh · '+(b.kw?b.kw+' kW':'no inverter')+'</b><p class="sub">'+esc(b.blurb)+'</p><span class="hgfoot">About '+moneyK(b.price)+' installed</span></a>';
+      }).join('')+'</div>';
+    } else {
+      var F = S.gearFilter, list = (HG.vehicles||[]).filter(function(v){ return F==='all' ? (v.v2h!=='no' || v.v2l>0) : F==='yes' ? (v.v2h==='yes'||v.v2h==='legacy') : F==='v2l' ? v.v2l>0 : v.v2h==='announced'; });
+      h += '<div class="hgfilt">'+[['all','Everything that sends power out'],['yes','Runs a house today'],['v2l','Has outlets (V2L)'],['announced','Announced']].map(function(t){ return '<button type="button" class="toc-b" data-gfil="'+t[0]+'" aria-pressed="'+(F===t[0])+'">'+t[1]+'</button>'; }).join('')+'</div>';
+      h += '<div class="hwgrid">'+list.map(function(v){
+        return '<a class="hwcard hg" href="'+gearHref(v.id)+'">'+vIcon(v)+'<span class="sub">'+esc(v.make)+' · '+esc(v.years)+'</span><h2>'+esc(v.model)+'</h2><b>~'+v.kwh+' kWh'+(v.v2hKw?' · '+v.v2hKw+' kW V2H':'')+'</b><p class="sub">'+(v.v2l?'V2L '+v.v2l+' kW. ':'No factory outlets. ')+(v.dc?esc(v.dc)+' bidirectional.':'')+'</p><span class="hgfoot"><span class="chip '+(v.v2h==='yes'?'g3':v.v2h==='legacy'?'g1':'gn')+'">'+V2H_LABEL[v.v2h]+'</span></span></a>';
+      }).join('')+'</div><p class="fh" style="margin-top:1.2rem">Battery sizes are approximate. V2H support changes by model year, trim and state, so check the carmaker’s eligibility page before buying hardware.</p>';
+    }
+    h += '<p class="fh" style="margin-top:1.4rem">'+esc(HG.note||'')+' Want your product listed, or spotted an error? <a href="#about">Get in touch</a>.</p>';
+    box.innerHTML = h;
+  }
+  function gearDetail(kind, x){
+    var rows = [], use = '', title = kind==='vehicles' ? x.make+' '+x.model : x.oem+' '+x.model, ic;
+    if (kind==='chargers'){
+      ic = x.bidirectional ? ICON.bidi : x.install==='cord' ? ICON.cord : ICON.wall;
+      rows = [['Current', x.amps?x.amps+' A continuous':'Not published'], ['Breaker', x.breaker?x.breaker+' A':''], ['Connects', {hardwire:'Hardwired', plug:'Plug-in', both:'Plug-in or hardwired', cord:'Portable cord'}[x.install]+(x.plugs?'. '+x.plugs:'')],
+        ['Connector', x.connector], ['Export', x.exportKw?x.exportKw+' kW to the house':''], ['Smart features', x.smart], ['Load management', x.loadMgmt], ['Listing', x.listing], ['Price', money(x.price)+(x.bidirectional?' hardware, before installation':'')], ['Status', x.status]];
+      if (!x.bidirectional && x.install!=='cord') use = '<a class="btn" href="'+K.viewHref('hinstall')+'?gear='+x.id+'">Price the install</a>';
+    } else if (kind==='batteries'){
+      ic = ICON.batt;
+      rows = [['Usable energy', x.kwh+' kWh'], ['Continuous power', x.kw?x.kw+' kW':'None (adds energy only)'], ['Surge', x.surgeKw?x.surgeKw+' kW'+(x.surgeNote?' ('+x.surgeNote+')':''):'Not published'], ['Chemistry', x.chem], ['Coupling', x.coupling], ['Stacks up to', x.stackMax+' units'],
+        ['Installed price', 'About '+money(x.price)+' for the first, '+money(x.addPrice)+' each after'], ['Warranty', x.warranty]];
+      use = '<a class="btn" href="'+K.viewHref('hbackup')+'">Size a backup</a> <a class="btn secondary" href="'+K.viewHref('hvcompare')+'?batt='+x.id+'">Compare with a car</a>';
+    } else {
+      ic = vIcon(x);
+      rows = [['Years', x.years], ['Battery', 'About '+x.kwh+' kWh'], ['Onboard charger', x.obc+' kW AC'], ['Efficiency', 'About '+x.eff+' miles per kWh'], ['V2L', x.v2l?x.v2l+' kW'+(x.v2lNote?'. '+x.v2lNote:''):'None from the factory'],
+        ['V2H', V2H_LABEL[x.v2h]+(x.v2hKw?', up to '+x.v2hKw+' kW':'')], ['Home hardware', x.v2hHw?((hgById(HG.chargers||[], x.v2hHw)||{}).model||'')+', about '+money(x.v2hCost):''], ['Type', x.dc||''], ['V2G', x.v2g||''], ['Export floor', x.floor?x.floor+'%':'']];
+      use = '<a class="btn" href="'+K.viewHref('hcharge')+'?veh='+x.id+'">Charging cost</a>'+((x.v2h==='yes'||x.v2h==='legacy')?' <a class="btn secondary" href="'+K.viewHref('hvcompare')+'?veh='+x.id+'">Compare with a battery</a>':'');
+    }
+    return '<p class="sub"><a href="'+K.viewHref('hgear')+'">All gear</a> <span class="dot">/</span> '+esc(title)+'</p>'+
+      '<div class="hwhero hgd"><div class="hgicon">'+ic+'</div><div><p class="sub">'+esc(kind==='vehicles'?x.make:x.oem)+'</p><h2>'+esc(kind==='vehicles'?x.model:x.model)+'</h2><p>'+esc(x.blurb||x.note||'')+'</p><p>'+use+(x.website?' <a class="btn secondary" href="'+esc(x.website)+'" target="_blank" rel="noopener">Manufacturer site</a>':'')+'</p></div></div>'+
+      '<h2>Specifications</h2><div class="scroll"><table><tbody>'+rows.filter(function(r){ return r[1]; }).map(function(r){ return '<tr><th>'+r[0]+'</th><td>'+esc(r[1])+'</td></tr>'; }).join('')+'</tbody></table></div>'+
+      (x.note && x.blurb ? '<p class="fh">'+esc(x.note)+'</p>' : '')+
+      '<p class="fh">Source: '+esc(x.source||'Manufacturer and public reporting, 2026')+'.</p>';
+  }
+
+  /* ================= Guide figures ================= */
+  function initNight(){
+    var seg = el('h-night-seg'), box = el('h-night'); if (!seg || !box) return;
+    var cur = '32';
+    function draw(){
+      var L = {'12v':[12,120,0.82], '16':[16,240,0.9], '32':[32,240,0.9], '48':[48,240,0.9]}[cur];
+      var kw = L[0]*L[1]/1000, miles = kw*L[2]*3.3*12, cap = 300, commute = 37;
+      var w = Math.min(100, miles/cap*100);
+      box.innerHTML = '<div class="hn-row"><span class="hn-l">Range added</span><span class="hn-t"><b style="width:'+w.toFixed(1)+'%"></b><i class="hn-c" style="left:'+(commute/cap*100)+'%"><span>Average day, 37 mi</span></i></span><span class="hn-v tw">'+Math.round(miles)+' mi</span></div>'+
+        '<div class="hn-clock">'+Array.apply(null, Array(12)).map(function(_, i){ return '<i style="--i:'+i+'"></i>'; }).join('')+'</div>';
+      el('h-night-cap').textContent = (cur==='12v' ? 'A normal outlet at 1.4 kW. Slow, but twelve hours of slow still covers the average day.' :
+        cur==='16' ? 'A 20 amp circuit at 240 volts. Plenty for most commutes, and it fits almost any panel.' :
+        cur==='32' ? 'The sweet spot: 7.7 kW, what a mobile cord does on a 14-50. Refills a long day with hours to spare.' :
+        '11.5 kW, the most most cars accept. Useful for big batteries, long commutes, or a short cheap window on your rate.') + ' Assumes 3.3 miles per kWh.';
+      K.polish(box);
+    }
+    box.id = 'h-night';
+    Array.prototype.forEach.call(seg.querySelectorAll('button'), function(b){
+      b.onclick = function(){ cur = b.getAttribute('data-a'); Array.prototype.forEach.call(seg.querySelectorAll('button'), function(x){ x.setAttribute('aria-pressed', String(x===b)); }); draw(); };
+    });
+    draw();
+  }
+  function initTou(){
+    var seg = el('h-tou-seg'), box = el('h-tou'); if (!seg || !box) return;
+    var mode = 'now', rate = rateFromPreset(PRESETS['sce-prime']);
+    function draw(){
+      var o = {needKwh:30, wallKw:7.68, eff:0.9, plug:17.5, dep:31.5-24, rate:rate, month:6, weekend:false, weekendNext:false};
+      var p = nightPlan(Object.assign({}, o, {mode:mode}));
+      var W = 640, H = 150, L = 10, R = 10, T = 20, Bm = 26;
+      function x(h){ return L + (W-L-R)*h/24; }
+      var s = '<svg class="htou" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Price by hour, and when the car charges">';
+      for (var h=0; h<24; h++){
+        var pr = rate.wd[6][h], ht = pr/0.61*(H-T-Bm-10);
+        s += '<rect class="'+(pr>0.5?'pk':'op')+'" x="'+(x(h)+1)+'" y="'+(H-Bm-ht)+'" width="'+(x(1)-x(0)-2)+'" height="'+ht+'" rx="2"><title>'+hm(h)+': '+cents(pr)+'</title></rect>';
+      }
+      p.slots.forEach(function(sl){ if (sl.kwh>0){ var t = sl.t%24; s += '<rect class="ch hgrow" x="'+x(t).toFixed(1)+'" y="'+(H-Bm+4)+'" width="'+(x(sl.span*(sl.kwh/(o.wallKw*sl.span)))-x(0)).toFixed(1)+'" height="8" rx="1" style="--d:'+(0.1+(sl.t-o.plug)*0.05).toFixed(2)+'s"/>'; } });
+      [0,6,12,18].forEach(function(h){ s += '<text class="axis" x="'+x(h)+'" y="'+(H-2)+'">'+hm(h)+'</text>'; });
+      s += '<text class="axis" x="'+x(16)+'" y="'+(T-6)+'">Peak, 61¢</text>';
+      box.innerHTML = s + '</svg><div class="hn-row"><span class="hn-l">This charge costs</span><span class="hn-t"><b style="width:'+Math.min(100,p.cost/20*100).toFixed(1)+'%"></b></span><span class="hn-v tw">'+money(p.cost,2)+'</span></div>';
+      el('h-tou-cap').textContent = mode==='now' ? 'Home at 5:30, plugged straight in: 30 kWh at 7.7 kW lands right in the 4 to 9pm peak. Southern California Edison’s TOU-D-PRIME rate, summer weekday, energy only.' :
+        'Same car, same 30 kWh, told to start at 9pm. Done before midnight, at the off-peak price. Nothing else changed.';
+      K.polish(box);
+      var sv = box.querySelector('svg'); if (sv) { void sv.getBoundingClientRect(); sv.classList.add('play'); }
+    }
+    Array.prototype.forEach.call(seg.querySelectorAll('button'), function(b){
+      b.onclick = function(){ mode = b.getAttribute('data-m'); Array.prototype.forEach.call(seg.querySelectorAll('button'), function(x){ x.setAttribute('aria-pressed', String(x===b)); }); draw(); };
+    });
+    draw();
+  }
+  var TAPLOADS = [['Fridge',0.18,1.2],['Lights',0.2,0],['Internet and phones',0.08,0],['Furnace fan',0.6,1.2],['Microwave',1.2,0],['Central AC',3,18],['Oven',3,0],['Dryer',5,0],['EV charger',7.7,0]];
+  function initTap(){
+    var box = el('h-tap'), sel = el('h-tap-b'); if (!box || !sel) return;
+    var on = {0:1,1:1,2:1};
+    function batt(){ var id = sel.value; if (id==='franklin-apower2x2') return {kw:20, kwh:30, surge:88}; var b = hgById(HG.batteries||[], id) || {kw:11.5, kwh:13.5, surgeKw:44}; return {kw:b.kw, kwh:b.kwh, surge:b.surgeKw||b.kw*1.5}; }
+    function draw(){
+      var b = batt(), run = 0, kick = 0;
+      TAPLOADS.forEach(function(l,i){ if (on[i]){ run += l[1]; kick = Math.max(kick, l[2]); } });
+      var surge = run + kick, tripped = run > b.kw || surge > b.surge;
+      var hours = run ? b.kwh*0.95/(run*0.55) : 0;
+      box.innerHTML = '<div class="htap-loads">'+TAPLOADS.map(function(l,i){ return '<button type="button" data-t="'+i+'" aria-pressed="'+(!!on[i])+'">'+l[0]+'<small>'+(l[1]<1?Math.round(l[1]*1000)+' W':l[1]+' kW')+'</small></button>'; }).join('')+'</div>'+
+        '<div class="htap-meters'+(tripped?' trip':'')+'">'+
+        '<div class="hn-row"><span class="hn-l">Power (the tap)</span><span class="hn-t"><b style="width:'+Math.min(100, run/b.kw*100).toFixed(1)+'%"></b></span><span class="hn-v tw">'+run.toFixed(1)+' of '+b.kw+' kW</span></div>'+
+        '<div class="hn-row"><span class="hn-l">Start-up kick</span><span class="hn-t"><b class="a" style="width:'+Math.min(100, surge/b.surge*100).toFixed(1)+'%"></b></span><span class="hn-v tw">'+surge.toFixed(1)+' of '+Math.round(b.surge)+' kW</span></div>'+
+        '<div class="hn-row"><span class="hn-l">Lasts (the tank)</span><span class="hn-t"><b style="width:'+Math.min(100, hours/48*100).toFixed(1)+'%"></b></span><span class="hn-v tw">'+(tripped?'0':hours>=48?'48+':hours.toFixed(1))+' hours</span></div></div>';
+      el('h-tap-cap').textContent = tripped ? (run > b.kw ? 'Tripped. Everything you switched on adds up to more power than this battery’s inverter can deliver. It shuts down to protect itself, and the house goes dark anyway.' :
+        'Tripped on the start-up kick. The running load fits, but the compressor needs a burst this battery can’t supply. A soft starter, or more battery, fixes it.') :
+        'Running fine. Hours assume things cycle on and off, like they do in a real house. Switch on the AC, the oven and the dryer and see what happens.';
+      Array.prototype.forEach.call(box.querySelectorAll('[data-t]'), function(bt){ bt.onclick = function(){ var i = bt.getAttribute('data-t'); if (on[i]) delete on[i]; else on[i] = 1; draw(); }; });
+      K.polish(box);
+    }
+    sel.onchange = draw; draw();
+  }
+  function initDays(){
+    var box = el('h-days'), vs = el('h-days-v'), r = el('h-days-r'), l = el('h-days-l'); if (!box || !vs) return;
+    var list = (HG.vehicles||[]).filter(function(v){ return v.v2h==='yes' || v.v2h==='legacy'; });
+    vs.innerHTML = list.map(function(v){ return '<option value="'+v.id+'"'+(v.id==='chevy-silverado-ev'?' selected':'')+'>'+esc(v.make+' '+v.model)+'</option>'; }).join('');
+    function draw(){
+      var v = hgById(list, vs.value) || list[0]; if (!v) return;
+      var res = Number(r.value), load = Number(l.value);
+      el('h-days-ro').textContent = res+'%'; el('h-days-lo').textContent = load+' kWh';
+      var carDays = v2hUsable(v, res)/load, pwDays = 13.5*0.95/load, mx = Math.max(carDays, 1);
+      box.innerHTML = '<div class="hn-row"><span class="hn-l">'+esc(v.model)+'</span><span class="hn-t"><b style="width:'+(carDays/mx*100).toFixed(1)+'%"></b></span><span class="hn-v tw">'+carDays.toFixed(1)+' days</span></div>'+
+        '<div class="hn-row"><span class="hn-l">One Powerwall 3</span><span class="hn-t"><b class="a" style="width:'+(pwDays/mx*100).toFixed(1)+'%"></b></span><span class="hn-v tw">'+pwDays.toFixed(1)+' days</span></div>';
+      el('h-days-cap').textContent = 'About '+v.kwh+' kWh in the '+v.model+', keeping '+Math.max(res, v.floor||0)+'% to drive away with'+(v.floor>res?' (the carmaker’s floor)':'')+'. Up to '+v.v2hKw+' kW out, with the right hardware.';
+      K.polish(box);
+    }
+    vs.onchange = draw; r.oninput = draw; l.oninput = draw; draw();
+  }
+
+  /* ================= Inputs ================= */
+  var RENDER = {c:function(){ renderC(); }, i:function(){ renderI(); }, b:function(){ renderB(); }, v:function(){ renderV(); }};
+  var REIN = {c:renderCIn, i:renderIIn, b:renderBIn, v:renderVIn};
+  function applyVehicle(o, id){ var v = hgById(HG.vehicles||[], id); if (v) Object.assign(o, {kwh:v.kwh, obc:v.obc, eff:v.eff}); }
+  function onInput(e){
+    var t = e.target;
+    if (t.hasAttribute && t.hasAttribute('data-app')){ var id = t.getAttribute('data-app'); if (t.checked) S.b.sel[id] = 1; else delete S.b.sel[id]; S.b.touched = true; t.closest('.happ').classList.toggle('on', t.checked); save(); renderB(); return; }
+    var o = t.getAttribute && t.getAttribute('data-h'), k = t.getAttribute && t.getAttribute('data-k'); if (!o || !k) return;
+    if (o==='root'){ S[k] = t.checked; save(); renderIIn(); renderI(); renderBIn(); renderB(); return; }
+    var obj = S[o], restructure = false;
+    if (t.type==='checkbox'){ obj[k] = t.checked; restructure = ['superOn','showAll'].indexOf(k)>=0; }
+    else if (t.getAttribute('data-time') || t.getAttribute('data-text')){ if (e.type!=='change' && t.getAttribute('data-time')) return; obj[k] = t.value; }
+    else if (t.tagName==='SELECT'){
+      var val = t.value; obj[k] = /^-?\d+(\.\d+)?$/.test(val) ? Number(val) : val;
+      if (o==='c' && k==='veh') applyVehicle(obj, val);
+      if (o==='c' && k==='level' && LEVELS[val] && LEVELS[val].v===120) obj.volts = 240;
+      if (o==='i' && k==='charger'){ var ch = hgById(HG.chargers||[], val); obj.chargerPrice = ch ? ch.price : 0; if (ch){ obj.amps = Math.min(ch.amps||48, ch.install==='plug'?40:80); if (ch.install==='plug' && obj.mount==='hardwire') obj.mount = 'plug1450'; if (ch.install==='hardwire') obj.mount = 'hardwire'; } }
+      if (o==='i' && k==='state'){ obj.laborIdx = HLABOR[val] || 100; }
+      if (o==='v' && k==='veh'){ var vv = hgById(HG.vehicles||[], val); if (vv && vv.floor && obj.reserve < vv.floor) obj.reserve = vv.floor; }
+      restructure = (o==='c' && ['veh','level'].indexOf(k)>=0) || (o==='i' && ['mount','route','heat','charger','state'].indexOf(k)>=0) || o==='v' && k==='veh';
+      if (o==='c' && (k==='month')) restructure = false;
+    } else {
+      var n = parseFloat(t.value); if (isNaN(n)) return; obj[k] = n;
+      if (o==='c' && ['kwh','obc','eff'].indexOf(k)>=0 && obj.veh!=='custom'){ obj.veh = 'custom'; restructure = true; }
+    }
+    if (o==='b') S.b.touched = true;
+    save();
+    if (restructure && REIN[o]){ var ae = document.activeElement && document.activeElement.getAttribute && document.activeElement.getAttribute('data-k'); REIN[o](); if (ae){ var back = el({c:'h-c-in',i:'h-i-in',b:'h-b-in',v:'h-v-in'}[o]).querySelector('[data-k="'+ae+'"]'); if (back) back.focus(); } }
+    RENDER[o]();
+  }
+  function onClick(e){
+    var b = e.target.closest ? e.target.closest('button[data-h][data-v]') : null; if (!b) return;
+    var o = b.getAttribute('data-h'), k = b.getAttribute('data-k'), v = b.getAttribute('data-v');
+    S[o][k] = v==='true' ? true : v==='false' ? false : v; save();
+    if (b.closest('form') && REIN[o]) REIN[o]();
+    RENDER[o]();
+  }
+  ['h-c-in','h-i-in','h-b-in','h-v-in','h-c-out'].forEach(function(id){
+    var n = el(id); if (!n) return;
+    n.addEventListener('input', onInput); n.addEventListener('change', onInput); n.addEventListener('click', onClick);
+  });
+  var gearBox = el('h-gear');
+  if (gearBox) gearBox.addEventListener('click', function(e){
+    var t = e.target.closest ? e.target.closest('[data-gtab],[data-gfil]') : null; if (!t) return;
+    if (t.hasAttribute('data-gtab')) S.gearTab = t.getAttribute('data-gtab'); else S.gearFilter = t.getAttribute('data-gfil');
+    save(); renderGear();
+  });
+
+  /* ================= Side switch, next links, routing ================= */
+  var HLEARN = [['hbasics','Charging at home'],['hcost','What it costs'],['hbattery','Home batteries'],['hvtoh','Your car as a battery']];
+  HLEARN.forEach(function(p, i){
+    var sec = el('view-'+p[0]); if (!sec || sec.querySelector('.nextpage')) return;
+    var nx = HLEARN[i+1], d = document.createElement('div'); d.className = 'nextpage';
+    var tool = {hbasics:['hinstall','Price your install'], hcost:['hcharge','Run your charging numbers'], hbattery:['hbackup','Size a backup battery'], hvtoh:['hvcompare','Compare a car with a battery']}[p[0]];
+    d.innerHTML = '<a href="'+K.viewHref(tool[0])+'"><small>Try it</small><b>'+tool[1]+'</b></a>' + (nx ? '<a class="hnext2" href="'+K.viewHref(nx[0])+'"><small>Next</small><b>'+nx[1]+'</b></a>' : '');
+    sec.appendChild(d);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-hprev]'), function(b){ b.hidden = !!window.CS_HOME_LIVE; });
+
+  function params(){
+    var q = location.search + '&' + (location.hash.split('?')[1]||'');
+    var g = function(n){ var m = new RegExp('[?&]'+n+'=([a-z0-9-]+)').exec(q); return m && m[1]; };
+    var veh = g('veh'), batt = g('batt'), gear = g('gear');
+    if (veh && hgById(HG.vehicles||[], veh)){ S.c.veh = veh; applyVehicle(S.c, veh); S.v.veh = veh; }
+    if (batt && hgById(HG.batteries||[], batt)) S.v.batt = batt;
+    if (gear){ var ch = hgById(HG.chargers||[], gear); if (ch){ S.i.charger = gear; S.i.chargerPrice = ch.price; S.i.amps = Math.min(ch.amps||48, ch.install==='plug'?40:80); S.i.mount = ch.install==='plug' ? 'plug1450' : 'hardwire'; } }
+    save();
+  }
+  var drawn = {};
+  function onRoute(view){
+    if (view==='hcharge'){ renderCIn(); renderC(); }
+    if (view==='hinstall'){ renderIIn(); renderI(); }
+    if (view==='hbackup'){ renderBIn(); renderB(); }
+    if (view==='hvcompare'){ renderVIn(); renderV(); }
+    if (view==='hgear') renderGear();
+    if (!drawn[view]){
+      drawn[view] = 1;
+      if (view==='hbasics') initNight();
+      if (view==='hcost') initTou();
+      if (view==='hbattery') initTap();
+      if (view==='hvtoh') initDays();
+    }
+  }
+  window.CSHOME = {route:onRoute};
+  loadGear(function(){ params(); onRoute(K.current()); });
+})();
+
+/*/home-side*//* /HOME-SIDE-JS */
 /* ---------- Light / dark toggle (choice saved per browser; default follows the system) ---------- */
 (function(){
   var btn = document.getElementById('theme-t'); if (!btn) return;
