@@ -9,6 +9,8 @@ own font and colors. Run it after changing a page's headline below:
     python3 tools/og_images.py
 
 The build picks up og/<slug>.png automatically. Home uses og-image.png (render_home, with the photo).
+Home-side pages (HOME_CARDS) use the home palette and a house drawing, saved as og/home-hub.png
+and og/home-<slug>.png; `python3 tools/og_images.py home-side` redraws just those.
 """
 import base64, os, sys
 
@@ -37,6 +39,26 @@ CARDS = {
     'ev-charging-glossary': ('Reference', 'Demand charges, OCPP, DSCR, and the rest of the jargon.'),
     'about': ('About', 'Written by someone who learned it the expensive way.'),
 }
+
+# Home side: slug in HOME_PAGES: (kicker, headline). Drawn in the home palette.
+HOME_CARDS = {
+    'home': ('At home', 'Your garage is about to become a small power company.'),
+    'home/ev-charging-at-home': ('Home guide', 'Level 1, Level 2, and why the car gets a vote.'),
+    'home/home-ev-charging-cost': ('Home guide', 'Your rate matters more than your charger.'),
+    'home/home-battery-backup': ('Home guide', 'kW is not kWh. Your battery cares which.'),
+    'home/vehicle-to-home-v2h': ('Home guide', 'Your car can run your house. Some cars. Sometimes.'),
+    'home/ev-charging-cost-calculator': ('Free home tool', 'Find the cheapest hours to charge your car.'),
+    'home/home-ev-charger-installation-cost': ('Free home tool', 'Will your panel take a charger?'),
+    'home/home-battery-backup-calculator': ('Free home tool', 'How much battery does your outage need?'),
+    'home/v2h-vs-home-battery': ('Free home tool', 'Can your EV replace a home battery?'),
+    'home/home-ev-chargers-batteries': ('Home gear', 'Chargers, batteries, and every EV that can send power back.'),
+}
+
+
+def home_card_name(slug):
+    """Must match build_pages.py: og/home-hub.png for /home/, og/<slug with dashes>.png otherwise."""
+    return 'home-hub.png' if slug == 'home' else slug.replace('/', '-') + '.png'
+
 
 TEMPLATE = """<!doctype html><html><head><meta charset="utf-8"><style>
 @font-face{font-family:IS;src:url(data:font/woff2;base64,%(font)s) format("woff2");font-weight:400 700;font-stretch:75%% 100%%}
@@ -72,9 +94,56 @@ h1{margin-top:10px;width:630px;font-size:60px;line-height:1.06;letter-spacing:-.
 </body></html>"""
 
 
+# Home palette (matches :root[data-side="home"] in index.html) and a house in place of the site drawing.
+HOME_CSS_SWAP = [('background:#fff;color:#0D1F36', 'background:#FFFDF8;color:#17271F'),
+                 ('color:#2462F5}', 'color:#1B7352}'), ('background:#F3F7FB', 'background:#F5F0E6'), ('color:#5A6B80', 'color:#566359')]
+HOME_ART = """<svg class="art" viewBox="0 0 470 260" fill="none" stroke="#17271F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="428" cy="34" r="15" stroke="#D9772B"/>
+  <path d="M428 8v6M428 54v6M402 34h6M448 34h6M410 16l4 4M442 48l4 4M410 52l4-4M442 20l4-4" stroke="#D9772B" stroke-width="2"/>
+  <path d="M20 246H460" stroke="#E4DCCC"/>
+  <path d="M40 246V132L150 62l110 70v114" fill="#FFFDF8"/>
+  <path d="M26 140L150 56l124 84"/>
+  <path d="M188 84l46 29 5-8-46-29z" fill="#E1F0E7" stroke="#1B7352" stroke-width="1.8"/>
+  <rect x="66" y="160" width="44" height="36" rx="3" fill="#FFFDF8"/>
+  <path d="M88 160v36M66 178h44" stroke="#E4DCCC" stroke-width="2"/>
+  <rect x="128" y="186" width="30" height="60" rx="2" fill="#FFFDF8"/>
+  <rect x="212" y="160" width="26" height="40" rx="3" fill="#FFFDF8"/>
+  <path d="M218 170h14M218 178h14M218 186h14" stroke="#E4DCCC" stroke-width="2"/>
+  <path d="M260 148H446V246" fill="none"/>
+  <path d="M238 176h40v22h52" stroke="#E4DCCC"/>
+  <path d="M238 176h40v22h52" stroke="#1B7352" stroke-dasharray="3 12"/>
+  <rect x="330" y="176" width="22" height="38" rx="6" fill="#FFFDF8"/>
+  <circle cx="341" cy="189" r="3" fill="#1B7352" stroke="none"/>
+  <path d="M341 214c0 16-12 18-26 16" />
+  <path d="M276 240v-12q2-9 15-10l21-9q6-3 15-3h32q11 0 16 8l7 6q9 2 10 9v11z" fill="#FFFDF8"/>
+  <circle cx="300" cy="242" r="9" fill="#FFFDF8"/>
+  <circle cx="366" cy="242" r="9" fill="#FFFDF8"/>
+  <rect x="318" y="224" width="38" height="6" rx="3" fill="#E1F0E7" stroke="none"/>
+  <rect x="318" y="224" width="26" height="6" rx="3" fill="#1B7352" stroke="none"/>
+  <rect x="398" y="170" width="32" height="54" rx="7" fill="#FFFDF8"/>
+  <rect x="405" y="180" width="18" height="36" rx="3" fill="#D9772B" stroke="none" opacity=".85"/>
+</svg>"""
+
+
 def render(page, font, kicker, headline, desc, path):
     esc = lambda t: t.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
     page.set_content(TEMPLATE % {'font': font, 'kicker': esc(kicker), 'headline': esc(headline), 'desc': esc(desc)})
+    page.wait_for_timeout(150)
+    page.screenshot(path=path)
+    print(os.path.relpath(path, ROOT))
+
+
+def render_home_side(page, font, kicker, headline, desc, path):
+    """Cards for the home-side pages: home palette, house drawing."""
+    esc = lambda t: t.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+    html = TEMPLATE
+    for a, b in HOME_CSS_SWAP:
+        assert a in html, a
+        html = html.replace(a, b)
+    html = html.replace('fill="#2462F5"/><path', 'fill="#1B7352"/><path', 1)  # brand mark
+    art = html[html.index('<svg class="art"'):html.index('</svg>', html.index('<svg class="art"')) + 6]
+    html = html.replace(art, HOME_ART.replace('%', '%%'))
+    page.set_content(html % {'font': font, 'kicker': esc(kicker), 'headline': esc(headline), 'desc': esc(desc)})
     page.wait_for_timeout(150)
     page.screenshot(path=path)
     print(os.path.relpath(path, ROOT))
@@ -101,9 +170,11 @@ def render_home(page, font, path):
 
 def main():
     """python3 tools/og_images.py            pages, the blog card, and any post missing a card
-       python3 tools/og_images.py SLUG ...   just those pages or posts (post slugs without the date); 'home' for og-image.png"""
+       python3 tools/og_images.py SLUG ...   just those pages or posts (post slugs without the date); 'home' for og-image.png;
+                                             'home-side' for the 10 home-side cards"""
     from playwright.sync_api import sync_playwright
     import blog
+    from build_pages import HOME_PAGES
     font = base64.b64encode(open(os.path.join(ROOT, 'fonts', 'InstrumentSans-VF.woff2'), 'rb').read()).decode()
     out = os.path.join(ROOT, 'og')
     os.makedirs(out, exist_ok=True)
@@ -119,6 +190,11 @@ def main():
                 continue
             kicker, headline = CARDS[slug]
             render(page, font, kicker, headline, desc, os.path.join(out, slug + '.png'))
+        for v, slug, title, desc, kind in HOME_PAGES:
+            if slug not in HOME_CARDS or (only and 'home-side' not in only and slug not in only):
+                continue
+            kicker, headline = HOME_CARDS[slug]
+            render_home_side(page, font, kicker, headline, desc, os.path.join(out, home_card_name(slug)))
         if not only or 'home' in only:
             render_home(page, font, os.path.join(ROOT, 'og-image.png'))
         if not only or 'blog' in only:
