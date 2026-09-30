@@ -137,6 +137,11 @@ def section_dates(src, fallback):
             return {}
     dates = {}
     try:
+        # Cloudflare Pages builds from a shallow clone; fetch the history once so the dates are real.
+        shallow = subprocess.run(['git', 'rev-parse', '--is-shallow-repository'], cwd=ROOT, capture_output=True, text=True, timeout=10).stdout.strip()
+        if shallow == 'true':
+            r = subprocess.run(['git', 'fetch', '--quiet', '--deepen=200'], cwd=ROOT, capture_output=True, text=True, timeout=90)
+            print('Git history for sitemap dates: %s' % ('fetched' if r.returncode == 0 else 'unavailable (%s)' % r.stderr.strip()[:120]))
         log = subprocess.run(['git', 'log', '--format=%H %cs', '-n', '80', '--', 'index.html'], cwd=ROOT,
                              capture_output=True, text=True, timeout=20).stdout.split('\n')
         revs = [l.split() for l in log if l.strip()][::-1]  # oldest first
