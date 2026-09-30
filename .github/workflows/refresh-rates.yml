@@ -1,0 +1,37 @@
+name: Refresh utility rates
+
+# Rebuilds data/rates/ (the ZIP code rate lookup on the home charging calculator)
+# from two free public datasets: EIA Form 861 ZIP-to-utility averages and the
+# OpenEI Utility Rate Database bulk download. No API key needed.
+# Runs twice a year (both sources update about yearly), on demand, and whenever the build script changes.
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - tools/build_rates.py
+      - .github/workflows/refresh-rates.yml
+  schedule:
+    - cron: '41 10 15 1,7 *'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build rate lookup
+        run: python3 tools/build_rates.py
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/rates
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
+            git commit -m "Refresh utility rate lookup"
+            git push
+          fi

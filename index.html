@@ -7354,7 +7354,7 @@ if (typeof document !== 'undefined') (function(){
     var gp = gasPriceFor(C, car); if (gp && (force || !C.gasSet)) C.gas = gp;
     var dc = P_().dcfc; if (dc && dc.price && !C.dcfcSet) C.dcfc = dc.price;
   }
-  var URDB = [];
+  var URDB = [], URDB_UTILS = [];
   function currentRate(){
     var C = S.c;
     if (C.rsrc==='zip' && URDB[C.rateIdx]) return URDB[C.rateIdx];
@@ -7434,27 +7434,47 @@ if (typeof document !== 'undefined') (function(){
     if (!/^\d{5}$/.test(z)){ zipStatus('Enter a five-digit US ZIP code.'); return; }
     if (location.protocol==='file:'){ zipStatus('The lookup works on the live site. Opened as a file, use the examples or your own rate.'); return; }
     zipStatus('Looking up residential rates for '+z+'...');
+    URDB_UTILS = [];
+    function staticRates(){
+      return fetch('/data/rates/zip/'+z.slice(0,3)+'.json').then(function(r){ if (r.status===404) return {}; if (!r.ok) throw new Error('shard'); return r.json(); }).then(function(m){
+        var ids = (m[z]||[]).slice(0,6);
+        return Promise.all(ids.map(function(id){ return fetch('/data/rates/u/'+id+'.json').then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; }); }));
+      }).then(function(us){
+        us = us.filter(Boolean); var items = [];
+        us.forEach(function(u){ items = items.concat(u.items||[]); });
+        return {items:items, utils:us, src:'bulk'};
+      });
+    }
     fetch('/api/rates?zip='+z).then(function(r){
       return r.json().catch(function(){ return {error:'bad', status:r.status}; }).then(function(j){ j.status = j.status || r.status; return j; });
-    }).then(function(j){
-      if (j.error){
-        if (j.error==='not_configured' || j.status===404 || j.status===405) zipStatus('The utility lookup isn’t switched on here yet. Use the examples, or type your rate from your bill.');
-        else zipStatus('The rate database didn’t answer this time ('+esc(j.error)+'). Try again in a minute, or type your rate from your bill.');
+    }).catch(function(){ return {error:'unreachable'}; }).then(function(j){
+      if (!j.error && (j.items||[]).length) return {items:j.items, utils:[], src:'live'};
+      return staticRates().then(function(st){ return st; }, function(){ return {items:[], utils:[], src:'none', failed:true}; });
+    }).then(function(res){
+      URDB_UTILS = res.utils||[];
+      URDB = (res.items||[]).map(rateFromUrdb).filter(function(r){ return r.wd && r.wd.length===12; });
+      URDB.sort(function(a,b){ return (b.tou - a.tou) || (/ev|electric vehicle/i.test(b.name) - /ev|electric vehicle/i.test(a.name)); });
+      if (!URDB.length){
+        var avg = URDB_UTILS.filter(function(u){ return u.res; })[0];
+        var box = el('h-zip-list'); if (box) box.innerHTML = '';
+        if (avg){
+          zipStatus(esc(avg.utility)+' serves '+z+', but the rate database has no current residential plans for it. Its average residential price is <b>'+(avg.res*100).toFixed(1)+'¢ per kWh</b> (EIA Form 861, 2024). <button type="button" class="btn small" id="h-zip-avg">Use it as a flat rate</button>');
+          var b = el('h-zip-avg'); if (b) b.onclick = function(){ S.c.rsrc = 'manual'; S.c.mKind = 'flat'; S.c.flatPrice = Math.round(avg.res*1000)/1000; save(); renderCIn(); renderC(); };
+        } else if (res.failed) zipStatus('Couldn’t reach the rate lookup. Check your connection, or use the examples.');
+        else zipStatus('No residential rates on file for that ZIP. Try a neighboring one, or type your rate from your bill.');
         return;
       }
-      URDB = (j.items||[]).map(rateFromUrdb).filter(function(r){ return r.wd && r.wd.length===12; });
-      URDB.sort(function(a,b){ return (b.tou - a.tou) || (/ev|electric vehicle/i.test(b.name) - /ev|electric vehicle/i.test(a.name)); });
-      if (!URDB.length){ zipStatus('No current residential rates found for that ZIP. Try a neighboring one, or type your rate.'); return; }
       S.c.rateIdx = 0; save(); renderZipList(); renderC();
-    }).catch(function(){ zipStatus('Couldn’t reach the rate lookup. Check your connection, or use the examples.'); });
+    });
   }
   function renderZipList(){
     var box = el('h-zip-list'); if (!box) return;
-    zipStatus('Found '+URDB.length+' residential plan'+(URDB.length>1?'s':'')+'. Time-of-use and EV plans are listed first. Pick the one on your bill.', true);
+    var avgU = (URDB_UTILS||[]).filter(function(u){ return u.res; })[0];
+    zipStatus('Found '+URDB.length+' residential plan'+(URDB.length>1?'s':'')+'. Time-of-use and EV plans are listed first. Pick the one on your bill.'+(avgU ? ' For reference, '+esc(avgU.utility)+'’s average residential price is '+(avgU.res*100).toFixed(1)+'¢ per kWh (EIA Form 861, 2024).' : ''), true);
     box.innerHTML = '<div class="hrates">'+URDB.map(function(r,i){
       var rg = rateRange(r);
       return '<label class="hrate"><input type="radio" name="h-rate" value="'+i+'"'+(i===S.c.rateIdx?' checked':'')+'><span><b>'+esc(r.name)+'</b><small>'+esc(r.utility)+(r.tou?', time of use':', flat')+(r.tiered?', tiered':'')+' · '+cents(rg.lo)+(rg.hi>rg.lo+0.001?' to '+cents(rg.hi):'')+'/kWh</small></span></label>';
-    }).join('')+'</div>';
+    }).join('')+'</div><p class="fh" style="margin-top:.6rem">Plans from the <a href="https://openei.org/wiki/Utility_Rate_Database" rel="noopener">OpenEI Utility Rate Database</a>; utility averages from EIA Form 861. Check the plan against your bill.</p>';
     Array.prototype.forEach.call(box.querySelectorAll('input[name=h-rate]'), function(inp){
       inp.onchange = function(){ S.c.rateIdx = Number(inp.value); save(); renderC(); };
     });
