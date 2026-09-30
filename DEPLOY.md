@@ -72,6 +72,17 @@ Edit `index.html` on GitHub (the pencil icon) or locally, and commit. Cloudflare
 To change a page's search title, description or URL, edit `PAGES` in `tools/build_pages.py`. Changing a URL needs a redirect in the `_redirects` section of that script.
 Review incentives, SBA rules and tariffs each quarter, and bump "Last updated" on the Method page.
 
+## Search: what the build does for you
+
+- **Titles and descriptions** live in `PAGES` and `HOME_PAGES` in `tools/build_pages.py`. Keep titles under 60 characters and descriptions under 160, or Google cuts them off.
+- **Sitemap dates** come from the git history of `index.html`: each page's `lastmod` (and its `dateModified` in the structured data) is the last commit that changed that page's section, so editing one guide doesn't mark every page as new.
+- **Empty blog**: until the first post is live, `/blog/` is `noindex` and left out of the sitemap. The first scheduled post flips it back on its own.
+- **Other pages' content** on each page is hollowed out, and its headings and links are turned into plain elements, so every page has one H1 and no empty links.
+- **Catalogs**: the charger catalog and the home gear page get a plain product list in the HTML, which the script replaces on load. Search engines see the products without running the script.
+- **Data**: the charger catalog JSON goes only on the planner, catalog and report pages, and the home gear JSON only on home pages, at the end of the body.
+- **`/llms.txt`** is a plain list of every page for AI search tools, built from the same `PAGES` list.
+- **Share cards**: `python3 tools/og_images.py` (see the top of that file). Home-side cards: `python3 tools/og_images.py home-side`.
+
 ## 8. The home side (residential charging, batteries, V2H)
 
 The home side lives in `index.html` between `<!--home-side-->` markers, with its data in `data/home-gear.json` and a small server function in `functions/api/rates.js`.
