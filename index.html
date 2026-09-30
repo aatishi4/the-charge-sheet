@@ -4790,6 +4790,7 @@ if (typeof document !== 'undefined') (function(){
       report: ['Want a second set of eyes on this?', 'Send the report over with a note about the project. I\u2019ll read it and tell you what I\u2019d check before anyone signs anything.', 'Send it to me', '1']
     };
     guides.concat(tools).forEach(function(v){
+      if (MPA && v!==window.CS_PAGE) return;  // other views are hidden skeletons on this page
       var sec = document.getElementById('view-'+v); if (!sec) return;
       var c = COPY[v==='report' ? 'report' : tools.indexOf(v)>=0 ? 'tool' : 'guide'];
       var d = document.createElement('div'); d.className = 'wwm-band';
