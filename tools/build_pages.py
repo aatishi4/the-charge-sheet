@@ -355,20 +355,31 @@ def absolutize_js(s):
 
 JS_PATHS = {}
 GROUPS = {}  # view -> (group title, [(view, label)]), read from the GROUPS table in the app script
+NAV_OF = {}  # view -> id of its top-nav link (gn-learn, gn-tools, ...)
 
 
 def read_groups(src):
     m = re.search(r'var GROUPS = \{(.*?)\n\s*\};', src, re.S)
     if not m:
         return
-    for g, title, pages in re.findall(r"(\w+):\s*\{title:'([^']+)',\s*nav:'[^']+',\s*pages:\[(.*?)\]\}", m.group(1)):
+    for g, title, nav, pages in re.findall(r"(\w+):\s*\{title:'([^']+)',\s*nav:'([^']+)',\s*pages:\[(.*?)\]\}", m.group(1)):
         items = re.findall(r"\['(\w+)','([^']+)'\]", pages)
         for v, _ in items:
             GROUPS[v] = (title, items)
+            NAV_OF[v] = nav
 
 
 def fill_snav(pm, v):
-    """Draw the section sub-nav in the HTML (the script used to add it after load, which shifted the page)."""
+    """Draw the section sub-nav in the HTML (the script used to add it after load, which shifted the page).
+    Also mark the current top-nav link and Business/Home pill, so they are right on first paint
+    (the page transition captures them before the script runs)."""
+    nav = NAV_OF.get(v) or ('gn-about' if v == 'about' else None)
+    if nav:
+        pm = pm.replace('id="%s"' % nav, 'id="%s" aria-current="true"' % nav, 1)
+    side = 'home' if v in HOME_IDS else ('biz' if (v in GROUPS or v == 'home') else None)
+    if side:
+        on, off = ('sw-home', 'sw-biz') if side == 'home' else ('sw-biz', 'sw-home')
+        pm = pm.replace('<a class="%s" ' % on, '<a class="%s" aria-current="true" ' % on).replace('<a class="%s" ' % off, '<a class="%s" aria-current="false" ' % off)
     if v not in GROUPS:
         return pm
     title, items = GROUPS[v]

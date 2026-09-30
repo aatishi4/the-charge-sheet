@@ -23,7 +23,7 @@
 <meta name="theme-color" content="#2462F5">
 <script id="products-data" type="application/json">[]</script>
 <!--home-side--><script id="home-gear-data" type="application/json">[]</script><!--/home-side-->
-<script id="theme-boot">document.documentElement.classList.add('js');try{var t=localStorage.getItem('cs-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script id="theme-boot">document.documentElement.classList.add('js');try{var t=localStorage.getItem('cs-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}addEventListener('pagereveal',function(e){var v=e.viewTransition,d=document.documentElement,f=null;try{f=sessionStorage.getItem('cs-vt');sessionStorage.removeItem('cs-vt')}catch(x){}if(!v||!f)return;d.classList.add('vt-fold','vt-'+f);v.finished.finally(function(){d.classList.remove('vt-fold','vt-'+f)})});</script>
 <link rel="preload" href="fonts/InstrumentSans-VF.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 @font-face{font-family:"Instrument Sans";src:url("fonts/InstrumentSans-VF.woff2") format("woff2");font-weight:400 700;font-stretch:75% 100%;font-style:normal;font-display:swap}
@@ -752,6 +752,43 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
   .mb .t b{transition:none}
   *{scroll-behavior:auto}
 }
+/* ---------- Page transitions (cross-document View Transitions; browsers without them just load the page) ---------- */
+@media (prefers-reduced-motion: no-preference){
+  @view-transition{navigation:auto}
+  /* Accordions glide open and shut instead of snapping */
+  :root{interpolate-size:allow-keywords}
+  details::details-content{block-size:0;overflow-y:clip;transition:block-size .32s cubic-bezier(.2,.7,.2,1),content-visibility .32s allow-discrete}
+  details[open]::details-content{block-size:auto}
+}
+/* Header and sub-nav stay put while the page underneath changes */
+.gnav{view-transition-name:cs-gnav}
+.snav{view-transition-name:cs-snav}
+/* Active pills slide to their new spot instead of blinking */
+.gnav nav a[aria-current="true"]{view-transition-name:cs-navpill}
+.snav-links a[aria-current="page"]{view-transition-name:cs-subpill}
+.gnav .sidesw a[aria-current="true"]{view-transition-name:cs-side}
+@media (max-width:720px){.gnav .sidesw a[aria-current="true"]{view-transition-name:none}.snav .sidesw a[aria-current="true"]{view-transition-name:cs-side}}
+::view-transition{background:var(--white)}
+::view-transition-group(cs-gnav),::view-transition-group(cs-snav){-webkit-backdrop-filter:saturate(180%) blur(18px);backdrop-filter:saturate(180%) blur(18px)}
+::view-transition-group(*){animation-duration:.36s;animation-timing-function:cubic-bezier(.2,.7,.2,1)}
+::view-transition-group(cs-side){animation-duration:.52s;animation-timing-function:cubic-bezier(.65,0,.25,1)}
+::view-transition-old(cs-side),::view-transition-new(cs-side),::view-transition-old(cs-navpill),::view-transition-new(cs-navpill),::view-transition-old(cs-subpill),::view-transition-new(cs-subpill){height:100%}
+/* Ordinary page to page: the old page lifts away, the new one settles in */
+::view-transition-old(root){animation:cs-out .16s cubic-bezier(.4,0,1,1) both}
+::view-transition-new(root){animation:cs-in .34s cubic-bezier(.2,.7,.2,1) .05s both}
+@keyframes cs-out{to{opacity:0;transform:translateY(-6px)}}
+@keyframes cs-in{from{opacity:0;transform:translateY(12px)}}
+/* Business <-> Home: the sheet folds away on its hinge and the other side unfolds */
+html.vt-fold::view-transition{background:color-mix(in srgb,var(--ink) 9%,var(--white))}
+html.vt-fold::view-transition-group(root){animation-duration:.84s}
+html.vt-to-home::view-transition-old(root){transform-origin:0 50%;animation:cs-fold-l .38s cubic-bezier(.5,0,.75,.3) both}
+html.vt-to-home::view-transition-new(root){transform-origin:100% 50%;animation:cs-unfold-r .5s cubic-bezier(.15,.8,.25,1) .34s both}
+html.vt-to-biz::view-transition-old(root){transform-origin:100% 50%;animation:cs-fold-r .38s cubic-bezier(.5,0,.75,.3) both}
+html.vt-to-biz::view-transition-new(root){transform-origin:0 50%;animation:cs-unfold-l .5s cubic-bezier(.15,.8,.25,1) .34s both}
+@keyframes cs-fold-l{to{transform:perspective(1400px) rotateY(90deg);filter:brightness(.72)}}
+@keyframes cs-fold-r{to{transform:perspective(1400px) rotateY(-90deg);filter:brightness(.72)}}
+@keyframes cs-unfold-r{from{transform:perspective(1400px) rotateY(-90deg);filter:brightness(.72)}}
+@keyframes cs-unfold-l{from{transform:perspective(1400px) rotateY(90deg);filter:brightness(.72)}}
 @media print{
   .gnav,.snav,footer,.toc,.tool-actions,.nextpage,.btn{display:none !important}
   body{background:#fff;color:#000;font-size:11pt}
@@ -4215,6 +4252,27 @@ if (typeof document !== 'undefined') (function(){
     return (PATHS[v] || '/') + (anchor ? '#'+anchor : '');
   }
   function goView(v){ if (MPA) location.href = viewHref(v); else location.hash = v; }
+  /* Page transitions: when a navigation crosses between the business and home sides,
+     tell the next page to fold instead of fade (it reads cs-vt in the theme-boot script). */
+  (function(){
+    var lastHref = null;
+    document.addEventListener('click', function(e){ var a = e.target.closest && e.target.closest('a[href]'); lastHref = a ? a.href : null; }, true);
+    function sideOf(u){
+      try { u = new URL(u, location.href); } catch(x){ return null; }
+      if (u.origin!==location.origin) return null;
+      for (var v in PATHS) if (PATHS[v]===u.pathname) return HOME_VIEWS.indexOf(v)>=0 ? 'home' : (GROUP_OF[v] || v==='home') ? 'biz' : null;
+      return u.pathname.indexOf('/home/')===0 ? 'home' : null;
+    }
+    window.addEventListener('pageswap', function(e){
+      if (!e.viewTransition) return;
+      var act = e.activation, to = sideOf((act && act.entry && act.entry.url) || lastHref || ''),
+          from = document.documentElement.getAttribute('data-side');
+      try {
+        if (from && to && from!==to) sessionStorage.setItem('cs-vt', to==='home' ? 'to-home' : 'to-biz');
+        else sessionStorage.removeItem('cs-vt');
+      } catch(x){}
+    });
+  })();
   function mpaTarget(h){
     // Where a #hash should really go in multi-page mode, or null if it belongs on this page.
     var q = h.indexOf('?'), id = q>=0 ? h.slice(0,q) : h, rest = q>=0 ? h.slice(q) : '';
@@ -4272,7 +4330,9 @@ if (typeof document !== 'undefined') (function(){
     Array.prototype.forEach.call(document.querySelectorAll('.sidesw a'), function(a){ a.setAttribute('aria-current', String(a.classList.contains(side==='home'?'sw-home':'sw-biz'))); });
     var gw = document.getElementById('gn-work'); if (gw){ if (view==='work') gw.setAttribute('aria-current','page'); else gw.removeAttribute('aria-current'); }
     var sn = document.getElementById('snav');
-    if (g){
+    if (g && MPA && document.getElementById('snav-links').children.length){
+      sn.hidden = false; // the build already drew it; redrawing would break the page transition
+    } else if (g){
       sn.hidden = false;
       document.getElementById('snav-t').textContent = GROUPS[g].title;
       document.getElementById('snav-links').innerHTML = GROUPS[g].pages.map(function(p){
