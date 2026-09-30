@@ -81,6 +81,7 @@ Review incentives, SBA rules and tariffs each quarter, and bump "Last updated" o
 - **Catalogs**: the charger catalog and the home gear page get a plain product list in the HTML, which the script replaces on load. Search engines see the products without running the script.
 - **Data**: the charger catalog JSON goes only on the planner, catalog and report pages, and the home gear JSON only on home pages, at the end of the body.
 - **Charger pages**: every record in `data/products.json` gets its own page at `/ev-chargers/<id>/`, with its own title, description, breadcrumb and a static spec sheet, and goes in the sitemap. Old `?p=` links forward to the new address.
+- **Home gear pages**: every charger, battery and car in `data/home-gear.json` gets a page at `/home/home-ev-chargers-batteries/<id>/`, the same way (cars are titled "Can it power a house?", which is what people search). Old `?p=` links forward.
 - **`/llms.txt`** is a plain list of every page for AI search tools, built from the same `PAGES` list.
 - **Share cards**: `python3 tools/og_images.py` (see the top of that file). Home-side cards: `python3 tools/og_images.py home-side`.
 

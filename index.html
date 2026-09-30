@@ -7923,7 +7923,7 @@ if (typeof document !== 'undefined') (function(){
   }
 
   /* ================= Gear ================= */
-  function gearHref(id){ return window.CS_PAGE ? K.viewHref('hgear')+'?p='+id : '#hgear?p='+id; }
+  function gearHref(id){ return window.CS_PAGE ? K.viewHref('hgear')+id+'/' : '#hgear?p='+id; }
   var ICON = {
     wall:'<svg viewBox="0 0 120 90" aria-hidden="true"><rect class="ln fw" x="42" y="8" width="36" height="58" rx="9"/><rect class="fi" x="50" y="18" width="20" height="12" rx="3"/><circle class="fb" cx="60" cy="44" r="3.5"/><path class="ln" d="M60,66 C60,84 30,84 22,74"/><rect class="ln fw" x="12" y="66" width="14" height="10" rx="3"/></svg>',
     cord:'<svg viewBox="0 0 120 90" aria-hidden="true"><rect class="ln fw" x="44" y="30" width="32" height="22" rx="6"/><circle class="fb" cx="60" cy="41" r="3"/><path class="ln" d="M44,41 C24,41 20,20 12,20 M76,41 C100,41 100,70 106,70"/><rect class="ln fw" x="4" y="14" width="10" height="12" rx="2"/><rect class="ln fw" x="104" y="64" width="12" height="12" rx="3"/></svg>',
@@ -7935,9 +7935,10 @@ if (typeof document !== 'undefined') (function(){
   function vIcon(v){ return /Silverado|Sierra|Lightning|Cybertruck|Hummer|R1T/.test(v.model) ? ICON.truck : ICON.car; }
   function renderGear(){
     var box = el('h-gear'); if (!box) return;
-    var q = (location.search.match(/[?&]p=([a-z0-9-]+)/)||[])[1] || (location.hash.match(/\?p=([a-z0-9-]+)/)||[])[1];
+    var q = window.CS_PRODUCT || (location.search.match(/[?&]p=([a-z0-9-]+)/)||[])[1] || (location.hash.match(/\?p=([a-z0-9-]+)/)||[])[1];
     var all = [].concat((HG.chargers||[]).map(function(x){ return ['chargers',x]; }), (HG.batteries||[]).map(function(x){ return ['batteries',x]; }), (HG.vehicles||[]).map(function(x){ return ['vehicles',x]; }));
     var hit = q && all.filter(function(p){ return p[1].id===q; })[0];
+    if (hit && window.CS_PAGE && !window.CS_PRODUCT){ location.replace(gearHref(hit[1].id)); return; }  // old ?p= links
     if (hit){ box.innerHTML = gearDetail(hit[0], hit[1]); K.polish(box); return; }
     var tab = S.gearTab, h = '<div class="hgtabs seg" role="group" aria-label="Shelf">'+[['chargers','Home chargers'],['batteries','Home batteries'],['vehicles','Bidirectional EVs']].map(function(t){
       return '<button type="button" data-gtab="'+t[0]+'" aria-pressed="'+(tab===t[0])+'">'+t[1]+'</button>'; }).join('')+'</div>';

@@ -121,6 +121,7 @@ GEAR_TAG = ['']  # filled in build(); only the home pages carry the gear data
 PRODUCTS_TAG = ['']  # filled in build(); only the pages that use the charger catalog carry it
 PRODUCT_VIEWS = ('planner', 'hardware', 'report')
 PRODUCT_PAGES = []  # (url, name, description), filled in build(); used by llms.txt
+GEAR_PAGES = []
 if HOME_ON:
     PAGES = PAGES + HOME_PAGES
 VIEWS = [p[0] for p in PAGES]
@@ -185,12 +186,12 @@ def prerender_catalogs(full):
             g = json.load(open(os.path.join(ROOT, 'data', 'home-gear.json'), encoding='utf-8'))
         except Exception:
             return
-        ch = ''.join('<li><b>%s %s</b>: %s, %s A, %s. %s</li>' % (esc(c['oem']), esc(c['model']), esc(c.get('kind', '')), esc(str(c.get('amps', ''))),
+        ch = ''.join('<li><a href="/home/home-ev-chargers-batteries/%s/"><b>%s %s</b></a>: %s, %s A, %s. %s</li>' % (esc(c['id']), esc(c['oem']), esc(c['model']), esc(c.get('kind', '')), esc(str(c.get('amps', ''))),
                      esc(c.get('connector', '')), esc(c.get('blurb', ''))) for c in g.get('chargers', []))
-        ba = ''.join('<li><b>%s %s</b>: %s kWh, %s kW continuous. %s</li>' % (esc(b['oem']), esc(b['model']), esc(str(b.get('kwh', ''))),
+        ba = ''.join('<li><a href="/home/home-ev-chargers-batteries/%s/"><b>%s %s</b></a>: %s kWh, %s kW continuous. %s</li>' % (esc(b['id']), esc(b['oem']), esc(b['model']), esc(str(b.get('kwh', ''))),
                      esc(str(b.get('kw', ''))), esc(b.get('blurb', ''))) for b in g.get('batteries', []))
         v2h = {'yes': 'V2H today', 'legacy': 'V2H on older hardware', 'announced': 'V2H announced'}
-        ve = ''.join('<li><b>%s %s</b> (%s): %s kWh battery%s%s.</li>' % (esc(v['make']), esc(v['model']), esc(str(v.get('years', ''))), esc(str(v.get('kwh', ''))),
+        ve = ''.join('<li><a href="/home/home-ev-chargers-batteries/%s/"><b>%s %s</b></a> (%s): %s kWh battery%s%s.</li>' % (esc(v['id']), esc(v['make']), esc(v['model']), esc(str(v.get('years', ''))), esc(str(v.get('kwh', ''))),
                      ', V2L' if str(v.get('v2l', '0')) not in ('0', '', 'None') else '', (', ' + v2h[v['v2h']]) if v.get('v2h') in v2h else '')
                      for v in g.get('vehicles', []) if str(v.get('v2l', '0')) not in ('0', '', 'None') or v.get('v2h') in v2h)
         body = ('<div class="prose">' + ('<h2>Home EV chargers</h2><ul>%s</ul>' % ch if ch else '') +
@@ -219,6 +220,8 @@ def write_llms_txt(h1s):
         out.append('')
     if PRODUCT_PAGES:
         out += ['## Chargers', ''] + ['- [%s](%s): %s' % (n, u, d) for u, n, d in PRODUCT_PAGES] + ['']
+    if GEAR_PAGES:
+        out += ['## Home gear', ''] + ['- [%s](%s): %s' % (n, u, d) for u, n, d in GEAR_PAGES] + ['']
     out += ['## Optional', '', '- [Blog](%s/blog/): notes on the business of EV charging.' % SITE,
             '- [Source code](https://github.com/aatishi4/the-charge-sheet): the whole site, open source.', '']
     open(os.path.join(OUT, 'llms.txt'), 'w', encoding='utf-8').write('\n'.join(out))
@@ -529,6 +532,84 @@ def product_desc(p):
     return d if len(d) <= 160 else lead
 
 
+V2H_LABEL = {'yes': 'Can run a house today', 'legacy': 'Discontinued, existing owners only',
+             'announced': 'Announced, not shipping', 'no': 'No V2H in the US'}
+
+
+def usd(v):
+    try:
+        return '$' + format(int(round(float(v))), ',')
+    except (TypeError, ValueError):
+        return ''
+
+
+def fit60(*options):
+    for t in options:
+        if len(t) <= 60:
+            return t
+    return options[-1]
+
+
+def gear_items(g):
+    return [(k, x) for k in ('chargers', 'batteries', 'vehicles') for x in g.get(k, [])]
+
+
+def gear_meta(kind, x):
+    """(name, title, description) for a home gear page."""
+    if kind == 'vehicles':
+        name = '%s %s' % (x['make'], x['model'])
+        title = fit60('%s: Can It Power a House? V2H and V2L' % name, '%s: V2H and V2L' % name, name)
+        v2l = ('%s kW from its outlets' % x['v2l']) if x.get('v2l') else 'no factory outlets'
+        d = '%s (%s): %s, %s. About %s kWh battery, %s kW onboard charger.' % (
+            name, x.get('years', ''), {'yes': 'can run a house today', 'legacy': 'V2H discontinued, existing owners only', 'announced': 'V2H announced, not shipping', 'no': 'no V2H in the US'}.get(x.get('v2h'), 'V2H unknown'), v2l, x.get('kwh', ''), x.get('obc', ''))
+    elif kind == 'batteries':
+        name = '%s %s' % (x['oem'], x['model'])
+        title = fit60('%s: Home Battery Specs and Price' % name, '%s: Specs and Price' % name, name)
+        d = '%s home battery: %s kWh usable, %s. About %s installed. Specs, surge, warranty and stacking.' % (
+            name, x.get('kwh', ''), ('%s kW continuous' % x['kw']) if x.get('kw') else 'no inverter of its own', usd(x.get('price')))
+    else:
+        name = '%s %s' % (x['oem'], x['model'])
+        title = fit60('%s: Home EV Charger Specs and Price' % name, '%s: Specs and Price' % name, name)
+        bits = [('%s A' % x['amps']) if x.get('amps') else '', x.get('connector', ''),
+                {'hardwire': 'hardwired', 'plug': 'plug-in', 'both': 'plug-in or hardwired', 'cord': 'portable cord'}.get(x.get('install'), '')]
+        d = '%s home charger: %s. About %s. Specs, smart features, load management and listing.' % (
+            name, ', '.join(b for b in bits if b), usd(x.get('price')))
+    if len(d) > 160:
+        d = d[:157].rsplit(' ', 1)[0] + '...'
+    return name, title, d
+
+
+def gear_detail_html(kind, x, name):
+    """Static gear page body (the script redraws it on load)."""
+    if kind == 'chargers':
+        rows = [('Current', ('%s A continuous' % x['amps']) if x.get('amps') else 'Not published'), ('Breaker', ('%s A' % x['breaker']) if x.get('breaker') else ''),
+                ('Connects', ({'hardwire': 'Hardwired', 'plug': 'Plug-in', 'both': 'Plug-in or hardwired', 'cord': 'Portable cord'}.get(x.get('install'), '')) + ('. ' + x['plugs'] if x.get('plugs') else '')),
+                ('Connector', x.get('connector', '')), ('Export', ('%s kW to the house' % x['exportKw']) if x.get('exportKw') else ''),
+                ('Smart features', x.get('smart', '')), ('Load management', x.get('loadMgmt', '')), ('Listing', x.get('listing', '')),
+                ('Price', usd(x.get('price')) + (' hardware, before installation' if x.get('bidirectional') else '')), ('Status', x.get('status', ''))]
+    elif kind == 'batteries':
+        rows = [('Usable energy', '%s kWh' % x.get('kwh', '')), ('Continuous power', ('%s kW' % x['kw']) if x.get('kw') else 'None (adds energy only)'),
+                ('Surge', ('%s kW' % x['surgeKw'] + (' (%s)' % x['surgeNote'] if x.get('surgeNote') else '')) if x.get('surgeKw') else 'Not published'),
+                ('Chemistry', x.get('chem', '')), ('Coupling', x.get('coupling', '')), ('Stacks up to', '%s units' % x.get('stackMax', '')),
+                ('Installed price', 'About %s for the first, %s each after' % (usd(x.get('price')), usd(x.get('addPrice')))), ('Warranty', x.get('warranty', ''))]
+    else:
+        rows = [('Years', x.get('years', '')), ('Battery', 'About %s kWh' % x.get('kwh', '')), ('Onboard charger', '%s kW AC' % x.get('obc', '')),
+                ('Efficiency', 'About %s miles per kWh' % x.get('eff', '')),
+                ('V2L', ('%s kW' % x['v2l'] + ('. ' + x['v2lNote'] if x.get('v2lNote') else '')) if x.get('v2l') else 'None from the factory'),
+                ('V2H', V2H_LABEL.get(x.get('v2h'), '') + (', up to %s kW' % x['v2hKw'] if x.get('v2hKw') else '')),
+                ('Type', x.get('dc', '')), ('V2G', x.get('v2g', '')), ('Export floor', ('%s%%' % x['floor']) if x.get('floor') else '')]
+    table = ''.join('<tr><th>%s</th><td>%s</td></tr>' % (esc(a), esc(str(b))) for a, b in rows if b)
+    maker = x.get('make') if kind == 'vehicles' else x.get('oem')
+    note = x.get('note') if x.get('note') and x.get('blurb') else ''
+    return ('<p class="sub"><a href="/home/home-ev-chargers-batteries/">All gear</a> <span class="dot">/</span> %s</p>'
+            '<div class="hwhero hgd"><div><p class="sub">%s</p><p>%s</p>%s</div></div>'
+            '<h2>Specifications</h2><div class="scroll"><table><tbody>%s</tbody></table></div>%s'
+            '<p class="fh">Source: %s.</p>') % (
+        esc(name), esc(maker or ''), esc(x.get('blurb') or x.get('note') or ''),
+        ('<p><a class="btn secondary" href="%s" rel="noopener">Manufacturer site</a></p>' % esc(x['website'])) if x.get('website') else '',
+        table, ('<p class="fh">%s</p>' % esc(note)) if note else '', esc(x.get('source') or 'Manufacturer and public reporting, 2026'))
+
+
 def product_detail_html(p):
     """Static product page body (the script redraws it on load)."""
     rows = lambda lst: '<table>%s</table>' % ''.join('<tr><th>%s</th><td>%s</td></tr>' % (esc(str(a)), esc(str(b))) for a, b in (lst or []))
@@ -812,6 +893,49 @@ def build():
             open(dest, 'w', encoding='utf-8').write(doc)
             sitemap.append('  <url><loc>%s</loc><lastmod>%s</lastmod></url>' % (url, pdate))
             PRODUCT_PAGES.append((url, name, desc))
+
+    # one page per piece of home gear: /home/home-ev-chargers-batteries/<id>/
+    if 'hgear' in VIEWS and GEAR_TAG[0]:
+        try:
+            gear = json.load(open(os.path.join(ROOT, 'data', 'home-gear.json'), encoding='utf-8'))
+        except Exception:
+            gear = {}
+        try:
+            gdate = subprocess.run(['git', 'log', '-1', '--format=%cs', '--', 'data/home-gear.json'], cwd=ROOT,
+                                   capture_output=True, text=True, timeout=10).stdout.strip() or updated
+        except Exception:
+            gdate = updated
+        gdate = max(gdate, page_dates.get('hgear', updated), HOME_PUBLISHED)
+        base = PATH['hgear']
+        for kind, x in gear_items(gear):
+            name, title, desc = gear_meta(kind, x)
+            url = SITE + base + x['id'] + '/'
+            page_head = set_meta(head, title, desc, url, SITE + '/og/home-home-ev-chargers-batteries.png', 'tool')
+            ld = {'@context': 'https://schema.org', '@graph': [
+                {'@type': 'WebPage', 'name': name, 'headline': title, 'description': desc, 'url': url, 'dateModified': gdate,
+                 'inLanguage': 'en-US', 'author': dict(AUTHOR), 'isPartOf': {'@type': 'WebSite', 'name': SITE_NAME, 'url': SITE + '/'}},
+                {'@type': 'BreadcrumbList', 'itemListElement': [
+                    {'@type': 'ListItem', 'position': 1, 'name': SITE_NAME, 'item': SITE + '/'},
+                    {'@type': 'ListItem', 'position': 2, 'name': 'At home', 'item': SITE + '/home/'},
+                    {'@type': 'ListItem', 'position': 3, 'name': 'Home gear', 'item': SITE + base},
+                    {'@type': 'ListItem', 'position': 4, 'name': name, 'item': url}]}]}
+            page_head += '<script type="application/ld+json">%s</script>\n' % json.dumps(ld, ensure_ascii=False).replace('</', '<\\/')
+            sec = full['hgear']
+            sec = re.sub(r'<h1>.*?</h1>', '<h1>%s</h1>' % esc(name), sec, count=1, flags=re.S)
+            sec = re.sub(r'(<div class="tool-head">\s*<h1>.*?</h1>\s*)<p>.*?</p>', lambda m: m.group(1) + '<p>%s</p>' % esc(desc), sec, count=1, flags=re.S)
+            sec = re.sub(r'<div class="wrap hgear" id="h-gear">.*?</div>\s*</section>',
+                         lambda m: '<div class="wrap hgear" id="h-gear">%s</div>\n</section>' % gear_detail_html(kind, x, name), sec, count=1, flags=re.S)
+            body = ''.join(sec if v2 == 'hgear' else hollowed[v2] for v2, _, _ in bounds)
+            ph = page_head.replace('<html lang="en">', '<html lang="en" data-side="home">')
+            pm = fill_snav(pre_main.replace('<html lang="en">', '<html lang="en" data-side="home">'), 'hgear')
+            doc = rewrite_links(ph + pm + body + post_main, 'hgear', anchors).replace(
+                '%%CS_CONFIG%%', GEAR_TAG[0] + config_script('hgear', anchors, x['id']))
+            dest = os.path.join(OUT, base.strip('/'), x['id'], 'index.html')
+            os.makedirs(os.path.dirname(dest), exist_ok=True)
+            open(dest, 'w', encoding='utf-8').write(doc)
+            if HOME_LIVE:
+                sitemap.append('  <url><loc>%s</loc><lastmod>%s</lastmod></url>' % (url, gdate))
+                GEAR_PAGES.append((url, name, desc))
 
     # 404: every section hollowed and hidden, plus a short note
     links = ''.join('<li><a href="%s">%s</a></li>' % (PATH[p[0]], esc(h1s.get(p[0]) or p[2])) for p in PAGES if p[4] in ('guide', 'tool'))
