@@ -1146,6 +1146,61 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
 :root[data-theme="dark"] .htap-loads button[aria-pressed="true"],:root[data-theme="dark"] .htap-loads button[aria-pressed="true"] small,:root[data-theme="dark"] .chip.g3{color:#0A1322}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .htap-loads button[aria-pressed="true"],:root:not([data-theme="light"]) .htap-loads button[aria-pressed="true"] small,:root:not([data-theme="light"]) .chip.g3{color:#0A1322}}
 .results .recs a,.results .fh a,.hgear .fh a{text-decoration:underline;text-underline-offset:.18em}
+/* ---------- Home side palette: warm paper, forest green, a bit of copper ---------- */
+:root[data-side="home"]{
+  --white:#FFFDF8; --mist:#F5F0E6; --ink:#17271F; --slate:#566359; --line:#E4DCCC;
+  --blue:#1B7352; --blue-deep:#0F4E37; --ice:#E1F0E7; --amber:#D9772B; --amber-soft:#FCEBD9;
+  --sky:#8CCBAE; --neg:#B83A2A; --pos:#1B7352; --band:rgba(27,115,82,.13); --glass:rgba(255,253,248,.82);
+}
+@media (prefers-color-scheme: dark){
+  :root[data-side="home"]:not([data-theme="light"]){
+    --white:#0E1512; --mist:#15201A; --ink:#E7EFE9; --slate:#9BAAA0; --line:#243329;
+    --blue:#5FC79C; --blue-deep:#A8E6CB; --ice:#16301F; --amber:#F2A55C; --amber-soft:#2F2213;
+    --sky:#2F7A5A; --neg:#FF7B6E; --pos:#5FC79C; --band:rgba(95,199,156,.18); --glass:rgba(14,21,18,.82);
+  }
+}
+:root[data-side="home"][data-theme="dark"]{
+  --white:#0E1512; --mist:#15201A; --ink:#E7EFE9; --slate:#9BAAA0; --line:#243329;
+  --blue:#5FC79C; --blue-deep:#A8E6CB; --ice:#16301F; --amber:#F2A55C; --amber-soft:#2F2213;
+  --sky:#2F7A5A; --neg:#FF7B6E; --pos:#5FC79C; --band:rgba(95,199,156,.18); --glass:rgba(14,21,18,.82);
+}
+:root[data-side="home"] .hhero h1,:root[data-side="home"] .tool-head h1{letter-spacing:-.03em}
+:root[data-side="home"] .hhero .hkick{color:#9E4F17}
+:root[data-side="home"][data-theme="dark"] .hhero .hkick{color:var(--amber)}
+@media (prefers-color-scheme: dark){:root[data-side="home"]:not([data-theme="light"]) .hhero .hkick{color:var(--amber)}}
+:root[data-side="home"] .gnav{border-bottom-color:color-mix(in srgb,var(--blue) 25%,var(--line))}
+/* ---------- Three ways to pay ---------- */
+.hcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.9rem;margin-top:.4rem}
+.hcard{background:var(--mist);border-radius:var(--r-m);padding:1.1rem 1.1rem 1rem;display:flex;flex-direction:column;gap:.15rem;border-top:4px solid var(--blue)}
+.hcard.dc{border-top-color:var(--sky)} .hcard.gas{border-top-color:var(--amber)}
+.hcard svg{width:40px;height:40px;margin-bottom:.3rem}
+.hcard svg .ln{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.hcard svg .lb{fill:none;stroke:var(--blue);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.hcard svg .fw{fill:var(--white)} .hcard svg .fi{fill:var(--ice)} .hcard svg .fa{fill:var(--amber)}
+.hcard .nm{font-size:1rem;line-height:1.25}
+.hcard small{color:var(--slate);font-size:.8rem;line-height:1.35}
+.hcard .big{font-size:clamp(1.7rem,3vw,2.3rem);font-weight:700;letter-spacing:-.03em;line-height:1.05;margin-top:.5rem;font-variant-numeric:tabular-nums}
+.hcard .gauge{display:block;height:8px;background:var(--white);border-radius:999px;overflow:hidden;margin:.6rem 0 .5rem}
+.hcard .gauge b{display:block;height:100%;border-radius:999px;background:var(--blue);transition:width 1s cubic-bezier(.2,.7,.2,1)}
+.hcard.dc .gauge b{background:var(--sky)} .hcard.gas .gauge b{background:var(--amber)}
+.hcard .row{display:flex;justify-content:space-between;gap:.5rem;font-size:.86rem;padding-top:.3rem;border-top:1px solid var(--line);margin-top:.25rem}
+.hcard .row span{color:var(--slate)}
+.hcard .row b{font-variant-numeric:tabular-nums}
+@media (max-width:640px){.hcards{grid-template-columns:1fr}.hcard{display:grid;grid-template-columns:auto 1fr auto;column-gap:.8rem;align-items:center}.hcard svg{grid-row:span 2;margin:0}.hcard .big{grid-column:3;grid-row:1 / span 2;margin:0;font-size:1.6rem}.hcard>small:nth-of-type(2){display:none}.hcard .gauge,.hcard .row{grid-column:1/-1}}
+/* ---------- The price sign ---------- */
+.hegal-ctl{display:flex;flex-wrap:wrap;gap:.5rem}
+.hegal-ctl .fld{min-width:190px}
+.hegal{display:grid;grid-template-columns:minmax(0,340px) 1fr;gap:2rem;align-items:center}
+.hsign{background:#10231A;border-radius:16px;padding:1rem 1.2rem 1.2rem;box-shadow:inset 0 0 0 3px #2C4A3B, 0 10px 30px rgba(16,35,26,.18);color:#EAF4EE}
+.hsign-top{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#9FC9B4;text-align:center;margin-bottom:.6rem}
+.hsign-row{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.55rem .2rem;border-top:1px solid #2C4A3B}
+.hsign-row span{font-size:.9rem;font-weight:600;letter-spacing:.02em}
+.hsign-row b{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:clamp(1.6rem,3.4vw,2.2rem);font-weight:700;color:#FFD27A;letter-spacing:.02em;text-shadow:0 0 12px rgba(255,190,90,.35)}
+.hsign-row.home b{color:#7EF0B8;text-shadow:0 0 12px rgba(126,240,184,.35)}
+.hsign-row.dc b{color:#B9E4FF;text-shadow:0 0 12px rgba(185,228,255,.3)}
+.hsign-note p{margin:0 0 .5rem;color:var(--slate)}
+.hsign-note b{color:var(--ink)}
+@media (max-width:700px){.hegal{grid-template-columns:1fr}}
 /*/home-side*/
 </style>
 </head>
@@ -3067,7 +3122,18 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
     <h2 id="h-c-vs">Versus gas, and versus public charging</h2>
     <p>Gas: divide the price per gallon by the car's miles per gallon to get cost per mile. At $4.40 a gallon and 28 mpg, that's about 16 cents a mile. For an EV, divide the price per kWh by miles per kWh, then allow for charging losses: at 18 cents and 3.5 miles per kWh, about 6 cents a mile. On a cheap overnight rate, less than that.</p>
     <p>Public DC fast charging usually runs 40 to 60 cents per kWh, because the station owner is paying for a very expensive charger, a demand charge, and a parking space. That's more per mile than charging at home, and sometimes more than gas. Fast charging is for road trips. Home is for living.</p>
-    <p>The calculator runs this comparison for your car, your rate, and today's gas price, so we don't have to pretend one example fits everybody.</p>
+  </article>
+  <div class="fig" id="h-fig-egal"><div class="fig-in">
+    <div class="fig-top"><h3>What a gallon costs, in electrons</h3>
+      <div class="hegal-ctl">
+        <label class="fld wide" style="margin:0"><span class="fi"><select id="h-egal-v" aria-label="Electric vehicle"></select></span></label>
+        <label class="fld wide" style="margin:0"><span class="fi"><select id="h-egal-s" aria-label="State"></select></span></label>
+      </div></div>
+    <div id="h-egal" class="hegal" aria-live="polite"></div>
+    <p class="fig-cap" id="h-egal-cap"></p>
+  </div></div>
+  <article class="prose">
+    <p>The <a href="#hcharge">calculator</a> runs the same comparison for your car, your rate, your plug-in time and this week's gas price, so nobody has to pretend one example fits everybody.</p>
 
     <h2 id="h-c-solar">Solar changes the timing</h2>
     <p>If you have solar, the cheapest kWh is the one your roof makes while the car is home. That's easy for anyone who works from home and awkward for anyone whose car is at the office all day. Under net billing rules like California's, exporting solar at midday earns much less than it costs to buy power back at night, which is why people add batteries, or cars that can act like one. The <a href="#hbattery">batteries guide</a> covers that.</p>
@@ -3321,6 +3387,14 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
       <li>Tiered rates are simplified to their first tier, and holidays are treated as weekdays.</li>
       <li>Fixed monthly charges are shown but not added to the cost of charging, because you pay them with or without a car.</li>
       <li>Presets are examples from 2026 rate sheets, energy prices only. Check your utility's current tariff before you switch plans.</li>
+    </ul>
+    <h3>Gas and public charging</h3>
+    <ul>
+      <li>Gas prices are the Energy Information Administration's weekly retail averages, regular or premium to match the car, for your state where EIA publishes one and your region where it doesn't. They refresh every week.</li>
+      <li>Average electricity prices are EIA's monthly residential averages by state, refreshed every month.</li>
+      <li>Public fast charging uses the latest national average from Paren's quarterly report, updated by hand. Prices vary a lot by network and state, and members of some networks pay less.</li>
+      <li>Gas cars use EPA combined fuel economy for a common trim. Each EV is matched to a similar gas car, and you can pick any other or type your own number.</li>
+      <li>"Per gallon, equivalent" is what it costs to drive as far as the gas car goes on one gallon. The Department of Energy calls it the eGallon.</li>
     </ul>
     <h3>Questions people ask</h3>
     <p><strong>Should I charge to 100%?</strong> Most carmakers suggest 80% for everyday driving and 100% before a road trip. Cars with LFP batteries are the exception and are fine at 100%. Your manual says which you have.</p>
@@ -6972,15 +7046,19 @@ if (typeof document !== 'undefined') (function(){
     try { d = s ? JSON.parse(s.textContent) : null; } catch(e){ d = null; }
     if (d && d.vehicles && d.vehicles.length){ HG = d; done(); return; }
     if (location.protocol==='file:' || ['hhub','hbasics','hcost','hbattery','hvtoh','hcharge','hinstall','hbackup','hvcompare','hgear'].indexOf(K.current())<0){ done(); return; }
-    fetch((window.CS_PAGE?'/':'')+'data/home-gear.json').then(function(r){ return r.json(); }).then(function(j){ HG = j; done(); }).catch(function(){ done(); });
+    var base = window.CS_PAGE ? '/' : '';
+    fetch(base+'data/home-gear.json').then(function(r){ return r.json(); }).then(function(j){
+      HG = j;
+      return fetch(base+'data/fuel-prices.json').then(function(r){ return r.json(); }).then(function(p){ HG.prices = p; });
+    }).then(done, done);
   }
 
   /* ---------- State ---------- */
   var DEF = {
     c:{veh:'tesla-model-y', kwh:75, obc:11.5, eff:3.6, by:'soc', arrive:55, target:80, miles:40, plug:'18:00', dep:'07:30', nights:5,
-       level:'32', volts:240, rsrc:'preset', preset:'sce-prime', zip:'', rateIdx:-1,
+       level:'32', volts:240, rsrc:'avg', preset:'sce-prime', zip:'', rateIdx:-1,
        mKind:'tou', flatPrice:0.18, peakPrice:0.45, offPrice:0.22, peakStart:16, peakEnd:21, peakWeekends:false, superOn:true, superPrice:0.12, superStart:0, superEnd:6, fixed:15,
-       month:6, weekend:false, mpg:28, gas:4.40, dcfc:0.50},
+       month:6, weekend:false, state:'US', gasCar:'auto', mpg:30, gas:4.47, dcfc:0.538, dcfcSet:false},
     i:{mount:'hardwire', amps:48, charger:'', chargerPrice:0, panelAmps:200, spaces:'2', brand:'hom', breaker:'std', distance:25, route:'garage', trenchFt:40, driveway:false,
        sqft:2200, range:'gas', dryer:'elec', wh:'gas', acTons:3, heat:'gas', stripKw:10, pool:false, spa:false, well:false, existingEv:0, otherVa:0,
        state:'TX', laborIdx:92, permit:250, code:'2023', wire:'auto', maxVd:3, measuredKw:0, useMeasured:false},
@@ -7038,10 +7116,32 @@ if (typeof document !== 'undefined') (function(){
     'tx-free': {name:'Texas free nights plan (example)', utility:'ERCOT retail provider', fixed:10, note:'Energy free 9pm to 5am, delivery of about 5.5 cents still applies. Some free-nights plans exclude homes with EVs, solar or batteries.',
       seasons:[{months:ALL, base:0.19, wd:[[21,5,0.055]]}]}
   };
+  /* ---------- Prices from data/fuel-prices.json (EIA weekly gasoline, EIA monthly electricity, Paren quarterly DC fast) ---------- */
+  function P_(){ return HG.prices || {}; }
+  function gasCarFor(C){
+    var id = C.gasCar==='auto' ? ((hgById(HG.vehicles||[], C.veh)||{}).twin || 'toyota-rav4') : C.gasCar;
+    return hgById(HG.gasCars||[], id) || {id:'custom', name:'A gas car', mpg:Number(C.mpg)||30, fuel:'regular'};
+  }
+  function gasArea(state){
+    var g = (P_().gasoline||{}), code = state && state!=='US' ? (g.stateArea||{})[state] : 'NUS';
+    return (g.areas||{})[code||'NUS'] ? {code:code||'NUS', a:g.areas[code||'NUS']} : null;
+  }
+  function gasPriceFor(C, car){ var ga = gasArea(C.state); return ga ? ga.a[car.fuel==='premium'?'premium':'regular'] : null; }
+  function elecAvg(state){ var e = P_().electricity||{}; if (state && state!=='US' && e.states && e.states[state]) return {c:e.states[state], month:e.month}; return e.us ? {c:e.us, month:e.usMonth} : {c:18.31, month:'2026-07'}; }
+  function niceMonth(m){ var d = /^(\d{4})-(\d{2})/.exec(m||''); return d ? ['January','February','March','April','May','June','July','August','September','October','November','December'][Number(d[2])-1]+' '+d[1] : ''; }
+  function niceDay(w){ var d = /^(\d{4})-(\d{2})-(\d{2})/.exec(w||''); return d ? ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][Number(d[2])-1]+' '+Number(d[3])+', '+d[1] : ''; }
+  /* Fill the comparison inputs from the data, unless the user typed their own */
+  function syncCompare(C, force){
+    var car = gasCarFor(C);
+    if (force || C.gasCar==='auto' || car.id!=='custom'){ if (car.id!=='custom') C.mpg = car.mpg; }
+    var gp = gasPriceFor(C, car); if (gp && (force || !C.gasSet)) C.gas = gp;
+    var dc = P_().dcfc; if (dc && dc.price && !C.dcfcSet) C.dcfc = dc.price;
+  }
   var URDB = [];
   function currentRate(){
     var C = S.c;
     if (C.rsrc==='zip' && URDB[C.rateIdx]) return URDB[C.rateIdx];
+    if (C.rsrc==='avg'){ var ea = elecAvg(C.state); return rateFromPreset({name:(C.state==='US'?'U.S.':C.state)+' average residential price', utility:'EIA, '+niceMonth(ea.month), fixed:0, seasons:[{months:ALL, base:ea.c/100}]}); }
     if (C.rsrc==='manual') return rateManual({kind:C.mKind, flatPrice:C.flatPrice, peakPrice:C.peakPrice, offPrice:C.offPrice, peakStart:C.peakStart, peakEnd:C.peakEnd,
       peakWeekends:C.peakWeekends, superOn:C.superOn, superPrice:C.superPrice, superStart:C.superStart, superEnd:C.superEnd, fixed:C.fixed});
     var p = PRESETS[C.preset] || PRESETS['sce-prime'];
@@ -7078,10 +7178,14 @@ if (typeof document !== 'undefined') (function(){
     h += group('Your charger', true,
       sl('c','level','Charger', Object.keys(LEVELS).map(function(k){ return [k, LEVELS[k].name]; }), '', true) +
       (chargerKw(C).l1 ? '' : sl('c','volts','Voltage', [['240','240 V, most houses'],['208','208 V, many apartments and condos']], '', true)));
-    var rsrc = segH('c','rsrc',[['zip','Look up'],['preset','Examples'],['manual','My own']],'Your electricity rate');
+    var stOpts = [['US','U.S. average']].concat(STATES);
+    var rsrc = sl('c','state','Your state', stOpts, 'Sets average electricity and local gas prices.', true) + segH('c','rsrc',[['zip','Look up'],['avg','Average'],['preset','Examples'],['manual','My own']],'Your electricity rate');
     var rb = '';
     if (C.rsrc==='zip'){
       rb = tx('c','zip','ZIP code','e.g. 60477') + '<div class="tool-actions"><button type="button" class="btn small" id="h-zip-go">Find my utility’s rates</button></div><div class="status" id="h-zip-st" hidden></div><div id="h-zip-list"></div>';
+    } else if (C.rsrc==='avg'){
+      var ea = elecAvg(C.state);
+      rb = '<p class="fh" style="margin:.4rem 0 .6rem">'+(C.state==='US'?'The U.S.':'The '+esc((STATES.filter(function(x){ return x[0]===C.state; })[0]||[])[1]||C.state))+' average residential price, <b>'+ea.c.toFixed(1)+'\u00a2 per kWh</b> in '+niceMonth(ea.month)+', from the EIA. Same price every hour, so scheduling won\u2019t change the bill. Time-of-use plans can.</p>';
     } else if (C.rsrc==='preset'){
       rb = sl('c','preset','Example rate', Object.keys(PRESETS).map(function(k){ return [k, PRESETS[k].name]; }), (PRESETS[C.preset]||{}).note, true);
     } else {
@@ -7093,12 +7197,17 @@ if (typeof document !== 'undefined') (function(){
       rb += f('c','fixed','Fixed monthly charge','$','Shown, not added to charging cost.',1);
     }
     h += group('Your electricity rate', true, rsrc + rb);
-    h += group('Compare with', false,
-      f('c','mpg','A gas car that gets','mpg','',1,1) + f('c','gas','Gas price','$/gal','AAA national average was about $4.46 on September 29, 2026.',0.05) +
-      f('c','dcfc','Public DC fast charging','$/kWh','Typical 2026 prices run 40 to 60 cents.',0.01));
+    var car = gasCarFor(C), ga = gasArea(C.state), g = P_().gasoline||{}, dc = P_().dcfc||{};
+    var twin = gasCarFor(Object.assign({}, C, {gasCar:'auto'}));
+    var carOpts = [['auto','Matched to your EV: '+twin.name]].concat((HG.gasCars||[]).map(function(x){ return [x.id, x.name+', '+x.mpg+' mpg'+(x.fuel==='premium'?', premium':'')]; }));
+    h += group('Compare with', true,
+      sl('c','gasCar','Gas car', carOpts, esc(car.name)+(car.trim?' ('+esc(car.trim)+')':'')+': '+car.mpg+' mpg combined, '+(car.fuel==='premium'?'premium':'regular')+' fuel.', true) +
+      f('c','mpg','Its fuel economy','mpg','',1,1) +
+      f('c','gas','Gas price','$/gal', ga ? 'EIA, week of '+niceDay(g.week)+': '+(ga.code==='NUS'?'U.S. average':esc(ga.a.name))+' '+(car.fuel==='premium'?'premium':'regular')+'.' : '', 0.01) +
+      f('c','dcfc','Public DC fast charging','$/kWh', dc.price ? 'U.S. average, '+esc(dc.period)+', from Paren. States range from about '+cents(dc.low[1])+' to '+cents(dc.high[1])+'.' : '', 0.01));
     h += '<div class="tool-actions"><button type="button" class="btn" id="h-c-reset">Reset</button></div>';
     form.innerHTML = h;
-    el('h-c-reset').onclick = function(){ S.c = Object.assign({}, DEF.c); URDB = []; save(); renderCIn(); renderC(); };
+    el('h-c-reset').onclick = function(){ S.c = Object.assign({}, DEF.c); URDB = []; syncCompare(S.c, true); save(); renderCIn(); renderC(); };
     var go = el('h-zip-go'); if (go) go.onclick = lookupZip;
     if (C.rsrc==='zip' && URDB.length) renderZipList();
   }
@@ -7169,6 +7278,36 @@ if (typeof document !== 'undefined') (function(){
     for (var t=Math.ceil(start); t<=end+1e-9; t+=1){ if ((t-Math.ceil(start))%stepH) continue; s += '<text class="axis" x="'+x(t).toFixed(1)+'" y="'+yb+'" text-anchor="middle">'+hm(t)+'</text>'; }
     return s+'</svg>';
   }
+  var PICON = {
+    home:'<svg viewBox="0 0 48 48" aria-hidden="true"><path class="ln" d="M8,40 V20 L24,8 L40,20 V40 Z"/><rect class="ln fw" x="18" y="24" width="12" height="16" rx="2"/><path class="lb" d="M24,28 l-3,5 h6 l-3,5"/></svg>',
+    dc:'<svg viewBox="0 0 48 48" aria-hidden="true"><rect class="ln fw" x="12" y="6" width="20" height="36" rx="4"/><rect class="fi" x="16" y="11" width="12" height="8" rx="2"/><path class="lb" d="M22,23 l-3,5 h6 l-3,5"/><path class="ln" d="M32,26 h6 v10 a3,3 0 0 1 -6,0"/></svg>',
+    gas:'<svg viewBox="0 0 48 48" aria-hidden="true"><rect class="ln fw" x="10" y="8" width="20" height="34" rx="3"/><rect class="fa" x="14" y="13" width="12" height="8" rx="2"/><path class="ln" d="M30,16 l6,5 v14 a3,3 0 0 1 -6,0 v-7 h-2"/><path class="ln" d="M6,42 H34"/></svg>'
+  };
+  function compareHTML(C, o, y, miles){
+    var eff = Number(C.eff)||3, nightsYr = (Number(C.nights)||0)*52, yrMiles = miles*nightsYr;
+    var car = gasCarFor(C), mpg = Number(C.mpg)||car.mpg||30, gas = Number(C.gas)||0, dcfc = Number(C.dcfc)||0;
+    var perMile = {home: y.wallKwh ? y.smart/(y.wallKwh*eff*o.eff) : 0, dc: dcfc/(eff*0.95), gas: gas/mpg};
+    var rows = [['home','Charging at home', perMile.home, 'Scheduled, on '+esc(o.rate.name)],
+                ['dc','Public fast charging', perMile.dc, cents(dcfc)+' per kWh'],
+                ['gas', esc(car.id==='custom'?'A gas car':car.name), perMile.gas, mpg+' mpg at '+money(gas,2)+' a gallon'+(car.fuel==='premium'?', premium':'')]];
+    var mx = Math.max(perMile.home, perMile.dc, perMile.gas, 0.0001);
+    var eg = function(pm){ return pm*mpg; };
+    var h = '<div class="panel hcmp"><h2>The same miles, three ways</h2><p class="sub">'+num(Math.round(yrMiles/100)*100)+' miles a year, the '+esc((hgById(HG.vehicles||[], C.veh)||{model:'EV'}).model)+' against '+(car.id==='custom'?'a gas car':'a '+esc(car.name))+'.</p><div class="hcards">';
+    rows.forEach(function(r, i){
+      h += '<div class="hcard '+r[0]+'">'+PICON[r[0]]+'<b class="nm">'+r[1]+'</b><small>'+r[3]+'</small>'+
+        '<span class="big tw">'+cents(r[2])+'</span><small>per mile</small>'+
+        '<span class="gauge"><b style="width:'+(r[2]/mx*100).toFixed(1)+'%"></b></span>'+
+        '<span class="row"><span>A year</span><b class="tw">'+money(r[2]*yrMiles,0)+'</b></span>'+
+        '<span class="row"><span>Per gallon, equivalent</span><b class="tw">'+money(eg(r[2]),2)+'</b></span></div>';
+    });
+    h += '</div>';
+    var saveGas = (perMile.gas-perMile.home)*yrMiles, saveDc = (perMile.dc-perMile.home)*yrMiles;
+    var line = saveGas > 0 ? 'Charging at home here works out like paying <strong>'+money(eg(perMile.home),2)+' a gallon</strong>. Against the '+(car.id==='custom'?'gas car':esc(car.name))+', that\u2019s <strong>'+money(saveGas,0)+' a year</strong>'+(yrMiles?', or '+money(saveGas*5,0)+' over five years':'')+'.' :
+      'On this rate, home charging costs about the same as gas for this pair. Try a time-of-use or EV plan.';
+    line += saveDc > 0 ? ' Doing all of it at public fast chargers instead would cost '+money(saveDc,0)+' a year more than home.' : '';
+    h += '<p class="verdict">'+line+'</p><p class="fh">\u201cPer gallon, equivalent\u201d is what it costs to drive as far as the gas car goes on one gallon. The Department of Energy calls it the eGallon. Public fast charging assumes about 5% lost on the way into the battery; home uses your charger\u2019s losses.</p></div>';
+    return h;
+  }
   function renderC(){
     var out = el('h-c-out'); if (!out) return;
     var C = S.c, o = chargeInputs();
@@ -7197,6 +7336,7 @@ if (typeof document !== 'undefined') (function(){
     if (o.ch.kw > Number(C.obc)+0.05) h += '<p class="flag">The car accepts '+Number(C.obc).toFixed(1)+' kW at most, so a '+o.ch.kw.toFixed(1)+' kW charger won’t make it faster. You could save on the charger and the wiring.</p>';
     if (o.rate.tiered) h += '<p class="flag">This plan is tiered. The price shown is the first tier. Heavy use can push the rest of the month into a higher tier.</p>';
     if (C.rsrc==='preset' && C.preset==='tx-free') h += '<p class="flag">Read the plan’s fact sheet before you sign. Some free-nights plans exclude homes with EVs, solar or batteries, and the daytime price is usually higher to pay for the free nights.</p>';
+    h += compareHTML(C, o, y, miles);
     h += '<div class="panel"><h2>Tonight, hour by hour</h2><p class="sub">Darker means more expensive. '+esc(o.rate.name)+(o.rate.utility?', '+esc(o.rate.utility):'')+'.</p>' +
       '<div class="hctl"><label class="fi"><select data-h="c" data-k="month" aria-label="Month">'+MONTHS.map(function(n,i){ return '<option value="'+i+'"'+(i===m?' selected':'')+'>'+n+'</option>'; }).join('')+'</select></label>' +
       '<div class="seg" role="group" aria-label="Day"><button type="button" data-h="c" data-k="weekend" data-v="false" aria-pressed="'+(!we)+'">Weekday</button><button type="button" data-h="c" data-k="weekend" data-v="true" aria-pressed="'+we+'">Weekend</button></div></div>' +
@@ -7205,11 +7345,6 @@ if (typeof document !== 'undefined') (function(){
     var mx = Math.max.apply(null, y.months.map(function(q){ return q.now; }).concat([1]));
     h += '<div class="panel"><h2>Month by month</h2><p class="sub">'+(Number(C.nights)||0)+' nights a week. The grey is what plugging in and going would cost.</p><div class="hmonths">'+
       y.months.map(function(q,i){ return '<div class="hm"><span class="t"><b class="nw" style="height:'+(q.now/mx*100).toFixed(1)+'%"></b><b class="sm" style="height:'+(q.smart/mx*100).toFixed(1)+'%"></b></span><small>'+MONTHS[i].slice(0,1)+'</small></div>'; }).join('')+'</div></div>';
-    // comparison
-    var yrMiles = miles*(Number(C.nights)||0)*52;
-    var gasYr = yrMiles/(Number(C.mpg)||1)*(Number(C.gas)||0), dcYr = yrMiles/(Number(C.eff)||3)*(Number(C.dcfc)||0);
-    h += '<div class="panel"><h2>The same miles, other ways</h2><p class="sub">About '+num(Math.round(yrMiles/100)*100)+' miles a year.</p>'+
-      K.bars([['Home, scheduled', y.smart], ['Home, plug in and go', y.now], ['Public DC fast', dcYr], ['Gas, '+C.mpg+' mpg', gasYr]], 'Gas, '+C.mpg+' mpg')+'</div>';
     if (o.rate.fixed) h += '<p class="fh">This rate also has a fixed charge of about '+money(o.rate.fixed,0)+' a month, which you pay with or without a car.</p>';
     h += '<p class="fh" style="margin-top:1.2rem">Estimates. Charging losses assumed at '+Math.round((1-o.eff)*100)+'%. Rates change, and your bill has the final word.</p>';
     out.innerHTML = h; K.polish(out);
@@ -7668,6 +7803,28 @@ if (typeof document !== 'undefined') (function(){
     vs.onchange = draw; r.oninput = draw; l.oninput = draw; draw();
   }
 
+  function initEgal(){
+    var box = el('h-egal'), vs = el('h-egal-v'), ss = el('h-egal-s'); if (!box || !vs) return;
+    var evs = (HG.vehicles||[]).filter(function(v){ return v.twin && v.kwh>30; });
+    vs.innerHTML = evs.map(function(v){ return '<option value="'+v.id+'"'+(v.id==='tesla-model-y'?' selected':'')+'>'+esc(v.make+' '+v.model)+'</option>'; }).join('');
+    ss.innerHTML = [['US','U.S. average']].concat(STATES).map(function(x){ return '<option value="'+x[0]+'">'+esc(x[1])+'</option>'; }).join('');
+    function draw(){
+      var v = hgById(evs, vs.value) || evs[0]; if (!v) return;
+      var car = hgById(HG.gasCars||[], v.twin) || {name:'a gas car', mpg:30, fuel:'regular'};
+      var ga = gasArea(ss.value), gas = ga ? ga.a[car.fuel==='premium'?'premium':'regular'] : 4.47;
+      var ea = elecAvg(ss.value), dc = (P_().dcfc||{}).price || 0.538;
+      var home = car.mpg/v.eff*(ea.c/100)/0.9, fast = car.mpg/v.eff*dc/0.95;
+      var rows = [['Your house', home, 'home'], ['Public fast charger', fast, 'dc'], [car.fuel==='premium'?'Premium':'Regular', gas, 'gas']];
+      box.innerHTML = '<div class="hsign"><div class="hsign-top">Price per gallon</div>'+rows.map(function(r){
+        return '<div class="hsign-row '+r[2]+'"><span>'+r[0]+'</span><b class="tw">'+money(r[1],2)+'</b></div>'; }).join('')+'</div>'+
+        '<div class="hsign-note"><p><b>'+esc(v.model)+'</b> vs <b>'+esc(car.name)+'</b></p><p>'+v.eff+' miles per kWh against '+car.mpg+' mpg. To go as far as the '+esc(car.name)+' goes on one gallon, the '+esc(v.model)+' needs '+(car.mpg/v.eff).toFixed(1)+' kWh.</p></div>';
+      var g = P_().gasoline||{};
+      el('h-egal-cap').textContent = 'Home uses the '+(ss.value==='US'?'U.S.':'state')+' average residential price, '+ea.c.toFixed(1)+' cents in '+niceMonth(ea.month)+', with 10% lost charging. Gas is the EIA '+(ga&&ga.code!=='NUS'?ga.a.name+' ':'U.S. ')+'average for the week of '+niceDay(g.week)+'. Fast charging is Paren\u2019s U.S. average, '+cents(dc)+' per kWh. A time-of-use plan makes the top number smaller.';
+      K.polish(box);
+    }
+    vs.onchange = draw; ss.onchange = draw; draw();
+  }
+
   /* ================= Inputs ================= */
   var RENDER = {c:function(){ renderC(); }, i:function(){ renderI(); }, b:function(){ renderB(); }, v:function(){ renderV(); }};
   var REIN = {c:renderCIn, i:renderIIn, b:renderBIn, v:renderVIn};
@@ -7683,14 +7840,18 @@ if (typeof document !== 'undefined') (function(){
     else if (t.tagName==='SELECT'){
       var val = t.value; obj[k] = /^-?\d+(\.\d+)?$/.test(val) ? Number(val) : val;
       if (o==='c' && k==='veh') applyVehicle(obj, val);
+      if (o==='c' && (k==='state' || k==='gasCar')) obj.gasSet = false;
+      if (o==='c' && ['veh','state','gasCar'].indexOf(k)>=0) syncCompare(obj);
       if (o==='c' && k==='level' && LEVELS[val] && LEVELS[val].v===120) obj.volts = 240;
       if (o==='i' && k==='charger'){ var ch = hgById(HG.chargers||[], val); obj.chargerPrice = ch ? ch.price : 0; if (ch){ obj.amps = Math.min(ch.amps||48, ch.install==='plug'?40:80); if (ch.install==='plug' && obj.mount==='hardwire') obj.mount = 'plug1450'; if (ch.install==='hardwire') obj.mount = 'hardwire'; } }
       if (o==='i' && k==='state'){ obj.laborIdx = HLABOR[val] || 100; }
       if (o==='v' && k==='veh'){ var vv = hgById(HG.vehicles||[], val); if (vv && vv.floor && obj.reserve < vv.floor) obj.reserve = vv.floor; }
-      restructure = (o==='c' && ['veh','level'].indexOf(k)>=0) || (o==='i' && ['mount','route','heat','charger','state'].indexOf(k)>=0) || o==='v' && k==='veh';
+      restructure = (o==='c' && ['veh','level','state','gasCar'].indexOf(k)>=0) || (o==='i' && ['mount','route','heat','charger','state'].indexOf(k)>=0) || o==='v' && k==='veh';
       if (o==='c' && (k==='month')) restructure = false;
     } else {
       var n = parseFloat(t.value); if (isNaN(n)) return; obj[k] = n;
+      if (o==='c' && k==='gas') obj.gasSet = true;
+      if (o==='c' && k==='dcfc') obj.dcfcSet = true;
       if (o==='c' && ['kwh','obc','eff'].indexOf(k)>=0 && obj.veh!=='custom'){ obj.veh = 'custom'; restructure = true; }
     }
     if (o==='b') S.b.touched = true;
@@ -7734,6 +7895,7 @@ if (typeof document !== 'undefined') (function(){
     if (veh && hgById(HG.vehicles||[], veh)){ S.c.veh = veh; applyVehicle(S.c, veh); S.v.veh = veh; }
     if (batt && hgById(HG.batteries||[], batt)) S.v.batt = batt;
     if (gear){ var ch = hgById(HG.chargers||[], gear); if (ch){ S.i.charger = gear; S.i.chargerPrice = ch.price; S.i.amps = Math.min(ch.amps||48, ch.install==='plug'?40:80); S.i.mount = ch.install==='plug' ? 'plug1450' : 'hardwire'; } }
+    syncCompare(S.c);
     save();
   }
   var drawn = {};
@@ -7746,7 +7908,7 @@ if (typeof document !== 'undefined') (function(){
     if (!drawn[view]){
       drawn[view] = 1;
       if (view==='hbasics') initNight();
-      if (view==='hcost') initTou();
+      if (view==='hcost'){ initTou(); initEgal(); }
       if (view==='hbattery') initTap();
       if (view==='hvtoh') initDays();
     }

@@ -466,8 +466,12 @@ def build():
                       '<script id="products-data" type="application/json">%s</script>' % products.replace('</', r'<\/'), 1)
     if HOME_ON:
         try:
-            gear = open(os.path.join(ROOT, 'data', 'home-gear.json'), encoding='utf-8').read().strip()
-            json.loads(gear)
+            g = json.load(open(os.path.join(ROOT, 'data', 'home-gear.json'), encoding='utf-8'))
+            try:
+                g['prices'] = json.load(open(os.path.join(ROOT, 'data', 'fuel-prices.json'), encoding='utf-8'))
+            except Exception:
+                pass
+            gear = json.dumps(g, ensure_ascii=False, separators=(',', ':'))
         except Exception:
             gear = '{}'
         GEAR_TAG[0] = '<script id="home-gear-data" type="application/json">%s</script>' % gear.replace('</', r'<\/')

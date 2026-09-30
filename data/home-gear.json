@@ -455,7 +455,8 @@
       "eff": 4.0,
       "v2l": 0,
       "v2h": "no",
-      "note": "Tesla says Powershare isn't available on Model 3."
+      "note": "Tesla says Powershare isn't available on Model 3.",
+      "twin": "bmw-330i"
     },
     {
       "id": "tesla-model-y",
@@ -468,7 +469,8 @@
       "v2l": 2.4,
       "v2lNote": "2026+ Premium and Performance, through an $80 outlet adapter on the Gen 3 Mobile Connector",
       "v2h": "no",
-      "note": "Several websites claim Model Y V2H for 2026. Tesla's own Powershare page says it isn't available."
+      "note": "Several websites claim Model Y V2H for 2026. Tesla's own Powershare page says it isn't available.",
+      "twin": "toyota-rav4"
     },
     {
       "id": "tesla-cybertruck",
@@ -487,7 +489,8 @@
       "v2g": "PG&E pilot",
       "dc": "AC",
       "seamless": true,
-      "note": "Works alongside Powerwall 3 since September 2026. Discharge limit is set by the owner."
+      "note": "Works alongside Powerwall 3 since September 2026. Discharge limit is set by the owner.",
+      "twin": "ford-f150"
     },
     {
       "id": "ford-lightning",
@@ -506,7 +509,8 @@
       "v2g": "PG&E pilot",
       "dc": "AC",
       "seamless": true,
-      "note": "Ford discontinued the Charge Station Pro and Home Integration System in 2026. New owners are pointed to the truck's Pro Power outlets plus a manual transfer switch, about 7.2 kW and not seamless."
+      "note": "Ford discontinued the Charge Station Pro and Home Integration System in 2026. New owners are pointed to the truck's Pro Power outlets plus a manual transfer switch, about 7.2 kW and not seamless.",
+      "twin": "ford-f150"
     },
     {
       "id": "ford-mach-e",
@@ -517,7 +521,8 @@
       "obc": 10.5,
       "eff": 3.1,
       "v2l": 0,
-      "v2h": "no"
+      "v2h": "no",
+      "twin": "honda-crv"
     },
     {
       "id": "chevy-silverado-ev",
@@ -536,7 +541,8 @@
       "v2hInstall": 3000,
       "v2g": "PG&E pilot",
       "seamless": true,
-      "note": "Some 2024s need a software update first. GM's eligibility checker is the source of truth for model years."
+      "note": "Some 2024s need a software update first. GM's eligibility checker is the source of truth for model years.",
+      "twin": "chevy-silverado"
     },
     {
       "id": "gmc-sierra-ev",
@@ -553,7 +559,8 @@
       "v2hCost": 8998,
       "v2hInstall": 3000,
       "v2g": "PG&E pilot",
-      "seamless": true
+      "seamless": true,
+      "twin": "chevy-silverado"
     },
     {
       "id": "chevy-equinox-ev",
@@ -571,7 +578,8 @@
       "v2hInstall": 3000,
       "v2g": "PG&E pilot",
       "seamless": true,
-      "note": "Eligible trims per GM's checker."
+      "note": "Eligible trims per GM's checker.",
+      "twin": "honda-crv"
     },
     {
       "id": "chevy-blazer-ev",
@@ -587,7 +595,8 @@
       "v2hHw": "gm-powershift",
       "v2hCost": 8998,
       "v2hInstall": 3000,
-      "seamless": true
+      "seamless": true,
+      "twin": "jeep-grand-cherokee"
     },
     {
       "id": "chevy-bolt-2027",
@@ -604,7 +613,8 @@
       "v2hCost": 8998,
       "v2hInstall": 3000,
       "seamless": true,
-      "note": "GM lists V2H support through the same kit. The cheapest car on this list that can run a house."
+      "note": "GM lists V2H support through the same kit. The cheapest car on this list that can run a house.",
+      "twin": "honda-civic"
     },
     {
       "id": "cadillac-lyriq",
@@ -622,7 +632,8 @@
       "v2hInstall": 3000,
       "v2g": "PG&E pilot",
       "seamless": true,
-      "note": "Model-year coverage differs across GM's own pages. Check the eligibility tool."
+      "note": "Model-year coverage differs across GM's own pages. Check the eligibility tool.",
+      "twin": "lexus-rx350"
     },
     {
       "id": "cadillac-escalade-iq",
@@ -638,7 +649,8 @@
       "v2hHw": "gm-powershift",
       "v2hCost": 8998,
       "v2hInstall": 3000,
-      "seamless": true
+      "seamless": true,
+      "twin": "chevy-tahoe"
     },
     {
       "id": "gmc-hummer-ev",
@@ -654,7 +666,8 @@
       "v2hHw": "gm-powershift",
       "v2hCost": 8998,
       "v2hInstall": 3000,
-      "seamless": true
+      "seamless": true,
+      "twin": "chevy-tahoe"
     },
     {
       "id": "kia-ev9",
@@ -673,7 +686,8 @@
       "dc": "DC",
       "floor": 20,
       "seamless": true,
-      "note": "The car stops exporting at 20%. Needs a Kia Connect subscription. Launched in a handful of states first (CA, TX, FL, NY, WA, NJ, IL)."
+      "note": "The car stops exporting at 20%. Needs a Kia Connect subscription. Launched in a handful of states first (CA, TX, FL, NY, WA, NJ, IL).",
+      "twin": "kia-telluride"
     },
     {
       "id": "kia-ev6",
@@ -686,7 +700,8 @@
       "v2l": 3.6,
       "v2h": "announced",
       "dc": "DC",
-      "note": "Kia has announced V2H for the EV6. No date yet."
+      "note": "Kia has announced V2H for the EV6. No date yet.",
+      "twin": "toyota-rav4"
     },
     {
       "id": "hyundai-ioniq-5",
@@ -698,7 +713,8 @@
       "eff": 3.4,
       "v2l": 3.6,
       "v2h": "no",
-      "note": "Great V2L. The hardware is reportedly there for V2H, but it isn't switched on in the US."
+      "note": "Great V2L. The hardware is reportedly there for V2H, but it isn't switched on in the US.",
+      "twin": "toyota-rav4"
     },
     {
       "id": "hyundai-ioniq-9",
@@ -711,7 +727,8 @@
       "v2l": 3.6,
       "v2h": "announced",
       "dc": "DC",
-      "note": "Hyundai says V2H is coming in the near term. Not live yet."
+      "note": "Hyundai says V2H is coming in the near term. Not live yet.",
+      "twin": "hyundai-palisade"
     },
     {
       "id": "nissan-leaf-2g",
@@ -729,7 +746,8 @@
       "v2hInstall": 3000,
       "dc": "DC (CHAdeMO)",
       "seamless": true,
-      "note": "Through a dcbel Ara in California, or a Fermata FE-20 (mostly commercial). Nissan says the FE-20 doesn't void the warranty. The 2026 Leaf dropped CHAdeMO and has no V2H."
+      "note": "Through a dcbel Ara in California, or a Fermata FE-20 (mostly commercial). Nissan says the FE-20 doesn't void the warranty. The 2026 Leaf dropped CHAdeMO and has no V2H.",
+      "twin": "honda-civic"
     },
     {
       "id": "volvo-ex90",
@@ -747,7 +765,8 @@
       "v2hInstall": 3000,
       "dc": "DC",
       "seamless": true,
-      "note": "2025 model year builds only, California first. Volvo makes no promise for later years."
+      "note": "2025 model year builds only, California first. Volvo makes no promise for later years.",
+      "twin": "mb-gle350"
     },
     {
       "id": "polestar-3",
@@ -765,7 +784,8 @@
       "v2hInstall": 3000,
       "dc": "DC",
       "seamless": true,
-      "note": "Through dcbel, California first."
+      "note": "Through dcbel, California first.",
+      "twin": "mb-glc300"
     },
     {
       "id": "rivian-r1s",
@@ -777,7 +797,8 @@
       "eff": 2.4,
       "v2l": 1.5,
       "v2h": "no",
-      "note": "Rivian says a home V2H device is in development. The R2 is promised V2H later, not at launch."
+      "note": "Rivian says a home V2H device is in development. The R2 is promised V2H later, not at launch.",
+      "twin": "mb-gle350"
     },
     {
       "id": "lucid-air",
@@ -789,7 +810,8 @@
       "eff": 4.0,
       "v2l": 0,
       "v2h": "announced",
-      "note": "Lucid promised V2H for the first half of 2026. As of September it hasn't shipped."
+      "note": "Lucid promised V2H for the first half of 2026. As of September it hasn't shipped.",
+      "twin": "bmw-530i"
     },
     {
       "id": "honda-prologue",
@@ -801,7 +823,8 @@
       "eff": 3.0,
       "v2l": 0,
       "v2h": "no",
-      "note": "Built on GM's platform but left off GM's V2H list."
+      "note": "Built on GM's platform but left off GM's V2H list.",
+      "twin": "honda-crv"
     },
     {
       "id": "vw-id4",
@@ -812,7 +835,8 @@
       "obc": 11,
       "eff": 3.3,
       "v2l": 0,
-      "v2h": "no"
+      "v2h": "no",
+      "twin": "toyota-rav4"
     },
     {
       "id": "bmw-i4",
@@ -823,7 +847,8 @@
       "obc": 11,
       "eff": 3.6,
       "v2l": 0,
-      "v2h": "no"
+      "v2h": "no",
+      "twin": "bmw-330i"
     },
     {
       "id": "mitsubishi-outlander",
@@ -836,7 +861,193 @@
       "v2l": 1.5,
       "v2h": "no",
       "dc": "DC (CHAdeMO)",
-      "note": "A plug-in hybrid. dcbel lists it for a future phase; not OEM-supported for V2H in the US today."
+      "note": "A plug-in hybrid. dcbel lists it for a future phase; not OEM-supported for V2H in the US today.",
+      "twin": "toyota-rav4"
     }
-  ]
+  ],
+  "gasCars": [
+    {
+      "id": "toyota-rav4",
+      "name": "Toyota RAV4",
+      "trim": "2025, 2.5L",
+      "mpg": 30,
+      "fuel": "regular"
+    },
+    {
+      "id": "toyota-rav4-hybrid",
+      "name": "Toyota RAV4 Hybrid",
+      "trim": "2025",
+      "mpg": 39,
+      "fuel": "regular"
+    },
+    {
+      "id": "honda-crv",
+      "name": "Honda CR-V",
+      "trim": "2026, 1.5T",
+      "mpg": 30,
+      "fuel": "regular"
+    },
+    {
+      "id": "honda-civic",
+      "name": "Honda Civic",
+      "trim": "2026, 2.0L",
+      "mpg": 36,
+      "fuel": "regular"
+    },
+    {
+      "id": "honda-accord",
+      "name": "Honda Accord",
+      "trim": "2026, 1.5T",
+      "mpg": 32,
+      "fuel": "regular"
+    },
+    {
+      "id": "toyota-camry",
+      "name": "Toyota Camry",
+      "trim": "2026, hybrid only",
+      "mpg": 51,
+      "fuel": "regular"
+    },
+    {
+      "id": "toyota-corolla",
+      "name": "Toyota Corolla",
+      "trim": "2026, 2.0L",
+      "mpg": 35,
+      "fuel": "regular"
+    },
+    {
+      "id": "nissan-rogue",
+      "name": "Nissan Rogue",
+      "trim": "2026, AWD",
+      "mpg": 31,
+      "fuel": "regular"
+    },
+    {
+      "id": "subaru-outback",
+      "name": "Subaru Outback",
+      "trim": "2026, 2.5L",
+      "mpg": 27,
+      "fuel": "regular"
+    },
+    {
+      "id": "honda-pilot",
+      "name": "Honda Pilot",
+      "trim": "2026, AWD",
+      "mpg": 21,
+      "fuel": "regular"
+    },
+    {
+      "id": "chevy-traverse",
+      "name": "Chevrolet Traverse",
+      "trim": "2026, AWD",
+      "mpg": 21,
+      "fuel": "regular"
+    },
+    {
+      "id": "kia-telluride",
+      "name": "Kia Telluride",
+      "trim": "2025, AWD",
+      "mpg": 20,
+      "fuel": "regular"
+    },
+    {
+      "id": "hyundai-palisade",
+      "name": "Hyundai Palisade",
+      "trim": "2026, AWD",
+      "mpg": 20,
+      "fuel": "regular"
+    },
+    {
+      "id": "ford-explorer",
+      "name": "Ford Explorer",
+      "trim": "2026, AWD",
+      "mpg": 23,
+      "fuel": "regular"
+    },
+    {
+      "id": "jeep-grand-cherokee",
+      "name": "Jeep Grand Cherokee",
+      "trim": "2026, 4WD",
+      "mpg": 22,
+      "fuel": "regular"
+    },
+    {
+      "id": "chevy-tahoe",
+      "name": "Chevrolet Tahoe",
+      "trim": "2026, 5.3L V8 4WD",
+      "mpg": 17,
+      "fuel": "regular"
+    },
+    {
+      "id": "ford-f150",
+      "name": "Ford F-150",
+      "trim": "2026, 2.7L EcoBoost 4WD",
+      "mpg": 20,
+      "fuel": "regular"
+    },
+    {
+      "id": "chevy-silverado",
+      "name": "Chevrolet Silverado 1500",
+      "trim": "2026, 5.3L V8 4WD",
+      "mpg": 17,
+      "fuel": "regular"
+    },
+    {
+      "id": "ram-1500",
+      "name": "Ram 1500",
+      "trim": "2026, 3.6L V6 4WD",
+      "mpg": 21,
+      "fuel": "regular"
+    },
+    {
+      "id": "toyota-tacoma",
+      "name": "Toyota Tacoma",
+      "trim": "2026, 4WD",
+      "mpg": 21,
+      "fuel": "regular"
+    },
+    {
+      "id": "bmw-330i",
+      "name": "BMW 330i",
+      "trim": "2026, RWD",
+      "mpg": 31,
+      "fuel": "premium"
+    },
+    {
+      "id": "bmw-530i",
+      "name": "BMW 530i",
+      "trim": "2026, RWD",
+      "mpg": 31,
+      "fuel": "premium"
+    },
+    {
+      "id": "mb-glc300",
+      "name": "Mercedes-Benz GLC 300 4MATIC",
+      "trim": "2026",
+      "mpg": 26,
+      "fuel": "premium"
+    },
+    {
+      "id": "mb-gle350",
+      "name": "Mercedes-Benz GLE 350 4MATIC",
+      "trim": "2026",
+      "mpg": 22,
+      "fuel": "premium"
+    },
+    {
+      "id": "lexus-rx350",
+      "name": "Lexus RX 350",
+      "trim": "2026, AWD",
+      "mpg": 24,
+      "fuel": "premium"
+    },
+    {
+      "id": "porsche-911",
+      "name": "Porsche 911 Carrera",
+      "trim": "2026",
+      "mpg": 21,
+      "fuel": "premium"
+    }
+  ],
+  "gasNote": "EPA combined MPG for a common trim, via Edmunds' model-year MPG pages (fueleconomy.gov ratings), September 2026. Premium means the maker requires or recommends it."
 }
