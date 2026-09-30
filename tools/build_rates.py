@@ -62,6 +62,7 @@ def discover_zip_csvs():
         if found:
             print('ZIP files: ' + ', '.join(found))
             return found
+        print('  no ZIP CSV links on %s; csv-ish links seen: %s' % (page, [u for u in links(page) if '.csv' in u.lower() or 'zip' in u.lower()][:15]))
     raise SystemExit('no ZIP code CSVs found on ' + ', '.join(ZIP_PAGES))
 
 
