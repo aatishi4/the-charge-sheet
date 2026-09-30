@@ -83,6 +83,8 @@ PAGES = [
      'DC fast chargers with specs transcribed from the manufacturer datasheet, so the site planner can prefill power, ports and hardware cost. Adjustable output tables and certifications.', 'tool'),
     ('report', 'ev-charging-project-report', 'EV Charging Project Report: Your Inputs and Results, One Page',
      'Save what you put into the site planner, install estimator, SBA loan check, fleet calculator, utilization forecast and connectivity check, and export one PDF for your project.', 'tool'),
+    ('work', 'work-with-me', 'Work With Aatish Patel on Your EV Charging Project',
+     'Planning EV chargers for a dealership, hotel, fleet depot or commercial site? Tell Aatish Patel about the project and get a straight answer from someone who has built and run them.', 'contact'),
     ('about', 'about', 'About The Charge Sheet and Aatish Patel',
      'Who wrote The Charge Sheet and why: lessons from building an EV charging company, written down so you can skip learning them the expensive way.', 'about'),
 ]
@@ -264,7 +266,7 @@ def set_meta(head, title, desc, url, image, kind):
     sub(r'<meta name="description" content="[^"]*">', '<meta name="description" content="%s">' % esc(desc))
     sub(r'<meta property="og:title" content="[^"]*">', '<meta property="og:title" content="%s">' % esc(title))
     sub(r'<meta property="og:description" content="[^"]*">', '<meta property="og:description" content="%s">' % esc(desc))
-    sub(r'<meta property="og:type" content="[^"]*">', '<meta property="og:type" content="%s">' % ('website' if kind in ('home', 'tool', 'about', 'glossary') else 'article'))
+    sub(r'<meta property="og:type" content="[^"]*">', '<meta property="og:type" content="%s">' % ('website' if kind in ('home', 'tool', 'about', 'glossary', 'contact') else 'article'))
     sub(r'<meta property="og:url" content="[^"]*">', '<meta property="og:url" content="%s">' % url)
     sub(r'<meta property="og:image" content="[^"]*">', '<meta property="og:image" content="%s">\n<meta property="og:image:alt" content="%s">' % (image, esc(title)))
     sub(r'<meta name="twitter:image" content="[^"]*">', '<meta name="twitter:image" content="%s">\n<meta name="twitter:title" content="%s">\n<meta name="twitter:description" content="%s">' % (image, esc(title), esc(desc)))
@@ -285,6 +287,9 @@ def jsonld(title, desc, url, image, kind, h1, updated):
     elif kind == 'about':
         graph.append({'@type': 'ProfilePage', 'url': url, 'name': title, 'dateModified': updated,
                       'mainEntity': dict(AUTHOR, **{'@id': SITE + '/#author'})})
+    elif kind == 'contact':
+        graph.append({'@type': 'ContactPage', 'url': url, 'name': h1 or title, 'description': desc, 'dateModified': updated,
+                      'about': dict(AUTHOR, **{'@id': SITE + '/#author'})})
     elif kind == 'glossary':
         graph.append({'@type': 'DefinedTermSet', '@id': url + '#terms', 'name': h1 or title, 'url': url, 'description': desc,
                       'hasDefinedTerm': [{'@type': 'DefinedTerm', 'name': t, 'description': dd, 'url': url + '#g-' + gid}
