@@ -40,10 +40,11 @@ AUTHOR = {
     'sameAs': ['https://www.linkedin.com/in/aatish-patel-2b9424a4/', 'https://github.com/aatishi4'],
 }
 PUBLISHED = '2026-09-24'
+HOME_PUBLISHED = '2026-09-30'  # the home side went live
 
 # view id, URL slug ('' is home), page title, meta description, kind
 PAGES = [
-    ('home', '', 'The Charge Sheet: EV Charging, Explained',
+    ('home', '', 'EV Charging, Explained: Free Guides and Calculators',
      'A free, honest guide to EV charging: how it works, what it costs at home or as a business, and how to get it right. Real data and free tools.', 'home'),
     ('basics', 'how-ev-charging-works', 'How EV Charging Works: AC, DC, and Why Sessions Fail',
      'AC vs DC charging, the charger and car handshake, and why sessions fail, explained for site owners. Enough engineering to follow the money.', 'guide'),
@@ -65,8 +66,8 @@ PAGES = [
      'Sessions per day, energy per session, and utilization from operating US charging sites. Session-level data, anonymized, with nothing modeled or rounded up.', 'guide'),
     ('method', 'methodology', 'Method and Sources: How The Charge Sheet Works',
      'Every formula behind the forecast, site planner, and battery math, where the benchmark data comes from, and the limits of each.', 'guide'),
-    ('glossary', 'ev-charging-glossary', 'EV Charging Glossary: Terms Every Site Owner Should Know',
-     'Demand charges, ratchets, make-ready, OCPP, DSCR, FEOC and the rest of the jargon of EV charging, explained in plain English for people planning and running sites.', 'glossary'),
+    ('glossary', 'ev-charging-glossary', 'EV Charging Glossary: Plain-English Terms, Home and Business',
+     'Demand charges, OCPP, time of use, V2H, NEMA 14-50, DSCR and the rest of the EV charging jargon, in plain English for homeowners and site owners.', 'glossary'),
     ('planner', 'ev-charging-site-planner', 'EV Charging Station Pro Forma and ROI Calculator',
      'Free pro forma for a charging site: build cost, operating cost, NPV, payback, and break-even sessions per day. DC fast and Level 2. Export to a spreadsheet.', 'tool'),
     ('install', 'ev-charger-installation-cost', 'EV Charger Installation Cost Estimator: DC and Level 2',
@@ -79,12 +80,12 @@ PAGES = [
      'Forecast sessions per day for a charging site from road traffic or people on site and local EV share. Pulls state DOT traffic counts and nearby station counts.', 'tool'),
     ('sitecheck', 'ev-charger-cellular-signal-check', 'EV Charger Cellular Signal Check: RSRP, RSRQ, SINR',
      'Grade the cellular signal where a charger will stand using RSRP, RSRQ, and SINR readings from AT&T, T-Mobile, and Verizon, and get a setup that holds up.', 'tool'),
-    ('hardware', 'ev-chargers', 'EV Chargers the Site Planner Can Model: Specs from the Datasheet',
-     'DC fast chargers with specs transcribed from the manufacturer datasheet, so the site planner can prefill power, ports and hardware cost. Adjustable output tables and certifications.', 'tool'),
-    ('report', 'ev-charging-project-report', 'EV Charging Project Report: Your Inputs and Results, One Page',
-     'Save what you put into the site planner, install estimator, SBA loan check, fleet calculator, utilization forecast and connectivity check, and export one PDF for your project.', 'tool'),
+    ('hardware', 'ev-chargers', 'DC Fast and Level 2 EV Chargers: Specs and Datasheets',
+     'DC fast and Level 2 chargers with specs from the manufacturer datasheet: power, ports, output tables and certifications. Load any of them into the site planner.', 'tool'),
+    ('report', 'ev-charging-project-report', 'EV Charging Project Report: One PDF for Your Whole Plan',
+     'Save results from the site planner, install estimator, SBA loan check, fleet calculator, forecast and signal check, then export one PDF for your project.', 'tool'),
     ('work', 'work-with-me', 'Work With Aatish Patel on Your EV Charging Project',
-     'Planning EV chargers for a dealership, hotel, fleet depot or commercial site? Tell Aatish Patel about the project and get a straight answer from someone who has built and run them.', 'contact'),
+     'Planning chargers for a dealership, hotel, fleet depot or other site? Tell Aatish Patel about it and get a straight answer from someone who has run them.', 'contact'),
     ('about', 'about', 'About The Charge Sheet and Aatish Patel',
      'Who wrote The Charge Sheet and why: lessons from building an EV charging company, written down so you can skip learning them the expensive way.', 'about'),
 ]
@@ -94,19 +95,19 @@ PAGES = [
 HOME_LIVE = True
 HOME_ON = HOME_LIVE or os.environ.get('CF_PAGES_BRANCH', 'main') != 'main' or os.environ.get('SHOW_HOME') == '1'
 HOME_PAGES = [
-    ('hhub', 'home', 'EV Charging at Home, Home Batteries and V2H: The Charge Sheet',
+    ('hhub', 'home', 'Home EV Charging, Home Batteries and V2H: The Charge Sheet',
      'Charging an EV at home, what your panel can take, time-of-use rates, home batteries, and cars that can power the house. Free guides and calculators.', 'guide'),
-    ('hbasics', 'home/ev-charging-at-home', 'Charging an EV at Home: Level 1 vs Level 2, Plug-In vs Hardwired',
+    ('hbasics', 'home/ev-charging-at-home', 'Home EV Charging: Level 1 vs Level 2, Plug-In vs Hardwired',
      'Level 1 or Level 2, 32 or 48 amps, a NEMA 14-50 or hardwired, a mobile cord or a wall box. What home EV charging needs and what it gets wrong.', 'guide'),
-    ('hcost', 'home/home-ev-charging-cost', 'How Much Does It Cost to Charge an EV at Home? Rates and Time of Use',
+    ('hcost', 'home/home-ev-charging-cost', 'How Much Does It Cost to Charge an EV at Home?',
      'The math behind home charging costs, time-of-use and EV rate plans, the 4pm trap, and how home charging compares with gas and public fast charging.', 'guide'),
-    ('hbattery', 'home/home-battery-backup', 'Home Batteries: What They Do, What They Don\u2019t, and What They Cost',
+    ('hbattery', 'home/home-battery-backup', 'Home Battery Backup: What It Does and What It Costs',
      'Backup power, time shifting and solar storage. kW versus kWh, surge and air conditioners, whole-home versus essentials, 2026 prices and tax credits.', 'guide'),
-    ('hvtoh', 'home/vehicle-to-home-v2h', 'Vehicle-to-Home (V2H), V2L and V2G: Which EVs Can Power a House',
+    ('hvtoh', 'home/vehicle-to-home-v2h', 'Vehicle-to-Home (V2H): Which EVs Can Power a House',
      'Which EVs can run a house today, the hardware in between, what it costs, and the pros and cons of using your car as a home battery.', 'guide'),
     ('hcharge', 'home/ev-charging-cost-calculator', 'Home EV Charging Cost Calculator with Time-of-Use Rates',
      'Your car, your arrival charge, your plug-in time and your utility rate. Finds the cheapest charging hours and the cost per night, month and year.', 'tool'),
-    ('hinstall', 'home/home-ev-charger-installation-cost', 'Home EV Charger Installation Cost Estimator and Panel Load Check',
+    ('hinstall', 'home/home-ev-charger-installation-cost', 'Home EV Charger Installation Cost and Panel Load Calculator',
      'Estimate a home charger install from panel size, free spaces, breaker, distance and route. Checks the NEC 220.83 load and prices the fixes if it does not fit.', 'tool'),
     ('hbackup', 'home/home-battery-backup-calculator', 'Home Battery Backup Calculator: Size a Battery for an Outage',
      'Pick what stays on in an outage. Get running power, start-up surge and energy, then see which home batteries cover it and how many you need.', 'tool'),
@@ -117,10 +118,102 @@ HOME_PAGES = [
 ]
 HOME_IDS = [p[0] for p in HOME_PAGES]
 GEAR_TAG = ['']  # filled in build(); only the home pages carry the gear data
+PRODUCTS_TAG = ['']  # filled in build(); only the pages that use the charger catalog carry it
+PRODUCT_VIEWS = ('planner', 'hardware', 'report')
 if HOME_ON:
     PAGES = PAGES + HOME_PAGES
 VIEWS = [p[0] for p in PAGES]
 PATH = {p[0]: ('/' + p[1] + '/' if p[1] else '/') for p in PAGES}
+
+
+def section_dates(src, fallback):
+    """Date each page's section last changed, from the git history of index.html, so the sitemap's
+    lastmod and dateModified move only when that page's own content does. Falls back to the last
+    commit date when history is unavailable (e.g. a shallow clone)."""
+    def hashes(text):
+        try:
+            return {v: hashlib.sha1(text[a:b].encode('utf-8')).hexdigest() for v, a, b in section_bounds(text)}
+        except Exception:
+            return {}
+    dates = {}
+    try:
+        log = subprocess.run(['git', 'log', '--format=%H %cs', '-n', '80', '--', 'index.html'], cwd=ROOT,
+                             capture_output=True, text=True, timeout=20).stdout.split('\n')
+        revs = [l.split() for l in log if l.strip()][::-1]  # oldest first
+        prev = {}
+        for rev, day in revs:
+            old = subprocess.run(['git', 'show', rev + ':index.html'], cwd=ROOT, capture_output=True, text=True, timeout=20).stdout
+            for v, h in hashes(old).items():
+                if prev.get(v) != h:
+                    dates[v] = day
+                    prev[v] = h
+        for v, h in hashes(src).items():  # uncommitted edits in a local build
+            if prev and prev.get(v) != h:
+                dates[v] = datetime.date.today().isoformat()
+    except Exception:
+        pass
+    return {v: dates.get(v, fallback) for v in VIEWS}
+
+
+def prerender_catalogs(full):
+    """The charger catalog and the home gear page are drawn by the script. Put a plain list of the same
+    products in the HTML so crawlers (and anyone without JS) see real content; the script replaces it."""
+    try:
+        prods = json.load(open(os.path.join(ROOT, 'data', 'products.json'), encoding='utf-8'))
+    except Exception:
+        prods = []
+    if prods and 'hardware' in full:
+        def plist(items):
+            return '<ul>%s</ul>' % ''.join(
+                '<li><a href="/ev-chargers/?p=%s"><b>%s %s</b></a>: %s, up to %s kW, %s port%s. %s</li>' % (
+                    esc(p['id']), esc(p['oem']), esc(p['model']), esc(p.get('kind', '')), esc(str(p.get('maxKw', ''))),
+                    esc(str(p.get('ports', ''))), '' if str(p.get('ports')) == '1' else 's', esc(p.get('blurb', '')))
+                for p in items)
+        dc = [p for p in prods if p.get('type') != 'l2']
+        l2 = [p for p in prods if p.get('type') == 'l2']
+        body = ('<div class="wrap prose">' + ('<h2>DC fast chargers</h2>' + plist(dc) if dc else '') +
+                ('<h2>Level 2 chargers</h2>' + plist(l2) if l2 else '') + '</div>')
+        full['hardware'] = full['hardware'].replace('<div class="hw" id="hw-body"></div>', '<div class="hw" id="hw-body">%s</div>' % body, 1)
+    if 'hgear' in full:
+        try:
+            g = json.load(open(os.path.join(ROOT, 'data', 'home-gear.json'), encoding='utf-8'))
+        except Exception:
+            return
+        ch = ''.join('<li><b>%s %s</b>: %s, %s A, %s. %s</li>' % (esc(c['oem']), esc(c['model']), esc(c.get('kind', '')), esc(str(c.get('amps', ''))),
+                     esc(c.get('connector', '')), esc(c.get('blurb', ''))) for c in g.get('chargers', []))
+        ba = ''.join('<li><b>%s %s</b>: %s kWh, %s kW continuous. %s</li>' % (esc(b['oem']), esc(b['model']), esc(str(b.get('kwh', ''))),
+                     esc(str(b.get('kw', ''))), esc(b.get('blurb', ''))) for b in g.get('batteries', []))
+        v2h = {'yes': 'V2H today', 'legacy': 'V2H on older hardware', 'announced': 'V2H announced'}
+        ve = ''.join('<li><b>%s %s</b> (%s): %s kWh battery%s%s.</li>' % (esc(v['make']), esc(v['model']), esc(str(v.get('years', ''))), esc(str(v.get('kwh', ''))),
+                     ', V2L' if str(v.get('v2l', '0')) not in ('0', '', 'None') else '', (', ' + v2h[v['v2h']]) if v.get('v2h') in v2h else '')
+                     for v in g.get('vehicles', []) if str(v.get('v2l', '0')) not in ('0', '', 'None') or v.get('v2h') in v2h)
+        body = ('<div class="prose">' + ('<h2>Home EV chargers</h2><ul>%s</ul>' % ch if ch else '') +
+                ('<h2>Home batteries</h2><ul>%s</ul>' % ba if ba else '') +
+                ('<h2>EVs that can send power out</h2><ul>%s</ul>' % ve if ve else '') + '</div>')
+        full['hgear'] = full['hgear'].replace('<div class="wrap hgear" id="h-gear"></div>', '<div class="wrap hgear" id="h-gear">%s</div>' % body, 1)
+
+
+def write_llms_txt(h1s):
+    """dist/llms.txt (llmstxt.org): a plain map of the site for AI search tools, built from PAGES."""
+    groups = [('Business guides', lambda v, k: k == 'guide' and v not in HOME_IDS),
+              ('Business tools', lambda v, k: k == 'tool' and v not in HOME_IDS),
+              ('At home: guides', lambda v, k: k == 'guide' and v in HOME_IDS),
+              ('At home: tools', lambda v, k: k == 'tool' and v in HOME_IDS),
+              ('About', lambda v, k: k in ('about', 'contact', 'glossary'))]
+    out = ['# %s' % SITE_NAME, '',
+           '> A free guide to EV charging, at home and in business: how charging works, what it costs, '
+           'and how to plan it, with calculators and real data. Written by Aatish Patel, who built and ran '
+           'a charging company. Every formula is on the methodology page.', '']
+    for name, test in groups:
+        rows = [p for p in PAGES if test(p[0], p[4])]
+        if not rows:
+            continue
+        out += ['## ' + name, '']
+        out += ['- [%s](%s%s): %s' % (h1s.get(v) or t, SITE, PATH[v], d) for v, _, t, d, _ in rows]
+        out.append('')
+    out += ['## Optional', '', '- [Blog](%s/blog/): notes on the business of EV charging.' % SITE,
+            '- [Source code](https://github.com/aatishi4/the-charge-sheet): the whole site, open source.', '']
+    open(os.path.join(OUT, 'llms.txt'), 'w', encoding='utf-8').write('\n'.join(out))
 
 
 def last_updated():
@@ -204,6 +297,12 @@ def hollow(n):
     n.children = [c for c in n.children if c.text is None and 'spot' not in (c.attrs.get('class') or '').split()]
     if n.tag == 'img' and 'alt' in n.attrs:
         n.raw = re.sub(r'\salt="[^"]*"', ' alt=""', n.raw)
+    if n.tag in ('h1', 'h2', 'h3', 'h4', 'h5', 'h6'):
+        # an empty heading in a hidden section is still a heading to a crawler; keep the element, drop the rank
+        n.raw = re.sub(r'^<\s*h[1-6]', '<div data-h="%s"' % n.tag[1], n.raw)
+    if n.tag == 'a' and 'href' in n.attrs:
+        # empty links to other pages' anchors: keep the element, drop the link
+        n.raw = re.sub(r'\shref="[^"]*"', '', n.raw)
     for c in n.children:
         hollow(c)
 
@@ -277,8 +376,11 @@ def set_meta(head, title, desc, url, image, kind):
 GLOSSARY = []
 
 
-def jsonld(title, desc, url, image, kind, h1, updated):
+def jsonld(title, desc, url, image, kind, h1, updated, v=None):
     graph = []
+    home_side = v in HOME_IDS
+    if home_side:
+        updated = max(updated, HOME_PUBLISHED)
     author_ref = {'@id': SITE + '/#author'}
     if kind == 'home':
         graph.append({'@type': 'WebSite', '@id': SITE + '/#website', 'name': SITE_NAME, 'url': SITE + '/',
@@ -294,21 +396,29 @@ def jsonld(title, desc, url, image, kind, h1, updated):
         graph.append({'@type': 'DefinedTermSet', '@id': url + '#terms', 'name': h1 or title, 'url': url, 'description': desc,
                       'hasDefinedTerm': [{'@type': 'DefinedTerm', 'name': t, 'description': dd, 'url': url + '#g-' + gid}
                                          for gid, t, dd in (GLOSSARY or [])]})
+    elif v == 'hhub':
+        graph.append({'@type': 'CollectionPage', 'name': h1 or title, 'headline': title, 'description': desc, 'url': url,
+                      'image': image, 'inLanguage': 'en-US', 'datePublished': HOME_PUBLISHED, 'dateModified': updated,
+                      'author': dict(AUTHOR), 'isPartOf': {'@type': 'WebSite', 'name': SITE_NAME, 'url': SITE + '/'},
+                      'hasPart': [{'@type': 'WebPage', 'name': p[2], 'url': SITE + PATH[p[0]]} for p in HOME_PAGES if p[0] != 'hhub']})
     elif kind == 'tool':
         graph.append({'@type': 'WebApplication', 'name': h1 or title, 'url': url, 'description': desc,
-                      'applicationCategory': 'BusinessApplication', 'operatingSystem': 'Any', 'isAccessibleForFree': True,
+                      'applicationCategory': 'UtilitiesApplication' if home_side else 'BusinessApplication', 'operatingSystem': 'Any', 'isAccessibleForFree': True,
                       'offers': {'@type': 'Offer', 'price': '0', 'priceCurrency': 'USD'},
                       'author': dict(AUTHOR), 'image': image})
     else:
         graph.append({'@type': 'Article', 'headline': title, 'name': h1 or title, 'description': desc, 'url': url,
                       'mainEntityOfPage': url, 'image': image, 'inLanguage': 'en-US',
-                      'datePublished': PUBLISHED, 'dateModified': updated,
+                      'datePublished': HOME_PUBLISHED if home_side else PUBLISHED, 'dateModified': updated,
                       'author': dict(AUTHOR), 'publisher': dict(AUTHOR),
                       'isPartOf': {'@type': 'WebSite', 'name': SITE_NAME, 'url': SITE + '/'}})
     if kind != 'home':
+        crumbs = [(SITE_NAME, SITE + '/')]
+        if home_side and v != 'hhub':
+            crumbs.append(('At home', SITE + '/home/'))
+        crumbs.append(('At home' if v == 'hhub' else (h1 or title), url))
         graph.append({'@type': 'BreadcrumbList', 'itemListElement': [
-            {'@type': 'ListItem', 'position': 1, 'name': SITE_NAME, 'item': SITE + '/'},
-            {'@type': 'ListItem', 'position': 2, 'name': h1 or title, 'item': url}]})
+            {'@type': 'ListItem', 'position': i + 1, 'name': n, 'item': u} for i, (n, u) in enumerate(crumbs)]})
     data = {'@context': 'https://schema.org', '@graph': graph}
     return '<script type="application/ld+json">%s</script>\n' % json.dumps(data, ensure_ascii=False).replace('</', '<\\/')
 
@@ -366,9 +476,14 @@ def build_blog(posts, head, pre_main, post_main, hollow_all, anchors, updated):
                                                 'datePublished': p['date']} for p in posts if not p['draft']]}
     h += '<script type="application/ld+json">%s</script>\n' % json.dumps(ld, ensure_ascii=False).replace('</', '<\\/')
     h += '<link rel="alternate" type="application/rss+xml" title="The Charge Sheet blog" href="%s/blog/feed.xml">\n' % SITE
+    live = [p for p in posts if not p['draft']]
+    if not live:
+        # an empty blog index is a thin page; keep it out of search until the first post is live
+        h = h.replace('content="index, follow, max-image-preview:large"', 'content="noindex, follow"')
     open(os.path.join(OUT, 'blog', 'index.html'), 'w', encoding='utf-8').write(
         page_doc(h, pre_main, post_main, hollow_all, anchors, 'blog', body, 'gn-blog'))
-    urls.append('  <url><loc>%s</loc><lastmod>%s</lastmod></url>' % (url, posts[0]['date'] if posts else updated))
+    if live:
+        urls.append('  <url><loc>%s</loc><lastmod>%s</lastmod></url>' % (url, live[0]['date']))
 
     # posts
     for i, p in enumerate(posts):
@@ -435,6 +550,7 @@ def build():
         src = re.sub(r'<!--home-side-->.*?<!--/home-side-->', '', src, flags=re.S)
         src = re.sub(r'/\*home-side\*/.*?/\*/home-side\*/', '', src, flags=re.S)
     updated = last_updated()
+    page_dates = section_dates(src, updated)
     if os.path.isdir(OUT):
         shutil.rmtree(OUT)
     os.makedirs(os.path.join(OUT, 'assets'))
@@ -461,14 +577,16 @@ def build():
     month = datetime.date.fromisoformat(updated).strftime('%B %Y')
     src = re.sub(r'Last updated [A-Z][a-z]+ \d{4}\.', 'Last updated %s.' % month, src)
 
-    # charger catalog: data/products.json goes into the products-data script so every page has it
+    # charger catalog: data/products.json goes into the products-data script, on the pages that use it.
+    # Both data scripts sit at the end of the body (before the app), not in <head>.
     try:
         products = open(os.path.join(ROOT, 'data', 'products.json'), encoding='utf-8').read().strip()
         json.loads(products)
     except Exception:
         products = '[]'
-    src = src.replace('<script id="products-data" type="application/json">[]</script>',
-                      '<script id="products-data" type="application/json">%s</script>' % products.replace('</', r'<\/'), 1)
+    PRODUCTS_TAG[0] = '<script id="products-data" type="application/json">%s</script>\n' % products.replace('</', r'<\/')
+    src = src.replace('<script id="products-data" type="application/json">[]</script>\n', '', 1)
+    src = src.replace('<script id="home-gear-data" type="application/json">[]</script>', '', 1)
     if HOME_ON:
         try:
             g = json.load(open(os.path.join(ROOT, 'data', 'home-gear.json'), encoding='utf-8'))
@@ -479,7 +597,7 @@ def build():
             gear = json.dumps(g, ensure_ascii=False, separators=(',', ':'))
         except Exception:
             gear = '{}'
-        GEAR_TAG[0] = '<script id="home-gear-data" type="application/json">%s</script>' % gear.replace('</', r'<\/')
+        GEAR_TAG[0] = '<script id="home-gear-data" type="application/json">%s</script>\n' % gear.replace('</', r'<\/')
     # sections, anchors, h1s
     bounds = section_bounds(src)
     missing = set(VIEWS) - set(b[0] for b in bounds)
@@ -506,6 +624,7 @@ def build():
     head, pre_main = src[:head_end], src[head_end:bounds[0][1]]
     post_main = src[bounds[-1][2]:]
 
+    prerender_catalogs(full)
     posts = blog.load_posts(ROOT)
     full['home'] = full['home'].replace('<!--BLOG_LATEST-->', blog_latest_html(posts))
 
@@ -514,20 +633,19 @@ def build():
         url = SITE + PATH[v]
         og_rel = 'og/%s.png' % ((slug or 'home') if v not in HOME_IDS else ('home-hub' if v == 'hhub' else slug.replace('/', '-')))
         image = SITE + '/' + og_rel if os.path.exists(os.path.join(ROOT, og_rel)) else SITE + '/og-image.png?v=2'
-        page_head = set_meta(head, title, desc, url, image, kind) + jsonld(title, desc, url, image, kind, h1s.get(v), updated)
+        page_head = set_meta(head, title, desc, url, image, kind) + jsonld(title, desc, url, image, kind, h1s.get(v), page_dates.get(v, updated), v)
         body = ''.join(full[x] if x == v else hollowed[x] for x, _, _ in bounds)
         if v in HOME_IDS and not HOME_LIVE:
             page_head = page_head.replace('content="index, follow, max-image-preview:large"', 'content="noindex"')
         pm = pre_main.replace('<html lang="en">', '<html lang="en" data-side="home">') if v in HOME_IDS else pre_main
         ph = page_head.replace('<html lang="en">', '<html lang="en" data-side="home">') if v in HOME_IDS else page_head
-        doc = rewrite_links(ph + pm + body + post_main, v, anchors).replace('%%CS_CONFIG%%', config_script(v, anchors))
-        if v in HOME_IDS and GEAR_TAG[0]:
-            doc = doc.replace('<script id="home-gear-data" type="application/json">[]</script>', GEAR_TAG[0], 1)
+        data_tags = (PRODUCTS_TAG[0] if v in PRODUCT_VIEWS else '') + (GEAR_TAG[0] if v in HOME_IDS else '')
+        doc = rewrite_links(ph + pm + body + post_main, v, anchors).replace('%%CS_CONFIG%%', data_tags + config_script(v, anchors))
         dest = os.path.join(OUT, slug, 'index.html') if slug else os.path.join(OUT, 'index.html')
         os.makedirs(os.path.dirname(dest), exist_ok=True)
         open(dest, 'w', encoding='utf-8').write(doc)
         if v not in HOME_IDS or HOME_LIVE:
-            sitemap.append('  <url><loc>%s</loc><lastmod>%s</lastmod></url>' % (url, updated))
+            sitemap.append('  <url><loc>%s</loc><lastmod>%s</lastmod></url>' % (url, page_dates.get(v, updated)))
 
     # 404: every section hollowed and hidden, plus a short note
     links = ''.join('<li><a href="%s">%s</a></li>' % (PATH[p[0]], esc(h1s.get(p[0]) or p[2])) for p in PAGES if p[4] in ('guide', 'tool'))
@@ -548,6 +666,7 @@ def build():
     open(os.path.join(OUT, 'sitemap.xml'), 'w').write(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n%s\n</urlset>\n' % '\n'.join(sitemap))
     shutil.copy(os.path.join(ROOT, 'robots.txt'), os.path.join(OUT, 'robots.txt'))
+    write_llms_txt(h1s)
     headers = open(os.path.join(ROOT, '_headers')).read().rstrip()
     headers += '\n\n/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n\n/og/*\n  Cache-Control: public, max-age=604800\n'
     open(os.path.join(OUT, '_headers'), 'w').write(headers)
