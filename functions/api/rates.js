@@ -2,7 +2,7 @@
 // Looks up current residential electric rates for a ZIP code in the OpenEI Utility Rate Database,
 // keeps only what the home charging calculator needs, and caches the answer at the edge for a day.
 // Needs one secret in Cloudflare Pages settings: OPENEI_KEY (free at https://openei.org/services/api/signup/).
-// Without it, the endpoint answers {error:"not_configured"} and the calculator falls back to presets.
+// Without it, the endpoint answers {error:"not_configured"} and the calculator uses the static lookup in data/rates/ (tools/build_rates.py).
 
 const TTL = 86400;
 

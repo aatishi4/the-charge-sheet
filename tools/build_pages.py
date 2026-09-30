@@ -91,7 +91,7 @@ PAGES = [
 # The home side (residential charging, batteries, V2H). Built into previews always; on chargesheet.io only once
 # HOME_LIVE is True. Until then everything between <!--home-side--> markers in index.html is stripped from the
 # production build, and preview pages carry noindex and stay out of the sitemap.
-HOME_LIVE = False
+HOME_LIVE = True
 HOME_ON = HOME_LIVE or os.environ.get('CF_PAGES_BRANCH', 'main') != 'main' or os.environ.get('SHOW_HOME') == '1'
 HOME_PAGES = [
     ('hhub', 'home', 'EV Charging at Home, Home Batteries and V2H: The Charge Sheet',
