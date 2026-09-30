@@ -1,7 +1,7 @@
 # The Charge Sheet
 
-**A free, honest guide to the business of EV charging.** How charging works, what it really costs,
-and whether it's worth doing, with real benchmark data from operating sites and planning tools you can use in a browser.
+**A free, honest guide to EV charging, at home and in business.** How charging works in the car and the charger, what it really costs,
+and how to get it right, with real benchmark data from operating sites and planning tools you can use in a browser.
 
 No sign-up, no sales pitch, no tracking cookies. Open source.
 

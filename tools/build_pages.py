@@ -43,8 +43,8 @@ PUBLISHED = '2026-09-24'
 
 # view id, URL slug ('' is home), page title, meta description, kind
 PAGES = [
-    ('home', '', 'The Charge Sheet: The Business of EV Charging, Explained',
-     'A free, honest guide to how EV charging works, what a charging site really costs, and whether it pays. Real benchmark data and free planning tools.', 'home'),
+    ('home', '', 'The Charge Sheet: EV Charging, Explained',
+     'A free, honest guide to EV charging: how it works, what it costs at home or as a business, and how to get it right. Real data and free tools.', 'home'),
     ('basics', 'how-ev-charging-works', 'How EV Charging Works: AC, DC, and Why Sessions Fail',
      'AC vs DC charging, the charger and car handshake, and why sessions fail, explained for site owners. Enough engineering to follow the money.', 'guide'),
     ('primer', 'ev-charging-business-model', 'Is an EV Charging Station Profitable? The Business Model',
