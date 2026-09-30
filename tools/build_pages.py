@@ -120,6 +120,7 @@ HOME_IDS = [p[0] for p in HOME_PAGES]
 GEAR_TAG = ['']  # filled in build(); only the home pages carry the gear data
 PRODUCTS_TAG = ['']  # filled in build(); only the pages that use the charger catalog carry it
 PRODUCT_VIEWS = ('planner', 'hardware', 'report')
+PRODUCT_PAGES = []  # (url, name, description), filled in build(); used by llms.txt
 if HOME_ON:
     PAGES = PAGES + HOME_PAGES
 VIEWS = [p[0] for p in PAGES]
@@ -170,7 +171,7 @@ def prerender_catalogs(full):
     if prods and 'hardware' in full:
         def plist(items):
             return '<ul>%s</ul>' % ''.join(
-                '<li><a href="/ev-chargers/?p=%s"><b>%s %s</b></a>: %s, up to %s kW, %s port%s. %s</li>' % (
+                '<li><a href="/ev-chargers/%s/"><b>%s %s</b></a>: %s, up to %s kW, %s port%s. %s</li>' % (
                     esc(p['id']), esc(p['oem']), esc(p['model']), esc(p.get('kind', '')), esc(str(p.get('maxKw', ''))),
                     esc(str(p.get('ports', ''))), '' if str(p.get('ports')) == '1' else 's', esc(p.get('blurb', '')))
                 for p in items)
@@ -216,6 +217,8 @@ def write_llms_txt(h1s):
         out += ['## ' + name, '']
         out += ['- [%s](%s%s): %s' % (h1s.get(v) or t, SITE, PATH[v], d) for v, _, t, d, _ in rows]
         out.append('')
+    if PRODUCT_PAGES:
+        out += ['## Chargers', ''] + ['- [%s](%s): %s' % (n, u, d) for u, n, d in PRODUCT_PAGES] + ['']
     out += ['## Optional', '', '- [Blog](%s/blog/): notes on the business of EV charging.' % SITE,
             '- [Source code](https://github.com/aatishi4/the-charge-sheet): the whole site, open source.', '']
     open(os.path.join(OUT, 'llms.txt'), 'w', encoding='utf-8').write('\n'.join(out))
@@ -428,9 +431,54 @@ def jsonld(title, desc, url, image, kind, h1, updated, v=None):
     return '<script type="application/ld+json">%s</script>\n' % json.dumps(data, ensure_ascii=False).replace('</', '<\\/')
 
 
-def config_script(page, anchors):
-    return '<script>window.CS_PAGE=%s;window.CS_PATHS=%s;window.CS_ANCHORS=%s;window.CS_HOME_LIVE=%s;</script>\n' % (
-        json.dumps(page), json.dumps(PATH), json.dumps(anchors), 'true' if HOME_LIVE else 'false')
+def config_script(page, anchors, product=None):
+    return '<script>window.CS_PAGE=%s;window.CS_PATHS=%s;window.CS_ANCHORS=%s;window.CS_HOME_LIVE=%s;%s</script>\n' % (
+        json.dumps(page), json.dumps(PATH), json.dumps(anchors), 'true' if HOME_LIVE else 'false',
+        ('window.CS_PRODUCT=%s;' % json.dumps(product)) if product else '')
+
+
+def load_products():
+    try:
+        return json.load(open(os.path.join(ROOT, 'data', 'products.json'), encoding='utf-8'))
+    except Exception:
+        return []
+
+
+def product_title(p):
+    oem = p['oem'].replace(' North America', '')
+    kind = 'Level 2 Charger' if p.get('type') == 'l2' else 'DC Fast Charger'
+    t = '%s %s %s: Specs and Datasheet' % (oem, p['model'], kind)
+    return t if len(t) <= 60 else '%s %s: Specs and Datasheet' % (oem, p['model'])
+
+
+def product_desc(p):
+    lead = '%s %s: %s, up to %s kW%s, %s port%s.' % (p['oem'], p['model'], p.get('kind', ''), p.get('maxKw', ''),
+                                                     ' per port' if p.get('type') == 'l2' else '', p.get('ports', ''),
+                                                     '' if str(p.get('ports')) == '1' else 's')
+    d = lead + ' Specs, output settings and certifications from the manufacturer datasheet.'
+    return d if len(d) <= 160 else lead
+
+
+def product_detail_html(p):
+    """Static product page body (the script redraws it on load)."""
+    rows = lambda lst: '<table>%s</table>' % ''.join('<tr><th>%s</th><td>%s</td></tr>' % (esc(str(a)), esc(str(b))) for a, b in (lst or []))
+    adapt = ''
+    if p.get('amps') and p.get('kw'):
+        adapt = ('<h2>Output settings</h2><p class="sub">The output can be set below the maximum to fit the site\u2019s service. From the datasheet.</p>'
+                 '<table><thead><tr><th>Output</th><th>Max draw</th>%s</tr></thead><tbody>%s</tbody></table>') % (
+            '<th>Breaker</th>' if p.get('breaker') else '',
+            ''.join('<tr><td>%s kW</td><td>%s A</td>%s</tr>' % (k, p['amps'].get(str(k), p['amps'].get(k, '')),
+                    ('<td>%s A</td>' % p['breaker'].get(str(k), '')) if p.get('breaker') else '') for k in p['kw']))
+    return ('<p class="sub"><a href="/ev-chargers/">All chargers</a> <span class="dot">/</span> %(model)s</p>'
+            '<div class="hwhero"><img src="%(img)s" alt="%(model)s render" width="600" height="600"><div><p class="sub">%(oem)s</p>'
+            '<p>%(blurb)s</p><p><a class="btn" href="/ev-charging-site-planner/?model=%(id)s">Use in site planner</a> '
+            '<a class="btn secondary" href="%(datasheet)s" rel="noopener">Datasheet PDF</a></p></div></div>'
+            '<h2>Specifications</h2><div class="hwspec">%(s1)s%(s2)s</div>%(adapt)s'
+            '<h2>Certifications and standards</h2><p>%(certs)s</p>'
+            '<p class="sub">Specs transcribed from the %(source)s. %(disc)s</p>') % {
+        'model': esc(p['model']), 'img': esc(p.get('img', '')), 'oem': esc(p['oem']), 'blurb': esc(p.get('blurb', '')), 'id': esc(p['id']),
+        'datasheet': esc(p.get('datasheet', '')), 's1': rows(p.get('spec1')), 's2': rows(p.get('spec2')), 'adapt': adapt,
+        'certs': esc(p.get('certs', '')), 'source': esc(p.get('source', 'manufacturer datasheet')), 'disc': esc(p.get('disclosure', ''))}
 
 
 BLOG_TITLE = 'Blog: The Charge Sheet'
@@ -651,6 +699,42 @@ def build():
         open(dest, 'w', encoding='utf-8').write(doc)
         if v not in HOME_IDS or HOME_LIVE:
             sitemap.append('  <url><loc>%s</loc><lastmod>%s</lastmod></url>' % (url, page_dates.get(v, updated)))
+
+    # one page per charger: /ev-chargers/<id>/
+    if 'hardware' in VIEWS:
+        products = load_products()
+        try:
+            pdate = subprocess.run(['git', 'log', '-1', '--format=%cs', '--', 'data/products.json'], cwd=ROOT,
+                                   capture_output=True, text=True, timeout=10).stdout.strip() or updated
+        except Exception:
+            pdate = updated
+        pdate = max(pdate, page_dates.get('hardware', updated))
+        for p in products:
+            url = SITE + '/ev-chargers/%s/' % p['id']
+            title, desc = product_title(p), product_desc(p)
+            name = '%s %s' % (p['oem'], p['model'])
+            page_head = set_meta(head, title, desc, url, SITE + '/og-image.png?v=2', 'tool')
+            ld = {'@context': 'https://schema.org', '@graph': [
+                {'@type': 'WebPage', 'name': name, 'headline': title, 'description': desc, 'url': url, 'dateModified': pdate,
+                 'image': SITE + p['img'] if p.get('img', '').startswith('/') else p.get('img', ''), 'inLanguage': 'en-US',
+                 'author': dict(AUTHOR), 'isPartOf': {'@type': 'WebSite', 'name': SITE_NAME, 'url': SITE + '/'}},
+                {'@type': 'BreadcrumbList', 'itemListElement': [
+                    {'@type': 'ListItem', 'position': 1, 'name': SITE_NAME, 'item': SITE + '/'},
+                    {'@type': 'ListItem', 'position': 2, 'name': 'Chargers', 'item': SITE + '/ev-chargers/'},
+                    {'@type': 'ListItem', 'position': 3, 'name': name, 'item': url}]}]}
+            page_head += '<script type="application/ld+json">%s</script>\n' % json.dumps(ld, ensure_ascii=False).replace('</', '<\\/')
+            sec = full['hardware']
+            sec = re.sub(r'<h1>.*?</h1>', '<h1>%s</h1>' % esc(name), sec, count=1, flags=re.S)
+            sec = re.sub(r'(<div class="tool-head">\s*<h1>.*?</h1>\s*)<p>.*?</p>', lambda m: m.group(1) + '<p>%s</p>' % esc(desc), sec, count=1, flags=re.S)
+            sec = re.sub(r'<div class="hw" id="hw-body">.*?</div>\s*</section>', lambda m: '<div class="hw" id="hw-body">%s</div>\n</section>' % product_detail_html(p), sec, count=1, flags=re.S)
+            body = ''.join(sec if x == 'hardware' else hollowed[x] for x, _, _ in bounds)
+            doc = rewrite_links(page_head + pre_main + body + post_main, 'hardware', anchors).replace(
+                '%%CS_CONFIG%%', PRODUCTS_TAG[0] + config_script('hardware', anchors, p['id']))
+            dest = os.path.join(OUT, 'ev-chargers', p['id'], 'index.html')
+            os.makedirs(os.path.dirname(dest), exist_ok=True)
+            open(dest, 'w', encoding='utf-8').write(doc)
+            sitemap.append('  <url><loc>%s</loc><lastmod>%s</lastmod></url>' % (url, pdate))
+            PRODUCT_PAGES.append((url, name, desc))
 
     # 404: every section hollowed and hidden, plus a short note
     links = ''.join('<li><a href="%s">%s</a></li>' % (PATH[p[0]], esc(h1s.get(p[0]) or p[2])) for p in PAGES if p[4] in ('guide', 'tool'))
