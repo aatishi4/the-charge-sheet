@@ -308,11 +308,20 @@ def hollow(n):
     if n.tag in ('h1', 'h2', 'h3', 'h4', 'h5', 'h6'):
         # an empty heading in a hidden section is still a heading to a crawler; keep the element, drop the rank
         n.raw = re.sub(r'^<\s*h[1-6]', '<div data-h="%s"' % n.tag[1], n.raw)
-    if n.tag == 'a' and 'href' in n.attrs:
+    if n.tag == 'a':
         # empty links to other pages' anchors: keep the element, drop the link
-        n.raw = re.sub(r'\shref="[^"]*"', '', n.raw)
+        n.raw = re.sub(r'\shref="[^"]*"', '', re.sub(r'^<\s*a\b', '<span data-a', n.raw))
     for c in n.children:
         hollow(c)
+
+
+def keep(n):
+    """Prune a hollowed tree to what the script can address: elements with an id or a data-
+    attribute, and their ancestors. Everything else in a view nobody sees is dead weight."""
+    n.children = [c for c in n.children if c.text is None and keep(c)]
+    if n.tag in HOOK_TAGS:
+        return True
+    return bool(n.children) or 'id' in n.attrs or any(k.startswith('data-') for k in n.attrs)
 
 
 def hollow_html(fragment):
@@ -320,6 +329,7 @@ def hollow_html(fragment):
     root.children = [c for c in root.children if c.text is None]
     for c in root.children:
         hollow(c)
+        keep(c)
     return root.html()
 
 
@@ -338,6 +348,66 @@ def absolutize_css(s):
 
 def absolutize_js(s):
     return re.sub(r'([\'"])(?:\./)?(img|data|fonts|og)/', r'\1/\2/', s)
+
+
+JS_PATHS = {}
+GROUPS = {}  # view -> (group title, [(view, label)]), read from the GROUPS table in the app script
+
+
+def read_groups(src):
+    m = re.search(r'var GROUPS = \{(.*?)\n\s*\};', src, re.S)
+    if not m:
+        return
+    for g, title, pages in re.findall(r"(\w+):\s*\{title:'([^']+)',\s*nav:'[^']+',\s*pages:\[(.*?)\]\}", m.group(1)):
+        items = re.findall(r"\['(\w+)','([^']+)'\]", pages)
+        for v, _ in items:
+            GROUPS[v] = (title, items)
+
+
+def fill_snav(pm, v):
+    """Draw the section sub-nav in the HTML (the script used to add it after load, which shifted the page)."""
+    if v not in GROUPS:
+        return pm
+    title, items = GROUPS[v]
+    links = ''.join('<a href="%s"%s>%s</a>' % (PATH[x], ' aria-current="page"' if x == v else '', esc(label))
+                    for x, label in items if x in PATH)
+    pm = pm.replace('<div class="snav" id="snav" hidden>', '<div class="snav" id="snav">', 1)
+    pm = pm.replace('<span class="snav-t" id="snav-t"></span>', '<span class="snav-t" id="snav-t">%s</span>' % esc(title), 1)
+    return pm.replace('<nav class="snav-links" id="snav-links" aria-label="In this section"></nav>',
+                      '<nav class="snav-links" id="snav-links" aria-label="In this section">%s</nav>' % links, 1)
+
+
+
+def minify_js(code):
+    """Strip comments and whitespace with rjsmin (vendored, Apache 2.0). Falls back to the source."""
+    if code in MINIFIED:
+        return MINIFIED[code]
+    try:
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'vendor'))
+        import rjsmin
+        out = rjsmin.jsmin(code)
+    except Exception as e:  # never fail the build over minification
+        print('JS minification skipped: %s' % e)
+        out = code
+    MINIFIED[code] = out
+    return out
+
+
+MINIFIED = {}
+
+
+def point_scripts():
+    """Every built page gets the business bundle, except /home/ pages, which get the full one."""
+    for dirpath, _, files in os.walk(OUT):
+        for f in files:
+            if not f.endswith('.html'):
+                continue
+            path = os.path.join(dirpath, f)
+            rel = os.path.relpath(path, OUT).replace(os.sep, '/')
+            doc = open(path, encoding='utf-8').read()
+            if '%%JS%%' in doc:
+                doc = doc.replace('%%JS%%', JS_PATHS['home' if rel.startswith('home/') else 'biz'])
+                open(path, 'w', encoding='utf-8').write(doc)
 
 
 def hashed(name, ext, content):
@@ -604,6 +674,7 @@ def build():
         src = re.sub(r'/\*home-side\*/.*?/\*/home-side\*/', '', src, flags=re.S)
     updated = last_updated()
     page_dates = section_dates(src, updated)
+    read_groups(src)
     if os.path.isdir(OUT):
         shutil.rmtree(OUT)
     os.makedirs(os.path.join(OUT, 'assets'))
@@ -614,9 +685,15 @@ def build():
     assert len(scripts) == 1, 'expected exactly one inline <script> in index.html'
     css = absolutize_css('\n'.join(styles))
     js = absolutize_js(scripts[0])
-    css_path, js_path = hashed('site', 'css', css), hashed('site', 'js', js)
+    # Two bundles: the home-side code (a third of the script) only ships on the /home/ pages.
+    js_biz = re.sub(r'/\*home-side\*/.*?/\*/home-side\*/', '', js, flags=re.S)
+    js_home = js
+    css_path = hashed('site', 'css', css)
     open(os.path.join(OUT, css_path), 'w', encoding='utf-8').write(css)
-    open(os.path.join(OUT, js_path), 'w', encoding='utf-8').write(js)
+    JS_PATHS['biz'] = hashed('site', 'js', minify_js(js_biz))
+    JS_PATHS['home'] = hashed('site-home', 'js', minify_js(js_home)) if js_home != js_biz else JS_PATHS['biz']
+    for k, code in (('biz', js_biz), ('home', js_home)):
+        open(os.path.join(OUT, JS_PATHS[k]), 'w', encoding='utf-8').write(minify_js(code))
     state = {'first': True}
 
     def style_repl(m):
@@ -625,7 +702,7 @@ def build():
             return '<link rel="stylesheet" href="/%s">' % css_path
         return ''
     src = re.sub(r'<style>.*?</style>', style_repl, src, flags=re.S)
-    src = re.sub(r'<script>.*?</script>', lambda m: '%%CS_CONFIG%%' + '<script src="/' + js_path + '"></script>', src, flags=re.S)
+    src = re.sub(r'<script>.*?</script>', lambda m: '%%CS_CONFIG%%' + '<script src="/%%JS%%"></script>', src, flags=re.S)
     src = absolutize_html(src)
     month = datetime.date.fromisoformat(updated).strftime('%B %Y')
     src = re.sub(r'Last updated [A-Z][a-z]+ \d{4}\.', 'Last updated %s.' % month, src)
@@ -690,7 +767,7 @@ def build():
         body = ''.join(full[x] if x == v else hollowed[x] for x, _, _ in bounds)
         if v in HOME_IDS and not HOME_LIVE:
             page_head = page_head.replace('content="index, follow, max-image-preview:large"', 'content="noindex"')
-        pm = pre_main.replace('<html lang="en">', '<html lang="en" data-side="home">') if v in HOME_IDS else pre_main
+        pm = fill_snav(pre_main.replace('<html lang="en">', '<html lang="en" data-side="home">') if v in HOME_IDS else pre_main, v)
         ph = page_head.replace('<html lang="en">', '<html lang="en" data-side="home">') if v in HOME_IDS else page_head
         data_tags = (PRODUCTS_TAG[0] if v in PRODUCT_VIEWS else '') + (GEAR_TAG[0] if v in HOME_IDS else '')
         doc = rewrite_links(ph + pm + body + post_main, v, anchors).replace('%%CS_CONFIG%%', data_tags + config_script(v, anchors))
@@ -728,7 +805,7 @@ def build():
             sec = re.sub(r'(<div class="tool-head">\s*<h1>.*?</h1>\s*)<p>.*?</p>', lambda m: m.group(1) + '<p>%s</p>' % esc(desc), sec, count=1, flags=re.S)
             sec = re.sub(r'<div class="hw" id="hw-body">.*?</div>\s*</section>', lambda m: '<div class="hw" id="hw-body">%s</div>\n</section>' % product_detail_html(p), sec, count=1, flags=re.S)
             body = ''.join(sec if x == 'hardware' else hollowed[x] for x, _, _ in bounds)
-            doc = rewrite_links(page_head + pre_main + body + post_main, 'hardware', anchors).replace(
+            doc = rewrite_links(page_head + fill_snav(pre_main, 'hardware') + body + post_main, 'hardware', anchors).replace(
                 '%%CS_CONFIG%%', PRODUCTS_TAG[0] + config_script('hardware', anchors, p['id']))
             dest = os.path.join(OUT, 'ev-chargers', p['id'], 'index.html')
             os.makedirs(os.path.dirname(dest), exist_ok=True)
@@ -756,6 +833,7 @@ def build():
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n%s\n</urlset>\n' % '\n'.join(sitemap))
     shutil.copy(os.path.join(ROOT, 'robots.txt'), os.path.join(OUT, 'robots.txt'))
     write_llms_txt(h1s)
+    point_scripts()
     headers = open(os.path.join(ROOT, '_headers')).read().rstrip()
     headers += '\n\n/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n\n/og/*\n  Cache-Control: public, max-age=604800\n'
     open(os.path.join(OUT, '_headers'), 'w').write(headers)
@@ -773,8 +851,9 @@ def build():
         shutil.copy(os.path.join(ROOT, f), os.path.join(OUT, f))
 
     sizes = sorted(os.path.getsize(os.path.join(OUT, p[1], 'index.html') if p[1] else os.path.join(OUT, 'index.html')) for p in PAGES)
-    print('Built %d pages into dist/ (updated %s). Page HTML %d to %d KB; CSS %d KB, JS %d KB.' % (
-        len(PAGES), updated, sizes[0] // 1024, sizes[-1] // 1024, len(css) // 1024, len(js) // 1024))
+    jsk = lambda k: os.path.getsize(os.path.join(OUT, JS_PATHS[k])) // 1024
+    print('Built %d pages into dist/ (updated %s). Page HTML %d to %d KB; CSS %d KB, JS %d KB (home pages %d KB).' % (
+        len(PAGES), updated, sizes[0] // 1024, sizes[-1] // 1024, len(css) // 1024, jsk('biz'), jsk('home')))
 
 
 if __name__ == '__main__':
