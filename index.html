@@ -1152,6 +1152,20 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
 .hgicon svg{display:block;width:100%;background:var(--mist);border-radius:14px;padding:1rem;box-sizing:border-box}
 .hgd h2{margin:.1rem 0 .6rem;font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-.02em}
 @media (max-width:700px){.hgd{grid-template-columns:1fr}.hgicon{max-width:220px}}
+.hgimg{display:block;height:170px;border-radius:10px;overflow:hidden;margin-bottom:.6rem;background:var(--mist)}
+.hgimg img{display:block;width:100%;height:100%;padding:0;border-radius:0;background:none;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.hgimg.cut img{object-fit:contain;padding:.7rem;box-sizing:border-box}
+.hgimg.photo img{object-fit:cover}
+.hwcard.hg:hover .hgimg img{transform:scale(1.03)}
+.hgicon.has-img .hgimg{height:auto;aspect-ratio:4/3;margin:0;border-radius:14px}
+.hgcred{margin-top:1.6rem;font-size:.85rem;color:var(--slate)}
+.hgcred summary{cursor:pointer;font-weight:600}
+.hgcred ul{margin:.6rem 0 0;padding-left:1.1rem}
+.hgcred li{margin:.2rem 0}
+.hgcred a,.hgear p.sub a,.hgear p.fh a{text-decoration:underline;text-underline-offset:.15em}
+.hvthumb{display:block;width:100%;height:110px;object-fit:cover;border-radius:10px;margin-bottom:.6rem;background:var(--white)}
+.hvthumb.cut{object-fit:contain;padding:.4rem;box-sizing:border-box}
+@media (prefers-reduced-motion:reduce){.hgimg img{transition:none}.hwcard.hg:hover .hgimg img{transform:none}}
 .hgear table th{text-align:left;padding-right:1.2rem;white-space:nowrap;vertical-align:top}
 /* guide figures */
 .hn-row{display:grid;grid-template-columns:9rem 1fr 7rem;gap:1rem;align-items:center;margin:.7rem 0;font-size:.95rem}
@@ -7887,7 +7901,7 @@ if (typeof document !== 'undefined') (function(){
       var m = mx(a,b2);
       return '<div class="hvrow"><span class="l">'+label+'</span><span class="c"><span class="t"><b class="car" style="width:'+(a/m*100).toFixed(1)+'%"></b></span><span class="tw">'+fmt(a)+'</span></span><span class="c"><span class="t"><b class="bat" style="width:'+(b2/m*100).toFixed(1)+'%"></b></span><span class="tw">'+fmt(b2)+'</span></span></div>';
     }
-    var h = '<div class="hvhead"><div class="car"><small>'+esc(v.make)+'</small><b>'+esc(v.model)+'</b><span class="chip '+(v.v2h==='yes'?'g3':v.v2h==='legacy'?'g1':'gn')+'">'+V2H_LABEL[v.v2h]+'</span></div><div class="vs">vs</div><div class="bat"><small>'+esc(b.oem)+'</small><b>'+(units>1?units+' × ':'')+esc(b.model)+'</b><span class="chip g2">Home battery</span></div></div>';
+    var h = '<div class="hvhead"><div class="car">'+(v.img?'<img class="hvthumb'+(v.imgFit==='photo'?'':' cut')+'" src="'+imgSrc(v)+'" alt="" loading="lazy">':'')+'<small>'+esc(v.make)+'</small><b>'+esc(v.model)+'</b><span class="chip '+(v.v2h==='yes'?'g3':v.v2h==='legacy'?'g1':'gn')+'">'+V2H_LABEL[v.v2h]+'</span></div><div class="vs">vs</div><div class="bat">'+(b.img?'<img class="hvthumb'+(b.imgFit==='photo'?'':' cut')+'" src="'+imgSrc(b)+'" alt="" loading="lazy">':'')+'<small>'+esc(b.oem)+'</small><b>'+(units>1?units+' × ':'')+esc(b.model)+'</b><span class="chip g2">Home battery</span></div></div>';
     h += '<div class="hvrows"><div class="hvrow hvcols"><span class="l"></span><span class="c">Car</span><span class="c">Battery</span></div>'+
       row('Energy for the house', can?carKwh:0, bKwh, function(x){ return Math.round(x)+' kWh'; }) +
       row('Days of backup at '+load+' kWh a day', can?carDays:0, bDays, function(x){ return x>=10 ? Math.round(x)+' days' : x.toFixed(1)+' days'; }) +
@@ -7932,6 +7946,11 @@ if (typeof document !== 'undefined') (function(){
     car:'<svg viewBox="0 0 120 90" aria-hidden="true"><path class="ln" d="M8,64 V54 Q11,44 24,43 L40,34 Q46,31 54,31 H80 Q90,31 95,39 L100,45 Q110,47 112,55 V64 Z"/><circle class="ln fw" cx="30" cy="65" r="9"/><circle class="ln fw" cx="92" cy="65" r="9"/></svg>',
     truck:'<svg viewBox="0 0 120 90" aria-hidden="true"><path class="ln" d="M6,64 V48 Q8,42 16,42 L30,30 Q34,28 40,28 H62 V42 H112 V64 Z M62,42 V28"/><circle class="ln fw" cx="28" cy="65" r="9"/><circle class="ln fw" cx="92" cy="65" r="9"/></svg>'
   };
+  function imgSrc(x){ return (window.CS_PAGE ? '/' : '') + x.img; }
+  function pic(x, fallback, alt){ return x.img ? '<span class="hgimg '+(x.imgFit==='photo'?'photo':'cut')+'"><img src="'+imgSrc(x)+'" alt="'+esc(alt)+'" loading="lazy" decoding="async"></span>' : fallback; }
+  function credLine(x){ var c = x.imgCredit; if (!c) return ''; return '<a href="'+esc(c.url)+'" target="_blank" rel="noopener">'+esc(c.text)+'</a>'+(c.licenseUrl ? ' (<a href="'+esc(c.licenseUrl)+'" target="_blank" rel="noopener license">license</a>)' : ''); }
+  function credits(list, name){ list = list.filter(function(x){ return x.imgCredit; }); if (!list.length) return '';
+    return '<details class="hgcred"><summary>Image credits</summary><ul>'+list.map(function(x){ return '<li>'+esc(name(x))+': '+credLine(x)+'</li>'; }).join('')+'</ul></details>'; }
   function vIcon(v){ return /Silverado|Sierra|Lightning|Cybertruck|Hummer|R1T/.test(v.model) ? ICON.truck : ICON.car; }
   function renderGear(){
     var box = el('h-gear'); if (!box) return;
@@ -7945,18 +7964,18 @@ if (typeof document !== 'undefined') (function(){
     if (tab==='chargers'){
       h += '<div class="hwgrid">'+(HG.chargers||[]).map(function(c){
         var ic = c.bidirectional ? ICON.bidi : c.install==='cord' ? ICON.cord : ICON.wall;
-        return '<a class="hwcard hg" href="'+gearHref(c.id)+'">'+ic+'<span class="sub">'+esc(c.oem)+' · '+esc(c.kind)+'</span><h2>'+esc(c.model)+'</h2><b>'+[c.amps?c.amps+' A':'', c.exportKw?c.exportKw+' kW out':''].filter(Boolean).join(' · ')+'</b><p class="sub">'+esc(c.blurb)+'</p><span class="hgfoot">'+money(c.price)+(c.status!=='available'?' <span class="chip '+(c.status==='discontinued'?'g1':'gn')+'">'+c.status+'</span>':'')+'</span></a>';
-      }).join('')+'</div>';
+        return '<a class="hwcard hg" href="'+gearHref(c.id)+'">'+pic(c, ic, c.oem+' '+c.model)+'<span class="sub">'+esc(c.oem)+' · '+esc(c.kind)+'</span><h2>'+esc(c.model)+'</h2><b>'+[c.amps?c.amps+' A':'', c.exportKw?c.exportKw+' kW out':''].filter(Boolean).join(' · ')+'</b><p class="sub">'+esc(c.blurb)+'</p><span class="hgfoot">'+money(c.price)+(c.status!=='available'?' <span class="chip '+(c.status==='discontinued'?'g1':'gn')+'">'+c.status+'</span>':'')+'</span></a>';
+      }).join('')+'</div>'+credits(HG.chargers||[], function(x){ return x.oem+' '+x.model; });
     } else if (tab==='batteries'){
       h += '<div class="hwgrid">'+(HG.batteries||[]).map(function(b){
-        return '<a class="hwcard hg" href="'+gearHref(b.id)+'">'+ICON.batt+'<span class="sub">'+esc(b.oem)+' · '+esc(b.chem)+'</span><h2>'+esc(b.model)+'</h2><b>'+b.kwh+' kWh · '+(b.kw?b.kw+' kW':'no inverter')+'</b><p class="sub">'+esc(b.blurb)+'</p><span class="hgfoot">About '+moneyK(b.price)+' installed</span></a>';
-      }).join('')+'</div>';
+        return '<a class="hwcard hg" href="'+gearHref(b.id)+'">'+pic(b, ICON.batt, b.oem+' '+b.model)+'<span class="sub">'+esc(b.oem)+' · '+esc(b.chem)+'</span><h2>'+esc(b.model)+'</h2><b>'+b.kwh+' kWh · '+(b.kw?b.kw+' kW':'no inverter')+'</b><p class="sub">'+esc(b.blurb)+'</p><span class="hgfoot">About '+moneyK(b.price)+' installed</span></a>';
+      }).join('')+'</div>'+credits(HG.batteries||[], function(x){ return x.oem+' '+x.model; });
     } else {
       var F = S.gearFilter, list = (HG.vehicles||[]).filter(function(v){ return F==='all' ? (v.v2h!=='no' || v.v2l>0) : F==='yes' ? (v.v2h==='yes'||v.v2h==='legacy') : F==='v2l' ? v.v2l>0 : v.v2h==='announced'; });
       h += '<div class="hgfilt">'+[['all','Everything that sends power out'],['yes','Runs a house today'],['v2l','Has outlets (V2L)'],['announced','Announced']].map(function(t){ return '<button type="button" class="toc-b" data-gfil="'+t[0]+'" aria-pressed="'+(F===t[0])+'">'+t[1]+'</button>'; }).join('')+'</div>';
       h += '<div class="hwgrid">'+list.map(function(v){
-        return '<a class="hwcard hg" href="'+gearHref(v.id)+'">'+vIcon(v)+'<span class="sub">'+esc(v.make)+' · '+esc(v.years)+'</span><h2>'+esc(v.model)+'</h2><b>~'+v.kwh+' kWh'+(v.v2hKw?' · '+v.v2hKw+' kW V2H':'')+'</b><p class="sub">'+(v.v2l?'V2L '+v.v2l+' kW. ':'No factory outlets. ')+(v.dc?esc(v.dc)+' bidirectional.':'')+'</p><span class="hgfoot"><span class="chip '+(v.v2h==='yes'?'g3':v.v2h==='legacy'?'g1':'gn')+'">'+V2H_LABEL[v.v2h]+'</span></span></a>';
-      }).join('')+'</div><p class="fh" style="margin-top:1.2rem">Battery sizes are approximate. V2H support changes by model year, trim and state, so check the carmaker’s eligibility page before buying hardware.</p>';
+        return '<a class="hwcard hg" href="'+gearHref(v.id)+'">'+pic(v, vIcon(v), v.make+' '+v.model)+'<span class="sub">'+esc(v.make)+' · '+esc(v.years)+'</span><h2>'+esc(v.model)+'</h2><b>~'+v.kwh+' kWh'+(v.v2hKw?' · '+v.v2hKw+' kW V2H':'')+'</b><p class="sub">'+(v.v2l?'V2L '+v.v2l+' kW. ':'No factory outlets. ')+(v.dc?esc(v.dc)+' bidirectional.':'')+'</p><span class="hgfoot"><span class="chip '+(v.v2h==='yes'?'g3':v.v2h==='legacy'?'g1':'gn')+'">'+V2H_LABEL[v.v2h]+'</span></span></a>';
+      }).join('')+'</div><p class="fh" style="margin-top:1.2rem">Battery sizes are approximate. V2H support changes by model year, trim and state, so check the carmaker’s eligibility page before buying hardware.</p>'+credits(list, function(x){ return x.make+' '+x.model; });
     }
     h += '<p class="fh" style="margin-top:1.4rem">'+esc(HG.note||'')+' Want your product listed, or spotted an error? <a href="#about">Get in touch</a>.</p>';
     box.innerHTML = h;
@@ -7980,10 +7999,10 @@ if (typeof document !== 'undefined') (function(){
       use = '<a class="btn" href="'+K.viewHref('hcharge')+'?veh='+x.id+'">Charging cost</a>'+((x.v2h==='yes'||x.v2h==='legacy')?' <a class="btn secondary" href="'+K.viewHref('hvcompare')+'?veh='+x.id+'">Compare with a battery</a>':'');
     }
     return '<p class="sub"><a href="'+K.viewHref('hgear')+'">All gear</a> <span class="dot">/</span> '+esc(title)+'</p>'+
-      '<div class="hwhero hgd"><div class="hgicon">'+ic+'</div><div><p class="sub">'+esc(kind==='vehicles'?x.make:x.oem)+'</p><h2>'+esc(kind==='vehicles'?x.model:x.model)+'</h2><p>'+esc(x.blurb||x.note||'')+'</p><p>'+use+(x.website?' <a class="btn secondary" href="'+esc(x.website)+'" target="_blank" rel="noopener">Manufacturer site</a>':'')+'</p></div></div>'+
+      '<div class="hwhero hgd"><div class="hgicon'+(x.img?' has-img':'')+'">'+pic(x, ic, title)+'</div><div><p class="sub">'+esc(kind==='vehicles'?x.make:x.oem)+'</p><h2>'+esc(kind==='vehicles'?x.model:x.model)+'</h2><p>'+esc(x.blurb||x.note||'')+'</p><p>'+use+(x.website?' <a class="btn secondary" href="'+esc(x.website)+'" target="_blank" rel="noopener">Manufacturer site</a>':'')+'</p></div></div>'+
       '<h2>Specifications</h2><div class="scroll"><table><tbody>'+rows.filter(function(r){ return r[1]; }).map(function(r){ return '<tr><th>'+r[0]+'</th><td>'+esc(r[1])+'</td></tr>'; }).join('')+'</tbody></table></div>'+
       (x.note && x.blurb ? '<p class="fh">'+esc(x.note)+'</p>' : '')+
-      '<p class="fh">Source: '+esc(x.source||'Manufacturer and public reporting, 2026')+'.</p>';
+      '<p class="fh">Source: '+esc(x.source||'Manufacturer and public reporting, 2026')+'.'+(x.imgCredit?' '+credLine(x)+'.':'')+'</p>';
   }
 
   /* ================= Guide figures ================= */
