@@ -341,7 +341,17 @@ def esc(s):
     return html.escape(s, quote=True)
 
 
+def absolutize_srcset(s):
+    """Every candidate in a srcset, not just the first (the attribute rule below only sees the start)."""
+    def fix(m):
+        parts = [c.strip() for c in m.group(2).split(',')]
+        parts = [re.sub(r'^(?:\./)?((?:img|og)/)', r'/\1', c) for c in parts]
+        return m.group(1) + ', '.join(parts) + '"'
+    return re.sub(r'(srcset=")([^"]*)"', fix, s)
+
+
 def absolutize_html(s):
+    s = absolutize_srcset(s)
     return re.sub(r'((?:href|src|srcset|poster)=")(?:\./)?((?:fonts|img|data|og)/[^"]*|favicon[^"]*|apple-touch-icon\.png|og-image\.png)"', r'\1/\2"', s)
 
 
