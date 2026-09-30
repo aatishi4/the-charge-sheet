@@ -19,7 +19,7 @@ Output (served as static files, fetched by the browser on demand):
     python3 tools/build_rates.py                      # download both datasets, then build
     python3 tools/build_rates.py --zip a.csv b.csv --urdb usurdb.csv.gz   # from local files
 
-Standard library only. Run yearly by .github/workflows/refresh-rates.yml.
+Standard library only. Run weekly by .github/workflows/refresh-rates.yml.
 """
 import csv, datetime, gzip, io, json, os, re, shutil, sys, time, urllib.request
 

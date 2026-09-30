@@ -7455,11 +7455,18 @@ if (typeof document !== 'undefined') (function(){
       URDB = (res.items||[]).map(rateFromUrdb).filter(function(r){ return r.wd && r.wd.length===12; });
       URDB.sort(function(a,b){ return (b.tou - a.tou) || (/ev|electric vehicle/i.test(b.name) - /ev|electric vehicle/i.test(a.name)); });
       if (!URDB.length){
-        var avg = URDB_UTILS.filter(function(u){ return u.res; })[0];
+        var avgs = URDB_UTILS.filter(function(u){ return u.res; });
         var box = el('h-zip-list'); if (box) box.innerHTML = '';
-        if (avg){
-          zipStatus(esc(avg.utility)+' serves '+z+', but the rate database has no current residential plans for it. Its average residential price is <b>'+(avg.res*100).toFixed(1)+'¢ per kWh</b> (EIA Form 861, 2024). <button type="button" class="btn small" id="h-zip-avg">Use it as a flat rate</button>');
-          var b = el('h-zip-avg'); if (b) b.onclick = function(){ S.c.rsrc = 'manual'; S.c.mKind = 'flat'; S.c.flatPrice = Math.round(avg.res*1000)/1000; save(); renderCIn(); renderC(); };
+        if (avgs.length){
+          var c = function(u){ return '<b>'+(u.res*100).toFixed(1)+'¢ per kWh</b>'; };
+          var btn = function(i){ return ' <button type="button" class="btn small" data-avg="'+i+'">Use '+(avgs.length>1?'this':'it')+' as a flat rate</button>'; };
+          var msg = avgs.length===1
+            ? 'EIA lists '+esc(avgs[0].utility)+' as the utility for '+z+'. Its average residential price is '+c(avgs[0])+' (EIA Form 861, 2024).'+btn(0)
+            : 'EIA lists '+avgs.length+' utilities for '+z+'. Average residential prices (EIA Form 861, 2024):<br>'+avgs.map(function(u,i){ return esc(u.utility)+': '+c(u)+btn(i); }).join('<br>');
+          zipStatus(msg+'<br>We don’t have plan-by-plan rates for '+(avgs.length>1?'these utilities':'it')+' on file yet. If that isn’t the utility on your bill, use Average or type your own rate.');
+          Array.prototype.forEach.call(document.querySelectorAll('#h-zip-st [data-avg]'), function(b){
+            b.onclick = function(){ var u = avgs[Number(b.getAttribute('data-avg'))]; S.c.rsrc = 'manual'; S.c.mKind = 'flat'; S.c.flatPrice = Math.round(u.res*1000)/1000; save(); renderCIn(); renderC(); };
+          });
         } else if (res.failed) zipStatus('Couldn’t reach the rate lookup. Check your connection, or use the examples.');
         else zipStatus('No residential rates on file for that ZIP. Try a neighboring one, or type your rate from your bill.');
         return;
