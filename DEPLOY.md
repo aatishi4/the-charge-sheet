@@ -80,6 +80,7 @@ Review incentives, SBA rules and tariffs each quarter, and bump "Last updated" o
 - **Other pages' content** on each page is hollowed out, and its headings and links are turned into plain elements, so every page has one H1 and no empty links.
 - **Catalogs**: the charger catalog and the home gear page get a plain product list in the HTML, which the script replaces on load. Search engines see the products without running the script.
 - **Data**: the charger catalog JSON goes only on the planner, catalog and report pages, and the home gear JSON only on home pages, at the end of the body.
+- **Charger pages**: every record in `data/products.json` gets its own page at `/ev-chargers/<id>/`, with its own title, description, breadcrumb and a static spec sheet, and goes in the sitemap. Old `?p=` links forward to the new address.
 - **`/llms.txt`** is a plain list of every page for AI search tools, built from the same `PAGES` list.
 - **Share cards**: `python3 tools/og_images.py` (see the top of that file). Home-side cards: `python3 tools/og_images.py home-side`.
 

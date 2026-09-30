@@ -3515,7 +3515,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
     <p>The time between plugging in and leaving is cut into fifteen-minute slots, each priced from your rate for that month and day. "Plug in and go" fills slots from the moment you arrive. "Scheduled" fills the cheapest slots first, which is what the charging schedule in your car or charger does if you set it right. The year adds up every month, weekdays and weekends separately, for the number of nights a week you plug in.</p>
     <h3>Rates</h3>
     <ul>
-      <li>The ZIP lookup reads residential rates from the Utility Rate Database run by OpenEI, a US Department of Energy project. It lists the plans your utility has filed. It doesn't know which one you're on. Your bill does.</li>
+      <li>The ZIP lookup reads residential rates from the Utility Rate Database run by OpenEI, a US Department of Energy project. It lists the plans your utility has filed. It doesn't know which one you're on. Your bill does. Where it has no plans on file, you get your utility's average residential price from EIA Form 861 instead, which you can use as a flat rate.</li>
       <li>Tiered rates are simplified to their first tier, and holidays are treated as weekdays.</li>
       <li>Fixed monthly charges are shown but not added to the cost of charging, because you pay them with or without a car.</li>
       <li>Presets are examples from 2026 rate sheets, energy prices only. Check your utility's current tariff before you switch plans.</li>
@@ -3592,6 +3592,12 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
       <li><strong>Batteries</strong> are sized to clear all three, keeping 5% in reserve. Solar, if you add it, refills during the day. Tesla's expansion units add energy but no power, so the tool uses them where energy is the only shortfall.</li>
     </ul>
     <p>Prices are typical installed figures for 2026, before incentives, and vary a lot by region and installer. Surge ratings come from the manufacturers' datasheets. Where a manufacturer doesn't publish one, the tool says so.</p>
+    <h3>Questions people ask</h3>
+    <p><strong>How big a battery do I need?</strong> Less than you think for the essentials, more than you'd like for central air. Keep the fridge, the lights, the internet and the furnace fan going and most houses use 15 to 20 kWh a day. Add the air conditioner in July and that number can double. Run the tool both ways before you talk to an installer.</p>
+    <p><strong>Can a battery run central air?</strong> Starting it is the hard part. The compressor needs a kick several times its running power, and a battery with plenty of kWh can still refuse. Check the surge rating, or add a soft starter, a few hundred dollars installed. <a href="#h-a-surge">More on surge</a>.</p>
+    <p><strong>Does my solar work in an outage?</strong> Not on its own. A normal grid-tied system shuts off when the grid does, on purpose, so it doesn't feed a line someone is repairing. It keeps working through an outage only with a battery or an inverter built to run the house off-grid.</p>
+    <p><strong>Battery or generator?</strong> A generator runs as long as there's fuel and costs less up front. A battery is silent, switches over before the lights finish flickering, and can save money every day on a time-of-use plan. Long outages favor the generator. Short, frequent ones favor the battery. <a href="#h-a-gen">The longer answer</a>.</p>
+    <p><strong>Whole home or essentials?</strong> Whole home is nicer to live with and needs more battery. Essentials is cheaper and hard to overload. <a href="#h-a-whole">How the two are wired</a>.</p>
   </article>
 </section>
 
@@ -3610,6 +3616,12 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
     <h2 id="h-vc-how">How it works</h2>
     <p>The car's usable backup is its battery size minus the share you keep for driving, or the carmaker's floor if that's higher. The battery's is its rated capacity less a 5% reserve. Days of backup divide each by what the house uses in a day during an outage. Power is the most either can deliver at once. Cost is the V2H hardware plus typical installation for the car, and the installed price for the battery.</p>
     <p>Battery sizes for cars are approximate, because most carmakers don't publish usable capacity. V2H availability changes fast: check the carmaker's own eligibility page before you buy anything.</p>
+    <h3>Questions people ask</h3>
+    <p><strong>Can my car power my house?</strong> Only if the car, the charger and the hardware that disconnects the house from the grid all support it. Most EVs sold in the US can't yet. <a href="#hgear">The gear page</a> lists the ones that can, and the ones that only do V2L.</p>
+    <p><strong>What if I need to drive during the outage?</strong> You unplug and go, with whatever you kept in reserve. That's the trade: the house goes dark while the car is gone, unless there's a battery or a generator too. It's why the tool asks how much to keep for driving.</p>
+    <p><strong>Is V2H cheaper than a home battery?</strong> Not always. The bidirectional charger, the transfer hardware and the electrician can add up to about what a battery costs. What you get for the money is several times the capacity, because the battery is already parked in the garage. The tool puts both prices side by side.</p>
+    <p><strong>Does it wear out the car's battery?</strong> Backing up the house through a few outages a year is a handful of cycles, which is noise next to driving. Using the car as a daily home battery is different. Read the warranty first: some carmakers limit what they cover when the car powers a home.</p>
+    <p><strong>Can I just use extension cords?</strong> Yes, that's V2L, and it's the cheap version: no hardware, no electrician, a few appliances' worth. What you can't do is feed the house through a dryer outlet. <a href="#h-v-safe">Please don't</a>.</p>
   </article>
 </section>
 
@@ -3811,6 +3823,7 @@ function dcHwFor(kw){ return Math.round((10000 + 450*kw)/500)*500; }
 /* ---------- Charger catalog (data/products.json, injected by the build) ---------- */
 var PRODUCTS = (function(){ try { return JSON.parse(document.getElementById('products-data').textContent) || []; } catch(e){ return []; } })();
 function productById(id){ for (var i=0;i<PRODUCTS.length;i++) if (PRODUCTS[i].id===id) return PRODUCTS[i]; return null; }
+function productHref(id){ return window.CS_PAGE ? '/ev-chargers/'+id+'/' : '#hardware?p='+id; }
 function applyProduct(P, pr){
   if (pr.type==='l2'){
     P.l2Model = pr.id; P.l2Kw = pr.maxKw; if (pr.price) P.l2Hw = Math.round(pr.price/(pr.ports||1));
@@ -4261,8 +4274,9 @@ if (typeof document !== 'undefined') (function(){
   }
   function renderHardware(){
     var el = document.getElementById('hw-body'); if (!el) return;
-    var q = (location.search.match(/[?&]p=([a-z0-9-]+)/)||[])[1] || (location.hash.match(/\?p=([a-z0-9-]+)/)||[])[1];
+    var q = window.CS_PRODUCT || (location.search.match(/[?&]p=([a-z0-9-]+)/)||[])[1] || (location.hash.match(/\?p=([a-z0-9-]+)/)||[])[1];
     var pr = q && productById(q);
+    if (pr && MPA && !window.CS_PRODUCT){ location.replace(productHref(pr.id)); return; }  // old ?p= links
     if (!PRODUCTS.length){ el.innerHTML = '<p class="sub">No chargers in the catalog yet.</p>'; return; }
     if (pr){
       var rows = function(list){ return '<table>'+list.map(function(r){ return '<tr><th>'+r[0]+'</th><td>'+r[1]+'</td></tr>'; }).join('')+'</table>'; };
@@ -4279,7 +4293,7 @@ if (typeof document !== 'undefined') (function(){
       var card = function(pr){
         return '<div class="hwcard"><img src="'+pr.img+'" alt="'+pr.model+'" loading="lazy"><span class="sub">'+pr.oem+'</span><h2>'+pr.model+'</h2><b>'+pr.maxKw+' kW'+(pr.type==='l2'&&pr.ports>1?' x '+pr.ports:'')+'</b>'+
           '<p class="sub">'+pr.kind+(pr.type==='l2'?'':', '+pr.ports+' ports')+(pr.battery?', '+pr.battery.split(',')[0]+' battery':'')+'.</p>'+
-          '<p><a class="btn small" href="'+viewHref('hardware')+'?p='+pr.id+'">Specs</a> <a class="btn secondary small" href="'+viewHref('planner')+'?model='+pr.id+'">Use in planner</a></p></div>';
+          '<p><a class="btn small" href="'+productHref(pr.id)+'">Specs</a> <a class="btn secondary small" href="'+viewHref('planner')+'?model='+pr.id+'">Use in planner</a></p></div>';
       };
       var dc = PRODUCTS.filter(function(pr){ return pr.type!=='l2'; }), l2 = PRODUCTS.filter(function(pr){ return pr.type==='l2'; });
       el.innerHTML = '<h2>DC fast chargers</h2><div class="hwgrid">'+dc.map(card).join('')+'</div>'+
@@ -6598,7 +6612,7 @@ if (typeof document !== 'undefined') (function(){
   function productCard(pr, P){
   return '<div class="hwpick"><img src="'+pr.img+'" alt="'+pr.model+'" loading="lazy"><div><b>'+pr.oem+' '+pr.model+'</b>'+
     '<span>'+pr.kind+'. '+pr.ports+(pr.ports>1?' ports':' port')+', up to '+pr.maxKw+' kW'+(pr.type==='l2'?' per port':'')+(pr.battery?', '+pr.battery.split(',')[0]+' battery':'')+'.'+(pr.type==='l2'&&pr.ports>1?' Target price is per unit; the planner divides it by '+pr.ports+' ports.':'')+'</span>'+
-    '<span><a href="'+viewHref('hardware')+'?p='+pr.id+'">Specs</a> <span class="dot">/</span> <a href="'+pr.datasheet+'" target="_blank" rel="noopener">Datasheet</a> <span class="dot">/</span> '+(pr.leadEmail?'<a href="'+quoteHref(pr,P)+'">Request a quote</a>':'<a href="'+pr.website+'" target="_blank" rel="noopener">Manufacturer site</a>')+'</span>'+
+    '<span><a href="'+productHref(pr.id)+'">Specs</a> <span class="dot">/</span> <a href="'+pr.datasheet+'" target="_blank" rel="noopener">Datasheet</a> <span class="dot">/</span> '+(pr.leadEmail?'<a href="'+quoteHref(pr,P)+'">Request a quote</a>':'<a href="'+pr.website+'" target="_blank" rel="noopener">Manufacturer site</a>')+'</span>'+
     '<span class="fh">'+pr.disclosure+'</span></div></div>';
 }
   function renderPlanInputs(){
