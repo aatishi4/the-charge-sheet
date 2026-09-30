@@ -27,13 +27,15 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, 'data', 'rates')
 UA = {'User-Agent': 'chargesheet.io rate snapshot (github.com/aatishi4/the-charge-sheet)'}
 ZIP_PAGES = ['https://data.openei.org/submissions/8563']          # 2024 edition; add newer editions first
+ZIP_FALLBACK = ['https://data.openei.org/files/8563/iou_zipcodes_2024.csv',
+                'https://data.openei.org/files/8563/non_iou_zipcodes_2024.csv']
 URDB_PAGE = 'https://data.openei.org/submissions/5'
 URDB_FALLBACK = ['https://openei.org/apps/USURDB/download/usurdb.csv.gz']
 MAX_PLANS = 12
 csv.field_size_limit(1 << 30)
 
 
-def fetch(url, tries=3):
+def fetch(url, tries=3, fatal=True):
     for i in range(tries):
         try:
             req = urllib.request.Request(url, headers=UA)
@@ -42,17 +44,19 @@ def fetch(url, tries=3):
         except Exception as e:
             print('  fetch failed (%s): %s' % (e, url), file=sys.stderr)
             time.sleep(3 * (i + 1))
-    raise SystemExit('could not download ' + url)
+    if fatal:
+        raise SystemExit('could not download ' + url)
+    return None
 
 
 def links(page):
-    html = fetch(page).decode('utf-8', 'replace')
-    out = []
-    for h in re.findall(r'href="([^"]+)"', html):
-        if h.startswith('/'):
-            h = 'https://data.openei.org' + h
-        out.append(h.replace('&amp;', '&'))
-    return out
+    b = fetch(page, fatal=False)
+    if not b:
+        return []
+    html = b.decode('utf-8', 'replace').replace('\\/', '/')  # download links sit in JSON-LD as https:\/\/...
+    out = re.findall(r'https?://[^"\'\s<>]+', html)
+    out += ['https://data.openei.org' + h for h in re.findall(r'href=["\'](/[^"\']+)', html)]
+    return [h.replace('&amp;', '&') for h in out]
 
 
 def discover_zip_csvs():
@@ -62,20 +66,22 @@ def discover_zip_csvs():
         if found:
             print('ZIP files: ' + ', '.join(found))
             return found
-        print('  no ZIP CSV links on %s; csv-ish links seen: %s' % (page, [u for u in links(page) if '.csv' in u.lower() or 'zip' in u.lower()][:15]))
-    raise SystemExit('no ZIP code CSVs found on ' + ', '.join(ZIP_PAGES))
+    print('No ZIP CSV links found on the submission page; using the known 2024 files.')
+    return ZIP_FALLBACK
 
 
 def discover_urdb():
     cands = [u for u in links(URDB_PAGE) if re.search(r'usurdb[^/]*\.csv(\.gz)?$', u, re.I)]
-    cands = sorted(set(cands)) + URDB_FALLBACK
+    cands = sorted(set(cands)) + [u for u in URDB_FALLBACK if u not in cands]
     print('URDB candidates: ' + ', '.join(cands))
-    return cands[0]
+    return cands
 
 
 def read_csv_bytes(b, name=''):
-    if name.endswith('.gz') or b[:2] == b'\x1f\x8b':
+    if b[:2] == b'\x1f\x8b':
         b = gzip.decompress(b)
+    if b.lstrip()[:1] == b'<':
+        raise ValueError('got an HTML page, not a CSV (site down or under maintenance?)')
     return list(csv.DictReader(io.StringIO(b.decode('utf-8-sig', 'replace'))))
 
 
@@ -245,11 +251,36 @@ def main(argv):
     if urdb_file:
         urdb_rows = read_csv_bytes(open(urdb_file, 'rb').read(), urdb_file); urdb_src = os.path.basename(urdb_file)
     else:
-        u = discover_urdb(); urdb_rows = read_csv_bytes(fetch(u), u); urdb_src = u
+        urdb_rows, urdb_src = [], None
+        for u in discover_urdb():
+            try:
+                b = fetch(u, fatal=False)
+                urdb_rows = read_csv_bytes(b, u) if b else []
+            except (ValueError, OSError, EOFError) as e:
+                print('  URDB download unusable (%s): %s' % (e, u), file=sys.stderr)
+            if urdb_rows:
+                urdb_src = u
+                break
     print('ZIP rows: %d, URDB rows: %d' % (len(zip_rows), len(urdb_rows)))
 
     zips, util = build_zip_map(zip_rows)
-    plans = build_plans(urdb_rows)
+    plans = build_plans(urdb_rows) if urdb_rows else {}
+    reused = 0
+    if not plans:
+        # URDB unavailable: keep each utility's plans from the last good build, so a
+        # maintenance window at OpenEI never wipes the plan data. Averages still refresh.
+        print('WARNING: no URDB plans this run; keeping plans from the previous build where present.')
+        for eid in util:
+            try:
+                old = json.load(open(os.path.join(OUT, 'u', '%d.json' % eid), encoding='utf-8'))
+                if old.get('items'):
+                    plans[eid] = old['items']; reused += 1
+            except (OSError, ValueError):
+                pass
+        try:
+            urdb_src = json.load(open(os.path.join(OUT, 'meta.json'), encoding='utf-8'))['sources']['plans'].get('file') if reused else None
+        except (OSError, ValueError, KeyError):
+            urdb_src = None
     if len(zips) < 1000 and not zip_files:
         raise SystemExit('ZIP map looks too small (%d); not writing' % len(zips))
 
@@ -265,13 +296,14 @@ def main(argv):
         items = plans.get(eid, [])
         with_plans += bool(items)
         write(os.path.join(tmp, 'u', '%d.json' % eid), {'eiaid': eid, 'utility': u['utility'], 'state': u['state'], 'res': u['res'], 'items': items})
-    meta = {'built': datetime.date.today().isoformat(), 'zips': len(zips), 'utilities': len(util), 'utilitiesWithPlans': with_plans,
+    meta = {'built': datetime.date.today().isoformat(), 'plansFresh': bool(urdb_rows), 'zips': len(zips), 'utilities': len(util), 'utilitiesWithPlans': with_plans,
             'sources': {'zip': {'name': 'EIA Form 861 via OpenEI: U.S. Electric Utility Companies and Rates, Look-up by Zip Code', 'files': zip_src, 'license': 'CC BY 4.0'},
                         'plans': {'name': 'OpenEI U.S. Utility Rate Database (URDB)', 'file': urdb_src, 'license': 'CC BY 4.0'}}}
     write(os.path.join(tmp, 'meta.json'), meta)
     shutil.rmtree(OUT, ignore_errors=True)
     os.rename(tmp, OUT)
-    print('Wrote %d ZIPs in %d shards, %d utilities (%d with residential plans).' % (len(zips), len(shards), len(util), with_plans))
+    print('Wrote %d ZIPs in %d shards, %d utilities (%d with residential plans%s).' % (len(zips), len(shards), len(util), with_plans,
+          '' if urdb_rows else '; URDB unavailable, plans carried over: %d' % reused))
 
 
 if __name__ == '__main__':
