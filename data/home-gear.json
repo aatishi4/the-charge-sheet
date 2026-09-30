@@ -18,7 +18,14 @@
       "status": "available",
       "website": "https://www.tesla.com/support/charging/universal-wall-connector",
       "source": "Tesla spec sheet; list $650 since May 2025, street about $550 to $580 in 2026",
-      "blurb": "Hardwired 48 amp wall box with a Tesla plug and a J1772 adapter that swings out. Charges nearly anything sold in the US."
+      "blurb": "Hardwired 48 amp wall box with a Tesla plug and a J1772 adapter that swings out. Charges nearly anything sold in the US.",
+      "img": "img/home/gear/tesla-uwc.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: Tesla",
+        "url": "https://shop.tesla.com/product/universal-wall-connector",
+        "license": "manufacturer"
+      }
     },
     {
       "id": "chargepoint-flex",
@@ -37,7 +44,14 @@
       "status": "available",
       "website": "https://www.chargepoint.com/drivers/home/chargepoint-home-flex",
       "source": "EnergySage review, 2026",
-      "blurb": "Adjustable from 16 to 50 amps. Plug it in at 40 or hardwire it for the full 50."
+      "blurb": "Adjustable from 16 to 50 amps. Plug it in at 40 or hardwire it for the full 50.",
+      "img": "img/home/gear/chargepoint-flex.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Image: ChargePoint",
+        "url": "https://store.chargepoint.com/product/home-flex-hardwired",
+        "license": "manufacturer"
+      }
     },
     {
       "id": "emporia-pro",
@@ -56,7 +70,14 @@
       "status": "available",
       "website": "https://shop.emporiaenergy.com/products/emporia-pro-ev-charger",
       "source": "Emporia store, 2026",
-      "blurb": "The cheap way around a full panel. It watches the whole house and turns itself down when the dryer and the oven are running."
+      "blurb": "The cheap way around a full panel. It watches the whole house and turns itself down when the dryer and the oven are running.",
+      "img": "img/home/gear/emporia-pro.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: Emporia",
+        "url": "https://shop.emporiaenergy.com/products/emporia-pro-ev-charger",
+        "license": "manufacturer"
+      }
     },
     {
       "id": "grizzle-classic",
@@ -75,7 +96,14 @@
       "status": "available",
       "website": "https://grizzl-e.com/",
       "source": "EnergySage review, 2026",
-      "blurb": "A metal box with no app and no opinions. Schedule charging from the car instead."
+      "blurb": "A metal box with no app and no opinions. Schedule charging from the car instead.",
+      "img": "img/home/gear/grizzle-classic.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: United Chargers",
+        "url": "https://grizzl-e.com/us/products/grizzl-e-classic",
+        "license": "manufacturer"
+      }
     },
     {
       "id": "grizzle-ultimate",
@@ -93,7 +121,14 @@
       "status": "available",
       "website": "https://grizzl-e.com/",
       "source": "EnergySage review, 2026",
-      "blurb": "The same tank of a box, hardwired at 48 amps, with an app bolted on."
+      "blurb": "The same tank of a box, hardwired at 48 amps, with an app bolted on.",
+      "img": "img/home/gear/grizzle-ultimate.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: United Chargers",
+        "url": "https://grizzl-e.com/us/products/grizzl-e-ultimate-48",
+        "license": "manufacturer"
+      }
     },
     {
       "id": "autel-elite-home",
@@ -112,7 +147,14 @@
       "status": "available",
       "website": "https://store.autelenergy.com/products/ac-elite-home-50a-ev-charger",
       "source": "Autel store, 2026",
-      "blurb": "Fifty amps hardwired, with load balancing if you add the meter."
+      "blurb": "Fifty amps hardwired, with load balancing if you add the meter.",
+      "img": "img/home/gear/autel-elite-home.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: Autel",
+        "url": "https://store.autelenergy.com/products/ac-elite-home-50a-ev-charger",
+        "license": "manufacturer"
+      }
     },
     {
       "id": "wallbox-pulsar",
@@ -131,7 +173,14 @@
       "status": "available",
       "website": "https://wallbox.com/en_us/pulsar-plus-ev-charger",
       "source": "Wallbox store, 2026",
-      "blurb": "Small, tidy, and does load management if you buy the meter."
+      "blurb": "Small, tidy, and does load management if you buy the meter.",
+      "img": "img/home/gear/wallbox-pulsar.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: Wallbox",
+        "url": "https://wallbox.com/en_us/pulsar-plus-ev-charger",
+        "license": "manufacturer"
+      }
     },
     {
       "id": "tesla-mobile",
@@ -150,7 +199,14 @@
       "status": "available",
       "website": "https://www.tesla.com/support/charging/mobile-connector",
       "source": "Tesla support page; price approximate",
-      "blurb": "The cord that lives in the frunk. At 32 amps on a 14-50 it covers most commutes."
+      "blurb": "The cord that lives in the frunk. At 32 amps on a 14-50 it covers most commutes.",
+      "img": "img/home/gear/tesla-mobile.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: Tesla",
+        "url": "https://shop.tesla.com/product/mobile-connector",
+        "license": "manufacturer"
+      }
     },
     {
       "id": "ford-mobile",
@@ -169,7 +225,14 @@
       "status": "available",
       "website": "https://www.ford.com/support/",
       "source": "Ford dealer and Ford Authority, 2025",
-      "blurb": "Two plugs in one bag: the wall outlet at the in-laws, and the dryer-style outlet at home."
+      "blurb": "Two plugs in one bag: the wall outlet at the in-laws, and the dryer-style outlet at home.",
+      "img": "img/home/gear/ford-mobile.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: Ford",
+        "url": "https://www.ford.com/cl/parts/electric-vehicles-ev/ford-mobile-charger",
+        "license": "manufacturer"
+      }
     },
     {
       "id": "gm-powershift",
@@ -189,7 +252,14 @@
       "status": "available",
       "website": "https://gmenergy.gm.com/for-home/products/gm-energy-v2h-enablement-kit",
       "source": "GM Energy and Chevrolet accessories, 2026. Bundle list $8,998, installed by Qmerit",
-      "blurb": "The charger plus the kit that lets a GM Ultium truck or SUV run the house in an outage. Includes the Home Hub switch and a small battery to restart things in the dark."
+      "blurb": "The charger plus the kit that lets a GM Ultium truck or SUV run the house in an outage. Includes the Home Hub switch and a small battery to restart things in the dark.",
+      "img": "img/home/gear/gm-powershift.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Image: GM Energy",
+        "url": "https://gmenergy.gm.com/products",
+        "license": "manufacturer"
+      }
     },
     {
       "id": "tesla-powershare",
@@ -209,7 +279,14 @@
       "status": "available",
       "website": "https://www.tesla.com/powershare",
       "source": "Tesla Powershare page; about $1,950 hardware plus $2,000 to $4,000 install. Cybertruck only",
-      "blurb": "The Cybertruck's home backup setup. Works alongside Powerwall 3 since September 2026."
+      "blurb": "The Cybertruck's home backup setup. Works alongside Powerwall 3 since September 2026.",
+      "img": "img/home/gear/tesla-uwc.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: Tesla",
+        "url": "https://shop.tesla.com/product/universal-wall-connector",
+        "license": "manufacturer"
+      }
     },
     {
       "id": "wallbox-quasar2",
@@ -229,7 +306,14 @@
       "status": "available",
       "website": "https://wallbox.com/en_us/quasar-2-v2h-bidirectional-ev-charger",
       "source": "Kia and Wallbox, 2026. $6,440 before install; Kia EV9 only so far, in select states",
-      "blurb": "A DC bidirectional charger, so the power conversion happens in the box instead of the car. Kia EV9 for now."
+      "blurb": "A DC bidirectional charger, so the power conversion happens in the box instead of the car. Kia EV9 for now.",
+      "img": "img/home/gear/wallbox-quasar2.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Image: Wallbox",
+        "url": "https://shop.wallbox.com/products/quasar2",
+        "license": "manufacturer"
+      }
     },
     {
       "id": "dcbel-ara",
@@ -249,7 +333,14 @@
       "status": "limited",
       "website": "https://solar.dcbel.energy/v2h/",
       "source": "dcbel and pv magazine, 2026. Price and power approximate; California program first",
-      "blurb": "A DC bidirectional charger with a solar inverter inside. Supports the Volvo EX90, Polestar 3 and Nissan Leaf so far, mostly in California."
+      "blurb": "A DC bidirectional charger with a solar inverter inside. Supports the Volvo EX90, Polestar 3 and Nissan Leaf so far, mostly in California.",
+      "img": "img/home/gear/dcbel-ara.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Image: dcbel",
+        "url": "https://www.dcbel.energy/ara",
+        "license": "manufacturer"
+      }
     },
     {
       "id": "ford-csp",
@@ -290,7 +381,14 @@
       "status": "available",
       "website": "https://www.tesla.com/powerwall",
       "source": "Tesla datasheet; EnergySage 2026 pricing",
-      "blurb": "The default answer. Big inverter for its size, so one unit can start a central air conditioner."
+      "blurb": "The default answer. Big inverter for its size, so one unit can start a central air conditioner.",
+      "img": "img/home/gear/powerwall-3.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: Rsparks3, CC0, via Wikimedia Commons",
+        "url": "https://commons.wikimedia.org/wiki/File:Two_Tesla_power_wall_3_devices_installed_inside_in_a_residential_home.jpg",
+        "license": "CC0"
+      }
     },
     {
       "id": "powerwall-3x",
@@ -309,7 +407,14 @@
       "expansionOf": "powerwall-3",
       "website": "https://www.tesla.com/powerwall",
       "source": "Installer pricing, 2026",
-      "blurb": "More kilowatt-hours, no more kilowatts. It has no inverter, so it adds hours of backup, not the ability to run more at once."
+      "blurb": "More kilowatt-hours, no more kilowatts. It has no inverter, so it adds hours of backup, not the ability to run more at once.",
+      "img": "img/home/gear/powerwall-3.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: Rsparks3, CC0, via Wikimedia Commons",
+        "url": "https://commons.wikimedia.org/wiki/File:Two_Tesla_power_wall_3_devices_installed_inside_in_a_residential_home.jpg",
+        "license": "CC0"
+      }
     },
     {
       "id": "franklin-apower2",
@@ -328,7 +433,14 @@
       "status": "available",
       "website": "https://www.franklinwh.com/",
       "source": "FranklinWH datasheet; EnergySage 2026 pricing (first unit includes the aGate)",
-      "blurb": "Fifteen kWh per box and a gateway that handles generators and whole-home backup. Stacks absurdly high."
+      "blurb": "Fifteen kWh per box and a gateway that handles generators and whole-home backup. Stacks absurdly high.",
+      "img": "img/home/gear/franklin-apower2.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: FranklinWH, via SunWatts",
+        "url": "https://sunwatts.com/15-kwh-franklin-apower-2-home-battery/",
+        "license": "manufacturer"
+      }
     },
     {
       "id": "enphase-10c",
@@ -347,7 +459,14 @@
       "status": "available",
       "website": "https://enphase.com/",
       "source": "Enphase datasheet; EnergySage 2026 pricing",
-      "blurb": "Modular and tidy, especially with Enphase solar. Needs two units, or a soft starter, for most central air."
+      "blurb": "Modular and tidy, especially with Enphase solar. Needs two units, or a soft starter, for most central air.",
+      "img": "img/home/gear/enphase-10c.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: Enphase",
+        "url": "https://enphase.com/store/storage/gen4/iq-battery-10c",
+        "license": "manufacturer"
+      }
     },
     {
       "id": "enphase-5p",
@@ -366,7 +485,14 @@
       "status": "available",
       "website": "https://enphase.com/store/storage/gen3/iq-battery-5p",
       "source": "Enphase store; EnergySage 2026 average cost per kWh",
-      "blurb": "Small building blocks. Fine for essentials. You will need a stack of them to run the whole house."
+      "blurb": "Small building blocks. Fine for essentials. You will need a stack of them to run the whole house.",
+      "img": "img/home/gear/enphase-5p.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: Enphase",
+        "url": "https://enphase.com/store/storage/gen3/iq-battery-5p",
+        "license": "manufacturer"
+      }
     },
     {
       "id": "solaredge-home",
@@ -385,7 +511,14 @@
       "status": "available",
       "website": "https://www.solaredge.com/us/",
       "source": "SolarEdge datasheet; price is an estimate",
-      "blurb": "For homes that already have SolarEdge solar. Essentials-sized per unit."
+      "blurb": "For homes that already have SolarEdge solar. Essentials-sized per unit.",
+      "img": "img/home/gear/solaredge-home.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: SolarEdge",
+        "url": "https://www.solaredge.com/us/products/residential/storage-and-backup/solaredge-home-battery",
+        "license": "manufacturer"
+      }
     },
     {
       "id": "lg-home8",
@@ -403,7 +536,14 @@
       "status": "available",
       "website": "https://www.lg.com/us/ess",
       "source": "SolarReviews, 2026",
-      "blurb": "A big AC-coupled box. LG doesn't publish a surge figure, so check it before counting on it to start the air conditioner."
+      "blurb": "A big AC-coupled box. LG doesn't publish a surge figure, so check it before counting on it to start the air conditioner.",
+      "img": "img/home/gear/lg-home8.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: LG",
+        "url": "https://solutions.lg.com/us/residential-ess/lg-ra768k16a11",
+        "license": "manufacturer"
+      }
     },
     {
       "id": "sonnen-core",
@@ -422,7 +562,14 @@
       "status": "available",
       "website": "https://sonnenusa.com/",
       "source": "sonnen spec sheet; SolarReviews 2026 pricing",
-      "blurb": "Long-life cells and a small inverter. An essentials battery unless you stack it."
+      "blurb": "Long-life cells and a small inverter. An essentials battery unless you stack it.",
+      "img": "img/home/gear/sonnen-core.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: sonnen, via ForeverPure",
+        "url": "https://www.foreverpureplace.com/sonnencore-10-10-kwh-all-in-one-home-battery-score-p10/",
+        "license": "manufacturer"
+      }
     },
     {
       "id": "ecoflow-dpu",
@@ -441,7 +588,14 @@
       "website": "https://us.ecoflow.com/products/delta-pro-ultra",
       "source": "EcoFlow store; installed price is an estimate",
       "blurb": "A portable power station that can be wired into the house. Extra packs add hours, not power: one inverter tops out at 7.2 kW. Shorter warranty, and you can take it camping.",
-      "kwFixed": true
+      "kwFixed": true,
+      "img": "img/home/gear/ecoflow-dpu.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: EcoFlow",
+        "url": "https://us.ecoflow.com/products/delta-pro-ultra",
+        "license": "manufacturer"
+      }
     }
   ],
   "vehicles": [
@@ -456,7 +610,15 @@
       "v2l": 0,
       "v2h": "no",
       "note": "Tesla says Powershare isn't available on Model 3.",
-      "twin": "bmw-330i"
+      "twin": "bmw-330i",
+      "img": "img/home/veh/tesla-model-3.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: Chanokchon, CC BY-SA 4.0, via Wikimedia Commons, resized",
+        "url": "https://commons.wikimedia.org/wiki/File:2024_Tesla_Model_3_Highland_Performance_AWD.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
     },
     {
       "id": "tesla-model-y",
@@ -470,7 +632,15 @@
       "v2lNote": "2026+ Premium and Performance, through an $80 outlet adapter on the Gen 3 Mobile Connector",
       "v2h": "no",
       "note": "Several websites claim Model Y V2H for 2026. Tesla's own Powershare page says it isn't available.",
-      "twin": "toyota-rav4"
+      "twin": "toyota-rav4",
+      "img": "img/home/veh/tesla-model-y.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: Damian B Oh, CC BY-SA 4.0, via Wikimedia Commons, resized",
+        "url": "https://commons.wikimedia.org/wiki/File:Tesla_Model_Y_Dual_Motor_First_Edition_Juniper_Quicksilver_(6).jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
     },
     {
       "id": "tesla-cybertruck",
@@ -490,7 +660,15 @@
       "dc": "AC",
       "seamless": true,
       "note": "Works alongside Powerwall 3 since September 2026. Discharge limit is set by the owner.",
-      "twin": "ford-f150"
+      "twin": "ford-f150",
+      "img": "img/home/veh/tesla-cybertruck.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: Alexander-93, CC BY-SA 4.0, via Wikimedia Commons, resized",
+        "url": "https://commons.wikimedia.org/wiki/File:2024_Tesla_Cybertruck_Foundation_Series_IMG_0634.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
     },
     {
       "id": "ford-lightning",
@@ -510,7 +688,15 @@
       "dc": "AC",
       "seamless": true,
       "note": "Ford discontinued the Charge Station Pro and Home Integration System in 2026. New owners are pointed to the truck's Pro Power outlets plus a manual transfer switch, about 7.2 kW and not seamless.",
-      "twin": "ford-f150"
+      "twin": "ford-f150",
+      "img": "img/home/veh/ford-lightning.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: Mariordo (Mario Roberto Durán Ortiz), CC BY-SA 4.0, via Wikimedia Commons, resized",
+        "url": "https://commons.wikimedia.org/wiki/File:Ford_F-150_Lightning_CRI_05_2023_3639.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
     },
     {
       "id": "ford-mach-e",
@@ -522,7 +708,15 @@
       "eff": 3.1,
       "v2l": 0,
       "v2h": "no",
-      "twin": "honda-crv"
+      "twin": "honda-crv",
+      "img": "img/home/veh/ford-mach-e.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: Alexander Migl, CC BY-SA 4.0, via Wikimedia Commons, resized",
+        "url": "https://commons.wikimedia.org/wiki/File:Ford_Mustang_Mach-E_Leonberg_2022_1X7A0434.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
     },
     {
       "id": "chevy-silverado-ev",
@@ -542,7 +736,15 @@
       "v2g": "PG&E pilot",
       "seamless": true,
       "note": "Some 2024s need a software update first. GM's eligibility checker is the source of truth for model years.",
-      "twin": "chevy-silverado"
+      "twin": "chevy-silverado",
+      "img": "img/home/veh/chevy-silverado-ev.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: ChevroletCanada, CC BY 3.0, via Wikimedia Commons, resized",
+        "url": "https://commons.wikimedia.org/wiki/File:2024_Chevrolet_Silverado_EV_RST_First_Edition_front_view.png",
+        "license": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
+      }
     },
     {
       "id": "gmc-sierra-ev",
@@ -560,7 +762,15 @@
       "v2hInstall": 3000,
       "v2g": "PG&E pilot",
       "seamless": true,
-      "twin": "chevy-silverado"
+      "twin": "chevy-silverado",
+      "img": "img/home/veh/gmc-sierra-ev.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: Deathpallie325, CC BY-SA 4.0, via Wikimedia Commons, resized",
+        "url": "https://commons.wikimedia.org/wiki/File:2024_GMC_Sierra_EV_Denali_front_view.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
     },
     {
       "id": "chevy-equinox-ev",
@@ -579,7 +789,15 @@
       "v2g": "PG&E pilot",
       "seamless": true,
       "note": "Eligible trims per GM's checker.",
-      "twin": "honda-crv"
+      "twin": "honda-crv",
+      "img": "img/home/veh/chevy-equinox-ev.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: Elise240SX, CC BY-SA 4.0, via Wikimedia Commons, resized",
+        "url": "https://commons.wikimedia.org/wiki/File:2024_Chevrolet_Equinox_EV_2LT_in_Summit_White,_front_right,_2024-06-30.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
     },
     {
       "id": "chevy-blazer-ev",
@@ -596,7 +814,15 @@
       "v2hCost": 8998,
       "v2hInstall": 3000,
       "seamless": true,
-      "twin": "jeep-grand-cherokee"
+      "twin": "jeep-grand-cherokee",
+      "img": "img/home/veh/chevy-blazer-ev.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: Mliu92, CC BY-SA 4.0, via Wikimedia Commons, resized",
+        "url": "https://commons.wikimedia.org/wiki/File:Chevrolet_Blazer_EV_(LT,_Riptide_Blue)_-_front_quarter_left.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
     },
     {
       "id": "chevy-bolt-2027",
@@ -614,7 +840,15 @@
       "v2hInstall": 3000,
       "seamless": true,
       "note": "GM lists V2H support through the same kit. The cheapest car on this list that can run a house.",
-      "twin": "honda-civic"
+      "twin": "honda-civic",
+      "img": "img/home/veh/chevy-bolt-2027.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: DontCallMeLateForDinner, CC BY-SA 4.0, via Wikimedia Commons, resized",
+        "url": "https://commons.wikimedia.org/wiki/File:Gray_2027_Bolt,_front_passenger_side.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
     },
     {
       "id": "cadillac-lyriq",
@@ -633,7 +867,15 @@
       "v2g": "PG&E pilot",
       "seamless": true,
       "note": "Model-year coverage differs across GM's own pages. Check the eligibility tool.",
-      "twin": "lexus-rx350"
+      "twin": "lexus-rx350",
+      "img": "img/home/veh/cadillac-lyriq.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: Matti Blume, CC BY-SA 4.0, via Wikimedia Commons, resized",
+        "url": "https://commons.wikimedia.org/wiki/File:Cadillac_Lyriq,_Frankfurt_(PANA1089).jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.en"
+      }
     },
     {
       "id": "cadillac-escalade-iq",
@@ -650,7 +892,15 @@
       "v2hCost": 8998,
       "v2hInstall": 3000,
       "seamless": true,
-      "twin": "chevy-tahoe"
+      "twin": "chevy-tahoe",
+      "img": "img/home/veh/cadillac-escalade-iq.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: HJUdall, CC0, via Wikimedia Commons, resized",
+        "url": "https://commons.wikimedia.org/wiki/File:25_Cadillac_Escalade_IQ_Luxury_1.jpg",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+      }
     },
     {
       "id": "gmc-hummer-ev",
@@ -667,7 +917,15 @@
       "v2hCost": 8998,
       "v2hInstall": 3000,
       "seamless": true,
-      "twin": "chevy-tahoe"
+      "twin": "chevy-tahoe",
+      "img": "img/home/veh/gmc-hummer-ev.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: HJUdall, CC0, via Wikimedia Commons, resized",
+        "url": "https://commons.wikimedia.org/wiki/File:24_GMC_Hummer_EV_3X_Omega_Edition_Pickup.jpg",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+      }
     },
     {
       "id": "kia-ev9",
@@ -687,7 +945,15 @@
       "floor": 20,
       "seamless": true,
       "note": "The car stops exporting at 20%. Needs a Kia Connect subscription. Launched in a handful of states first (CA, TX, FL, NY, WA, NJ, IL).",
-      "twin": "kia-telluride"
+      "twin": "kia-telluride",
+      "img": "img/home/veh/kia-ev9.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: Matti Blume, CC BY-SA 4.0, via Wikimedia Commons, resized",
+        "url": "https://commons.wikimedia.org/wiki/File:Kia_EV9,_IAA_Summit_2023,_Munich_(P1110905).jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.en"
+      }
     },
     {
       "id": "kia-ev6",
@@ -701,7 +967,15 @@
       "v2h": "announced",
       "dc": "DC",
       "note": "Kia has announced V2H for the EV6. No date yet.",
-      "twin": "toyota-rav4"
+      "twin": "toyota-rav4",
+      "img": "img/home/veh/kia-ev6.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: Alexander Migl, CC BY-SA 4.0, via Wikimedia Commons, resized",
+        "url": "https://commons.wikimedia.org/wiki/File:Kia_EV6_Automesse_Ludwigsburg_2022_1X7A5931.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
     },
     {
       "id": "hyundai-ioniq-5",
@@ -714,7 +988,15 @@
       "v2l": 3.6,
       "v2h": "no",
       "note": "Great V2L. The hardware is reportedly there for V2H, but it isn't switched on in the US.",
-      "twin": "toyota-rav4"
+      "twin": "toyota-rav4",
+      "img": "img/home/veh/hyundai-ioniq-5.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: TTTNIS, CC0, via Wikimedia Commons, resized",
+        "url": "https://commons.wikimedia.org/wiki/File:Hyundai_Ioniq_5.jpg",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+      }
     },
     {
       "id": "hyundai-ioniq-9",
@@ -728,7 +1010,15 @@
       "v2h": "announced",
       "dc": "DC",
       "note": "Hyundai says V2H is coming in the near term. Not live yet.",
-      "twin": "hyundai-palisade"
+      "twin": "hyundai-palisade",
+      "img": "img/home/veh/hyundai-ioniq-9.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: Alexander Migl, CC BY-SA 4.0, via Wikimedia Commons, resized",
+        "url": "https://commons.wikimedia.org/wiki/File:Hyundai_Ioniq_9_IMG_5950.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
     },
     {
       "id": "nissan-leaf-2g",
@@ -747,7 +1037,15 @@
       "dc": "DC (CHAdeMO)",
       "seamless": true,
       "note": "Through a dcbel Ara in California, or a Fermata FE-20 (mostly commercial). Nissan says the FE-20 doesn't void the warranty. The 2026 Leaf dropped CHAdeMO and has no V2H.",
-      "twin": "honda-civic"
+      "twin": "honda-civic",
+      "img": "img/home/veh/nissan-leaf-2g.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: Alexander Migl, CC BY-SA 4.0, via Wikimedia Commons, resized",
+        "url": "https://commons.wikimedia.org/wiki/File:Nissan_Leaf_(ZE1)_DSC_7096.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
     },
     {
       "id": "volvo-ex90",
@@ -766,7 +1064,15 @@
       "dc": "DC",
       "seamless": true,
       "note": "2025 model year builds only, California first. Volvo makes no promise for later years.",
-      "twin": "mb-gle350"
+      "twin": "mb-gle350",
+      "img": "img/home/veh/volvo-ex90.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: Alexander-93, CC BY-SA 4.0, via Wikimedia Commons, resized",
+        "url": "https://commons.wikimedia.org/wiki/File:Volvo_EX90_Auto_Zuerich_2024_DSC_6147.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
     },
     {
       "id": "polestar-3",
@@ -785,7 +1091,15 @@
       "dc": "DC",
       "seamless": true,
       "note": "Through dcbel, California first.",
-      "twin": "mb-glc300"
+      "twin": "mb-glc300",
+      "img": "img/home/veh/polestar-3.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: Alexander-93, CC BY-SA 4.0, via Wikimedia Commons, resized",
+        "url": "https://commons.wikimedia.org/wiki/File:Polestar_3_Auto_Zuerich_2023_1X7A1307.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
     },
     {
       "id": "rivian-r1s",
@@ -798,7 +1112,15 @@
       "v2l": 1.5,
       "v2h": "no",
       "note": "Rivian says a home V2H device is in development. The R2 is promised V2H later, not at launch.",
-      "twin": "mb-gle350"
+      "twin": "mb-gle350",
+      "img": "img/home/veh/rivian-r1s.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: Mliu92, CC BY-SA 3.0, via Wikimedia Commons, resized",
+        "url": "https://commons.wikimedia.org/wiki/File:Rivian_R1S_at_Hillsdale_Shopping_Center_2.jpg",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+      }
     },
     {
       "id": "lucid-air",
@@ -811,7 +1133,15 @@
       "v2l": 0,
       "v2h": "announced",
       "note": "Lucid promised V2H for the first half of 2026. As of September it hasn't shipped.",
-      "twin": "bmw-530i"
+      "twin": "bmw-530i",
+      "img": "img/home/veh/lucid-air.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: Alexander-93, CC BY-SA 4.0, via Wikimedia Commons, resized",
+        "url": "https://commons.wikimedia.org/wiki/File:Lucid_Air_DSC_6026.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
     },
     {
       "id": "honda-prologue",
@@ -824,7 +1154,15 @@
       "v2l": 0,
       "v2h": "no",
       "note": "Built on GM's platform but left off GM's V2H list.",
-      "twin": "honda-crv"
+      "twin": "honda-crv",
+      "img": "img/home/veh/honda-prologue.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: Autosdeprimera, CC BY 3.0, via Wikimedia Commons, resized",
+        "url": "https://commons.wikimedia.org/wiki/File:2024_Honda_Prologue_Elite_AWD_(United_States)_front_view.png",
+        "license": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
+      }
     },
     {
       "id": "vw-id4",
@@ -836,7 +1174,15 @@
       "eff": 3.3,
       "v2l": 0,
       "v2h": "no",
-      "twin": "toyota-rav4"
+      "twin": "toyota-rav4",
+      "img": "img/home/veh/vw-id4.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: Alexander Migl, CC BY-SA 4.0, via Wikimedia Commons, resized",
+        "url": "https://commons.wikimedia.org/wiki/File:Volkswagen_ID.4_1X7A0360.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
     },
     {
       "id": "bmw-i4",
@@ -848,7 +1194,15 @@
       "eff": 3.6,
       "v2l": 0,
       "v2h": "no",
-      "twin": "bmw-330i"
+      "twin": "bmw-330i",
+      "img": "img/home/veh/bmw-i4.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: Alexander Migl, CC BY-SA 4.0, via Wikimedia Commons, resized",
+        "url": "https://commons.wikimedia.org/wiki/File:BMW_i4_IAA_2021_1X7A0307.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
     },
     {
       "id": "mitsubishi-outlander",
@@ -862,7 +1216,15 @@
       "v2h": "no",
       "dc": "DC (CHAdeMO)",
       "note": "A plug-in hybrid. dcbel lists it for a future phase; not OEM-supported for V2H in the US today.",
-      "twin": "toyota-rav4"
+      "twin": "toyota-rav4",
+      "img": "img/home/veh/mitsubishi-outlander.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Photo: Charles from Port Chester, New York, CC BY 2.0, via Wikimedia Commons, resized",
+        "url": "https://commons.wikimedia.org/wiki/File:Mitsubishi_Outlander_PHEV_(2021)_(53487730753).jpg",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+      }
     }
   ],
   "gasCars": [
@@ -1049,5 +1411,6 @@
       "fuel": "premium"
     }
   ],
-  "gasNote": "EPA combined MPG for a common trim, via Edmunds' model-year MPG pages (fueleconomy.gov ratings), September 2026. Premium means the maker requires or recommends it."
+  "gasNote": "EPA combined MPG for a common trim, via Edmunds' model-year MPG pages (fueleconomy.gov ratings), September 2026. Premium means the maker requires or recommends it.",
+  "imageNote": "Vehicle photos are from Wikimedia Commons under the licenses shown (credit required). Charger and battery images are the manufacturers' own product images, credited to them; confirm usage rights with each manufacturer before launch (the same arrangement as the commercial catalog)."
 }

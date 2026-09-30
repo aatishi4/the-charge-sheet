@@ -601,13 +601,21 @@ def gear_detail_html(kind, x, name):
     table = ''.join('<tr><th>%s</th><td>%s</td></tr>' % (esc(a), esc(str(b))) for a, b in rows if b)
     maker = x.get('make') if kind == 'vehicles' else x.get('oem')
     note = x.get('note') if x.get('note') and x.get('blurb') else ''
+    pic, cred = '', ''
+    if x.get('img'):
+        pic = ('<div class="hgicon has-img"><span class="hgimg %s"><img src="/%s" alt="%s" decoding="async"></span></div>'
+               % ('photo' if x.get('imgFit') == 'photo' else 'cut', esc(x['img']), esc(name)))
+    c = x.get('imgCredit')
+    if c:
+        cred = ' <a href="%s" target="_blank" rel="noopener">%s</a>%s.' % (esc(c.get('url', '')), esc(c.get('text', '')),
+               (' (<a href="%s" target="_blank" rel="noopener license">license</a>)' % esc(c['licenseUrl'])) if c.get('licenseUrl') else '')
     return ('<p class="sub"><a href="/home/home-ev-chargers-batteries/">All gear</a> <span class="dot">/</span> %s</p>'
-            '<div class="hwhero hgd"><div><p class="sub">%s</p><p>%s</p>%s</div></div>'
+            '<div class="hwhero hgd">%s<div><p class="sub">%s</p><p>%s</p>%s</div></div>'
             '<h2>Specifications</h2><div class="scroll"><table><tbody>%s</tbody></table></div>%s'
-            '<p class="fh">Source: %s.</p>') % (
-        esc(name), esc(maker or ''), esc(x.get('blurb') or x.get('note') or ''),
+            '<p class="fh">Source: %s.%s</p>') % (
+        esc(name), pic, esc(maker or ''), esc(x.get('blurb') or x.get('note') or ''),
         ('<p><a class="btn secondary" href="%s" rel="noopener">Manufacturer site</a></p>' % esc(x['website'])) if x.get('website') else '',
-        table, ('<p class="fh">%s</p>' % esc(note)) if note else '', esc(x.get('source') or 'Manufacturer and public reporting, 2026'))
+        table, ('<p class="fh">%s</p>' % esc(note)) if note else '', esc(x.get('source') or 'Manufacturer and public reporting, 2026'), cred)
 
 
 def product_detail_html(p):
@@ -913,6 +921,7 @@ def build():
             page_head = set_meta(head, title, desc, url, SITE + '/og/home-home-ev-chargers-batteries.png', 'tool')
             ld = {'@context': 'https://schema.org', '@graph': [
                 {'@type': 'WebPage', 'name': name, 'headline': title, 'description': desc, 'url': url, 'dateModified': gdate,
+                 **({'primaryImageOfPage': {'@type': 'ImageObject', 'url': SITE + '/' + x['img']}} if x.get('img') else {}),
                  'inLanguage': 'en-US', 'author': dict(AUTHOR), 'isPartOf': {'@type': 'WebSite', 'name': SITE_NAME, 'url': SITE + '/'}},
                 {'@type': 'BreadcrumbList', 'itemListElement': [
                     {'@type': 'ListItem', 'position': 1, 'name': SITE_NAME, 'item': SITE + '/'},
