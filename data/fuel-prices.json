@@ -1,0 +1,235 @@
+{
+ "note": "Fuel and electricity prices for the home charging comparisons. tools/refresh_prices.py refreshes gasoline (weekly) and electricity (monthly) from the EIA API when the EIA_API_KEY secret is set. The public fast-charging price is updated by hand each quarter.",
+ "gasoline": {
+  "source": "U.S. Energy Information Administration, weekly retail gasoline prices (all formulations, including taxes)",
+  "sourceUrl": "https://www.eia.gov/petroleum/gasdiesel/",
+  "week": "2026-09-28",
+  "premiumNote": "Seeded from the U.S. regular-to-premium spread for week of 2026-09-21; the EIA refresh replaces these with published premium prices.",
+  "areas": {
+   "NUS": {
+    "name": "U.S. average",
+    "regular": 4.465,
+    "premium": 5.447
+   },
+   "R10": {
+    "name": "East Coast",
+    "regular": 4.29,
+    "premium": 5.272
+   },
+   "R1X": {
+    "name": "New England",
+    "regular": 4.369,
+    "premium": 5.351
+   },
+   "R1Y": {
+    "name": "Central Atlantic",
+    "regular": 4.411,
+    "premium": 5.393
+   },
+   "R1Z": {
+    "name": "Lower Atlantic",
+    "regular": 4.195,
+    "premium": 5.177
+   },
+   "R20": {
+    "name": "Midwest",
+    "regular": 4.291,
+    "premium": 5.273
+   },
+   "R30": {
+    "name": "Gulf Coast",
+    "regular": 3.924,
+    "premium": 4.906
+   },
+   "R40": {
+    "name": "Rocky Mountain",
+    "regular": 4.486,
+    "premium": 5.468
+   },
+   "R50": {
+    "name": "West Coast",
+    "regular": 5.724,
+    "premium": 6.706
+   },
+   "R5XCA": {
+    "name": "West Coast except California",
+    "regular": 5.153,
+    "premium": 6.135
+   },
+   "SCA": {
+    "name": "California",
+    "regular": 6.189,
+    "premium": 7.171
+   },
+   "SCO": {
+    "name": "Colorado",
+    "regular": 4.094,
+    "premium": 5.076
+   },
+   "SFL": {
+    "name": "Florida",
+    "regular": 4.282,
+    "premium": 5.264
+   },
+   "SMA": {
+    "name": "Massachusetts",
+    "regular": 4.316,
+    "premium": 5.298
+   },
+   "SMN": {
+    "name": "Minnesota",
+    "regular": 4.315,
+    "premium": 5.297
+   },
+   "SNY": {
+    "name": "New York",
+    "regular": 4.405,
+    "premium": 5.387
+   },
+   "SOH": {
+    "name": "Ohio",
+    "regular": 4.263,
+    "premium": 5.245
+   },
+   "STX": {
+    "name": "Texas",
+    "regular": 3.841,
+    "premium": 4.823
+   },
+   "SWA": {
+    "name": "Washington",
+    "regular": 5.453,
+    "premium": 6.435
+   }
+  },
+  "stateArea": {
+   "CT": "R1X",
+   "ME": "R1X",
+   "MA": "SMA",
+   "NH": "R1X",
+   "RI": "R1X",
+   "VT": "R1X",
+   "DE": "R1Y",
+   "DC": "R1Y",
+   "MD": "R1Y",
+   "NJ": "R1Y",
+   "NY": "SNY",
+   "PA": "R1Y",
+   "FL": "SFL",
+   "GA": "R1Z",
+   "NC": "R1Z",
+   "SC": "R1Z",
+   "VA": "R1Z",
+   "WV": "R1Z",
+   "IL": "R20",
+   "IN": "R20",
+   "IA": "R20",
+   "KS": "R20",
+   "KY": "R20",
+   "MI": "R20",
+   "MN": "SMN",
+   "MO": "R20",
+   "NE": "R20",
+   "ND": "R20",
+   "OH": "SOH",
+   "OK": "R20",
+   "SD": "R20",
+   "TN": "R20",
+   "WI": "R20",
+   "AL": "R30",
+   "AR": "R30",
+   "LA": "R30",
+   "MS": "R30",
+   "NM": "R30",
+   "TX": "STX",
+   "CO": "SCO",
+   "ID": "R40",
+   "MT": "R40",
+   "UT": "R40",
+   "WY": "R40",
+   "AK": "R5XCA",
+   "AZ": "R5XCA",
+   "CA": "SCA",
+   "HI": "R5XCA",
+   "NV": "R5XCA",
+   "OR": "R5XCA",
+   "WA": "SWA"
+  }
+ },
+ "electricity": {
+  "source": "U.S. Energy Information Administration, average residential retail price",
+  "sourceUrl": "https://www.eia.gov/electricity/monthly/",
+  "us": 18.31,
+  "usMonth": "2026-07",
+  "month": "2026-06",
+  "unit": "cents per kWh",
+  "states": {
+   "AL": 16.4,
+   "AK": 28.21,
+   "AZ": 15.18,
+   "AR": 14.12,
+   "CA": 34.74,
+   "CO": 17.13,
+   "CT": 24.32,
+   "DE": 19.29,
+   "DC": 24.39,
+   "FL": 15.1,
+   "GA": 16.36,
+   "HI": 52.72,
+   "ID": 14.37,
+   "IL": 19.89,
+   "IN": 17.51,
+   "IA": 15.93,
+   "KS": 15.71,
+   "KY": 14.26,
+   "LA": 13.49,
+   "ME": 29.59,
+   "MD": 21.84,
+   "MA": 29.61,
+   "MI": 22.99,
+   "MN": 17.52,
+   "MS": 14.88,
+   "MO": 16.22,
+   "MT": 15.14,
+   "NE": 13.25,
+   "NV": 13.11,
+   "NH": 27.01,
+   "NJ": 24.95,
+   "NM": 15.06,
+   "NY": 29.49,
+   "NC": 14.74,
+   "ND": 14.12,
+   "OH": 19.19,
+   "OK": 14.33,
+   "OR": 16.32,
+   "PA": 21.73,
+   "RI": 29.23,
+   "SC": 15.55,
+   "SD": 15.36,
+   "TN": 14.07,
+   "TX": 15.94,
+   "UT": 13.37,
+   "VT": 24.44,
+   "VA": 17.22,
+   "WA": 14.91,
+   "WV": 15.45,
+   "WI": 19.56,
+   "WY": 15.24
+  }
+ },
+ "dcfc": {
+  "price": 0.538,
+  "period": "Q2 2026",
+  "source": "Paren, US EV Fast Charging Q2 2026 (average of state averages, ports 24 kW and up, free chargers excluded)",
+  "sourceUrl": "https://www.paren.app/reports/us-ev-fast-charging-q2-2026",
+  "low": [
+   "Nebraska",
+   0.428
+  ],
+  "high": [
+   "Hawaii",
+   0.856
+  ],
+  "note": "Tesla Superchargers are often cheaper for Tesla owners and members."
+ }
+}
