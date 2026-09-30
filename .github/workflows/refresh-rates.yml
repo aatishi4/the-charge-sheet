@@ -3,7 +3,8 @@ name: Refresh utility rates
 # Rebuilds data/rates/ (the ZIP code rate lookup on the home charging calculator)
 # from two free public datasets: EIA Form 861 ZIP-to-utility averages and the
 # OpenEI Utility Rate Database bulk download. No API key needed.
-# Runs twice a year (both sources update about yearly), on demand, and whenever the build script changes.
+# Runs weekly (it only commits when the data actually changes), on demand, and whenever the build script changes.
+# If the OpenEI rate database is down, the last good plans are kept and the next run picks them up.
 
 on:
   workflow_dispatch:
@@ -12,7 +13,7 @@ on:
       - tools/build_rates.py
       - .github/workflows/refresh-rates.yml
   schedule:
-    - cron: '41 10 15 1,7 *'
+    - cron: '41 10 * * 1'
 
 permissions:
   contents: write
