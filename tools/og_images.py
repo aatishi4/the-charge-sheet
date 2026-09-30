@@ -82,7 +82,7 @@ def render(page, font, kicker, headline, desc, path):
 
 HOME_BAND = ('<div class="band hb"><img src="data:image/jpeg;base64,%(photo)s" alt="">'
              '<span><b>Built by Aatish Patel</b>, founder of XCharge North America. Free guides, real data and '
-             'planning tools for the business of EV charging.</span></div>')
+             'planning tools for EV charging, at home and in business.</span></div>')
 HOME_CSS = ('.hb{display:flex;align-items:center;gap:30px;padding-top:0}'
             '.hb img{width:128px;height:128px;border-radius:50%%;object-fit:cover;flex:none;border:4px solid #fff}'
             '.hb b{color:#0D1F36}.hb span{max-width:860px}</style>')
@@ -93,7 +93,7 @@ def render_home(page, font, path):
     photo = base64.b64encode(open(os.path.join(ROOT, 'img', 'aatish-square.jpg'), 'rb').read()).decode()
     html = TEMPLATE.replace('</style>', HOME_CSS).replace('<div class="band"><span>%(desc)s</span></div>', HOME_BAND)
     html = html.replace('<div class="kick">%(kicker)s</div>', '')
-    page.set_content(html % {'font': font, 'kicker': '', 'headline': 'Charging stations look simple. Then the electric bill arrives.', 'desc': '', 'photo': photo})
+    page.set_content(html % {'font': font, 'kicker': '', 'headline': 'Charging looks simple. Then you try to do it well.', 'desc': '', 'photo': photo})
     page.wait_for_timeout(200)
     page.screenshot(path=path)
     print(os.path.relpath(path, ROOT))
