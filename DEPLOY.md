@@ -84,6 +84,13 @@ Review incentives, SBA rules and tariffs each quarter, and bump "Last updated" o
 - **`/llms.txt`** is a plain list of every page for AI search tools, built from the same `PAGES` list.
 - **Share cards**: `python3 tools/og_images.py` (see the top of that file). Home-side cards: `python3 tools/og_images.py home-side`.
 
+## Speed: what the build does for you
+
+- **Two scripts**: the home-side code only ships on `/home/` pages. Both are minified with `tools/vendor/rjsmin.py` (Apache 2.0; the build falls back to the plain script if it fails).
+- **Hidden views are pruned** to the elements the script can address (anything with an id or a `data-` attribute), and each page only sets up its own view (`onView` in the app script). About 1,200 DOM nodes per page instead of 6,000.
+- **No jumps on load**: the section sub-nav is drawn in the HTML, and CSS holds space for tool forms, report bars and the report while the script fills them.
+- **Images**: `python3 tools/thumbs.py` makes the charger card thumbnails (`img/oem/thumb/`) and the 400 and 800 wide WebP versions of the photo. Run it after adding a charger image; cards fall back to the full image without a thumb.
+
 ## 8. The home side (residential charging, batteries, V2H)
 
 The home side lives in `index.html` between `<!--home-side-->` markers, with its data in `data/home-gear.json` and a small server function in `functions/api/rates.js`.

@@ -194,6 +194,7 @@ main{min-height:70vh}
 .letter{display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:3.5rem;align-items:center;max-width:1000px}
 .letter-photo{margin:0;border-radius:var(--r-l);overflow:hidden;aspect-ratio:4/5;background:var(--ice)}
 .letter-photo img{width:100%;height:100%;object-fit:cover;display:block}
+picture{display:contents}
 .letter .kick{font-size:.82rem;font-weight:650;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin:0 0 .7rem}
 .letter-body>p:not(.kick):not(.sig){font-size:1.12rem;margin:0 0 1rem;max-width:36em}
 .letter .sig{font-size:1.55rem;font-weight:650;font-style:italic;letter-spacing:-.01em;margin:1.4rem 0 1.6rem}
@@ -812,6 +813,10 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
 /* ---------- Project report ---------- */
 .rbar{max-width:1120px;margin:0 auto;padding:0 1.25rem .4rem;display:flex;flex-wrap:wrap;align-items:center;gap:.8rem 1.4rem}
 .rbar .status{flex-basis:100%;margin-top:0}
+/* Hold the space the script fills in, so the page doesn't jump when it runs */
+.rbar:empty{min-height:74px}
+@media (min-width:700px){.rbar:empty{min-height:40px}}
+.tool:has(> .inputs:empty),.report:empty{min-height:100vh}
 .rtrack{display:flex;align-items:center;gap:.45rem;list-style:none;padding:0;margin:0}
 .rtrack li a{display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line);color:transparent;background:var(--white);font-size:0;text-decoration:none;transition:border-color .15s,background .15s}
 .rtrack li a svg{width:12px;height:12px;display:none}
@@ -1313,7 +1318,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
 
   <div class="band mist" id="from-aatish">
     <div class="wrap letter">
-      <figure class="letter-photo"><img src="img/aatish.jpg" alt="Aatish Patel at a DC fast charger" width="800" height="1000" loading="lazy"></figure>
+      <figure class="letter-photo"><picture><source type="image/webp" srcset="img/aatish-400.webp 400w, img/aatish-800.webp 800w" sizes="(max-width:760px) 240px, 400px"><img src="img/aatish.jpg" alt="Aatish Patel at a DC fast charger" width="800" height="1000" loading="lazy" decoding="async"></picture></figure>
       <div class="letter-body">
         <p class="kick">A note from the person who built this</p>
         <h2>Why I built this.</h2>
@@ -1514,7 +1519,7 @@ footer{border-top:1px solid var(--line);margin-top:5rem;background:var(--mist)}
 <!-- ABOUT -->
 <section id="view-about" hidden>
   <div class="about">
-    <div class="portrait" id="portrait"><span data-portrait-initial>A</span></div>
+    <div class="portrait" id="portrait"><picture><source type="image/webp" srcset="img/aatish-400.webp 400w, img/aatish-800.webp 800w" sizes="(max-width:760px) 90vw, 400px"><img src="img/aatish.jpg" alt="Aatish Patel at a DC fast charger" width="800" height="1000" fetchpriority="high"></picture></div>
     <div>
       <h1>Hi, I'm Aatish. I built this.</h1>
       <p class="lede">Aatish Patel, officially. I build physical products and the businesses around them, and I've spent the last six years doing that in EV charging: founding XCharge North America, then taking XCharge public as COO.</p>
@@ -3823,6 +3828,7 @@ function dcHwFor(kw){ return Math.round((10000 + 450*kw)/500)*500; }
 /* ---------- Charger catalog (data/products.json, injected by the build) ---------- */
 var PRODUCTS = (function(){ try { return JSON.parse(document.getElementById('products-data').textContent) || []; } catch(e){ return []; } })();
 function productById(id){ for (var i=0;i<PRODUCTS.length;i++) if (PRODUCTS[i].id===id) return PRODUCTS[i]; return null; }
+function thumbImg(pr){ return '<img src="'+pr.img.replace('/img/oem/','/img/oem/thumb/')+'" alt="'+pr.model+'" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=\''+pr.img+'\'">'; }
 function productHref(id){ return window.CS_PAGE ? '/ev-chargers/'+id+'/' : '#hardware?p='+id; }
 function applyProduct(P, pr){
   if (pr.type==='l2'){
@@ -3925,9 +3931,12 @@ function solveK(f){
 }
 
 /* ========== Formatting ========== */
-function money(v,d){ d=d||0; var s=v<0?'-':''; return s+'$'+Math.abs(v).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d}); }
+function money(v,d){ d=d||0; var s=v<0?'-':''; return s+'$'+nf(d).format(Math.abs(v)); }
 function moneyK(v){ var a=Math.abs(v), s=v<0?'-':''; if (a>=1e6) return s+'$'+(a/1e6).toFixed(2)+'M'; if (a>=1e4) return s+'$'+Math.round(a/1e3)+'k'; if (a>=1e3) return s+'$'+(a/1e3).toFixed(1)+'k'; return s+'$'+Math.round(a); }
-function num(v,d){ d=d||0; return v.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d}); }
+function num(v,d){ d=d||0; return typeof v==='number' ? nf(d).format(v) : v.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d}); }
+// toLocaleString with options builds a new formatter on every call; the tools format thousands of numbers
+var NF = {};
+function nf(d){ return NF[d] || (NF[d] = new Intl.NumberFormat('en-US',{minimumFractionDigits:d,maximumFractionDigits:d})); }
 function pct(v,d){ return (v*100).toFixed(d||0)+'%'; }
 function r1(v){ return Math.round(v*10)/10; }
 
@@ -4291,7 +4300,7 @@ if (typeof document !== 'undefined') (function(){
         '<p class="sub">Specs transcribed from the '+pr.source+'. '+pr.disclosure+'</p>';
     } else {
       var card = function(pr){
-        return '<div class="hwcard"><img src="'+pr.img+'" alt="'+pr.model+'" loading="lazy"><span class="sub">'+pr.oem+'</span><h2>'+pr.model+'</h2><b>'+pr.maxKw+' kW'+(pr.type==='l2'&&pr.ports>1?' x '+pr.ports:'')+'</b>'+
+        return '<div class="hwcard">'+thumbImg(pr)+'<span class="sub">'+pr.oem+'</span><h2>'+pr.model+'</h2><b>'+pr.maxKw+' kW'+(pr.type==='l2'&&pr.ports>1?' x '+pr.ports:'')+'</b>'+
           '<p class="sub">'+pr.kind+(pr.type==='l2'?'':', '+pr.ports+' ports')+(pr.battery?', '+pr.battery.split(',')[0]+' battery':'')+'.</p>'+
           '<p><a class="btn small" href="'+productHref(pr.id)+'">Specs</a> <a class="btn secondary small" href="'+viewHref('planner')+'?model='+pr.id+'">Use in planner</a></p></div>';
       };
@@ -4504,7 +4513,8 @@ if (typeof document !== 'undefined') (function(){
     if (CONFIG.photo){
       Array.prototype.forEach.call(document.querySelectorAll('[data-portrait-initial]'), function(sp){
         var sq = sp.getAttribute('data-portrait-initial')==='square' && CONFIG.photoSquare;
-        sp.parentNode.innerHTML = '<img src="'+(sq ? CONFIG.photoSquare : CONFIG.photo)+'" alt="Aatish Patel at a DC fast charger">';
+        sp.parentNode.innerHTML = sq ? '<img src="'+CONFIG.photoSquare+'" alt="Aatish Patel at a DC fast charger">'
+          : '<picture><source type="image/webp" srcset="/img/aatish-400.webp 400w, /img/aatish-800.webp 800w" sizes="(max-width:760px) 90vw, 400px"><img src="'+CONFIG.photo+'" alt="Aatish Patel at a DC fast charger" width="800" height="1000"></picture>';
       });
     }
   }
@@ -6610,7 +6620,7 @@ if (typeof document !== 'undefined') (function(){
 
   /* ---------- Planner ---------- */
   function productCard(pr, P){
-  return '<div class="hwpick"><img src="'+pr.img+'" alt="'+pr.model+'" loading="lazy"><div><b>'+pr.oem+' '+pr.model+'</b>'+
+  return '<div class="hwpick">'+thumbImg(pr)+'<div><b>'+pr.oem+' '+pr.model+'</b>'+
     '<span>'+pr.kind+'. '+pr.ports+(pr.ports>1?' ports':' port')+', up to '+pr.maxKw+' kW'+(pr.type==='l2'?' per port':'')+(pr.battery?', '+pr.battery.split(',')[0]+' battery':'')+'.'+(pr.type==='l2'&&pr.ports>1?' Target price is per unit; the planner divides it by '+pr.ports+' ports.':'')+'</span>'+
     '<span><a href="'+productHref(pr.id)+'">Specs</a> <span class="dot">/</span> <a href="'+pr.datasheet+'" target="_blank" rel="noopener">Datasheet</a> <span class="dot">/</span> '+(pr.leadEmail?'<a href="'+quoteHref(pr,P)+'">Request a quote</a>':'<a href="'+pr.website+'" target="_blank" rel="noopener">Manufacturer site</a>')+'</span>'+
     '<span class="fh">'+pr.disclosure+'</span></div></div>';
@@ -6893,43 +6903,45 @@ if (typeof document !== 'undefined') (function(){
 
   window.CSK = {viewHref:viewHref, goView:goView, polish:polish, group:group, kpi:kpi, bars:bars, reduced:REDUCED,
     current:function(){ return MPA ? window.CS_PAGE : viewOf(location.hash.replace('#','').split('?')[0]); }};
+  // In multi-page mode each page only sets up its own view; the other views are empty skeletons nobody sees.
+  function onView(v){ return !MPA || window.CS_PAGE===v; }
   loadLocal();
   applySharedState();
   (function(){ var m = (location.search.match(/[?&]model=([a-z0-9-]+)/)||[])[1]; var pr = m && productById(m); if (pr){ applyProduct(P, pr); save(); } })();
-  renderBench();
-  renderConnInputs();
-  renderConnResults();
-  renderBill();
-  renderForecastInputs();
-  renderPlanInputs();
-  initPowerPath();
+  if (onView('benchmarks')) renderBench();
+  if (onView('sitecheck')) renderConnInputs();
+  if (onView('sitecheck')) renderConnResults();
+  if (onView('primer')) renderBill();
+  if (onView('forecast')) renderForecastInputs();
+  if (onView('planner')) renderPlanInputs();
+  if (onView('basics')) initPowerPath();
   Array.prototype.forEach.call(document.querySelectorAll('[data-stepper]'), initStepper);
-  initBusyWindow();
-  initBattCalc();
-  initChargeCurve();
-  initWaterfall();
-  initMsgPath();
-  initLayers();
-  initRE();
-  initScarcity();
-  initFleetCompare();
-  initF80();
-  initFps();
-  initRsc();
-  initUpx();
-  initOwn();
-  initWays();
-  initStack();
-  initChecklist();
-  renderLoanInputs();
-  renderLoan();
-  renderFleetInputs();
-  renderFleet();
-  renderInstallInputs();
-  renderInstall();
-  renderHomeBars();
-  initAbout();
-  initWork();
+  if (onView('storage')) initBusyWindow();
+  if (onView('storage')) initBattCalc();
+  if (onView('basics')) initChargeCurve();
+  if (onView('primer')) initWaterfall();
+  if (onView('connectivity')) initMsgPath();
+  if (onView('vendors')) initLayers();
+  if (onView('realestate')) initRE();
+  if (onView('realestate')) initScarcity();
+  if (onView('fleet')) initFleetCompare();
+  if (onView('fleet')) initF80();
+  if (onView('fleet')) initFps();
+  if (onView('realestate')) initRsc();
+  if (onView('vendors')) initUpx();
+  if (onView('primer')) initOwn();
+  if (onView('finance')) initWays();
+  if (onView('finance')) initStack();
+  if (onView('finance')) initChecklist();
+  if (onView('sbatool')) renderLoanInputs();
+  if (onView('sbatool')) renderLoan();
+  if (onView('fleettool')) renderFleetInputs();
+  if (onView('fleettool')) renderFleet();
+  if (onView('install')) renderInstallInputs();
+  if (onView('install')) renderInstall();
+  if (onView('home')) renderHomeBars();
+  if (onView('about')) initAbout();
+  if (onView('work')) initWork();
   route();
   if (localSummary()) liveStatus(localSummary(), true);
 })();
