@@ -816,26 +816,26 @@ html.vt-to-biz::view-transition-new(root){transform-origin:0 50%;animation:cs-un
 .wwm{max-width:1120px;margin:0 auto;padding:0 1.25rem 3rem;display:grid;grid-template-columns:minmax(0,600px) minmax(0,1fr);gap:3.5rem;align-items:start}
 @media (max-width:900px){.wwm{grid-template-columns:1fr;gap:2.5rem}}
 .wwm .contact{max-width:none}
-.wwm .contact select{width:100%;font:inherit;font-size:1rem;padding:.65rem .8rem;border-radius:10px;border:1px solid var(--line);background:var(--white);color:var(--ink)}
-.wwm .contact select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--ice)}
-.wwm .row2{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem}
-@media (max-width:520px){.wwm .row2{grid-template-columns:1fr}}
-.wwm .opt{font-weight:400;color:var(--slate)}
-.wwm fieldset{border:0;margin:0;padding:0;min-width:0}
-.wwm legend{font-size:.9rem;font-weight:600;margin:.8rem 0 .4rem;padding:0}
-.wwm .chips{display:flex;flex-wrap:wrap;gap:.45rem}
-.wwm .chips label{display:inline-flex;align-items:center;gap:.45rem;margin:0;font-weight:500;font-size:.92rem;padding:.42rem .8rem;border:1px solid var(--line);border-radius:999px;background:var(--white);cursor:pointer}
-.wwm .chips input{width:auto;margin:0;accent-color:var(--blue)}
-.wwm .chips label:has(input:checked){border-color:var(--blue);background:var(--ice)}
-.wwm .chips label:has(input:focus-visible){outline:3px solid var(--blue);outline-offset:2px}
-.wwm .sidepick{display:inline-flex;background:var(--white);border:1px solid var(--line);border-radius:999px;padding:3px;margin:0 0 .4rem}
-.wwm .sidepick button{font:inherit;font-size:.9rem;font-weight:600;border:0;background:none;color:var(--slate);padding:.4rem 1rem;border-radius:999px;cursor:pointer}
-.wwm .sidepick button[aria-pressed="true"]{background:var(--ink);color:var(--white)}
-.wwm .attach{display:flex;gap:.6rem;align-items:flex-start;background:var(--white);border:1px solid var(--line);border-radius:12px;padding:.75rem .9rem;margin-top:1rem}
-.wwm .attach input{width:auto;margin:.3rem 0 0;accent-color:var(--blue)}
-.wwm .attach label{margin:0;font-weight:500;font-size:.95rem}
-.wwm .attach .fh{display:block;margin-top:.2rem}
-.wwm .fine{font-size:.85rem;color:var(--slate);margin:.9rem 0 0}
+.wscope .contact select{width:100%;font:inherit;font-size:1rem;padding:.65rem .8rem;border-radius:10px;border:1px solid var(--line);background:var(--white);color:var(--ink)}
+.wscope .contact select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--ice)}
+.wscope .row2{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem}
+@media (max-width:520px){.wscope .row2{grid-template-columns:1fr}}
+.wscope .opt{font-weight:400;color:var(--slate)}
+.wscope fieldset{border:0;margin:0;padding:0;min-width:0}
+.wscope legend{font-size:.9rem;font-weight:600;margin:.8rem 0 .4rem;padding:0}
+.wscope .chips{display:flex;flex-wrap:wrap;gap:.45rem}
+.wscope .chips label{display:inline-flex;align-items:center;gap:.45rem;margin:0;font-weight:500;font-size:.92rem;padding:.42rem .8rem;border:1px solid var(--line);border-radius:999px;background:var(--white);cursor:pointer}
+.wscope .chips input{width:auto;margin:0;accent-color:var(--blue)}
+.wscope .chips label:has(input:checked){border-color:var(--blue);background:var(--ice)}
+.wscope .chips label:has(input:focus-visible){outline:3px solid var(--blue);outline-offset:2px}
+.wscope .sidepick{display:inline-flex;background:var(--white);border:1px solid var(--line);border-radius:999px;padding:3px;margin:0 0 .4rem}
+.wscope .sidepick button{font:inherit;font-size:.9rem;font-weight:600;border:0;background:none;color:var(--slate);padding:.4rem 1rem;border-radius:999px;cursor:pointer}
+.wscope .sidepick button[aria-pressed="true"]{background:var(--ink);color:var(--white)}
+.wscope .attach{display:flex;gap:.6rem;align-items:flex-start;background:var(--white);border:1px solid var(--line);border-radius:12px;padding:.75rem .9rem;margin-top:1rem}
+.wscope .attach input{width:auto;margin:.3rem 0 0;accent-color:var(--blue)}
+.wscope .attach label{margin:0;font-weight:500;font-size:.95rem}
+.wscope .attach .fh{display:block;margin-top:.2rem}
+.wscope .fine{font-size:.85rem;color:var(--slate);margin:.9rem 0 0}
 .wwm-aside h2{font-size:1.2rem;letter-spacing:-.015em;font-weight:680;margin:0 0 .7rem}
 .wwm-aside h2:not(:first-child){margin-top:2.2rem}
 .wwm-aside ol{list-style:none;counter-reset:w;margin:0;padding:0}
@@ -844,9 +844,35 @@ html.vt-to-biz::view-transition-new(root){transform-origin:0 50%;animation:cs-un
 .wwm-aside ol li::before{content:counter(w);position:absolute;left:0;top:.05rem;width:1.6rem;height:1.6rem;border-radius:50%;background:var(--ice);color:var(--blue);font-weight:700;font-size:.85rem;display:grid;place-items:center}
 .wwm-aside p{color:var(--slate);margin:0 0 .8rem}
 .wwm-aside .links{display:flex;flex-wrap:wrap;gap:.6rem}
-#view-work[data-mode="home"] .biz,#view-work:not([data-mode="home"]) .hm{display:none !important}
+.wscope[data-mode="home"] .biz,.wscope:not([data-mode="home"]) .hm{display:none !important}
 @media (max-width:370px){.gcta{width:28px;height:28px;margin:0 0 0 .1rem}.gcta svg{width:14px;height:14px}.gnav nav a{padding:.3rem .2rem;font-size:.76rem}.theme-t{width:28px;height:28px}.gnav-in{padding:0 .35rem 0 .5rem;gap:.25rem}}
-@media print{.gcta,.wwm-band{display:none !important}}
+.wdraw{position:fixed;inset:0;z-index:60}
+.wdraw-bg{position:absolute;inset:0;background:rgba(6,14,28,.42);opacity:0;transition:opacity .25s ease}
+.wdraw-p{position:absolute;top:0;right:0;bottom:0;width:min(500px,100%);background:var(--white);box-shadow:-24px 0 60px rgba(6,14,28,.2);overflow-y:auto;overscroll-behavior:contain;padding:calc(env(safe-area-inset-top,0px) + 1.1rem) 1.3rem calc(env(safe-area-inset-bottom,0px) + 2rem);transform:translateX(100%);transition:transform .34s cubic-bezier(.3,.6,.2,1)}
+.wdraw.open .wdraw-bg{opacity:1}
+.wdraw.open .wdraw-p{transform:none}
+.wdraw-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin:0 0 .35rem}
+.wdraw-top h2{font-size:1.65rem;line-height:1.1;letter-spacing:-.03em;font-weight:680;margin:0}
+.wdraw-x{flex:none;width:38px;height:38px;border-radius:999px;border:0;background:var(--mist);color:var(--ink);display:grid;place-items:center;cursor:pointer}
+.wdraw-x:hover{background:var(--line)}
+.wdraw-lede{color:var(--slate);font-size:1rem;line-height:1.5;margin:0 0 1.1rem}
+.wdraw .contact{padding:1.1rem 1.15rem 1.3rem}
+.wdraw-p .row2{grid-template-columns:1fr 1fr}
+@media (max-width:520px){.wdraw-p .row2{grid-template-columns:1fr}}
+.wdraw-p:focus{outline:none}
+html.wlock,html.wlock body{overflow:hidden}
+.wtab{display:none}
+@media (min-width:900px){
+  .gcta{display:none}
+  .wtab{position:fixed;right:0;top:50%;z-index:35;display:flex;align-items:center;gap:.55rem;writing-mode:vertical-rl;transform:translateY(-50%) rotate(180deg);background:var(--blue);color:#fff;font-size:.9rem;font-weight:650;letter-spacing:.01em;padding:1rem .6rem;border-radius:0 12px 12px 0;box-shadow:0 6px 24px rgba(6,14,28,.18);transition:padding .2s ease,background .2s ease}
+  .wtab:hover{text-decoration:none;background:var(--blue-deep);padding-right:.8rem}
+  .wtab svg{width:17px;height:17px;flex:none;transform:rotate(90deg)}
+  .wdraw:not([hidden]) ~ .wtab{display:none}
+}
+:root[data-theme="dark"] .wtab{color:#0A1322}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .wtab{color:#0A1322}}
+@media (prefers-reduced-motion: reduce){.wdraw-bg,.wdraw-p,.wtab{transition:none}}
+@media print{.gcta,.wwm-band,.wtab,.wdraw{display:none !important}}
 
 /* ---------- Project report ---------- */
 .rbar{max-width:1120px;margin:0 auto;padding:0 1.25rem .4rem;display:flex;flex-wrap:wrap;align-items:center;gap:.8rem 1.4rem}
@@ -1330,7 +1356,7 @@ html.vt-to-biz::view-transition-new(root){transform-origin:0 50%;animation:cs-un
       <a id="gn-blog" href="/blog/">Blog</a>
       <a id="gn-about" href="#about">About</a>
     </nav>
-    <a class="gcta" id="gn-work" href="#work" aria-label="Work with me"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6.5h16v10H9l-4 3.5v-3.5H4z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg><span class="t">Work with me</span></a>
+    <a class="gcta" id="gn-work" href="#work" aria-label="Work with me" data-work><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6.5h16v10H9l-4 3.5v-3.5H4z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg><span class="t">Work with me</span></a>
     <button type="button" class="theme-t" id="theme-t" aria-label="Switch to dark mode" title="Switch to dark mode"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
     </div>
   </div>
@@ -1483,7 +1509,7 @@ html.vt-to-biz::view-transition-new(root){transform-origin:0 50%;animation:cs-un
 </section>
 
 <!-- WORK WITH ME -->
-<section id="view-work" hidden>
+<section id="view-work" class="wscope" hidden>
   <div class="tool-head">
     <h1>Work with me</h1>
     <p class="biz">Planning chargers at a dealership, a hotel, a depot or a lot you own? Tell me about it. I've built and run these, so I'll tell you what I'd check first and where the money usually leaks out.</p>
@@ -1491,65 +1517,8 @@ html.vt-to-biz::view-transition-new(root){transform-origin:0 50%;animation:cs-un
     <div class="spot" aria-hidden="true"><svg viewBox="0 0 720 150" focusable="false"><path class="ln d" pathLength="1" d="M40,132 V70 L90,40 L140,70 V132 M40,132 H140 M62,132 V100 H86 V132 M100,96 H124 V112 H100 Z" style="--d:0.00s"/><circle class="fb ping" cx="90" cy="24" r="5" style="--d:0.60s"/><text x="90" y="148" text-anchor="middle">Your project</text><path class="lt" d="M150,86 H292"/><path class="lb flow" d="M150,86 H292"/><rect class="ln d fw" pathLength="1" x="300" y="56" width="120" height="62" rx="8" style="--d:0.30s"/><path class="ln d" pathLength="1" d="M300,60 L360,96 L420,60" style="--d:0.55s"/><text x="360" y="148" text-anchor="middle">The form</text><path class="lt" d="M430,86 H570"/><path class="lb flow" d="M430,86 H570"/><rect class="ln d fw" pathLength="1" x="580" y="36" width="96" height="100" rx="8" style="--d:0.60s"/><path class="lb d" pathLength="1" d="M596,62 l6,6 l12,-12 M596,90 l6,6 l12,-12" style="--d:1.10s"/><path class="lt" d="M624,64 H660 M624,92 H660 M596,118 H660"/><text x="628" y="148" text-anchor="middle">A straight answer</text></svg></div>
   </div>
   <div class="wwm">
-    <form class="contact" id="work-form" novalidate>
-      <div class="sidepick" id="w-sidepick" role="group" aria-label="What is this about" hidden><button type="button" data-mode="business" aria-pressed="true">Business</button><button type="button" data-mode="home" aria-pressed="false">Home</button></div>
-      <div class="row2">
-        <div><label for="w-name">Name</label><input id="w-name" name="name" autocomplete="name" required></div>
-        <div><label for="w-email">Email</label><input id="w-email" name="email" type="email" autocomplete="email" required></div>
-      </div>
-      <div class="biz">
-        <div class="row2">
-          <div><label for="w-org">Company <span class="opt">(optional)</span></label><input id="w-org" name="company" autocomplete="organization"></div>
-          <div><label for="w-role">You are</label><select id="w-role" name="role">
-            <option value="">Pick one</option>
-            <option>A car dealership</option>
-            <option>A hotel, retailer or other host site</option>
-            <option>A fleet or depot</option>
-            <option>A developer or investor</option>
-            <option>A charging operator</option>
-            <option>A hardware or software company</option>
-            <option>A utility or public agency</option>
-            <option>Something else</option>
-          </select></div>
-        </div>
-        <fieldset>
-          <legend>What would help <span class="opt">(pick any)</span></legend>
-          <div class="chips">
-            <label><input type="checkbox" name="help" value="Does the site pencil">Does the site pencil</label>
-            <label><input type="checkbox" name="help" value="Picking hardware and vendors">Picking hardware and vendors</label>
-            <label><input type="checkbox" name="help" value="Utility service and install">Utility service and install</label>
-            <label><input type="checkbox" name="help" value="Incentives and financing">Incentives and financing</label>
-            <label><input type="checkbox" name="help" value="Fleet planning">Fleet planning</label>
-            <label><input type="checkbox" name="help" value="Collaboration or partnership">Collaboration or partnership</label>
-            <label><input type="checkbox" name="help" value="Just a question">Just a question</label>
-          </div>
-        </fieldset>
-        <div class="row2">
-          <div><label for="w-where">Where <span class="opt">(city, state)</span></label><input id="w-where" name="location" autocomplete="address-level2"></div>
-          <div><label for="w-sites">How many sites</label><select id="w-sites" name="sites">
-            <option value="">Pick one</option><option>One</option><option>2 to 5</option><option>6 to 20</option><option>More than 20</option><option>Not a site question</option>
-          </select></div>
-        </div>
-        <label for="w-when">Timeline</label>
-        <select id="w-when" name="timeline">
-          <option value="">Pick one</option><option>Just exploring</option><option>Within 6 months</option><option>6 to 12 months</option><option>Already building</option><option>Already running, and it hurts</option>
-        </select>
-      </div>
-      <label for="w-msg"><span class="biz">Tell me about it</span><span class="hm">Your question</span></label>
-      <textarea id="w-msg" name="message" required></textarea>
-      <div class="attach biz" id="w-attach" hidden>
-        <input type="checkbox" id="w-report">
-        <label for="w-report">Include my project report <span id="w-report-sum"></span><span class="fh">Your report normally never leaves this browser. Tick this and a text copy goes along with your message. Nothing else does.</span></label>
-      </div>
-      <input type="hidden" name="_subject" id="w-subject" value="Charge Sheet: new message">
-      <input type="hidden" name="side" id="w-side" value="business">
-      <input type="hidden" name="page" id="w-from" value="">
-      <input type="hidden" name="report" id="w-rep" value="">
-      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-      <button class="btn primary" type="submit">Send it</button>
-      <div class="status" id="work-status" role="status" hidden></div>
-      <p class="fine">It lands in my own inbox. No mailing list, no sales team, mostly because there isn't one.</p>
-    </form>
+    <div id="work-slot" class="wslot"></div>
+    <noscript><p>The form needs JavaScript. <a href="https://www.linkedin.com/in/aatish-patel-2b9424a4/">LinkedIn</a> works without it.</p></noscript>
     <aside class="wwm-aside">
       <h2>What happens next</h2>
       <ol>
@@ -1591,7 +1560,7 @@ html.vt-to-biz::view-transition-new(root){transform-origin:0 50%;animation:cs-un
 
       <h2>Get in touch</h2>
       <p>Working on a project, stuck on a question, or sitting on data from your own sites you'd share anonymously? I read everything.</p>
-      <p><a class="btn primary" href="#work">Work with me</a></p>
+      <p><a class="btn primary" href="#work" data-work data-from="about">Work with me</a></p>
       <div class="links" id="about-links"></div>
     </div>
   </div>
@@ -3693,11 +3662,82 @@ html.vt-to-biz::view-transition-new(root){transform-origin:0 50%;animation:cs-un
 </section>
 <!--/home-side-->
 </main>
+<template id="wform-tpl">
+    <form class="contact wform" novalidate>
+      <div class="sidepick" role="group" aria-label="What is this about" hidden><button type="button" data-mode="business" aria-pressed="true">Business</button><button type="button" data-mode="home" aria-pressed="false">Home</button></div>
+      <div class="row2">
+        <div><label for="__name">Name</label><input id="__name" name="name" autocomplete="name" required></div>
+        <div><label for="__email">Email</label><input id="__email" name="email" type="email" autocomplete="email" required></div>
+      </div>
+      <div class="biz">
+        <div class="row2">
+          <div><label for="__org">Company <span class="opt">(optional)</span></label><input id="__org" name="company" autocomplete="organization"></div>
+          <div><label for="__role">You are</label><select id="__role" name="role">
+            <option value="">Pick one</option>
+            <option>A car dealership</option>
+            <option>A hotel, retailer or other host site</option>
+            <option>A fleet or depot</option>
+            <option>A developer or investor</option>
+            <option>A charging operator</option>
+            <option>A hardware or software company</option>
+            <option>A utility or public agency</option>
+            <option>Something else</option>
+          </select></div>
+        </div>
+        <fieldset>
+          <legend>What would help <span class="opt">(pick any)</span></legend>
+          <div class="chips">
+            <label><input type="checkbox" name="help" value="Does the site pencil">Does the site pencil</label>
+            <label><input type="checkbox" name="help" value="Picking hardware and vendors">Picking hardware and vendors</label>
+            <label><input type="checkbox" name="help" value="Utility service and install">Utility service and install</label>
+            <label><input type="checkbox" name="help" value="Incentives and financing">Incentives and financing</label>
+            <label><input type="checkbox" name="help" value="Fleet planning">Fleet planning</label>
+            <label><input type="checkbox" name="help" value="Collaboration or partnership">Collaboration or partnership</label>
+            <label><input type="checkbox" name="help" value="Just a question">Just a question</label>
+          </div>
+        </fieldset>
+        <div class="row2">
+          <div><label for="__where">Where <span class="opt">(city, state)</span></label><input id="__where" name="location" autocomplete="address-level2"></div>
+          <div><label for="__sites">How many sites</label><select id="__sites" name="sites">
+            <option value="">Pick one</option><option>One</option><option>2 to 5</option><option>6 to 20</option><option>More than 20</option><option>Not a site question</option>
+          </select></div>
+        </div>
+        <label for="__when">Timeline</label>
+        <select id="__when" name="timeline">
+          <option value="">Pick one</option><option>Just exploring</option><option>Within 6 months</option><option>6 to 12 months</option><option>Already building</option><option>Already running, and it hurts</option>
+        </select>
+      </div>
+      <label for="__msg"><span class="biz">Tell me about it</span><span class="hm">Your question</span></label>
+      <textarea id="__msg" name="message" required></textarea>
+      <div class="attach biz" hidden>
+        <input type="checkbox" id="__report">
+        <label for="__report">Include my project report <span id="__report-sum"></span><span class="fh">Your report normally never leaves this browser. Tick this and a text copy goes along with your message. Nothing else does.</span></label>
+      </div>
+      <input type="hidden" name="_subject" id="__subject" value="Charge Sheet: new message">
+      <input type="hidden" name="side" id="__side" value="business">
+      <input type="hidden" name="page" id="__from" value="">
+      <input type="hidden" name="report" id="__rep" value="">
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <button class="btn primary" type="submit">Send it</button>
+      <div class="status" id="__status" role="status" hidden></div>
+      <p class="fine">It lands in my own inbox. No mailing list, no sales team, mostly because there isn't one.</p>
+    </form>
+</template>
+<div class="wdraw" id="wdraw" hidden>
+  <div class="wdraw-bg" data-wclose></div>
+  <div class="wdraw-p wscope" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="wdraw-h" data-mode="business">
+    <div class="wdraw-top"><h2 id="wdraw-h">Work with me</h2><button type="button" class="wdraw-x" data-wclose aria-label="Close"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+    <p class="biz wdraw-lede">Tell me about the project. I'll tell you what I'd check first and where the money usually leaks out.</p>
+    <p class="hm wdraw-lede">Ask me anything about charging at home.</p>
+    <div id="wdraw-slot" class="wslot"></div>
+  </div>
+</div>
+<a class="wtab" id="wtab" href="#work" data-work><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6.5h16v10H9l-4 3.5v-3.5H4z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg><span>Work with me</span></a>
 <footer><div class="foot">
-  <div><b>The Charge Sheet</b><p>A free, open source guide to EV charging, at home and in business, built and given away by <a href="#about">Aatish Patel</a>. Ballpark numbers and honest opinions. Not financial advice.</p><p>Working on a real site? <a href="#work">Tell me about it</a>.</p><p>Text CC BY 4.0. Code MIT.</p></div>
+  <div><b>The Charge Sheet</b><p>A free, open source guide to EV charging, at home and in business, built and given away by <a href="#about">Aatish Patel</a>. Ballpark numbers and honest opinions. Not financial advice.</p><p>Working on a real site? <a href="#work" data-work>Tell me about it</a>.</p><p>Text CC BY 4.0. Code MIT.</p></div>
   <div><b>Learn</b><a href="#basics">How charging works</a><a href="#primer">The business</a><a href="#realestate">Real estate</a><a href="#finance">Paying for it</a><a href="#storage">Batteries</a><a href="#connectivity">Connectivity</a><a href="#vendors">Buying</a><a href="#fleet">Fleet charging</a></div>
   <div><b>Tools</b><a href="#planner">Site planner</a><a href="#install">Install estimator</a><a href="#sbatool">SBA loan check</a><a href="#fleettool">Fleet throughput</a><a href="#forecast">Utilization forecast</a><a href="#sitecheck">Connectivity check</a><a href="#hardware">Chargers</a><a href="#report">Project report</a></div>
-  <!--home-side--><div><b>At home</b><a href="#hhub">Overview</a><a href="#hbasics">Charging at home</a><a href="#hcost">What it costs</a><a href="#hbattery">Home batteries</a><a href="#hvtoh">Your car as a battery</a><a href="#hcharge">Charging cost</a><a href="#hinstall">Home install estimator</a><a href="#hbackup">Backup sizer</a><a href="#hvcompare">V2H vs battery</a><a href="#hgear">Home gear</a></div><!--/home-side--><div><b>More</b><a href="#work">Work with me</a><a href="#benchmarks">Benchmarks</a><a href="#method">Method and sources</a><a href="#glossary">Glossary</a><a href="/blog/">Blog</a><a href="#about">About</a><a href="https://github.com/aatishi4/the-charge-sheet" rel="noopener">Source code</a></div>
+  <!--home-side--><div><b>At home</b><a href="#hhub">Overview</a><a href="#hbasics">Charging at home</a><a href="#hcost">What it costs</a><a href="#hbattery">Home batteries</a><a href="#hvtoh">Your car as a battery</a><a href="#hcharge">Charging cost</a><a href="#hinstall">Home install estimator</a><a href="#hbackup">Backup sizer</a><a href="#hvcompare">V2H vs battery</a><a href="#hgear">Home gear</a></div><!--/home-side--><div><b>More</b><a href="#work" data-work>Work with me</a><a href="#benchmarks">Benchmarks</a><a href="#method">Method and sources</a><a href="#glossary">Glossary</a><a href="/blog/">Blog</a><a href="#about">About</a><a href="https://github.com/aatishi4/the-charge-sheet" rel="noopener">Source code</a></div>
 </div></footer>
 <script>
 
@@ -4328,6 +4368,7 @@ if (typeof document !== 'undefined') (function(){
     if (!document.getElementById('view-hhub')) side = 'biz';
     document.documentElement.setAttribute('data-side', side);
     Array.prototype.forEach.call(document.querySelectorAll('.sidesw a'), function(a){ a.setAttribute('aria-current', String(a.classList.contains(side==='home'?'sw-home':'sw-biz'))); });
+    var wt = document.getElementById('wtab'); if (wt) wt.hidden = (view==='work'); if (view==='work') closeWork();
     var gw = document.getElementById('gn-work'); if (gw){ if (view==='work') gw.setAttribute('aria-current','page'); else gw.removeAttribute('aria-current'); }
     var sn = document.getElementById('snav');
     if (g && MPA && document.getElementById('snav-links').children.length){
@@ -4602,13 +4643,20 @@ if (typeof document !== 'undefined') (function(){
     raw.split('&').forEach(function(kv){ var i = kv.indexOf('='); if (i>0) o[kv.slice(0,i)] = decodeURIComponent(kv.slice(i+1)); });
     return o;
   }
-  var WORKMODE = null;
+  function currentView(){ return MPA ? window.CS_PAGE : viewOf(location.hash.replace('#','').split('?')[0]); }
+  var WORKMODE = null, WFORMS = [];
+  function initialMode(){
+    var p = workParams(), side = null;
+    try { side = sessionStorage.getItem('cs-side'); } catch(e){}
+    return p['for'] || document.documentElement.getAttribute('data-side') || side || 'business';
+  }
   function setWorkMode(m){
     WORKMODE = m === 'home' ? 'home' : 'business';
-    var sec = document.getElementById('view-work'); if (!sec) return;
-    sec.setAttribute('data-mode', WORKMODE);
-    var sd = document.getElementById('w-side'); if (sd) sd.value = WORKMODE;
-    Array.prototype.forEach.call(document.querySelectorAll('#w-sidepick button'), function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-mode')===WORKMODE ? 'true' : 'false'); });
+    Array.prototype.forEach.call(document.querySelectorAll('.wscope'), function(sc){ sc.setAttribute('data-mode', WORKMODE); });
+    WFORMS.forEach(function(f){
+      f.querySelector('[name=side]').value = WORKMODE;
+      Array.prototype.forEach.call(f.querySelectorAll('.sidepick button'), function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-mode')===WORKMODE ? 'true' : 'false'); });
+    });
   }
   function reportText(){
     var R = loadReport(), keys = Object.keys(R.items); if (!keys.length) return '';
@@ -4624,19 +4672,102 @@ if (typeof document !== 'undefined') (function(){
     var txt = out.join('\n');
     return txt.length > 20000 ? txt.slice(0,20000)+'\n[trimmed]' : txt;
   }
-  function renderWork(){
-    var p = workParams(), side = null;
-    try { side = sessionStorage.getItem('cs-side'); } catch(e){}
-    if (WORKMODE===null) setWorkMode(p['for'] || side || 'business'); else setWorkMode(WORKMODE);
-    var pick = document.getElementById('w-sidepick'); if (pick) pick.hidden = window.CS_HOME_LIVE !== true;
-    var fr = document.getElementById('w-from'); if (fr) fr.value = p.from || '';
-    var R = loadReport(), n = Object.keys(R.items).length, box = document.getElementById('w-attach');
+  function makeWorkForm(slot, prefix){
+    var tpl = document.getElementById('wform-tpl'); if (!slot || !tpl) return null;
+    slot.innerHTML = tpl.innerHTML.replace(/__/g, prefix);
+    var form = slot.querySelector('form'), st = slot.querySelector('.status');
+    Array.prototype.forEach.call(form.querySelectorAll('.sidepick button'), function(b){ b.onclick = function(){ setWorkMode(b.getAttribute('data-mode')); }; });
+    form.onsubmit = function(e){
+      e.preventDefault();
+      st.hidden = false; st.className = 'status';
+      var F = form.elements, name = F.name.value.trim(), email = F.email.value.trim(), msg = F.message.value.trim();
+      if (!name || !email || !msg){ st.textContent = 'Fill in your name, email and '+(WORKMODE==='home'?'your question':'a few lines about the project')+', then send.'; return; }
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ st.textContent = 'That email address doesn\u2019t look right. Check it and send again.'; return; }
+      if (!CONFIG.formspree){ st.textContent = 'The form isn\u2019t switched on yet. LinkedIn works in the meantime.'; return; }
+      var home = WORKMODE==='home', role = F.role.value, where = F.location.value.trim();
+      F._subject.value = home ? 'Charge Sheet home question from '+name
+        : 'Charge Sheet project: '+(role ? role.replace(/^An? /,'') : 'new message')+(where ? ', '+where : '');
+      var rc = form.querySelector('.attach input[type=checkbox]');
+      F.report.value = (!home && rc && rc.checked) ? reportText() : '';
+      var fd = new FormData(form);
+      if (home) ['company','role','help','location','sites','timeline','report'].forEach(function(k){ fd.delete(k); });
+      else { var h = fd.getAll('help'); fd.delete('help'); if (h.length) fd.append('help', h.join(', ')); if (!fd.get('report')) fd.delete('report'); }
+      if (!fd.get('page')) fd.delete('page');
+      st.textContent = 'Sending...';
+      fetch(CONFIG.formspree, {method:'POST', headers:{'Accept':'application/json'}, body:fd})
+        .then(function(r){ if (!r.ok) throw new Error(r.status); st.className = 'status ok'; st.textContent = 'Sent. It\u2019s in my inbox now, and I\u2019ll get back to you.'; var pg = F.page.value; form.reset(); F.page.value = pg; setWorkMode(WORKMODE); })
+        .catch(function(){ st.textContent = 'That didn\u2019t go through. Try again in a minute, or reach me on LinkedIn.'; });
+    };
+    WFORMS.push(form);
+    return form;
+  }
+  function prepWorkForm(form, from, attach){
+    if (!form) return;
+    form.elements.page.value = from || '';
+    var pick = form.querySelector('.sidepick'); if (pick) pick.hidden = window.CS_HOME_LIVE !== true;
+    var R = loadReport(), n = Object.keys(R.items).length, box = form.querySelector('.attach');
     if (box){
       box.hidden = !n;
-      var sum = document.getElementById('w-report-sum');
+      var sum = box.querySelector('[id$="report-sum"]');
       if (sum) sum.textContent = n ? '('+n+' of '+RTOOLS.length+' tools'+(R.name ? ', '+R.name : '')+')' : '';
-      if (n && p.attach==='1') document.getElementById('w-report').checked = true;
+      if (n && attach==='1') box.querySelector('input[type=checkbox]').checked = true;
     }
+  }
+  var PAGEFORM = null;
+  function renderWork(){
+    if (!PAGEFORM) PAGEFORM = makeWorkForm(document.getElementById('work-slot'), 'w-');
+    if (WORKMODE===null) setWorkMode(initialMode()); else setWorkMode(WORKMODE);
+    var p = workParams(); prepWorkForm(PAGEFORM, p.from, p.attach);
+  }
+  /* Slide-in form: opened by the header button (phones), the side tab (desktop), the bands and footer links */
+  var DRAWFORM = null, WLAST = null;
+  var WD = document.getElementById('wdraw');
+  function drawerFocusables(){ return Array.prototype.filter.call(WD.querySelectorAll('button, [href], input:not([type=hidden]), select, textarea'), function(el){ return !el.disabled && el.offsetParent !== null && el.getAttribute('tabindex')!=='-1'; }); }
+  function openWork(opts, trigger){
+    opts = opts || {};
+    if (currentView()==='work'){
+      var nm = document.querySelector('#work-slot input[name=name]');
+      if (nm){ nm.closest('form').scrollIntoView({behavior: REDUCED ? 'auto' : 'smooth', block:'start'}); setTimeout(function(){ nm.focus({preventScroll:true}); }, REDUCED ? 0 : 400); }
+      return;
+    }
+    if (!WD) return false;
+    if (!DRAWFORM) DRAWFORM = makeWorkForm(document.getElementById('wdraw-slot'), 'd-');
+    if (WORKMODE===null) setWorkMode(initialMode()); else setWorkMode(WORKMODE);
+    var here = window.CS_PAGE==='blog' ? location.pathname : currentView();
+    prepWorkForm(DRAWFORM, opts.from || here, opts.attach);
+    var st = DRAWFORM.querySelector('.status'); if (st && !st.classList.contains('ok')) st.hidden = true;
+    WLAST = trigger || document.activeElement;
+    WD.hidden = false;
+    document.documentElement.classList.add('wlock');
+    void WD.offsetWidth;
+    WD.classList.add('open');
+    setTimeout(function(){
+      // Desktop: straight into the name field. Phones: focus the panel, so the keyboard doesn't jump up over the form.
+      var wide = window.matchMedia && window.matchMedia('(min-width:900px) and (pointer:fine)').matches, f = DRAWFORM.elements.name;
+      if (wide && f) f.focus({preventScroll:true}); else WD.querySelector('.wdraw-p').focus({preventScroll:true});
+    }, REDUCED ? 0 : 60);
+  }
+  function closeWork(){
+    if (!WD || WD.hidden) return;
+    WD.classList.remove('open');
+    document.documentElement.classList.remove('wlock');
+    setTimeout(function(){ WD.hidden = true; if (WLAST && WLAST.focus) WLAST.focus({preventScroll:true}); }, REDUCED ? 0 : 340);
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[data-work]') : null;
+    if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return;
+    if (openWork({from: a.getAttribute('data-from'), attach: a.getAttribute('data-attach')}, a) === false) return;
+    e.preventDefault(); e.stopPropagation();
+  }, true);
+  if (WD){
+    Array.prototype.forEach.call(WD.querySelectorAll('[data-wclose]'), function(el){ el.addEventListener('click', closeWork); });
+    WD.addEventListener('keydown', function(e){
+      if (e.key==='Escape'){ e.preventDefault(); closeWork(); return; }
+      if (e.key!=='Tab') return;
+      var f = drawerFocusables(); if (!f.length) return;
+      if (e.shiftKey && document.activeElement===f[0]){ e.preventDefault(); f[f.length-1].focus(); }
+      else if (!e.shiftKey && document.activeElement===f[f.length-1]){ e.preventDefault(); f[0].focus(); }
+    });
   }
   function initWork(){
     var links = document.getElementById('work-links');
@@ -4646,30 +4777,6 @@ if (typeof document !== 'undefined') (function(){
       if (CONFIG.discussions) L.push('<a class="btn quiet small" href="'+CONFIG.discussions+'" rel="noopener">Ask in public</a>');
       links.innerHTML = L.join('');
     }
-    Array.prototype.forEach.call(document.querySelectorAll('#w-sidepick button'), function(b){ b.onclick = function(){ setWorkMode(b.getAttribute('data-mode')); }; });
-    var form = document.getElementById('work-form'), st = document.getElementById('work-status');
-    if (!form || !st) return;
-    form.onsubmit = function(e){
-      e.preventDefault();
-      st.hidden = false; st.className = 'status';
-      var name = form.elements.name.value.trim(), email = form.elements.email.value.trim(), msg = form.elements.message.value.trim();
-      if (!name || !email || !msg){ st.textContent = 'Fill in your name, email and '+(WORKMODE==='home'?'your question':'a few lines about the project')+', then send.'; return; }
-      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ st.textContent = 'That email address doesn\u2019t look right. Check it and send again.'; return; }
-      if (!CONFIG.formspree){ st.textContent = 'The form isn\u2019t switched on yet. LinkedIn works in the meantime.'; return; }
-      var home = WORKMODE==='home', role = form.elements.role.value, where = form.elements.location.value.trim();
-      document.getElementById('w-subject').value = home ? 'Charge Sheet home question from '+name
-        : 'Charge Sheet project: '+(role ? role.replace(/^An? /,'') : 'new message')+(where ? ', '+where : '');
-      var rc = document.getElementById('w-report');
-      document.getElementById('w-rep').value = (!home && rc && rc.checked) ? reportText() : '';
-      var fd = new FormData(form);
-      if (home) ['company','role','help','location','sites','timeline','report'].forEach(function(k){ fd.delete(k); });
-      else { var h = fd.getAll('help'); fd.delete('help'); if (h.length) fd.append('help', h.join(', ')); if (!fd.get('report')) fd.delete('report'); }
-      if (!fd.get('page')) fd.delete('page');
-      st.textContent = 'Sending...';
-      fetch(CONFIG.formspree, {method:'POST', headers:{'Accept':'application/json'}, body:fd})
-        .then(function(r){ if (!r.ok) throw new Error(r.status); st.className = 'status ok'; st.textContent = 'Sent. It\u2019s in my inbox now, and I\u2019ll get back to you.'; form.reset(); setWorkMode(WORKMODE); })
-        .catch(function(){ st.textContent = 'That didn\u2019t go through. Try again in a minute, or reach me on LinkedIn.'; });
-    };
   }
 
   var AVATAR = 'img/aatish-96.jpg';
@@ -4686,7 +4793,7 @@ if (typeof document !== 'undefined') (function(){
       var sec = document.getElementById('view-'+v); if (!sec) return;
       var c = COPY[v==='report' ? 'report' : tools.indexOf(v)>=0 ? 'tool' : 'guide'];
       var d = document.createElement('div'); d.className = 'wwm-band';
-      d.innerHTML = '<div class="wwm-card"><img src="'+AVATAR+'" alt="" width="56" height="56" loading="lazy"><h2>'+c[0]+'</h2><p>'+c[1]+'</p><div class="acts"><a class="btn primary" href="'+workHref({from:v, attach:c[3]})+'">'+c[2]+'</a></div></div>';
+      d.innerHTML = '<div class="wwm-card"><img src="'+AVATAR+'" alt="" width="56" height="56" loading="lazy"><h2>'+c[0]+'</h2><p>'+c[1]+'</p><div class="acts"><a class="btn primary" data-work data-from="'+v+'"'+(c[3]?' data-attach="'+c[3]+'"':'')+' href="'+workHref({from:v, attach:c[3]})+'">'+c[2]+'</a></div></div>';
       var nx = sec.querySelector(':scope > .nextpage');
       if (nx) sec.insertBefore(d, nx); else sec.appendChild(d);
     });
