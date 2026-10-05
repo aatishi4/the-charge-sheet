@@ -105,19 +105,31 @@ HOME_PAGES = [
      'Backup power, time shifting and solar storage. kW versus kWh, surge and air conditioners, whole-home versus essentials, 2026 prices and tax credits.', 'guide'),
     ('hvtoh', 'home/vehicle-to-home-v2h', 'Vehicle-to-Home (V2H): Which EVs Can Power a House',
      'Which EVs can run a house today, the hardware in between, what it costs, and the pros and cons of using your car as a home battery.', 'guide'),
+    ('hrent', 'home/ev-charging-apartment-condo-hoa', 'EV Charging in an Apartment, Condo or HOA: Your Rights',
+     'Right-to-charge laws by state, your options from a plain outlet to shared chargers, who pays for the power, and a letter to send your board or landlord.', 'guide'),
+    ('hstart', 'home/start', 'What Home EV Charger Do I Need? A Two-Minute Answer',
+     'Your car, your commute, where you park and your panel. Get the setup to install, what it costs, rebates from your utility, and what to ask the electrician.', 'tool'),
     ('hcharge', 'home/ev-charging-cost-calculator', 'Home EV Charging Cost Calculator with Time-of-Use Rates',
      'Your car, your arrival charge, your plug-in time and your utility rate. Finds the cheapest charging hours and the cost per night, month and year.', 'tool'),
     ('hinstall', 'home/home-ev-charger-installation-cost', 'Home EV Charger Installation Cost and Panel Load Calculator',
      'Estimate a home charger install from panel size, free spaces, breaker, distance and route. Checks the NEC 220.83 load and prices the fixes if it does not fit.', 'tool'),
+    ('hrebates', 'home/ev-charger-rebates', 'Home EV Charger Rebates by ZIP Code (2026)',
+     'Charger rebates, EV electricity rates and car incentives from your utility and state, looked up by ZIP code from the DOE database and refreshed weekly.', 'tool'),
     ('hbackup', 'home/home-battery-backup-calculator', 'Home Battery Backup Calculator: Size a Battery for an Outage',
      'Pick what stays on in an outage. Get running power, start-up surge and energy, then see which home batteries cover it and how many you need.', 'tool'),
     ('hvcompare', 'home/v2h-vs-home-battery', 'V2H vs Home Battery: Can Your EV Replace a Powerwall?',
      'Compare a bidirectional EV with a home battery for backup: usable energy, power, days of backup, cost, and the trade-offs.', 'tool'),
+    ('hadapt', 'home/ev-charging-adapter-finder', 'EV Charging Adapter Finder: NACS, CCS1 and J1772',
+     'Pick your EV and see which chargers it plugs straight into, which adapter the rest need (Supercharger, CCS, Level 2) and what each adapter costs.', 'tool'),
     ('hgear', 'home/home-ev-chargers-batteries', 'Home EV Chargers, Home Batteries and Bidirectional EVs',
      'Home Level 2 chargers, home batteries and every US EV that can send power out, with specs, prices and honest notes on what works today.', 'tool'),
 ]
 HOME_IDS = [p[0] for p in HOME_PAGES]
 GEAR_TAG = ['']  # filled in build(); only the home pages carry the gear data
+GEAR_TAGS = {}   # per home page: the gear data minus the big lists that page doesn't use
+GEAR_OPTIONAL = ('ports', 'adapters', 'panel', 'rtc')
+GEAR_EXTRA = {'hgear': ('adapters', 'panel'), 'hadapt': ('ports', 'adapters'), 'hstart': ('panel', 'rtc'),
+              'hrent': ('rtc',), 'hrebates': ('rtc',), 'hinstall': ('panel',)}
 PRODUCTS_TAG = ['']  # filled in build(); only the pages that use the charger catalog carry it
 PRODUCT_VIEWS = ('planner', 'hardware', 'report')
 PRODUCT_PAGES = []  # (url, name, description), filled in build(); used by llms.txt
@@ -162,6 +174,16 @@ def section_dates(src, fallback):
     return {v: dates.get(v, fallback) for v in VIEWS}
 
 
+STATE_NAMES = {'AL': 'Alabama', 'AK': 'Alaska', 'AZ': 'Arizona', 'AR': 'Arkansas', 'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut',
+               'DE': 'Delaware', 'DC': 'District of Columbia', 'FL': 'Florida', 'GA': 'Georgia', 'HI': 'Hawaii', 'ID': 'Idaho', 'IL': 'Illinois',
+               'IN': 'Indiana', 'IA': 'Iowa', 'KS': 'Kansas', 'KY': 'Kentucky', 'LA': 'Louisiana', 'ME': 'Maine', 'MD': 'Maryland',
+               'MA': 'Massachusetts', 'MI': 'Michigan', 'MN': 'Minnesota', 'MS': 'Mississippi', 'MO': 'Missouri', 'MT': 'Montana',
+               'NE': 'Nebraska', 'NV': 'Nevada', 'NH': 'New Hampshire', 'NJ': 'New Jersey', 'NM': 'New Mexico', 'NY': 'New York',
+               'NC': 'North Carolina', 'ND': 'North Dakota', 'OH': 'Ohio', 'OK': 'Oklahoma', 'OR': 'Oregon', 'PA': 'Pennsylvania',
+               'RI': 'Rhode Island', 'SC': 'South Carolina', 'SD': 'South Dakota', 'TN': 'Tennessee', 'TX': 'Texas', 'UT': 'Utah',
+               'VT': 'Vermont', 'VA': 'Virginia', 'WA': 'Washington', 'WV': 'West Virginia', 'WI': 'Wisconsin', 'WY': 'Wyoming'}
+
+
 def prerender_catalogs(full):
     """The charger catalog and the home gear page are drawn by the script. Put a plain list of the same
     products in the HTML so crawlers (and anyone without JS) see real content; the script replaces it."""
@@ -194,10 +216,49 @@ def prerender_catalogs(full):
         ve = ''.join('<li><a href="/home/home-ev-chargers-batteries/%s/"><b>%s %s</b></a> (%s): %s kWh battery%s%s.</li>' % (esc(v['id']), esc(v['make']), esc(v['model']), esc(str(v.get('years', ''))), esc(str(v.get('kwh', ''))),
                      ', V2L' if str(v.get('v2l', '0')) not in ('0', '', 'None') else '', (', ' + v2h[v['v2h']]) if v.get('v2h') in v2h else '')
                      for v in g.get('vehicles', []) if str(v.get('v2l', '0')) not in ('0', '', 'None') or v.get('v2h') in v2h)
+        pa = ''.join('<li><a href="/home/home-ev-chargers-batteries/%s/"><b>%s %s</b></a>: %s. %s</li>' % (esc(x['id']), esc(x['oem']), esc(x['model']), esc(x.get('kind', '')), esc(x.get('blurb', '')))
+                     for x in g.get('panel', []))
+        ad = ''.join('<li><a href="/home/home-ev-chargers-batteries/%s/"><b>%s %s</b></a> (%s): %s</li>' % (esc(x['id']), esc(x['maker']), esc(x['name']), esc(x.get('dir', '').replace('-to-', ' to ')), esc(x.get('who', '')))
+                     for x in g.get('adapters', []))
         body = ('<div class="prose">' + ('<h2>Home EV chargers</h2><ul>%s</ul>' % ch if ch else '') +
                 ('<h2>Home batteries</h2><ul>%s</ul>' % ba if ba else '') +
-                ('<h2>EVs that can send power out</h2><ul>%s</ul>' % ve if ve else '') + '</div>')
+                ('<h2>EVs that can send power out</h2><ul>%s</ul>' % ve if ve else '') +
+                ('<h2>Panel helpers: load managers, splitters and smart panels</h2><ul>%s</ul>' % pa if pa else '') +
+                ('<h2>Charging adapters</h2><ul>%s</ul>' % ad if ad else '') + '</div>')
         full['hgear'] = full['hgear'].replace('<div class="wrap hgear" id="h-gear"></div>', '<div class="wrap hgear" id="h-gear">%s</div>' % body, 1)
+        if 'hrent' in full and g.get('rtc'):
+            names = dict((k, v) for k, v in STATE_NAMES.items())
+            rows = ''.join('<tr><th>%s</th><td>%s</td><td>%s</td><td>%s</td></tr>' % (esc(names.get(r['st'], r['st'])), esc(r['hoa']), esc(r['renters']), esc(r['cites']))
+                           for r in g['rtc'])
+            table = ('<div class="scroll" tabindex="0"><table class="hrtc-t"><thead><tr><th>State</th><th>Condos and HOAs</th><th>Renters</th><th>Law</th></tr></thead>'
+                     '<tbody>%s</tbody></table></div>' % rows)
+            full['hrent'] = full['hrent'].replace('<div id="h-rtc-all"></div>', '<div id="h-rtc-all">%s</div>' % table, 1)
+    if 'hrebates' in full:
+        inc_dir = os.path.join(ROOT, 'data', 'incentives')
+        parts = []
+        for st in sorted(STATE_NAMES, key=lambda k: STATE_NAMES[k]):
+            try:
+                d = json.load(open(os.path.join(inc_dir, st + '.json'), encoding='utf-8'))
+            except Exception:
+                continue
+            chg = [u['name'] for u in d.get('utils', []) if u.get('res', {}).get('Infrastructure')]
+            rate = [u['name'] for u in d.get('utils', []) if u.get('res', {}).get('Fuel Prices')]
+            sp = [r['title'] for r in d.get('state', []) if r.get('kind') == 'charger']
+            if not (chg or rate or sp):
+                parts.append('<li><b>%s</b>: no home charger programs in the DOE database right now.</li>' % esc(STATE_NAMES[st]))
+                continue
+            bits = []
+            if chg:
+                bits.append('home charger programs from %s' % esc(', '.join(chg)))
+            if rate:
+                bits.append('EV or time-of-use rates from %s' % esc(', '.join(rate)))
+            if sp:
+                bits.append('state programs: %s' % esc('; '.join(sp)))
+            parts.append('<li><b>%s</b>: %s.</li>' % (esc(STATE_NAMES[st]), '; '.join(bits)))
+        if parts:
+            body = ('<h2 id="h-rb-states">Every state, at a glance</h2><p>Utilities and state programs with home charging incentives, from the '
+                    'Department of Energy\u2019s database. Type your ZIP code above for the details and links.</p><ul class="hreb-all">%s</ul>' % ''.join(parts))
+            full['hrebates'] = full['hrebates'].replace('<div class="wrap prose" id="h-reb-all"></div>', '<div class="wrap prose" id="h-reb-all">%s</div>' % body, 1)
 
 
 def write_llms_txt(h1s):
@@ -572,7 +633,7 @@ def fit60(*options):
 
 
 def gear_items(g):
-    return [(k, x) for k in ('chargers', 'batteries', 'vehicles') for x in g.get(k, [])]
+    return [(k, x) for k in ('chargers', 'batteries', 'vehicles', 'panel', 'adapters') for x in g.get(k, [])]
 
 
 def gear_meta(kind, x):
@@ -583,6 +644,15 @@ def gear_meta(kind, x):
         v2l = ('%s kW from its outlets' % x['v2l']) if x.get('v2l') else 'no factory outlets'
         d = '%s (%s): %s, %s. About %s kWh battery, %s kW onboard charger.' % (
             name, x.get('years', ''), {'yes': 'can run a house today', 'legacy': 'V2H discontinued, existing owners only', 'announced': 'V2H announced, not shipping', 'no': 'no V2H in the US'}.get(x.get('v2h'), 'V2H unknown'), v2l, x.get('kwh', ''), x.get('obc', ''))
+    elif kind == 'panel':
+        name = '%s %s' % (x['oem'], x['model'])
+        title = fit60('%s: %s for a Full Panel' % (name, x.get('kind', 'Load manager')), '%s: Price and Specs' % name, name)
+        d = '%s, %s: %s %s' % (name, x.get('kind', '').lower(), x.get('how', ''), ('About %s.' % usd(x['price'])) if x.get('price') else '')
+    elif kind == 'adapters':
+        name = '%s %s' % (x['maker'], x['name'])
+        title = fit60('%s: Who Needs It and What It Costs' % name, '%s: Price and Fit' % name, name)
+        d = '%s (%s, %s). %s %s' % (name, x.get('dir', '').replace('-to-', ' to '), 'fast charging' if x.get('level') == 'DC' else 'Level 2',
+                                    x.get('who', ''), ('About %s.' % usd(x['price'])) if x.get('price') else '')
     elif kind == 'batteries':
         name = '%s %s' % (x['oem'], x['model'])
         title = fit60('%s: Home Battery Specs and Price' % name, '%s: Specs and Price' % name, name)
@@ -602,6 +672,30 @@ def gear_meta(kind, x):
 
 def gear_detail_html(kind, x, name):
     """Static gear page body (the script redraws it on load)."""
+    if kind in ('panel', 'adapters'):
+        if kind == 'panel':
+            rows = [('Type', x.get('kind', '')), ('How it works', x.get('how', '')), ('Current', ('Up to %s A' % x['amps']) if x.get('amps') else ''),
+                    ('Works with', x.get('worksWith', '')), ('Installation', x.get('installNote', '')), ('Listing', x.get('listing', '')),
+                    ('App', x.get('app', '')), ('Price', (('About %s. ' % usd(x['price'])) if x.get('price') else '') + x.get('priceNote', ''))]
+            maker, model, blurb, site = x.get('oem', ''), x.get('model', ''), x.get('blurb', ''), x.get('website', '')
+        else:
+            rows = [('Direction', x.get('dir', '').replace('-to-', ' charger to ') + ' car'), ('Charging', 'DC fast charging' if x.get('level') == 'DC' else 'Level 2 (AC)'),
+                    ('Who needs it', x.get('who', '')), ('Listing', x.get('listing', '')),
+                    ('Price', ('About %s' % usd(x['price'])) if x.get('price') else ('Free through a dealer' if x.get('price') == 0 else 'Price varies; check the maker'))]
+            maker, model, blurb, site = x.get('maker', ''), x.get('name', ''), x.get('who', ''), x.get('url', '')
+        table = ''.join('<tr><th>%s</th><td>%s</td></tr>' % (esc(a), esc(str(b))) for a, b in rows if b)
+        back = 'panel helpers' if kind == 'panel' else 'adapters'
+        pic = ''
+        if x.get('img'):
+            pic = ('<div class="hgicon has-img"><span class="hgimg %s"><img src="/%s" alt="%s" decoding="async"></span></div>'
+                   % ('photo' if x.get('imgFit') == 'photo' else 'cut', esc(x['img']), esc(name)))
+        return ('<p class="sub"><a href="/home/home-ev-chargers-batteries/?tab=%s">All %s</a> <span class="dot">/</span> %s</p>'
+                '<div class="hwhero hgd">' + pic + '<div><p class="sub">%s</p><h2>%s</h2><p>%s</p>%s</div></div>'
+                '<h2>Details</h2><div class="scroll" tabindex="0"><table><tbody>%s</tbody></table></div>'
+                '<p class="fh">Source: %s, October 2026.</p>') % (
+            kind, back, esc(name), esc(maker), esc(model), esc(blurb),
+            ('<p><a class="btn secondary" href="%s" rel="noopener">Maker\u2019s page</a></p>' % esc(site)) if site else '', table,
+            ('<a href="%s" rel="noopener">%s</a>' % (esc(x['source']), esc(re.sub(r'^https?://(www\.)?', '', x['source']).split('/')[0]))) if x.get('source') else 'the maker')
     if kind == 'chargers':
         rows = [('Current', ('%s A continuous' % x['amps']) if x.get('amps') else 'Not published'), ('Breaker', ('%s A' % x['breaker']) if x.get('breaker') else ''),
                 ('Connects', ({'hardwire': 'Hardwired', 'plug': 'Plug-in', 'both': 'Plug-in or hardwired', 'cord': 'Portable cord'}.get(x.get('install'), '')) + ('. ' + x['plugs'] if x.get('plugs') else '')),
@@ -632,7 +726,7 @@ def gear_detail_html(kind, x, name):
                (' (<a href="%s" target="_blank" rel="noopener license">license</a>)' % esc(c['licenseUrl'])) if c.get('licenseUrl') else '')
     return ('<p class="sub"><a href="/home/home-ev-chargers-batteries/">All gear</a> <span class="dot">/</span> %s</p>'
             '<div class="hwhero hgd">%s<div><p class="sub">%s</p><p>%s</p>%s</div></div>'
-            '<h2>Specifications</h2><div class="scroll"><table><tbody>%s</tbody></table></div>%s'
+            '<h2>Specifications</h2><div class="scroll" tabindex="0"><table><tbody>%s</tbody></table></div>%s'
             '<p class="fh">Source: %s.%s</p>') % (
         esc(name), pic, esc(maker or ''), esc(x.get('blurb') or x.get('note') or ''),
         ('<p><a class="btn secondary" href="%s" rel="noopener">Manufacturer site</a></p>' % esc(x['website'])) if x.get('website') else '',
@@ -838,6 +932,15 @@ def build():
         except Exception:
             gear = '{}'
         GEAR_TAG[0] = '<script id="home-gear-data" type="application/json">%s</script>\n' % gear.replace('</', r'<\/')
+        try:
+            gfull = json.loads(gear)
+            for v in HOME_IDS:
+                keep = GEAR_EXTRA.get(v, ())
+                sub = {k: val for k, val in gfull.items() if k not in GEAR_OPTIONAL or k in keep}
+                GEAR_TAGS[v] = '<script id="home-gear-data" type="application/json">%s</script>\n' % json.dumps(
+                    sub, ensure_ascii=False, separators=(',', ':')).replace('</', r'<\/')
+        except Exception:
+            pass
     # sections, anchors, h1s
     bounds = section_bounds(src)
     missing = set(VIEWS) - set(b[0] for b in bounds)
@@ -879,7 +982,7 @@ def build():
             page_head = page_head.replace('content="index, follow, max-image-preview:large"', 'content="noindex"')
         pm = fill_snav(pre_main.replace('<html lang="en">', '<html lang="en" data-side="home">') if v in HOME_IDS else pre_main, v)
         ph = page_head.replace('<html lang="en">', '<html lang="en" data-side="home">') if v in HOME_IDS else page_head
-        data_tags = (PRODUCTS_TAG[0] if v in PRODUCT_VIEWS else '') + (GEAR_TAG[0] if v in HOME_IDS else '')
+        data_tags = (PRODUCTS_TAG[0] if v in PRODUCT_VIEWS else '') + (GEAR_TAGS.get(v, GEAR_TAG[0]) if v in HOME_IDS else '')
         doc = rewrite_links(ph + pm + body + post_main, v, anchors).replace('%%CS_CONFIG%%', data_tags + config_script(v, anchors))
         dest = os.path.join(OUT, slug, 'index.html') if slug else os.path.join(OUT, 'index.html')
         os.makedirs(os.path.dirname(dest), exist_ok=True)
@@ -959,7 +1062,7 @@ def build():
             ph = page_head.replace('<html lang="en">', '<html lang="en" data-side="home">')
             pm = fill_snav(pre_main.replace('<html lang="en">', '<html lang="en" data-side="home">'), 'hgear')
             doc = rewrite_links(ph + pm + body + post_main, 'hgear', anchors).replace(
-                '%%CS_CONFIG%%', GEAR_TAG[0] + config_script('hgear', anchors, x['id']))
+                '%%CS_CONFIG%%', GEAR_TAGS.get('hgear', GEAR_TAG[0]) + config_script('hgear', anchors, x['id']))
             dest = os.path.join(OUT, base.strip('/'), x['id'], 'index.html')
             os.makedirs(os.path.dirname(dest), exist_ok=True)
             open(dest, 'w', encoding='utf-8').write(doc)

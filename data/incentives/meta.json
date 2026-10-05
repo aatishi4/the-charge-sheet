@@ -1,0 +1,368 @@
+{
+ "built": "2026-10-01",
+ "failed": [],
+ "source": {
+  "license": "Public domain (U.S. government work)",
+  "name": "U.S. Department of Energy, Alternative Fuels Data Center: Federal and State Laws and Incentives",
+  "url": "https://afdc.energy.gov/laws"
+ },
+ "states": {
+  "AK": {
+   "chargerUtils": 1,
+   "review": "November 2025",
+   "rtc": 0,
+   "state": 0,
+   "utils": 3
+  },
+  "AL": {
+   "chargerUtils": 0,
+   "review": "February 2026",
+   "rtc": 0,
+   "state": 0,
+   "utils": 1
+  },
+  "AR": {
+   "chargerUtils": 1,
+   "review": "January 2026",
+   "rtc": 0,
+   "state": 0,
+   "utils": 4
+  },
+  "AZ": {
+   "chargerUtils": 4,
+   "review": "March 2026",
+   "rtc": 0,
+   "state": 1,
+   "utils": 4
+  },
+  "CA": {
+   "chargerUtils": 28,
+   "review": "December 2025",
+   "rtc": 2,
+   "state": 11,
+   "utils": 32
+  },
+  "CO": {
+   "chargerUtils": 8,
+   "review": "October 2025",
+   "rtc": 2,
+   "state": 2,
+   "utils": 8
+  },
+  "CT": {
+   "chargerUtils": 5,
+   "review": "November 2025",
+   "rtc": 2,
+   "state": 1,
+   "utils": 5
+  },
+  "DC": {
+   "chargerUtils": 1,
+   "review": "February 2026",
+   "rtc": 1,
+   "state": 1,
+   "utils": 1
+  },
+  "DE": {
+   "chargerUtils": 1,
+   "review": "February 2026",
+   "rtc": 0,
+   "state": 3,
+   "utils": 2
+  },
+  "FL": {
+   "chargerUtils": 4,
+   "review": "February 2026",
+   "rtc": 1,
+   "state": 0,
+   "utils": 5
+  },
+  "GA": {
+   "chargerUtils": 9,
+   "review": "October 2025",
+   "rtc": 0,
+   "state": 0,
+   "utils": 9
+  },
+  "HI": {
+   "chargerUtils": 0,
+   "review": "January 2026",
+   "rtc": 1,
+   "state": 1,
+   "utils": 0
+  },
+  "IA": {
+   "chargerUtils": 0,
+   "review": "February 2026",
+   "rtc": 0,
+   "state": 1,
+   "utils": 1
+  },
+  "ID": {
+   "chargerUtils": 1,
+   "review": "July 2025",
+   "rtc": 0,
+   "state": 0,
+   "utils": 1
+  },
+  "IL": {
+   "chargerUtils": 5,
+   "review": "November 2025",
+   "rtc": 2,
+   "state": 1,
+   "utils": 6
+  },
+  "IN": {
+   "chargerUtils": 5,
+   "review": "June 2025",
+   "rtc": 0,
+   "state": 0,
+   "utils": 11
+  },
+  "KS": {
+   "chargerUtils": 1,
+   "review": "December 2025",
+   "rtc": 0,
+   "state": 0,
+   "utils": 2
+  },
+  "KY": {
+   "chargerUtils": 1,
+   "review": "July 2025",
+   "rtc": 0,
+   "state": 0,
+   "utils": 1
+  },
+  "LA": {
+   "chargerUtils": 2,
+   "review": "March 2026",
+   "rtc": 0,
+   "state": 0,
+   "utils": 4
+  },
+  "MA": {
+   "chargerUtils": 14,
+   "review": "March 2026",
+   "rtc": 2,
+   "state": 3,
+   "utils": 18
+  },
+  "MD": {
+   "chargerUtils": 3,
+   "review": "November 2025",
+   "rtc": 1,
+   "state": 2,
+   "utils": 3
+  },
+  "ME": {
+   "chargerUtils": 0,
+   "review": "August 2025",
+   "rtc": 1,
+   "state": 2,
+   "utils": 1
+  },
+  "MI": {
+   "chargerUtils": 10,
+   "review": "February 2026",
+   "rtc": 0,
+   "state": 0,
+   "utils": 11
+  },
+  "MN": {
+   "chargerUtils": 12,
+   "review": "October 2025",
+   "rtc": 0,
+   "state": 0,
+   "utils": 16
+  },
+  "MO": {
+   "chargerUtils": 8,
+   "review": "November 2025",
+   "rtc": 0,
+   "state": 0,
+   "utils": 8
+  },
+  "MS": {
+   "chargerUtils": 1,
+   "review": "July 2025",
+   "rtc": 0,
+   "state": 0,
+   "utils": 2
+  },
+  "MT": {
+   "chargerUtils": 0,
+   "review": "October 2025",
+   "rtc": 0,
+   "state": 0,
+   "utils": 0
+  },
+  "NC": {
+   "chargerUtils": 3,
+   "review": "February 2026",
+   "rtc": 0,
+   "state": 0,
+   "utils": 6
+  },
+  "ND": {
+   "chargerUtils": 0,
+   "review": "October 2025",
+   "rtc": 0,
+   "state": 0,
+   "utils": 0
+  },
+  "NE": {
+   "chargerUtils": 2,
+   "review": "February 2026",
+   "rtc": 0,
+   "state": 0,
+   "utils": 2
+  },
+  "NH": {
+   "chargerUtils": 2,
+   "review": "March 2026",
+   "rtc": 0,
+   "state": 0,
+   "utils": 3
+  },
+  "NJ": {
+   "chargerUtils": 3,
+   "review": "November 2025",
+   "rtc": 1,
+   "state": 4,
+   "utils": 3
+  },
+  "NM": {
+   "chargerUtils": 3,
+   "review": "March 2025",
+   "rtc": 0,
+   "state": 1,
+   "utils": 4
+  },
+  "NV": {
+   "chargerUtils": 0,
+   "review": "February 2026",
+   "rtc": 0,
+   "state": 0,
+   "utils": 1
+  },
+  "NY": {
+   "chargerUtils": 1,
+   "review": "March 2026",
+   "rtc": 2,
+   "state": 1,
+   "utils": 4
+  },
+  "OH": {
+   "chargerUtils": 7,
+   "review": "February 2026",
+   "rtc": 0,
+   "state": 0,
+   "utils": 9
+  },
+  "OK": {
+   "chargerUtils": 3,
+   "review": "December 2025",
+   "rtc": 0,
+   "state": 1,
+   "utils": 5
+  },
+  "OR": {
+   "chargerUtils": 5,
+   "review": "February 2026",
+   "rtc": 3,
+   "state": 4,
+   "utils": 7
+  },
+  "PA": {
+   "chargerUtils": 0,
+   "review": "January 2026",
+   "rtc": 0,
+   "state": 1,
+   "utils": 3
+  },
+  "RI": {
+   "chargerUtils": 1,
+   "review": "November 2025",
+   "rtc": 0,
+   "state": 1,
+   "utils": 1
+  },
+  "SC": {
+   "chargerUtils": 4,
+   "review": "February 2026",
+   "rtc": 0,
+   "state": 0,
+   "utils": 4
+  },
+  "SD": {
+   "chargerUtils": 2,
+   "review": "July 2025",
+   "rtc": 0,
+   "state": 0,
+   "utils": 2
+  },
+  "TN": {
+   "chargerUtils": 1,
+   "review": "December 2025",
+   "rtc": 0,
+   "state": 0,
+   "utils": 3
+  },
+  "TX": {
+   "chargerUtils": 5,
+   "review": "November 2025",
+   "rtc": 0,
+   "state": 0,
+   "utils": 8
+  },
+  "UT": {
+   "chargerUtils": 0,
+   "review": "April 2025",
+   "rtc": 0,
+   "state": 1,
+   "utils": 0
+  },
+  "VA": {
+   "chargerUtils": 2,
+   "review": "February 2025",
+   "rtc": 1,
+   "state": 0,
+   "utils": 4
+  },
+  "VT": {
+   "chargerUtils": 2,
+   "review": "January 2026",
+   "rtc": 0,
+   "state": 4,
+   "utils": 5
+  },
+  "WA": {
+   "chargerUtils": 8,
+   "review": "August 2025",
+   "rtc": 1,
+   "state": 3,
+   "utils": 9
+  },
+  "WI": {
+   "chargerUtils": 10,
+   "review": "January 2026",
+   "rtc": 0,
+   "state": 0,
+   "utils": 11
+  },
+  "WV": {
+   "chargerUtils": 1,
+   "review": "October 2025",
+   "rtc": 0,
+   "state": 0,
+   "utils": 1
+  },
+  "WY": {
+   "chargerUtils": 1,
+   "review": "February 2025",
+   "rtc": 0,
+   "state": 0,
+   "utils": 1
+  }
+ }
+}

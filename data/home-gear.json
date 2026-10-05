@@ -1412,5 +1412,1872 @@
     }
   ],
   "gasNote": "EPA combined MPG for a common trim, via Edmunds' model-year MPG pages (fueleconomy.gov ratings), September 2026. Premium means the maker requires or recommends it.",
-  "imageNote": "Vehicle photos are from Wikimedia Commons under the licenses shown (credit required). Charger and battery images are the manufacturers' own product images, credited to them; confirm usage rights with each manufacturer before launch (the same arrangement as the commercial catalog)."
+  "imageNote": "Vehicle photos are from Wikimedia Commons under the licenses shown (credit required). Charger and battery images are the manufacturers' own product images, credited to them; confirm usage rights with each manufacturer before launch (the same arrangement as the commercial catalog).",
+  "panel": [
+    {
+      "id": "dcc-12",
+      "group": "manager",
+      "oem": "RVE",
+      "model": "DCC-12 load controller",
+      "kind": "Whole-house load manager",
+      "price": 955,
+      "priceNote": "Hardware, $825 to $955 from distributors. Installed cost not published.",
+      "amps": 60,
+      "how": "Sensors on the main feed watch the whole house and cut power to the charger when the house passes 80% of the main breaker, then turn it back on after 15 minutes below that.",
+      "installNote": "Electrician installs it between the meter and the main panel and lands the charger on it.",
+      "listing": "CSA and UL listed (standard not named by the maker)",
+      "worksWith": "Any hardwired charger. It switches power to the charger rather than talking to it.",
+      "app": "No. Set with DIP switches.",
+      "website": "https://rve-usa.com/dcc-solution/dcc-12/",
+      "source": "https://www.shopdccelectric.com/buy/product/dcc-60-amp-ev-energy-management-system-load-controller-dcc-12/2372578",
+      "blurb": "A gray box that switches the charger off when the house gets close to its limit. Not clever, but it works with any charger and has done this job in Quebec for years.",
+      "img": "img/home/gear/dcc-12.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: RVE",
+        "url": "https://rve-usa.com/dcc-solution/dcc-12/",
+        "license": "manufacturer"
+      }
+    },
+    {
+      "id": "simpleswitch-240m",
+      "group": "manager",
+      "oem": "simpleSwitch",
+      "model": "240-M with clamp-on sensors",
+      "kind": "Whole-house load manager",
+      "price": 140,
+      "priceNote": "Suggested price for the controller. Installation extra.",
+      "amps": 240,
+      "how": "Clamps on the main service watch total load and pause the charger circuit when the house goes over 80% of panel capacity.",
+      "installNote": "Electrician installs.",
+      "listing": "UL Listed, file E510161 (standard not named on the product page)",
+      "worksWith": "Any charger. It switches the circuit.",
+      "app": "No.",
+      "website": "https://simpleswitch.io/products/240-m-with-clamp-style-cts/",
+      "source": "https://simpleswitch.io/products/240-m-with-clamp-style-cts/",
+      "blurb": "The cheapest whole-house watchdog here. It does not slow the car down, it just turns it off until the oven is done.",
+      "img": "img/home/gear/simpleswitch-240m.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: simpleSwitch",
+        "url": "https://simpleswitch.io/products/240-m-with-clamp-style-cts/",
+        "license": "manufacturer"
+      }
+    },
+    {
+      "id": "tesla-remote-meter",
+      "group": "manager",
+      "oem": "Tesla",
+      "model": "Remote Meter (Dynamic Power Management)",
+      "kind": "Charger add-on meter",
+      "price": 210,
+      "priceNote": "Tesla shop price. Often out of stock, and Tesla asks for proof you own a Tesla product.",
+      "amps": 200,
+      "how": "Two 200 A sensors on the mains report live house load, and the Wall Connector raises or lowers its charge rate to stay under the limit the installer set.",
+      "installNote": "Tesla Certified Installer.",
+      "listing": "Not published. Tesla approves it as a load management device with Gen 3 and Universal Wall Connectors.",
+      "worksWith": "Tesla Gen 3 Wall Connector and Universal Wall Connector only.",
+      "app": "Yes, through the Tesla app and installer setup.",
+      "website": "https://www.tesla.com/support/charging/wall-connector/power-sharing",
+      "source": "https://shop.tesla.com/product/tesla-remote-meter",
+      "blurb": "If you already own a Wall Connector, this is the cheapest way to make it panel-aware. When it is in stock.",
+      "img": "img/home/gear/tesla-remote-meter.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: Tesla",
+        "url": "https://www.tesla.com/support/charging/wall-connector/power-sharing",
+        "license": "manufacturer"
+      }
+    },
+    {
+      "id": "wallbox-power-meter",
+      "group": "manager",
+      "oem": "Wallbox",
+      "model": "Power Meter 250A (Power Boost)",
+      "kind": "Charger add-on meter",
+      "price": 299,
+      "priceNote": "Wallbox shop price. Installation extra.",
+      "amps": 250,
+      "how": "The meter measures house load in real time and the Pulsar Plus lowers or raises its charge rate to keep the panel under its limit.",
+      "installNote": "Electrician fits the DIN-rail meter and two clamps in the panel.",
+      "listing": "Not published.",
+      "worksWith": "Wallbox Pulsar family only.",
+      "app": "Yes, Power Boost is switched on in the myWallbox app.",
+      "website": "https://shop.wallbox.com/products/power-meter",
+      "source": "https://shop.wallbox.com/products/power-meter",
+      "blurb": "Teaches a Pulsar Plus to back off when the air conditioner kicks on. Only works with Wallbox chargers.",
+      "img": "img/home/gear/wallbox-power-meter.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: Wallbox",
+        "url": "https://shop.wallbox.com/products/power-meter",
+        "license": "manufacturer"
+      }
+    },
+    {
+      "id": "enphase-iq-ev-2",
+      "group": "manager",
+      "oem": "Enphase",
+      "model": "IQ EV Charger 2 (main breaker protection)",
+      "kind": "Charger with load management built in",
+      "price": 1124,
+      "priceNote": "Hardwired version, third-party price; the plug-in one is about $999. Needs an Enphase IQ Gateway.",
+      "amps": 48,
+      "how": "Sensors on the service tell the Enphase Gateway what the house is drawing, and it slows the charger so the house stays under a limit of up to 80% of the main breaker.",
+      "installNote": "Qualified electrician, plus consumption sensors and an IQ Gateway.",
+      "listing": "UL 2594 and UL 3141 (power control system)",
+      "worksWith": "Itself. Needs the Enphase IQ Gateway.",
+      "app": "Yes, the Enphase app.",
+      "website": "https://enphase.com/homeowners/iq-ev-charger-2",
+      "source": "https://enphase.com/document/design-and-tech-briefs/iq-ev-charger-2-installation-configurations",
+      "blurb": "Makes sense if you already have Enphase solar and a Gateway. Without one, you are buying a small ecosystem to charge a car.",
+      "img": "img/home/gear/enphase-iq-ev-2.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: Enphase",
+        "url": "https://enphase.com/homeowners/iq-ev-charger-2",
+        "license": "manufacturer"
+      }
+    },
+    {
+      "id": "schneider-charge",
+      "group": "manager",
+      "oem": "Schneider Electric",
+      "model": "Schneider Charge (SmartAmp)",
+      "kind": "Charger with load management built in",
+      "price": 695,
+      "priceNote": "List price at launch, August 2026. Hardwired only for now.",
+      "amps": 48,
+      "how": "Current sensors in the box watch the house over a wire, and the charger slows down or speeds up to stay within the service.",
+      "installNote": "Electrician, hardwired.",
+      "listing": "UL 3141 certified system, accepted for load calculations where the inspector allows it",
+      "worksWith": "Itself.",
+      "app": "Yes, Schneider Home. Also OCPP 1.6.",
+      "website": "https://www.se.com/us/en/product-range/405075119-schneider-charge-ac/",
+      "source": "https://www.energysage.com/ev-charging/ev-charging-stations/schneider-charge-ev-charger-review/",
+      "blurb": "A charger with the sensors in the box and the UL 3141 listing inspectors increasingly ask for."
+    },
+    {
+      "id": "neocharge-30",
+      "group": "splitter",
+      "oem": "NeoCharge",
+      "model": "Smart Splitter (dryer outlet, 14-30 or 10-30)",
+      "kind": "Smart splitter",
+      "price": 399,
+      "priceNote": "Maker price.",
+      "amps": 24,
+      "how": "The dryer and the car plug into the splitter. When the dryer starts the car pauses, and when it stops the car carries on.",
+      "installNote": "Plugs into the existing dryer outlet. The maker says no electrician or permit.",
+      "listing": "cUL Listed (standard not named by the maker)",
+      "worksWith": "Any charger set to 24 A or less.",
+      "app": "Yes, energy tracking and scheduling.",
+      "website": "https://getneocharge.com/products/neocharge-smart-splitter",
+      "source": "https://getneocharge.com/products/nema-14-30-smart-splitter",
+      "blurb": "Shares the dryer outlet with the car and pauses the car when the dryer runs. Some utilities have rebated it.",
+      "img": "img/home/gear/neocharge-30.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: NeoCharge",
+        "url": "https://getneocharge.com/products/neocharge-smart-splitter",
+        "license": "manufacturer"
+      }
+    },
+    {
+      "id": "neocharge-50",
+      "group": "splitter",
+      "oem": "NeoCharge",
+      "model": "Smart Splitter (50 A outlet, 14-50 or 6-50)",
+      "kind": "Smart splitter",
+      "price": 399,
+      "priceNote": "Maker price.",
+      "amps": 40,
+      "how": "Splits one 50 A outlet into two and keeps the combined draw at 40 A, 20 A each when both sides are charging.",
+      "installNote": "Plugs into an existing 50 A outlet.",
+      "listing": "cUL Listed (standard not named by the maker)",
+      "worksWith": "Any charger. The total is capped at 40 A.",
+      "app": "Yes.",
+      "website": "https://getneocharge.com/products/neocharge-smart-splitter",
+      "source": "https://getneocharge.com/pages/smart-splitter-landing",
+      "blurb": "Mostly sold for two cars on one 14-50. How it behaves with a range on the other side is not something the maker spells out.",
+      "img": "img/home/gear/neocharge-50.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Image: NeoCharge",
+        "url": "https://getneocharge.com/products/neocharge-smart-splitter",
+        "license": "manufacturer"
+      }
+    },
+    {
+      "id": "splitvolt",
+      "group": "splitter",
+      "oem": "Splitvolt",
+      "model": "Splitter Switch (14-30 or 10-30)",
+      "kind": "Smart splitter",
+      "price": 390,
+      "priceNote": "Maker price. Refurbished units sell for less.",
+      "amps": 24,
+      "how": "Senses when the dryer runs, gives it full power until the cycle ends, then switches back to the car.",
+      "installNote": "Plugs into a 30 A dryer outlet. Set the charger to 24 A by hand.",
+      "listing": "cETLus to UL 60730-1 (automatic controls)",
+      "worksWith": "Any charger limited to 24 A.",
+      "app": "No. Built-in display.",
+      "website": "https://splitvolt.com/products/splitvolt-safety-certified-splitter-switch-nema-14-30-14-50",
+      "source": "https://splitvolt.com/pages/faq",
+      "blurb": "Same idea as NeoCharge, a few dollars cheaper and no app.",
+      "img": "img/home/gear/splitvolt.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: Splitvolt",
+        "url": "https://splitvolt.com/products/splitvolt-safety-certified-splitter-switch-nema-14-30-14-50",
+        "license": "manufacturer"
+      }
+    },
+    {
+      "id": "simpleswitch-240",
+      "group": "splitter",
+      "oem": "simpleSwitch",
+      "model": "Model 240 (50 A circuit sharing)",
+      "kind": "Hardwired circuit sharing",
+      "price": 749,
+      "priceNote": "Maker price. Installation extra.",
+      "amps": 50,
+      "how": "Wired between one breaker and two loads. When the priority load (range, dryer, heat pump) runs, the charger is cut off, and it comes back five minutes after the priority load stops.",
+      "installNote": "Licensed electrician, hardwired, about half an hour of work.",
+      "listing": "UL 916 (energy management equipment), CSA C22.2 No. 205",
+      "worksWith": "Any charger set to 48 A or less.",
+      "app": "No.",
+      "website": "https://simpleswitch.io/products/50-amp-simpleswitch-evems/",
+      "source": "https://simpleswitch.io/wp-content/uploads/2025/01/50A-Circuit-Share-Installation-Instructions.pdf",
+      "blurb": "The permanent, inspector-friendly version of a splitter: a box on the wall instead of a plug behind the dryer.",
+      "img": "img/home/gear/simpleswitch-240.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: simpleSwitch",
+        "url": "https://simpleswitch.io/products/50-amp-simpleswitch-evems/",
+        "license": "manufacturer"
+      }
+    },
+    {
+      "id": "dryer-buddy-plus",
+      "group": "splitter",
+      "oem": "BSA Electronics",
+      "model": "Dryer Buddy Plus (14-30)",
+      "kind": "Manual splitter",
+      "price": 340,
+      "priceNote": "Maker price. An automatic version is also sold.",
+      "amps": 30,
+      "how": "A manual switch sends the dryer outlet to either the dryer or the car, never both.",
+      "installNote": "Plugs in.",
+      "listing": "Not published.",
+      "worksWith": "Any charger kept at 24 A or less.",
+      "app": "No. Built-in kWh meter.",
+      "website": "https://www.bsaelectronics.com/collections/dryer-buddy-plus/14-30",
+      "source": "https://www.bsaelectronics.com/collections/dryer-buddy-plus/14-30",
+      "blurb": "The original version: you flip a switch. Works until someone forgets and the laundry sits there damp.",
+      "img": "img/home/gear/dryer-buddy-plus.webp",
+      "imgFit": "photo",
+      "imgCredit": {
+        "text": "Image: BSA Electronics",
+        "url": "https://www.bsaelectronics.com/collections/dryer-buddy-plus/14-30",
+        "license": "manufacturer"
+      }
+    },
+    {
+      "id": "span-panel",
+      "group": "panel",
+      "oem": "SPAN",
+      "model": "SPAN Panel (MAIN 32)",
+      "kind": "Smart panel",
+      "price": 3500,
+      "priceNote": "Hardware. The range runs from $2,550 (MLO 24) to $4,100 (MAIN 40). Installation is a panel swap, so get itemized quotes.",
+      "amps": 200,
+      "how": "Every circuit runs through a relay, and the panel throttles or sheds chosen loads, mainly the charger, to keep the service under its limit.",
+      "installNote": "SPAN-authorized electrician replaces the main panel, 3 to 8 hours.",
+      "listing": "UL 67, UL 916, UL 869A",
+      "worksWith": "Any charger on a managed circuit. SPAN also sells its own 48 A charger, only with the panel.",
+      "app": "Yes, SPAN Home.",
+      "website": "https://www.span.io/panel",
+      "source": "https://www.sheltervolt.com/blog/span-smart-panel-cost-review",
+      "blurb": "The full replacement: a new panel where every breaker answers to your phone. Often costs more than the upgrade you were avoiding, but you get something for it.",
+      "img": "img/home/gear/span-panel.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: SPAN",
+        "url": "https://www.span.io/panel",
+        "license": "manufacturer"
+      }
+    },
+    {
+      "id": "lumin-panel-guard",
+      "group": "panel",
+      "oem": "Lumin",
+      "model": "Smart Panel with Panel Guard",
+      "kind": "Panel add-on",
+      "price": 0,
+      "priceNote": "No published price. Third-party estimates run $4,000 to $6,700 installed, unverified.",
+      "amps": 200,
+      "how": "Sits beside your panel, watches total load, and switches off chosen circuits so the house stays under its service limit.",
+      "installNote": "Electrician mounts it next to the panel and moves selected circuits through it.",
+      "listing": "UL 916 (per Lumin)",
+      "worksWith": "Any charger on a managed circuit.",
+      "app": "Yes, Lumin Energy.",
+      "website": "https://www.luminsmart.com/electrification",
+      "source": "https://www.luminsmart.com/press-room/lumin-unveils-all-one-solution-home-electrification-and-energy-management",
+      "blurb": "Smart-panel control without ripping out the panel you have.",
+      "img": "img/home/gear/lumin-panel-guard.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: Lumin",
+        "url": "https://www.luminsmart.com/electrification",
+        "license": "manufacturer"
+      }
+    },
+    {
+      "id": "leviton-smart",
+      "group": "panel",
+      "oem": "Leviton",
+      "model": "Smart breakers + Whole Home Energy Monitor",
+      "kind": "Smart breakers",
+      "price": 391,
+      "priceNote": "The monitor is $391. Two-pole smart breakers run about $75 to $200 each.",
+      "amps": 60,
+      "how": "Smart breakers can be switched off remotely or on a schedule, and the monitor tracks whole-home use.",
+      "installNote": "Electrician swaps breakers in an existing Leviton panel and adds the monitor.",
+      "listing": "Not published on the store pages.",
+      "worksWith": "Any charger on a smart breaker, manual or scheduled control.",
+      "app": "Yes, My Leviton.",
+      "website": "https://store.leviton.com/collections/smart-load-center",
+      "source": "https://store.leviton.com/products/leviton-lwhem-2r-whole-home-energy-monitor-with-one-pair-of-cts-make-your-leviton-load-center-smart-view-whole-home-energy-usage-in-my-leviton-app",
+      "blurb": "The cheapest way into a smart panel if you already have a Leviton one. Leviton does not sell it as automatic EV load management, so it will not help you skip an upgrade.",
+      "img": "img/home/gear/leviton-smart.webp",
+      "imgFit": "cut",
+      "imgCredit": {
+        "text": "Image: Leviton",
+        "url": "https://store.leviton.com/collections/smart-load-center",
+        "license": "manufacturer"
+      }
+    },
+    {
+      "id": "savant-power",
+      "group": "panel",
+      "oem": "Savant",
+      "model": "Power System (modules + Power Director)",
+      "kind": "Smart breakers",
+      "price": 0,
+      "priceNote": "No current price. 2022 maker pricing was modules from $60 a circuit and the Director from $500.",
+      "amps": 60,
+      "how": "Smart modules replace breakers in a standard panel, and a power budget sheds loads in real time to stay within the service.",
+      "installNote": "Savant-certified dealer.",
+      "listing": "Not published.",
+      "worksWith": "Any charger on a managed circuit.",
+      "app": "Yes, Savant Power.",
+      "website": "https://www.savant.com/news/Savant%20Expands%20Savant%20Power%20System%20for%20Greater%20Installation%20&%20Price%20Flexibility/",
+      "source": "https://solarbuildermag.com/advertorial1/avoid-costly-service-upgrades-with-the-savant-power-system/",
+      "blurb": "The smart-home company’s take on the smart panel. Good if you are already a Savant house, a lot of dealer otherwise."
+    }
+  ],
+  "adapters": [
+    {
+      "id": "tesla-ccs1-to-nacs",
+      "name": "CCS1 to NACS Adapter",
+      "maker": "Tesla",
+      "dir": "CCS1-to-NACS",
+      "level": "DC",
+      "listing": "Not stated",
+      "price": 200,
+      "who": "Teslas (Cybertruck included) at CCS fast chargers such as Electrify America or EVgo. Some older Teslas need a paid retrofit first.",
+      "url": "https://shop.tesla.com/product/ccs1-to-nacs-adapter"
+    },
+    {
+      "id": "tesla-j1772",
+      "name": "SAE J1772 Charging Adapter",
+      "maker": "Tesla",
+      "dir": "J1772-to-NACS",
+      "level": "AC",
+      "listing": "Not stated",
+      "price": 50,
+      "who": "Teslas at ordinary Level 2 chargers. One comes with every new Tesla.",
+      "url": "https://shop.tesla.com/product/sae-j1772-charging-adapter"
+    },
+    {
+      "id": "lectron-nacs-to-j1772",
+      "name": "Tesla (NACS) to J1772 Adapter, 48 A",
+      "maker": "Lectron",
+      "dir": "NACS-to-J1772",
+      "level": "AC",
+      "listing": "UL 2251",
+      "price": 113,
+      "who": "Any car with a J1772 port at a Tesla Wall Connector, destination charger or Mobile Connector. Not for Superchargers. Tesla does not sell one.",
+      "url": "https://ev-lectron.com/products/lectron-tesla-to-j1772-adapter-max-48a-250v-for-tesla-high-powered-connectors-destination-chargers-and-mobile-connectors-black"
+    },
+    {
+      "id": "gm-nacs-dc",
+      "name": "NACS DC Adapter",
+      "maker": "GM",
+      "dir": "NACS-to-CCS1",
+      "level": "DC",
+      "listing": "500 A, 1,000 V",
+      "price": 275,
+      "who": "Chevrolet, GMC and Cadillac EVs with a CCS1 port (through model year 2026) at Superchargers. Launched at $225; check the current price.",
+      "url": "https://accessories.chevrolet.com/product/gm-nacs-dc-adapter-85836744"
+    },
+    {
+      "id": "gm-ccs1-to-nacs",
+      "name": "CCS1 to NACS Adapter",
+      "maker": "GM",
+      "dir": "CCS1-to-NACS",
+      "level": "DC",
+      "listing": "Not stated",
+      "price": 189,
+      "who": "2027 GM EVs with a NACS port at CCS fast chargers. Not included with the car.",
+      "url": "https://news.gm.com/home.detail.html/Pages/topic/us/en/2026/aug/0813-electric-vehicle-nacs-charging.html"
+    },
+    {
+      "id": "gm-j1772-to-nacs",
+      "name": "J1772 to NACS Adapter",
+      "maker": "GM",
+      "dir": "J1772-to-NACS",
+      "level": "AC",
+      "listing": "Not stated",
+      "price": 67,
+      "who": "2027 GM EVs with a NACS port at J1772 Level 2 chargers.",
+      "url": "https://news.gm.com/home.detail.html/Pages/topic/us/en/2026/aug/0813-electric-vehicle-nacs-charging.html"
+    },
+    {
+      "id": "ford-nacs",
+      "name": "Fast Charging Adapter (NACS)",
+      "maker": "Ford",
+      "dir": "NACS-to-CCS1",
+      "level": "DC",
+      "listing": "500 A, 1,000 V",
+      "price": 230,
+      "who": "Mustang Mach-E and F-150 Lightning at Superchargers. Free ones ran out in 2024. Reported at $200 to $230.",
+      "url": "https://dealer.parts.ford.com/shop/en/us/accessories/other-accessories/ford-fast-charging-adapter-(nacs)-p-vrk9z10e826a?pdp=y"
+    },
+    {
+      "id": "hyundai-nacs-to-ccs1",
+      "name": "NACS to CCS1 Adapter",
+      "maker": "Hyundai",
+      "dir": "NACS-to-CCS1",
+      "level": "DC",
+      "listing": "Not stated",
+      "price": 300,
+      "who": "Hyundais with a CCS1 port (Ioniq 5 2022 to 2024, Ioniq 6 through 2025, Kona Electric) at Superchargers. Free for cars bought by January 31, 2025.",
+      "url": "https://hyundaishop.com/shop-by-model/hyundai-nacs-to-ccs1-car-adapter/"
+    },
+    {
+      "id": "hyundai-j1772-to-nacs",
+      "name": "J1772 to NACS Adapter",
+      "maker": "Hyundai",
+      "dir": "J1772-to-NACS",
+      "level": "AC",
+      "listing": "Not stated",
+      "price": 70,
+      "who": "Hyundais with a NACS port at J1772 Level 2 chargers.",
+      "url": "https://hyundaishop.com/shop-by-model/hyundai-j1772-to-nacs-adapter/"
+    },
+    {
+      "id": "kia-nacs",
+      "name": "NACS Adapter",
+      "maker": "Kia",
+      "dir": "NACS-to-CCS1",
+      "level": "DC",
+      "listing": "Not stated",
+      "price": null,
+      "who": "Kias with a CCS1 port (EV6 2022 to 2024, EV9 2024 to 2025, Niro EV) at Superchargers. Free for cars delivered after September 4, 2024.",
+      "url": "https://www.kiamedia.com/us/en/media/pressreleases/22573/kia-america-to-offer-north-american-charging-standard-nacs-in-early-2025"
+    },
+    {
+      "id": "genesis-nacs",
+      "name": "NACS Adapter",
+      "maker": "Genesis",
+      "dir": "NACS-to-CCS1",
+      "level": "DC",
+      "listing": "Not stated",
+      "price": null,
+      "who": "Genesis GV60 and Electrified GV70 with a CCS1 port. Free for cars bought by January 31, 2025.",
+      "url": "https://owners.genesis.com/us/en/resources/general-information/genesis-nacs-information.html"
+    },
+    {
+      "id": "rivian-nacs-dc",
+      "name": "NACS DC Adapter",
+      "maker": "Rivian",
+      "dir": "NACS-to-CCS1",
+      "level": "DC",
+      "listing": "500 A, 1,000 V",
+      "price": 200,
+      "who": "R1T and R1S through model year 2025 at Superchargers.",
+      "url": "https://gearshop.rivian.com/products/nacs-dc-adapter"
+    },
+    {
+      "id": "rivian-ccs1-dc",
+      "name": "Combo CCS1 DC Adapter",
+      "maker": "Rivian",
+      "dir": "CCS1-to-NACS",
+      "level": "DC",
+      "listing": "500 A, 1,000 V",
+      "price": 200,
+      "who": "2026 R1 and R2 (NACS port) at CCS fast chargers. Comes with new cars.",
+      "url": "https://gearshop.rivian.com/products/combo-ccs1-dc-adapter"
+    },
+    {
+      "id": "lucid-nacs",
+      "name": "NACS to CCS1 Charging Adapter",
+      "maker": "Lucid",
+      "dir": "NACS-to-CCS1",
+      "level": "DC",
+      "listing": "500 A, 1,000 V",
+      "price": 220,
+      "who": "Lucid Air at Superchargers.",
+      "url": "https://store.lucidmotors.com/lucid-nacs-to-ccs1-charging-adapter/"
+    },
+    {
+      "id": "volvo-polestar-nacs",
+      "name": "NACS DC Adapter",
+      "maker": "Volvo and Polestar",
+      "dir": "NACS-to-CCS1",
+      "level": "DC",
+      "listing": "Not stated",
+      "price": 230,
+      "who": "Volvo and Polestar EVs with a CCS1 port at Superchargers. Included with 2025 and later EX90.",
+      "url": "https://www.volvocars.com/us/l/north-american-charging-standard/"
+    },
+    {
+      "id": "nissan-nacs",
+      "name": "NACS Adapter Kit",
+      "maker": "Nissan",
+      "dir": "NACS-to-CCS1",
+      "level": "DC",
+      "listing": "Not stated",
+      "price": 235,
+      "who": "Nissan Ariya at Superchargers. The older Leaf (CHAdeMO) cannot use it.",
+      "url": "https://usa.nissannews.com/en-US/releases/stories-nissan-ariya-and-nacs-your-top-charging-questions-answered"
+    },
+    {
+      "id": "honda-nacs",
+      "name": "Approved NACS Adapter",
+      "maker": "Honda and Acura",
+      "dir": "NACS-to-CCS1",
+      "level": "DC",
+      "listing": "Not stated",
+      "price": 225,
+      "who": "Honda Prologue and Acura ZDX at Superchargers. Honda warns other adapters may void the warranty.",
+      "url": "https://tflcar.com/2025/07/honda-acura-nacs-adapter-supercharger-network-update/"
+    },
+    {
+      "id": "mercedes-nacs",
+      "name": "NACS Adapter",
+      "maker": "Mercedes-Benz",
+      "dir": "NACS-to-CCS1",
+      "level": "DC",
+      "listing": "Not stated",
+      "price": 185,
+      "who": "Mercedes EQ models with a CCS1 port at Superchargers.",
+      "url": "https://evchargingstations.com/chargingnews/mercedes-benz-confirmed-access-to-tesla-superchargers-coming-in-february-2025/"
+    },
+    {
+      "id": "bmw-nacs",
+      "name": "NACS Adapter, BMW-approved",
+      "maker": "Lectron for BMW",
+      "dir": "NACS-to-CCS1",
+      "level": "DC",
+      "listing": "UL 2252",
+      "price": 175,
+      "who": "BMW i4, i5, i7 and iX with a CCS1 port at Superchargers.",
+      "url": "https://ev-lectron.com/pages/bmw"
+    },
+    {
+      "id": "vw-nacs",
+      "name": "NACS Adapter",
+      "maker": "Volkswagen",
+      "dir": "NACS-to-CCS1",
+      "level": "DC",
+      "listing": "Not stated",
+      "price": 200,
+      "who": "ID.4 and ID. Buzz at Superchargers. Standard on 2026 models.",
+      "url": "https://electrek.co/2025/11/12/volkswagen-evs-finally-get-access-to-tesla-superchargers-for-real-this-time/"
+    },
+    {
+      "id": "audi-nacs",
+      "name": "NACS DC Charging Adapter",
+      "maker": "Audi",
+      "dir": "NACS-to-CCS1",
+      "level": "DC",
+      "listing": "Not stated",
+      "price": 200,
+      "who": "Q6 e-tron, A6 e-tron and e-tron GT at Superchargers. Not the Q4 e-tron.",
+      "url": "https://www.audiusa.com/en/ev-hub/layer/nacs-faqs/"
+    },
+    {
+      "id": "porsche-nacs",
+      "name": "NACS DC Adapter",
+      "maker": "Porsche",
+      "dir": "NACS-to-CCS1",
+      "level": "DC",
+      "listing": "Not stated",
+      "price": 185,
+      "who": "Taycan and Macan Electric at Superchargers. Free or included for most recent cars.",
+      "url": "https://newsroom.porsche.com/en_US/2025/products/dedicated-to-choice-porsche-owners-can-now-access-the-tesla-supercharger-network.html"
+    },
+    {
+      "id": "mopar-nacs",
+      "name": "NACS Adapter",
+      "maker": "Mopar",
+      "dir": "NACS-to-CCS1",
+      "level": "DC",
+      "listing": "Not stated",
+      "price": 250,
+      "who": "Dodge Charger Daytona, Jeep Wagoneer S and other Stellantis EVs at Superchargers.",
+      "url": "https://electrek.co/2026/03/19/the-last-domino-falls-stellantis-evs-now-have-tesla-supercharger-access/"
+    },
+    {
+      "id": "toyota-nacs",
+      "name": "NACS Adapter",
+      "maker": "Toyota",
+      "dir": "NACS-to-CCS1",
+      "level": "DC",
+      "listing": "Not stated",
+      "price": 0,
+      "who": "bZ4X (2023 to 2025) at Superchargers. One free through a dealer.",
+      "url": "https://pressroom.toyota.com/2026-toyota-bz-goes-on-sale-with-upgraded-convenience-features-expanded-charging-network-options-for-all-toyota-bev-drivers/"
+    },
+    {
+      "id": "subaru-nacs",
+      "name": "Fast Charging Adapter (NACS)",
+      "maker": "Subaru",
+      "dir": "NACS-to-CCS1",
+      "level": "DC",
+      "listing": "Not stated",
+      "price": null,
+      "who": "Solterra (2023 to 2025) at Superchargers.",
+      "url": "https://media.subaru.com/pressrelease/2384/subaru-solterra-ev-adds-tesla-supercharging-access-through"
+    },
+    {
+      "id": "lectron-vortex-plus",
+      "name": "Vortex Plus NACS to CCS1",
+      "maker": "Lectron",
+      "dir": "NACS-to-CCS1",
+      "level": "DC",
+      "listing": "UL 2252",
+      "price": 185,
+      "who": "Third-party option for CCS1 cars. Tesla allows only Tesla or automaker adapters at Superchargers, so check that your carmaker approved it.",
+      "url": "https://ev-lectron.com/products/lectron-nacs-to-ccs-adapter-with-interlock-vortex-plus-500a-1-000v-compatible-with-tesla-superchargers"
+    },
+    {
+      "id": "lectron-ccs1-to-nacs",
+      "name": "CCS to Tesla (NACS) Adapter",
+      "maker": "Lectron",
+      "dir": "CCS1-to-NACS",
+      "level": "DC",
+      "listing": "UL 2252",
+      "price": 180,
+      "who": "Teslas and other NACS-port cars at CCS fast chargers. Check your carmaker’s warranty policy first.",
+      "url": "https://ev-lectron.com/products/lectron-ccs-to-tesla-nacs-ev-adapter-ul-2252-certified-by-sgs-1000v-500-amp"
+    }
+  ],
+  "ports": [
+    {
+      "make": "Tesla",
+      "model": "Model 3",
+      "years": "2017 to 2026",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "",
+      "dc": "tesla-ccs1-to-nacs",
+      "j": "tesla-j1772",
+      "incl": [
+        "j"
+      ],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Tesla",
+      "model": "Model Y",
+      "years": "2020 to 2026",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "",
+      "dc": "tesla-ccs1-to-nacs",
+      "j": "tesla-j1772",
+      "incl": [
+        "j"
+      ],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Tesla",
+      "model": "Model S",
+      "years": "2012 to 2026",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "",
+      "dc": "tesla-ccs1-to-nacs",
+      "j": "tesla-j1772",
+      "incl": [
+        "j"
+      ],
+      "note": "Older Model S and X may need a paid retrofit before the CCS adapter works.",
+      "ac": ""
+    },
+    {
+      "make": "Tesla",
+      "model": "Model X",
+      "years": "2016 to 2026",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "",
+      "dc": "tesla-ccs1-to-nacs",
+      "j": "tesla-j1772",
+      "incl": [
+        "j"
+      ],
+      "note": "Older Model S and X may need a paid retrofit before the CCS adapter works.",
+      "ac": ""
+    },
+    {
+      "make": "Tesla",
+      "model": "Cybertruck",
+      "years": "2024 to 2026",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "",
+      "dc": "tesla-ccs1-to-nacs",
+      "j": "tesla-j1772",
+      "incl": [
+        "j"
+      ],
+      "note": "Only the 2026 redesign of Tesla’s CCS adapter fits the Cybertruck.",
+      "ac": ""
+    },
+    {
+      "make": "Ford",
+      "model": "F-150 Lightning",
+      "years": "2022 to 2026",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2024-02",
+      "dc": "ford-nacs",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Ford",
+      "model": "Mustang Mach-E",
+      "years": "2021 to 2026",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2024-02",
+      "dc": "ford-nacs",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Chevrolet",
+      "model": "Bolt EV and Bolt EUV",
+      "years": "2017 to 2023",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2024-09",
+      "dc": "gm-nacs-dc",
+      "j": "",
+      "incl": [],
+      "note": "Charges at about 50 kW whatever the plug.",
+      "ac": ""
+    },
+    {
+      "make": "Chevrolet",
+      "model": "Bolt",
+      "years": "2027",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "2026-01",
+      "dc": "gm-ccs1-to-nacs",
+      "j": "gm-j1772-to-nacs",
+      "incl": [],
+      "note": "GM sells the adapters separately.",
+      "ac": ""
+    },
+    {
+      "make": "Chevrolet",
+      "model": "Equinox EV",
+      "years": "2024 to 2026",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2024-09",
+      "dc": "gm-nacs-dc",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Chevrolet",
+      "model": "Equinox EV",
+      "years": "2027",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "2024-09",
+      "dc": "gm-ccs1-to-nacs",
+      "j": "gm-j1772-to-nacs",
+      "incl": [],
+      "note": "GM sells the adapters separately.",
+      "ac": ""
+    },
+    {
+      "make": "Chevrolet",
+      "model": "Blazer EV",
+      "years": "2024 to 2026",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2024-09",
+      "dc": "gm-nacs-dc",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Chevrolet",
+      "model": "Blazer EV",
+      "years": "2027",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "2024-09",
+      "dc": "gm-ccs1-to-nacs",
+      "j": "gm-j1772-to-nacs",
+      "incl": [],
+      "note": "GM sells the adapters separately.",
+      "ac": ""
+    },
+    {
+      "make": "Chevrolet",
+      "model": "Silverado EV",
+      "years": "2024 to 2026",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2024-09",
+      "dc": "gm-nacs-dc",
+      "j": "",
+      "incl": [],
+      "note": "Big trucks may need to take two stalls at Superchargers with short cables.",
+      "ac": ""
+    },
+    {
+      "make": "Chevrolet",
+      "model": "Silverado EV",
+      "years": "2027",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "2024-09",
+      "dc": "gm-ccs1-to-nacs",
+      "j": "gm-j1772-to-nacs",
+      "incl": [],
+      "note": "GM sells the adapters separately.",
+      "ac": ""
+    },
+    {
+      "make": "GMC",
+      "model": "Sierra EV",
+      "years": "2024 to 2026",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2024-09",
+      "dc": "gm-nacs-dc",
+      "j": "",
+      "incl": [],
+      "note": "Big trucks may need to take two stalls at Superchargers with short cables.",
+      "ac": ""
+    },
+    {
+      "make": "GMC",
+      "model": "Sierra EV",
+      "years": "2027",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "2024-09",
+      "dc": "gm-ccs1-to-nacs",
+      "j": "gm-j1772-to-nacs",
+      "incl": [],
+      "note": "GM sells the adapters separately.",
+      "ac": ""
+    },
+    {
+      "make": "GMC",
+      "model": "Hummer EV",
+      "years": "2022 to 2026",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2024-09",
+      "dc": "gm-nacs-dc",
+      "j": "",
+      "incl": [],
+      "note": "Big trucks may need to take two stalls at Superchargers with short cables.",
+      "ac": ""
+    },
+    {
+      "make": "GMC",
+      "model": "Hummer EV",
+      "years": "2027",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "2024-09",
+      "dc": "gm-ccs1-to-nacs",
+      "j": "gm-j1772-to-nacs",
+      "incl": [],
+      "note": "GM sells the adapters separately.",
+      "ac": ""
+    },
+    {
+      "make": "Cadillac",
+      "model": "Lyriq",
+      "years": "2023 to 2026",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2024-09",
+      "dc": "gm-nacs-dc",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Cadillac",
+      "model": "Lyriq",
+      "years": "2027",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "2024-09",
+      "dc": "gm-ccs1-to-nacs",
+      "j": "gm-j1772-to-nacs",
+      "incl": [],
+      "note": "GM sells the adapters separately.",
+      "ac": ""
+    },
+    {
+      "make": "Cadillac",
+      "model": "Escalade IQ",
+      "years": "2025 to 2026",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2024-09",
+      "dc": "gm-nacs-dc",
+      "j": "",
+      "incl": [],
+      "note": "Big trucks may need to take two stalls at Superchargers with short cables.",
+      "ac": ""
+    },
+    {
+      "make": "Cadillac",
+      "model": "Escalade IQ",
+      "years": "2027",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "2024-09",
+      "dc": "gm-ccs1-to-nacs",
+      "j": "gm-j1772-to-nacs",
+      "incl": [],
+      "note": "GM sells the adapters separately.",
+      "ac": ""
+    },
+    {
+      "make": "Cadillac",
+      "model": "Optiq",
+      "years": "2025",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2024-09",
+      "dc": "gm-nacs-dc",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Cadillac",
+      "model": "Optiq",
+      "years": "2026 to 2027",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "2024-09",
+      "dc": "gm-ccs1-to-nacs",
+      "j": "gm-j1772-to-nacs",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Hyundai",
+      "model": "Ioniq 5",
+      "years": "2022 to 2024",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2025-03",
+      "dc": "hyundai-nacs-to-ccs1",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Hyundai",
+      "model": "Ioniq 5",
+      "years": "2025 to 2027",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "2025-01",
+      "dc": "",
+      "j": "hyundai-j1772-to-nacs",
+      "incl": [
+        "dc"
+      ],
+      "note": "Comes with a CCS adapter. Charges at up to about 125 kW at Superchargers. The 2025 Ioniq 5 N kept the CCS1 port.",
+      "ac": ""
+    },
+    {
+      "make": "Hyundai",
+      "model": "Ioniq 6",
+      "years": "2023 to 2025",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2025-03",
+      "dc": "hyundai-nacs-to-ccs1",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Hyundai",
+      "model": "Ioniq 6",
+      "years": "2026",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "2025-03",
+      "dc": "",
+      "j": "hyundai-j1772-to-nacs",
+      "incl": [],
+      "note": "Not confirmed by Hyundai at the time of writing. Look at the port before buying an adapter.",
+      "ac": ""
+    },
+    {
+      "make": "Hyundai",
+      "model": "Ioniq 9",
+      "years": "2026 to 2027",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "2025-03",
+      "dc": "",
+      "j": "hyundai-j1772-to-nacs",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Hyundai",
+      "model": "Kona Electric",
+      "years": "2019 to 2026",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2025-03",
+      "dc": "hyundai-nacs-to-ccs1",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Kia",
+      "model": "EV6",
+      "years": "2022 to 2024",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2025-01",
+      "dc": "kia-nacs",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Kia",
+      "model": "EV6",
+      "years": "2025 to 2026",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "2025-01",
+      "dc": "",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Kia",
+      "model": "EV9",
+      "years": "2024 to 2025",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2025-01",
+      "dc": "kia-nacs",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Kia",
+      "model": "EV9",
+      "years": "2026",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "2025-01",
+      "dc": "",
+      "j": "",
+      "incl": [],
+      "note": "Owners report a CCS adapter in the box.",
+      "ac": ""
+    },
+    {
+      "make": "Kia",
+      "model": "Niro EV",
+      "years": "2019 to 2025",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2025-01",
+      "dc": "kia-nacs",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Genesis",
+      "model": "GV60",
+      "years": "2023 to 2025",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2025-03",
+      "dc": "genesis-nacs",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Genesis",
+      "model": "GV60",
+      "years": "2026",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "2025-03",
+      "dc": "",
+      "j": "",
+      "incl": [],
+      "note": "Adapters are reportedly not included.",
+      "ac": ""
+    },
+    {
+      "make": "Genesis",
+      "model": "Electrified GV70",
+      "years": "2023 to 2025",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2025-03",
+      "dc": "genesis-nacs",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Genesis",
+      "model": "Electrified GV70",
+      "years": "2026",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "2025-03",
+      "dc": "",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Nissan",
+      "model": "Leaf",
+      "years": "2018 to 2025",
+      "inlet": "CHADEMO",
+      "sc": false,
+      "since": "",
+      "dc": "",
+      "j": "",
+      "incl": [],
+      "note": "Fast charges only at CHAdeMO, which is disappearing. A CCS-to-CHAdeMO adapter exists, costs about $1,100 and charges slowly.",
+      "ac": ""
+    },
+    {
+      "make": "Nissan",
+      "model": "Leaf",
+      "years": "2026",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "",
+      "dc": "",
+      "j": "",
+      "incl": [],
+      "note": "Two ports: NACS for fast charging only, J1772 for everything else.",
+      "ac": "J1772"
+    },
+    {
+      "make": "Nissan",
+      "model": "Ariya",
+      "years": "2023 to 2026",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2024-12",
+      "dc": "nissan-nacs",
+      "j": "",
+      "incl": [],
+      "note": "Nissan says use only its adapter. V3 and V4 Superchargers only.",
+      "ac": ""
+    },
+    {
+      "make": "Rivian",
+      "model": "R1T and R1S",
+      "years": "2022 to 2025",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2024-03",
+      "dc": "rivian-nacs-dc",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Rivian",
+      "model": "R1T and R1S",
+      "years": "2026",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "2024-03",
+      "dc": "rivian-ccs1-dc",
+      "j": "",
+      "incl": [
+        "dc"
+      ],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Rivian",
+      "model": "R2",
+      "years": "2026 to 2027",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "2024-03",
+      "dc": "rivian-ccs1-dc",
+      "j": "",
+      "incl": [
+        "dc"
+      ],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Lucid",
+      "model": "Air",
+      "years": "2022 to 2026",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2025-07",
+      "dc": "lucid-nacs",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Lucid",
+      "model": "Gravity",
+      "years": "2025 to 2026",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "2025-07",
+      "dc": "",
+      "j": "",
+      "incl": [
+        "dc",
+        "j"
+      ],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Honda",
+      "model": "Prologue",
+      "years": "2024 to 2026",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2025-06",
+      "dc": "honda-nacs",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Acura",
+      "model": "ZDX",
+      "years": "2024 to 2025",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2025-06",
+      "dc": "honda-nacs",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Volkswagen",
+      "model": "ID.4",
+      "years": "2021 to 2026",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2025-11",
+      "dc": "vw-nacs",
+      "j": "",
+      "incl": [],
+      "note": "Starting a session may need the Tesla app.",
+      "ac": ""
+    },
+    {
+      "make": "Volkswagen",
+      "model": "ID. Buzz",
+      "years": "2025 to 2026",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2025-11",
+      "dc": "vw-nacs",
+      "j": "",
+      "incl": [],
+      "note": "Starting a session may need the Tesla app.",
+      "ac": ""
+    },
+    {
+      "make": "Audi",
+      "model": "Q4 e-tron",
+      "years": "2022 to 2026",
+      "inlet": "CCS1",
+      "sc": false,
+      "since": "",
+      "dc": "",
+      "j": "",
+      "incl": [],
+      "note": "Audi left the Q4 out of its Supercharger deal and has not given a date.",
+      "ac": ""
+    },
+    {
+      "make": "Audi",
+      "model": "Q6 e-tron",
+      "years": "2025 to 2026",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2025-09",
+      "dc": "audi-nacs",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "BMW",
+      "model": "i4",
+      "years": "2022 to 2026",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2025-12",
+      "dc": "bmw-nacs",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "BMW",
+      "model": "iX",
+      "years": "2022 to 2026",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2025-12",
+      "dc": "bmw-nacs",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "BMW",
+      "model": "i5",
+      "years": "2024 to early 2026",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2025-12",
+      "dc": "bmw-nacs",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "BMW",
+      "model": "i5",
+      "years": "2026, built from March 2026",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "2025-12",
+      "dc": "",
+      "j": "",
+      "incl": [
+        "dc",
+        "j"
+      ],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "EQB, EQE and EQS",
+      "years": "2022 to 2026",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2025-02",
+      "dc": "mercedes-nacs",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "CLA",
+      "years": "2026",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "2025-02",
+      "dc": "",
+      "j": "",
+      "incl": [],
+      "note": "NACS for fast charging, a separate J1772 port for AC.",
+      "ac": "J1772"
+    },
+    {
+      "make": "Polestar",
+      "model": "Polestar 2, 3 and 4",
+      "years": "2021 to 2026",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2024-10",
+      "dc": "volvo-polestar-nacs",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Volvo",
+      "model": "EX30 and EX90",
+      "years": "2025 to 2026",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2024-10",
+      "dc": "volvo-polestar-nacs",
+      "j": "",
+      "incl": [],
+      "note": "V3 Superchargers and newer. Volvo approves only its own adapter.",
+      "ac": ""
+    },
+    {
+      "make": "Toyota",
+      "model": "bZ4X",
+      "years": "2023 to 2025",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2025-10",
+      "dc": "toyota-nacs",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Toyota",
+      "model": "bZ",
+      "years": "2026",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "2025-10",
+      "dc": "",
+      "j": "",
+      "incl": [
+        "dc",
+        "j"
+      ],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Subaru",
+      "model": "Solterra",
+      "years": "2023 to 2025",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2025-10",
+      "dc": "subaru-nacs",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Subaru",
+      "model": "Solterra",
+      "years": "2026",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "2025-10",
+      "dc": "",
+      "j": "",
+      "incl": [
+        "dc",
+        "j"
+      ],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Jeep",
+      "model": "Wagoneer S",
+      "years": "2024 to 2026",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2026-03",
+      "dc": "mopar-nacs",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Dodge",
+      "model": "Charger Daytona",
+      "years": "2024 to 2026",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2026-03",
+      "dc": "mopar-nacs",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Dodge",
+      "model": "Charger Daytona",
+      "years": "2027",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "2026-03",
+      "dc": "",
+      "j": "",
+      "incl": [
+        "j"
+      ],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Porsche",
+      "model": "Taycan",
+      "years": "2020 to 2026",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2025-09",
+      "dc": "porsche-nacs",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Porsche",
+      "model": "Taycan",
+      "years": "2027",
+      "inlet": "NACS",
+      "sc": true,
+      "since": "2025-09",
+      "dc": "",
+      "j": "",
+      "incl": [],
+      "note": "Most trims. The Turbo GT Weissach keeps CCS1.",
+      "ac": ""
+    },
+    {
+      "make": "Porsche",
+      "model": "Macan Electric",
+      "years": "2024 to 2026",
+      "inlet": "CCS1",
+      "sc": true,
+      "since": "2025-09",
+      "dc": "porsche-nacs",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Mitsubishi",
+      "model": "Outlander PHEV",
+      "years": "2018 to 2026",
+      "inlet": "CHADEMO",
+      "sc": false,
+      "since": "",
+      "dc": "",
+      "j": "",
+      "incl": [],
+      "note": "",
+      "ac": ""
+    },
+    {
+      "make": "Chrysler",
+      "model": "Pacifica Plug-in Hybrid",
+      "years": "2017 to 2026",
+      "inlet": "J1772",
+      "sc": false,
+      "since": "",
+      "dc": "",
+      "j": "",
+      "incl": [],
+      "note": "No fast charging at all.",
+      "ac": ""
+    }
+  ],
+  "rtc": [
+    {
+      "st": "CA",
+      "hoa": "Condos, HOAs, co-ops and community apartments",
+      "renters": "Yes, landlord must approve a written request on qualifying properties",
+      "cites": "Civil Code 4745, 4745.1 and 6713 (associations); 1947.6 (renters)",
+      "points": [
+        "The association cannot ban a charger in your own space, only add reasonable rules that don’t significantly raise the cost.",
+        "You pay for installation, electricity and upkeep, use a licensed contractor, and carry a $1 million umbrella policy naming the association.",
+        "Renters: the landlord must say yes to a written request on most properties; you pay, and carry liability insurance unless the charger is certified and an electrician does the work."
+      ],
+      "afdc": [
+        9579,
+        11530
+      ]
+    },
+    {
+      "st": "CO",
+      "hoa": "HOAs and condo associations",
+      "renters": "Yes, a tenant may install a charger at their own expense",
+      "cites": "C.R.S. 38-33.3-106.8 (associations); 38-12-601 (renters)",
+      "points": [
+        "An association cannot prohibit a Level 1 or Level 2 charger in your space, or charge you a fee for it beyond the electricity.",
+        "You hire a licensed electrician, follow reasonable design rules and carry insurance.",
+        "Renters pay for installation; the landlord may charge for electricity, upgrades and a reasonable access fee."
+      ],
+      "afdc": [
+        13275,
+        10856
+      ]
+    },
+    {
+      "st": "CT",
+      "hoa": "Condo associations",
+      "renters": "Yes, landlord must approve a written request (phased in by landlord size; all landlords since October 2024)",
+      "cites": "C.G.S. 47-261g (condos); 47a-13b (renters)",
+      "points": [
+        "The association cannot ban a charger or add rules that raise its cost or cut its performance.",
+        "You get approval, use a licensed contractor, provide insurance and pay for electricity and upkeep.",
+        "Renters pay for installation and removal; a charger left behind becomes part of the property."
+      ],
+      "afdc": [
+        12953,
+        12954
+      ]
+    },
+    {
+      "st": "DC",
+      "hoa": "Condo associations",
+      "renters": "Not covered",
+      "cites": "D.C. Code 6-1451.03c",
+      "points": [
+        "A condo association cannot prohibit a charger in your own parking space, only add reasonable rules.",
+        "You use a licensed contractor and pay for installation, operation and repairs."
+      ],
+      "afdc": [
+        14328
+      ]
+    },
+    {
+      "st": "FL",
+      "hoa": "Condo associations",
+      "renters": "Not covered",
+      "cites": "Fla. Stat. 718.113",
+      "points": [
+        "A condo association cannot prohibit a charger in your own parking space.",
+        "It can ask for a licensed contractor, a certificate of insurance, and repayment of any insurance premium increase."
+      ],
+      "afdc": [
+        11927
+      ]
+    },
+    {
+      "st": "HI",
+      "hoa": "Condos, townhouses, HOAs and co-ops",
+      "renters": "Not covered",
+      "cites": "HRS 196-7.5",
+      "points": [
+        "You may install a charger at your stall if it meets the rules and you register it with the association within 30 days.",
+        "The association can restrict placement but cannot prevent it or charge a fee for it. A common-area charger needs its consent."
+      ],
+      "afdc": [
+        8482
+      ]
+    },
+    {
+      "st": "IL",
+      "hoa": "Condo and common-interest associations",
+      "renters": "Yes, a tenant may install a Level 1 or Level 2 charger at their space",
+      "cites": "765 ILCS 1085/30 (associations); 1085/35 (renters)",
+      "points": [
+        "The association cannot prohibit a charger in your space or add rules that raise its cost or cut its performance.",
+        "You use a licensed contractor, provide a certificate of insurance within 14 days and every year after, and pay for electricity.",
+        "Renters: the landlord may charge for electricity, network fees, any wiring upgrades, and a deposit to restore the space."
+      ],
+      "afdc": [
+        13324,
+        13325
+      ]
+    },
+    {
+      "st": "MA",
+      "hoa": "Condos and associations (and historic districts)",
+      "renters": "Not covered",
+      "cites": "M.G.L. c. 183A, s. 10",
+      "points": [
+        "An association cannot prohibit or unreasonably restrict a charger in your exclusive-use space.",
+        "Your application counts as approved if it isn’t denied in writing within 60 days.",
+        "You pay for installation, upkeep and electricity, on your own meter where feasible."
+      ],
+      "afdc": [
+        14407
+      ]
+    },
+    {
+      "st": "MD",
+      "hoa": "HOAs and condo associations",
+      "renters": "Not covered",
+      "cites": "Real Property 11-111.4 and 11B-111.8",
+      "points": [
+        "An association cannot prohibit a charger in your own parking space and must treat it like any other architectural change.",
+        "You use a licensed contractor and pay for installation, insurance, upkeep and removal."
+      ],
+      "afdc": [
+        12624
+      ]
+    },
+    {
+      "st": "ME",
+      "hoa": "Condos and residential associations (since January 1, 2026)",
+      "renters": "Not covered",
+      "cites": "33 M.R.S. 576-A",
+      "points": [
+        "An association cannot prohibit a charger in your designated space.",
+        "You can apply to put one in a common space with the written consent of the owners who use it.",
+        "You pay for installation and electricity, carry insurance, and must tell a buyer the charger is there."
+      ],
+      "afdc": [
+        14352
+      ]
+    },
+    {
+      "st": "NJ",
+      "hoa": "Residential associations",
+      "renters": "Not covered",
+      "cites": "N.J.S.A. 45:22A-48.4",
+      "points": [
+        "An association cannot prohibit a charger in your own parking space or add rules that significantly raise its cost.",
+        "You use a licensed contractor, provide a certificate of insurance and pay for installation and upkeep."
+      ],
+      "afdc": [
+        12569
+      ]
+    },
+    {
+      "st": "NY",
+      "hoa": "HOAs and condo associations",
+      "renters": "Not covered",
+      "cites": "Real Property Law 339-ll and 343",
+      "points": [
+        "Neither an HOA nor a condo association can prohibit a charger in your own parking space.",
+        "Condos can ask for a licensed contractor and a certificate of insurance; you pay for installation and upkeep."
+      ],
+      "afdc": [
+        13142,
+        12525
+      ]
+    },
+    {
+      "st": "OR",
+      "hoa": "Planned communities and condos",
+      "renters": "Yes, landlord must act on an application within 60 days",
+      "cites": "ORS 94.762 and 100.627 (associations); 90.462 (renters)",
+      "points": [
+        "An HOA must approve a complete application within 60 days or give you written reasonable conditions.",
+        "Renters: a landlord can refuse only if the property has fewer parking spaces than units. A licensed electrician does the work, you pay, and you carry $100,000 of liability insurance if the charger isn’t certified.",
+        "You pay for installation, electricity and removal, and must tell a buyer about the charger."
+      ],
+      "afdc": [
+        14419,
+        11876
+      ]
+    },
+    {
+      "st": "VA",
+      "hoa": "HOAs and condo associations",
+      "renters": "Not covered",
+      "cites": "Va. Code 55.1-1823.1, 55.1-1962.1 and 55.1-2139.1",
+      "points": [
+        "An HOA cannot prohibit a charger in your own parking space, but can set rules on size, placement and insurance outside the house.",
+        "A condo can refuse if it is not technically feasible or safe."
+      ],
+      "afdc": [
+        12407
+      ]
+    },
+    {
+      "st": "WA",
+      "hoa": "HOAs, condos and unit-owner associations (2025 law)",
+      "renters": "Not covered",
+      "cites": "RCW 64.32.290, 64.34.395, 64.38.062 and 64.90.513",
+      "points": [
+        "An association cannot prohibit a charger in your personal parking space.",
+        "You hire an experienced electrical contractor, provide a certificate of insurance, register the charger and pay for electricity until it is removed."
+      ],
+      "afdc": [
+        14358
+      ]
+    }
+  ],
+  "portsUpdated": "2026-10-01"
 }

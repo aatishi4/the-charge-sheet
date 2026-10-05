@@ -1,0 +1,47 @@
+name: Refresh rebates and right-to-charge laws
+
+# Rebuilds data/incentives/ (Rebates by ZIP, Start here, the apartment and HOA guide) from the
+# U.S. Department of Energy's Alternative Fuels Data Center laws and incentives pages. Public data,
+# no API key. Runs weekly (it only commits when the data changes), on demand, and whenever the
+# build script changes. A state whose pages fail to load or parse keeps its last good file.
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - tools/build_incentives.py
+      - .github/workflows/refresh-incentives.yml
+  schedule:
+    - cron: '17 11 * * 3'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build rebate lookup
+        shell: bash
+        run: |
+          set -o pipefail
+          if ! python3 tools/build_incentives.py 2>&1 | tee build.log; then
+            echo "::error title=build_incentives.py failed::$(tail -n 8 build.log | tr '\n' ' ' | cut -c1-900)"
+            exit 1
+          fi
+          echo "::notice title=Rebate lookup built::$(tail -n 1 build.log)"
+          if grep -q "kept last good file" build.log; then
+            echo "::warning title=Some states kept last week's data::$(grep 'kept last good file' build.log | tr '\n' ' ' | cut -c1-900)"
+          fi
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/incentives
+          if git diff --cached --quiet -- data/incentives; then
+            echo "No changes."
+          else
+            git commit -m "Refresh rebate and right-to-charge data"
+            git push
+          fi
