@@ -1426,8 +1426,6 @@ html.wlock,html.wlock body{overflow:hidden}
 .hwgrid.hsmall{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
 .hwgrid.hsmall .hgimg{height:130px}
 .hglead{max-width:52em;margin:0 0 1rem}
-.hgsub{font-size:1.25rem;margin:2rem 0 .8rem;letter-spacing:-.015em}
-.hwcard.had h2{font-size:1.1rem}
 /*/home-side*/
 </style>
 </head>
@@ -3815,7 +3813,7 @@ html.wlock,html.wlock body{overflow:hidden}
       <li><strong>J1772.</strong> The round Level 2 plug at hotels, garages and shops. Slow, plentiful and often free.</li>
       <li><strong>CHAdeMO.</strong> Older Nissan Leafs and a few others. Fading. If this is your plug, check every stop before you commit to the route.</li>
     </ul>
-    <p>Adapters let a CCS car use many Tesla Superchargers and the other way round. The <a href="#hadapt">adapter finder</a> shows which chargers your car plugs straight into, which adapter the rest need, and what it costs. Buy the one your carmaker sells or approves. A fast charger pushes hundreds of amps through it, and it is not the place to save forty dollars.</p>
+    <p>Adapters let a CCS car use many Tesla Superchargers and the other way round. The <a href="#hadapt">adapter finder</a> shows which chargers your car plugs straight into, and which adapter the rest need. Buy the one your carmaker sells or approves. A fast charger pushes hundreds of amps through it, and it is not the place to save forty dollars.</p>
 
     <h2 id="h-r-80">Should you charge to 100%?</h2>
     <p>At home before the trip, yes. At a fast charger, almost never.</p>
@@ -4276,7 +4274,7 @@ html.wlock,html.wlock body{overflow:hidden}
 <section id="view-hadapt" hidden>
   <div class="tool-head">
     <h1>EV charging adapter finder</h1>
-    <p>Half the plugs in America changed shape in two years. Pick your car and see, for every kind of charger you'll meet, whether it plugs straight in, which adapter you need and roughly what it costs, or whether it just won't work.</p>
+    <p>Half the plugs in America changed shape in two years. Pick your car and see, for every kind of charger you'll meet, whether it plugs straight in, which adapter you need, or whether it just won't work.</p>
     <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>Built by <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
   </div>
   <div class="tool">
@@ -4302,7 +4300,7 @@ html.wlock,html.wlock body{overflow:hidden}
       <li>Third-party adapters can affect your warranty. GM, Hyundai, Honda and Toyota say damage from unapproved adapters may not be covered.</li>
       <li>UL 2252 is the US safety standard for EV adapters. Look for it.</li>
     </ul>
-    <p class="fh">Adapter prices are carmaker list prices or typical street prices in October 2026. Supercharger access changes often; your carmaker's app has the final word.</p>
+    <p class="fh">Checked October 2026. Supercharger access changes often; your carmaker's app has the final word.</p>
   </article>
 </section>
 <!--/home-side-->
@@ -8901,8 +8899,7 @@ if (typeof document !== 'undefined') (function(){
     truck:'<svg viewBox="0 0 120 90" aria-hidden="true"><path class="ln" d="M6,64 V48 Q8,42 16,42 L30,30 Q34,28 40,28 H62 V42 H112 V64 Z M62,42 V28"/><circle class="ln fw" cx="28" cy="65" r="9"/><circle class="ln fw" cx="92" cy="65" r="9"/></svg>',
     meter:'<svg viewBox="0 0 120 90" aria-hidden="true"><rect class="ln fw" x="22" y="12" width="40" height="64" rx="5"/><path class="ln" d="M30,24 H54 M30,32 H54 M30,40 H54 M30,48 H54"/><circle class="ln fw" cx="88" cy="40" r="16"/><path class="lb" d="M88,40 L97,31"/><path class="lb" d="M62,40 H72"/></svg>',
     split:'<svg viewBox="0 0 120 90" aria-hidden="true"><rect class="ln fw" x="44" y="22" width="32" height="44" rx="7"/><circle class="fb" cx="60" cy="36" r="3"/><path class="ln" d="M60,66 V80 M44,44 C26,44 22,30 12,30 M76,44 C94,44 98,30 108,30"/><rect class="ln fw" x="4" y="24" width="10" height="12" rx="2"/><rect class="ln fw" x="106" y="24" width="10" height="12" rx="2"/></svg>',
-    panel:'<svg viewBox="0 0 120 90" aria-hidden="true"><rect class="ln fw" x="34" y="8" width="52" height="74" rx="5"/><path class="ln" d="M42,22 H56 M64,22 H78 M42,34 H56 M64,34 H78 M42,46 H56 M64,46 H78 M42,58 H56"/><circle class="fb" cx="71" cy="58" r="4"/><path class="lb" d="M86,30 C100,30 104,18 112,18"/></svg>',
-    adapter:'<svg viewBox="0 0 120 90" aria-hidden="true"><rect class="ln fw" x="10" y="32" width="34" height="26" rx="9"/><circle class="fb" cx="21" cy="45" r="3"/><circle class="fb" cx="33" cy="45" r="3"/><path class="ln" d="M44,45 H58"/><rect class="ln fw" x="58" y="34" width="22" height="22" rx="4"/><path class="ln" d="M80,45 H90"/><circle class="ln fw" cx="100" cy="45" r="14"/><circle class="fb" cx="96" cy="41" r="2.2"/><circle class="fb" cx="104" cy="41" r="2.2"/><circle class="fb" cx="100" cy="50" r="2.6"/></svg>'
+    panel:'<svg viewBox="0 0 120 90" aria-hidden="true"><rect class="ln fw" x="34" y="8" width="52" height="74" rx="5"/><path class="ln" d="M42,22 H56 M64,22 H78 M42,34 H56 M64,34 H78 M42,46 H56 M64,46 H78 M42,58 H56"/><circle class="fb" cx="71" cy="58" r="4"/><path class="lb" d="M86,30 C100,30 104,18 112,18"/></svg>'
   };
   var PGROUP = {manager:['Load managers','Load manager'], splitter:['Splitters','Splitter'], panel:['Smart panels','Smart panel']};
   function panelIcon(x){ return x.group==='splitter' ? ICON.split : x.group==='panel' ? ICON.panel : ICON.meter; }
@@ -8910,7 +8907,6 @@ if (typeof document !== 'undefined') (function(){
     if (kind==='chargers'){ var ic = x.bidirectional ? ICON.bidi : x.install==='cord' ? ICON.cord : ICON.wall;
       return '<a class="hwcard hg" href="'+gearHref(x.id)+'">'+pic(x, ic, x.oem+' '+x.model)+'<span class="sub">'+esc(x.oem)+' · '+esc(x.kind)+'</span><h2>'+esc(x.model)+'</h2><b>'+[x.amps?x.amps+' A':'', x.exportKw?x.exportKw+' kW out':''].filter(Boolean).join(' · ')+'</b><p class="sub">'+esc(x.blurb)+'</p><span class="hgfoot">'+money(x.price)+(x.status!=='available'?' <span class="chip '+(x.status==='discontinued'?'g1':'gn')+'">'+x.status+'</span>':'')+'</span></a>'; }
     if (kind==='panel') return '<a class="hwcard hg" href="'+gearHref(x.id)+'">'+pic(x, panelIcon(x), x.oem+' '+x.model)+'<span class="sub">'+esc(x.oem)+' · '+esc(x.kind)+'</span><h2>'+esc(x.model)+'</h2><b>'+(x.amps?'Up to '+x.amps+' A':'')+'</b><p class="sub">'+esc(x.blurb)+'</p><span class="hgfoot">'+(x.price ? 'About '+money(x.price) : 'No published price')+'</span></a>';
-    if (kind==='adapters') return '<a class="hwcard hg had" href="'+gearHref(x.id)+'">'+pic(x, ICON.adapter, x.maker+' '+x.name)+'<span class="sub">'+esc(x.maker)+' · '+esc(x.level==='DC'?'Fast charging':'Level 2')+'</span><h2>'+esc(x.name)+'</h2><b>'+esc(x.dir.replace(/-to-/,' to '))+'</b><p class="sub">'+esc(x.who)+'</p><span class="hgfoot">'+(x.price ? 'About '+money(x.price) : x.price===0 ? 'Free through a dealer' : 'Price varies')+'</span></a>';
     return '';
   }
   function imgSrc(x){ return (window.CS_PAGE ? '/' : '') + x.img; }
@@ -8923,11 +8919,11 @@ if (typeof document !== 'undefined') (function(){
     var box = el('h-gear'); if (!box) return;
     var q = window.CS_PRODUCT || (location.search.match(/[?&]p=([a-z0-9-]+)/)||[])[1] || (location.hash.match(/\?p=([a-z0-9-]+)/)||[])[1];
     var all = [].concat((HG.chargers||[]).map(function(x){ return ['chargers',x]; }), (HG.batteries||[]).map(function(x){ return ['batteries',x]; }), (HG.vehicles||[]).map(function(x){ return ['vehicles',x]; }),
-      (HG.panel||[]).map(function(x){ return ['panel',x]; }), (HG.adapters||[]).map(function(x){ return ['adapters',x]; }));
+      (HG.panel||[]).map(function(x){ return ['panel',x]; }));
     var hit = q && all.filter(function(p){ return p[1].id===q; })[0];
     if (hit && window.CS_PAGE && !window.CS_PRODUCT){ location.replace(gearHref(hit[1].id)); return; }  // old ?p= links
     if (hit){ box.innerHTML = gearDetail(hit[0], hit[1]); K.polish(box); return; }
-    var tab = S.gearTab, h = '<div class="hgtabs seg" role="group" aria-label="Shelf">'+[['chargers','Home chargers'],['batteries','Home batteries'],['vehicles','Bidirectional EVs'],['panel','Panel helpers'],['adapters','Adapters']].map(function(t){
+    var tab = S.gearTab, h = '<div class="hgtabs seg" role="group" aria-label="Shelf">'+[['chargers','Home chargers'],['batteries','Home batteries'],['vehicles','Bidirectional EVs'],['panel','Panel helpers']].map(function(t){
       return '<button type="button" data-gtab="'+t[0]+'" aria-pressed="'+(tab===t[0])+'">'+t[1]+'</button>'; }).join('')+'</div>';
     if (tab==='chargers'){
       h += '<div class="hwgrid">'+(HG.chargers||[]).map(function(c){ return gearCard('chargers', c); }).join('')+'</div>'+credits(HG.chargers||[], function(x){ return x.oem+' '+x.model; });
@@ -8937,11 +8933,6 @@ if (typeof document !== 'undefined') (function(){
       h += '<div class="hgfilt">'+[['all','All'],['manager','Load managers'],['splitter','Splitters'],['panel','Smart panels']].map(function(t){ return '<button type="button" class="toc-b" data-gpan="'+t[0]+'" aria-pressed="'+(PF===t[0])+'">'+t[1]+'</button>'; }).join('')+'</div>';
       h += '<div class="hwgrid">'+pl.map(function(x){ return gearCard('panel', x); }).join('')+'</div>'+credits(pl, function(x){ return x.oem+' '+x.model; })+
         '<p class="fh" style="margin-top:1.2rem">The code lets a charger count at whatever a listed load management system allows (NEC 625.42 and 220.70 in the 2023 code; Article 130 and 120.7 in the 2026 code, where your inspector has adopted it). Plug-in splitters sit in a gray area: inspectors mostly want to see a listing and the instructions followed.</p>';
-    } else if (tab==='adapters'){
-      var AD = HG.adapters||[], grp = [['Fast charging at Tesla Superchargers, for CCS1 cars', function(a){ return a.dir==='NACS-to-CCS1'; }], ['Fast charging at CCS stations, for NACS cars', function(a){ return a.dir==='CCS1-to-NACS'; }], ['Level 2', function(a){ return a.level==='AC'; }]];
-      h += '<p class="sub hglead">Which one you need depends on your car’s port and the charger in front of you. The <a href="'+K.viewHref('hadapt')+'">adapter finder</a> works it out for your car.</p>';
-      grp.forEach(function(g){ var list = AD.filter(g[1]); if (!list.length) return; h += '<h2 class="hgsub">'+g[0]+'</h2><div class="hwgrid">'+list.map(function(x){ return gearCard('adapters', x); }).join('')+'</div>'; });
-      h += credits(AD, function(x){ return x.maker+' '+x.name; });
     } else if (tab==='batteries'){
       h += '<div class="hwgrid">'+(HG.batteries||[]).map(function(b){
         return '<a class="hwcard hg" href="'+gearHref(b.id)+'">'+pic(b, ICON.batt, b.oem+' '+b.model)+'<span class="sub">'+esc(b.oem)+' · '+esc(b.chem)+'</span><h2>'+esc(b.model)+'</h2><b>'+b.kwh+' kWh · '+(b.kw?b.kw+' kW':'no inverter')+'</b><p class="sub">'+esc(b.blurb)+'</p><span class="hgfoot">About '+moneyK(b.price)+' installed</span></a>';
@@ -8957,18 +8948,14 @@ if (typeof document !== 'undefined') (function(){
     box.innerHTML = h;
   }
   function gearDetail(kind, x){
-    var rows = [], use = '', title = kind==='vehicles' ? brandName(x.make, x.model) : kind==='adapters' ? brandName(x.maker, x.name) : brandName(x.oem, x.model), ic;
-    if (kind==='panel' || kind==='adapters'){
-      if (kind==='panel'){ ic = panelIcon(x);
+    var rows = [], use = '', title = kind==='vehicles' ? brandName(x.make, x.model) : brandName(x.oem, x.model), ic;
+    if (kind==='panel'){
+      ic = panelIcon(x);
         rows = [['Type', x.kind], ['How it works', x.how], ['Current', x.amps ? 'Up to '+x.amps+' A' : ''], ['Works with', x.worksWith], ['Installation', x.installNote], ['Listing', x.listing], ['App', x.app], ['Price', (x.price ? 'About '+money(x.price)+'. ' : '')+(x.priceNote||'')]];
         use = '<a class="btn" href="'+K.viewHref('hinstall')+'">Check your panel</a>';
-      } else { ic = ICON.adapter;
-        rows = [['Direction', x.dir.replace(/-to-/,' charger to ')+' car'], ['Charging', x.level==='DC' ? 'DC fast charging' : 'Level 2 (AC)'], ['Who needs it', x.who], ['Listing', x.listing], ['Price', x.price ? 'About '+money(x.price) : x.price===0 ? 'Free through a dealer' : 'Price varies; check the maker']];
-        use = '<a class="btn" href="'+K.viewHref('hadapt')+'">Find the adapter for your car</a>';
-      }
-      var site = x.website || x.url;
-      return '<p class="sub"><a href="'+K.viewHref('hgear')+'?tab='+kind+'">All '+(kind==='panel'?'panel helpers':'adapters')+'</a> <span class="dot">/</span> '+esc(title)+'</p>'+
-        '<div class="hwhero hgd"><div class="hgicon'+(x.img?' has-img':'')+'">'+pic(x, ic, title)+'</div><div><p class="sub">'+esc(kind==='adapters'?x.maker:x.oem)+'</p><h2>'+esc(kind==='adapters'?x.name:x.model)+'</h2><p>'+esc(x.blurb||x.who||'')+'</p><p>'+use+(site?' <a class="btn secondary" href="'+esc(site)+'" target="_blank" rel="noopener">Maker’s page</a>':'')+'</p></div></div>'+
+      var site = x.website;
+      return '<p class="sub"><a href="'+K.viewHref('hgear')+'?tab=panel">All panel helpers</a> <span class="dot">/</span> '+esc(title)+'</p>'+
+        '<div class="hwhero hgd"><div class="hgicon'+(x.img?' has-img':'')+'">'+pic(x, ic, title)+'</div><div><p class="sub">'+esc(x.oem)+'</p><h2>'+esc(x.model)+'</h2><p>'+esc(x.blurb||'')+'</p><p>'+use+(site?' <a class="btn secondary" href="'+esc(site)+'" target="_blank" rel="noopener">Maker’s page</a>':'')+'</p></div></div>'+
         '<h2>Details</h2><div class="scroll" tabindex="0"><table><tbody>'+rows.filter(function(r){ return r[1]; }).map(function(r){ return '<tr><th>'+r[0]+'</th><td>'+esc(r[1])+'</td></tr>'; }).join('')+'</tbody></table></div>'+
         '<p class="fh">Source: '+(x.source ? '<a href="'+esc(x.source)+'" target="_blank" rel="noopener">'+esc(x.source.replace(/^https?:\/\/(www\.)?/,'').split('/')[0])+'</a>' : 'Maker’s page')+', October 2026.'+(x.imgCredit?' '+credLine(x)+'.':'')+'</p>';
     }
@@ -9198,7 +9185,8 @@ if (typeof document !== 'undefined') (function(){
   function adapterById(id){ return hgById(HG.adapters||[], id); }
   function adLink(a, incl){
     if (!a) return '';
-    return '<a href="'+gearHref(a.id)+'">'+esc(a.maker+' '+a.name)+'</a>'+(incl ? ' (comes with the car)' : (a.price ? ', about '+money(a.price) : a.price===0 ? ', free through a dealer' : ', price varies'));
+    var n = esc(brandName(a.maker, a.name));
+    return (a.url ? '<a href="'+esc(a.url)+'" target="_blank" rel="noopener">'+n+'</a>' : n)+(incl ? ' (comes with the car)' : '');
   }
   var PLACES = [
     ['homeJ', 'Home Level 2, J1772 plug', 'Most non-Tesla wall boxes and mobile cords'],
@@ -9216,7 +9204,7 @@ if (typeof document !== 'undefined') (function(){
     if (inl==='NACS'){
       var jA = adapterById(p.j) || null, dcA = adapterById(p.dc) || null;
       var acJText = acJ ? {s:'direct', t:'Plugs into the car’s separate J1772 port.'} : null;
-      R.homeJ = acJText || {s:'adapter', t:'Needs a J1772-to-NACS adapter. '+(jA ? adLink(jA, incl('j')) : incl('j') ? 'One comes with the car.' : 'Your carmaker sells one; third-party ones are about $60.')};
+      R.homeJ = acJText || {s:'adapter', t:'Needs a J1772-to-NACS adapter. '+(jA ? adLink(jA, incl('j')) : incl('j') ? 'One comes with the car.' : 'Your carmaker sells one.')};
       R.l2 = acJText || {s:'adapter', t:'Same J1772-to-NACS adapter as at home. '+(incl('j') || (jA && incl('j')) ? 'Keep it in the car.' : 'Keep one in the car; most public Level 2 is J1772.')};
       R.homeN = acJ ? {s:'adapter', t:'Its NACS port takes only fast charging. Use the J1772 port with a NACS-to-J1772 adapter: '+adLink(nacsToJ)+'.'} : {s:'direct', t:'Plugs straight in.'};
       R.dest = acJ ? {s:'adapter', t:'Same NACS-to-J1772 adapter as for a NACS home charger. '+adLink(nacsToJ)+'.'} : {s:'direct', t:'Plugs straight in.'};
@@ -9269,7 +9257,7 @@ if (typeof document !== 'undefined') (function(){
     h += '<div class="hadlist">'+PLACES.map(function(pl){ var r = R[pl[0]];
       return '<div class="hadrow '+r.s+'"><span class="ic" aria-hidden="true">'+(r.s==='direct'?'✓':r.s==='adapter'?'⇄':'✕')+'</span><div><b>'+pl[1]+'</b><small>'+pl[2]+'</small></div><p><span class="vh">'+(r.s==='direct'?'Plugs in. ':r.s==='adapter'?'Adapter. ':'No. ')+'</span>'+r.t+'</p></div>'; }).join('')+'</div>';
     if (p.note) h += '<p class="flag">'+esc(p.note)+'</p>';
-    h += '<p class="fh">Adapters link to their gear page with the maker’s product page. Charging at a Supercharger also needs the carmaker’s or Tesla’s app.</p>';
+    h += '<p class="fh">Adapter names link to the maker’s page, which has the current price. Charging at a Supercharger also needs the carmaker’s or Tesla’s app.</p>';
     out.innerHTML = h; K.polish(out);
   }
 
@@ -9772,7 +9760,7 @@ if (typeof document !== 'undefined') (function(){
     var g = function(n){ var m = new RegExp('[?&]'+n+'=([a-z0-9-]+)').exec(q); return m && m[1]; };
     var veh = g('veh'), batt = g('batt'), gear = g('gear'), zip = g('zip'), tab = g('tab');
     if (zip && /^\d{5}$/.test(zip)){ S.r.zip = zip; S.r.mode = 'zip'; }
-    if (tab && ['chargers','batteries','vehicles','panel','adapters'].indexOf(tab)>=0) S.gearTab = tab;
+    if (tab && ['chargers','batteries','vehicles','panel'].indexOf(tab)>=0) S.gearTab = tab;
     if (veh && hgById(HG.vehicles||[], veh)){ S.c.veh = veh; applyVehicle(S.c, veh); S.v.veh = veh; }
     if (batt && hgById(HG.batteries||[], batt)) S.v.batt = batt;
     if (gear){ var ch = hgById(HG.chargers||[], gear); if (ch){ S.i.charger = gear; S.i.chargerPrice = ch.price; S.i.amps = Math.min(ch.amps||48, ch.install==='plug'?40:80); S.i.mount = ch.install==='plug' ? 'plug1450' : 'hardwire'; } }

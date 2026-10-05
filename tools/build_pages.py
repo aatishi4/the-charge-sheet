@@ -126,7 +126,7 @@ HOME_PAGES = [
     ('hvcompare', 'home/v2h-vs-home-battery', 'V2H vs Home Battery: Can Your EV Replace a Powerwall?',
      'Compare a bidirectional EV with a home battery for backup: usable energy, power, days of backup, cost, and the trade-offs.', 'tool'),
     ('hadapt', 'home/ev-charging-adapter-finder', 'EV Charging Adapter Finder: NACS, CCS1 and J1772',
-     'Pick your EV and see which chargers it plugs straight into, which adapter the rest need (Supercharger, CCS, Level 2) and what each adapter costs.', 'tool'),
+     'Pick your EV and see which chargers it plugs straight into, which adapter the rest need at a Supercharger, a CCS station or a Level 2 charger.', 'tool'),
     ('hgear', 'home/home-ev-chargers-batteries', 'Home EV Chargers, Home Batteries and Bidirectional EVs',
      'Home Level 2 chargers, home batteries and every US EV that can send power out, with specs, prices and honest notes on what works today.', 'tool'),
 ]
@@ -134,7 +134,7 @@ HOME_IDS = [p[0] for p in HOME_PAGES]
 GEAR_TAG = ['']  # filled in build(); only the home pages carry the gear data
 GEAR_TAGS = {}   # per home page: the gear data minus the big lists that page doesn't use
 GEAR_OPTIONAL = ('ports', 'adapters', 'panel', 'rtc')
-GEAR_EXTRA = {'hgear': ('adapters', 'panel'), 'hadapt': ('ports', 'adapters'), 'hstart': ('panel', 'rtc'),
+GEAR_EXTRA = {'hgear': ('panel',), 'hadapt': ('ports', 'adapters'), 'hstart': ('panel', 'rtc'),
               'hrent': ('rtc',), 'hrebates': ('rtc',), 'hinstall': ('panel',)}
 PRODUCTS_TAG = ['']  # filled in build(); only the pages that use the charger catalog carry it
 PRODUCT_VIEWS = ('planner', 'hardware', 'report')
@@ -224,13 +224,10 @@ def prerender_catalogs(full):
                      for v in g.get('vehicles', []) if str(v.get('v2l', '0')) not in ('0', '', 'None') or v.get('v2h') in v2h)
         pa = ''.join('<li><a href="/home/home-ev-chargers-batteries/%s/"><b>%s %s</b></a>: %s. %s</li>' % (esc(x['id']), esc(x['oem']), esc(x['model']), esc(x.get('kind', '')), esc(x.get('blurb', '')))
                      for x in g.get('panel', []))
-        ad = ''.join('<li><a href="/home/home-ev-chargers-batteries/%s/"><b>%s %s</b></a> (%s): %s</li>' % (esc(x['id']), esc(x['maker']), esc(x['name']), esc(x.get('dir', '').replace('-to-', ' to ')), esc(x.get('who', '')))
-                     for x in g.get('adapters', []))
         body = ('<div class="prose">' + ('<h2>Home EV chargers</h2><ul>%s</ul>' % ch if ch else '') +
                 ('<h2>Home batteries</h2><ul>%s</ul>' % ba if ba else '') +
                 ('<h2>EVs that can send power out</h2><ul>%s</ul>' % ve if ve else '') +
-                ('<h2>Panel helpers: load managers, splitters and smart panels</h2><ul>%s</ul>' % pa if pa else '') +
-                ('<h2>Charging adapters</h2><ul>%s</ul>' % ad if ad else '') + '</div>')
+                ('<h2>Panel helpers: load managers, splitters and smart panels</h2><ul>%s</ul>' % pa if pa else '') + '</div>')
         full['hgear'] = full['hgear'].replace('<div class="wrap hgear" id="h-gear"></div>', '<div class="wrap hgear" id="h-gear">%s</div>' % body, 1)
         if 'hrent' in full and g.get('rtc'):
             names = dict((k, v) for k, v in STATE_NAMES.items())
@@ -639,7 +636,7 @@ def fit60(*options):
 
 
 def gear_items(g):
-    return [(k, x) for k in ('chargers', 'batteries', 'vehicles', 'panel', 'adapters') for x in g.get(k, [])]
+    return [(k, x) for k in ('chargers', 'batteries', 'vehicles', 'panel') for x in g.get(k, [])]
 
 
 def brand_name(maker, model):
@@ -661,11 +658,6 @@ def gear_meta(kind, x):
         name = brand_name(x['oem'], x['model'])
         title = fit60('%s: %s for a Full Panel' % (name, x.get('kind', 'Load manager').capitalize()), '%s: Price and Specs' % name, name)
         d = '%s, %s: %s %s' % (name, x.get('kind', '').lower(), x.get('how', ''), ('About %s.' % usd(x['price'])) if x.get('price') else '')
-    elif kind == 'adapters':
-        name = brand_name(x['maker'], x['name'])
-        title = fit60('%s: Who Needs It and What It Costs' % name, '%s: Price and Fit' % name, name)
-        d = '%s (%s, %s). %s %s' % (name, x.get('dir', '').replace('-to-', ' to '), 'fast charging' if x.get('level') == 'DC' else 'Level 2',
-                                    x.get('who', ''), ('About %s.' % usd(x['price'])) if x.get('price') else '')
     elif kind == 'batteries':
         name = brand_name(x['oem'], x['model'])
         title = fit60('%s: Home Battery Specs and Price' % name, '%s: Specs and Price' % name, name)
@@ -685,28 +677,21 @@ def gear_meta(kind, x):
 
 def gear_detail_html(kind, x, name):
     """Static gear page body (the script redraws it on load)."""
-    if kind in ('panel', 'adapters'):
-        if kind == 'panel':
-            rows = [('Type', x.get('kind', '')), ('How it works', x.get('how', '')), ('Current', ('Up to %s A' % x['amps']) if x.get('amps') else ''),
-                    ('Works with', x.get('worksWith', '')), ('Installation', x.get('installNote', '')), ('Listing', x.get('listing', '')),
-                    ('App', x.get('app', '')), ('Price', (('About %s. ' % usd(x['price'])) if x.get('price') else '') + x.get('priceNote', ''))]
-            maker, model, blurb, site = x.get('oem', ''), x.get('model', ''), x.get('blurb', ''), x.get('website', '')
-        else:
-            rows = [('Direction', x.get('dir', '').replace('-to-', ' charger to ') + ' car'), ('Charging', 'DC fast charging' if x.get('level') == 'DC' else 'Level 2 (AC)'),
-                    ('Who needs it', x.get('who', '')), ('Listing', x.get('listing', '')),
-                    ('Price', ('About %s' % usd(x['price'])) if x.get('price') else ('Free through a dealer' if x.get('price') == 0 else 'Price varies; check the maker'))]
-            maker, model, blurb, site = x.get('maker', ''), x.get('name', ''), x.get('who', ''), x.get('url', '')
+    if kind == 'panel':
+        rows = [('Type', x.get('kind', '')), ('How it works', x.get('how', '')), ('Current', ('Up to %s A' % x['amps']) if x.get('amps') else ''),
+                ('Works with', x.get('worksWith', '')), ('Installation', x.get('installNote', '')), ('Listing', x.get('listing', '')),
+                ('App', x.get('app', '')), ('Price', (('About %s. ' % usd(x['price'])) if x.get('price') else '') + x.get('priceNote', ''))]
+        maker, model, blurb, site = x.get('oem', ''), x.get('model', ''), x.get('blurb', ''), x.get('website', '')
         table = ''.join('<tr><th>%s</th><td>%s</td></tr>' % (esc(a), esc(str(b))) for a, b in rows if b)
-        back = 'panel helpers' if kind == 'panel' else 'adapters'
         pic = ''
         if x.get('img'):
             pic = ('<div class="hgicon has-img"><span class="hgimg %s"><img src="/%s" alt="%s" decoding="async"></span></div>'
                    % ('photo' if x.get('imgFit') == 'photo' else 'cut', esc(x['img']), esc(name)))
-        return ('<p class="sub"><a href="/home/home-ev-chargers-batteries/?tab=%s">All %s</a> <span class="dot">/</span> %s</p>'
+        return ('<p class="sub"><a href="/home/home-ev-chargers-batteries/?tab=panel">All panel helpers</a> <span class="dot">/</span> %s</p>'
                 '<div class="hwhero hgd">' + pic + '<div><p class="sub">%s</p><h2>%s</h2><p>%s</p>%s</div></div>'
                 '<h2>Details</h2><div class="scroll" tabindex="0"><table><tbody>%s</tbody></table></div>'
                 '<p class="fh">Source: %s, October 2026.</p>') % (
-            kind, back, esc(name), esc(maker), esc(model), esc(blurb),
+            esc(name), esc(maker), esc(model), esc(blurb),
             ('<p><a class="btn secondary" href="%s" rel="noopener">Maker\u2019s page</a></p>' % esc(site)) if site else '', table,
             ('<a href="%s" rel="noopener">%s</a>' % (esc(x['source']), esc(re.sub(r'^https?://(www\.)?', '', x['source']).split('/')[0]))) if x.get('source') else 'the maker')
     if kind == 'chargers':
