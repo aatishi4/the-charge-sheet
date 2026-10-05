@@ -477,6 +477,10 @@ table.assume td:last-child{text-align:right;font-weight:600}
 .stackkey{display:flex;flex-wrap:wrap;gap:.45rem 1.2rem;font-size:.88rem;color:var(--slate);margin:.4rem 0 .6rem}
 .stackkey i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:.4rem;vertical-align:middle}
 .stackkey b{color:var(--ink);font-weight:650;margin-left:.2rem;font-variant-numeric:tabular-nums}
+.wfset{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 2rem;margin-top:.6rem}
+.wfset .fld{grid-template-columns:1fr 8.5rem}
+#wf .fig-top .seg{flex-wrap:wrap}
+@media (max-width:640px){.wfset{grid-template-columns:1fr}#wf .fig-top .seg button{padding:.4rem .7rem}}
 .msgv .lk{stroke:var(--line);stroke-width:3;stroke-dasharray:2 8;stroke-linecap:round}
 .msgv .nd{fill:var(--white);stroke:var(--ink);stroke-width:2}
 .msgv .ndt{fill:var(--ink);font-family:var(--font);font-size:14px;font-weight:600}
@@ -1810,12 +1814,18 @@ html.wlock,html.wlock body{overflow:hidden}
 
     </article>
 <div class="fig" id="wf"><div class="fig-in">
-  <div class="fig-top"><h3>Where the price of one kWh goes</h3></div>
+  <div class="fig-top"><h3>What you have to charge to get your money back</h3>
+    <div class="seg" role="group" aria-label="Payback period"><button type="button" data-y="3" aria-pressed="false">3 years</button><button type="button" data-y="5" aria-pressed="true">5 years</button><button type="button" data-y="7" aria-pressed="false">7 years</button><button type="button" data-y="10" aria-pressed="false">10 years</button></div></div>
   <div class="wfwrap"><div class="wfbar"></div><div class="wfprice"><span>Your price</span></div></div>
   <div class="stackkey"></div>
-  <label class="bwctl"><span>Sessions</span><input type="range" min="1" max="16" step="0.5" value="3" aria-label="Sessions per port per day"><output></output></label>
+  <label class="bwctl"><span>Sessions</span><input type="range" id="wf-s" min="1" max="16" step="0.5" value="3" aria-label="Sessions per port per day"><output></output></label>
+  <div class="wfset">
+    <label class="fld"><span class="fl">Money back in</span><span class="fi"><input type="number" inputmode="decimal" id="wf-y" value="5" min="1" max="20" step="0.5"><span class="u">years</span></span></label>
+    <label class="fld"><span class="fl">Your price</span><span class="fi"><input type="number" inputmode="decimal" id="wf-p" value="0.55" min="0" max="3" step="0.01"><span class="u">$/kWh</span></span></label>
+  </div>
+  <div class="bwout"><div><b id="wf-need">$0.00</b><span>Price to charge, per kWh</span></div><div><b id="wf-run">$0.00</b><span>What a kWh costs you to deliver</span></div><div><b id="wf-mar">$0.00</b><span id="wf-mar-l">Margin you need on top</span></div></div>
   <p class="fig-cap" id="wf-cap"></p>
-  <p class="fh">Four 150 kW DC chargers with the site planner’s default costs. The build is paid back over ten years at 8%.</p>
+  <p class="fh">Four 150 kW DC chargers with the site planner’s default costs, at the same volume every year. Payback here is simple: the build cost after incentives, divided by the years, with no interest. Card fees rise with the price, so they’re worked out at the price shown. For your own site, use the <a href="#planner">site planner</a>.</p>
 </div></div>
 <article class="prose">
 <h2 id="p-demand">Demand charges, the silent killer</h2>
@@ -3618,7 +3628,8 @@ html.wlock,html.wlock body{overflow:hidden}
       <li>Gas prices are the Energy Information Administration's weekly retail averages, regular or premium to match the car, for your state where EIA publishes one and your region where it doesn't. They refresh every week.</li>
       <li>Average electricity prices are EIA's monthly residential averages by state, refreshed every month.</li>
       <li>Public fast charging uses the latest national average from Paren's quarterly report, updated by hand. Prices vary a lot by network and state, and members of some networks pay less.</li>
-      <li>Gas cars use EPA combined fuel economy for a common trim. Each EV is matched to a similar gas car, and you can pick any other or type your own number.</li>
+      <li>Gas cars use EPA combined fuel economy and the standard fuel tank for a common trim. Each EV is matched to a similar gas car, and you can pick any other or type your own numbers.</li>
+      <li>The fill-up comparison takes the gas car's full tank, works out how far it goes, and prices those same miles on electricity. It compares miles, not a tank against a battery, because the two rarely hold the same range.</li>
       <li>"Per gallon, equivalent" is what it costs to drive as far as the gas car goes on one gallon. The Department of Energy calls it the eGallon.</li>
     </ul>
     <h3>Questions people ask</h3>
@@ -5248,30 +5259,52 @@ if (typeof document !== 'undefined') (function(){
   /* ---------- Diagram: where a kWh's price goes ---------- */
   function initWaterfall(){
     var root = document.getElementById('wf'); if (!root) return;
-    var sl = root.querySelector('input'), out = root.querySelector('output');
-    var price = PDEF.dcPrice, crf = 0.08/(1-Math.pow(1.08,-10));
+    var sl = document.getElementById('wf-s'), out = root.querySelector('output');
+    var yIn = document.getElementById('wf-y'), pIn = document.getElementById('wf-p');
+    var segs = [].slice.call(root.querySelectorAll('.seg button'));
+    var SCALE = 2;
+    pIn.value = PDEF.dcPrice;
     function draw(){
       var s = Number(sl.value);
+      var yrs = Math.min(20, Math.max(1, Number(yIn.value)||5));
+      var price = Math.max(0, Number(pIn.value)||0);
       var m = plan(Object.assign({}, PDEF, {dcSessions:s, growth:0, failRate:0, l2Ports:0})), y1 = m.years[0], k = y1.kwh || 1;
+      var pp = PDEF.procPct/100, txn = PDEF.procTxn/PDEF.dcKwh;
+      var fixed = (y1.maint+y1.network+y1.other)/k, power = y1.energy/k, dem = y1.demand/k;
+      var base = power + dem + fixed + txn;          /* everything except the percentage card fee and the build */
+      var build = m.net/yrs/k;
+      var need = (base + build)/(1-pp);               /* price that covers running costs and repays the build in yrs */
+      var run = base + need*pp, margin = need - run;
       var parts = [
-        ['Electricity', y1.energy/k, 'var(--blue)'],
-        ['Demand charges', y1.demand/k, 'var(--amber)'],
-        ['Paying back the build', m.net*crf/k, 'var(--ink)'],
-        ['Maintenance and software', (y1.maint+y1.network+y1.other)/k, 'var(--sky)'],
-        ['Payment processing', y1.proc/k, 'var(--slate)']
+        ['Electricity', power, 'var(--blue)'],
+        ['Demand charges', dem, 'var(--amber)'],
+        ['Maintenance and software', fixed, 'var(--sky)'],
+        ['Payment processing', txn + need*pp, 'var(--slate)'],
+        ['Paying back the build', build, 'var(--ink)']
       ];
-      var total = parts.reduce(function(a,p){ return a+p[1]; }, 0), SCALE = 1.5;
       out.textContent = num(s,1)+' per port per day';
+      segs.forEach(function(b){ b.setAttribute('aria-pressed', Number(b.getAttribute('data-y'))===yrs ? 'true' : 'false'); });
       root.querySelector('.wfbar').innerHTML = parts.map(function(p){
         return '<span style="width:'+(Math.min(p[1],SCALE)/SCALE*100).toFixed(2)+'%;background:'+p[2]+'" title="'+p[0]+': '+money(p[1],2)+'"></span>';
       }).join('');
-      root.querySelector('.wfprice').style.left = (price/SCALE*100)+'%';
+      root.querySelector('.wfprice').style.left = (Math.min(price,SCALE)/SCALE*100)+'%';
       root.querySelector('.stackkey').innerHTML = parts.map(function(p){ return '<span><i style="background:'+p[2]+'"></i>'+p[0]+' <b>'+money(p[1],2)+'</b></span>'; }).join('');
-      var diff = price - total;
-      document.getElementById('wf-cap').innerHTML = 'At '+num(s,1)+' sessions per port per day, each kWh costs <strong>'+money(total,2)+'</strong> to deliver once you count the build. You sell it for '+money(price,2)+'. '+
-        (diff>=0 ? 'That leaves <strong>'+money(diff,2)+'</strong> of profit per kWh. This is what utilization buys you.' : 'That\u2019s a <strong>'+money(-diff,2)+'</strong> loss on every kWh. Slide right and watch the fixed costs thin out.')+(total>SCALE?' The bar is cut off at $1.50, because it was getting embarrassing.':'');
+      document.getElementById('wf-need').textContent = money(need,2);
+      document.getElementById('wf-run').textContent = money(run,2);
+      document.getElementById('wf-mar').textContent = money(margin,2);
+      document.getElementById('wf-mar-l').textContent = 'Margin you need on top, '+pct(margin/need)+' of the price';
+      var profit = price*(1-pp) - base, back = profit>0 ? m.net/(profit*k) : null;
+      var yw = num(yrs, yrs%1 ? 1 : 0)+(yrs===1?' year':' years');
+      var cap = 'To get the build cost of '+moneyK(m.net)+' back in <strong>'+yw+'</strong> at '+num(s,1)+' sessions per port per day, you have to charge <strong>'+money(need,2)+'</strong> per kWh. '+money(run,2)+' of that delivers the kWh. The other '+money(margin,2)+' is the margin that repays the build. ';
+      if (back===null) cap += 'At your price of '+money(price,2)+', every kWh loses '+money(-profit,2)+' before the build is even counted, so the money never comes back. More sessions fix this faster than a higher price does.';
+      else if (Math.abs(price-need)<0.005) cap += 'Your price of '+money(price,2)+' lands right on it.';
+      else if (price>need) cap += 'Your price of '+money(price,2)+' beats that: the money comes back in <strong>'+num(back,1)+' years</strong>.';
+      else cap += 'At your price of '+money(price,2)+', it takes <strong>'+(back>50?'more than 50':num(back,1))+' years</strong>. Slide right and watch the fixed costs thin out.';
+      if (need>SCALE) cap += ' The bar is cut off at '+money(SCALE,2)+', because it was getting embarrassing.';
+      document.getElementById('wf-cap').innerHTML = cap;
     }
-    sl.oninput = draw; draw();
+    segs.forEach(function(b){ b.onclick = function(){ yIn.value = b.getAttribute('data-y'); draw(); }; });
+    sl.oninput = yIn.oninput = pIn.oninput = draw; draw();
   }
 
   /* ---------- Diagram: what happens when a driver taps Start ---------- */
@@ -7709,7 +7742,7 @@ if (typeof document !== 'undefined') (function(){
     c:{veh:'tesla-model-y', kwh:75, obc:11.5, eff:3.6, by:'soc', arrive:55, target:80, miles:40, plug:'18:00', dep:'07:30', nights:5,
        level:'32', volts:240, rsrc:'avg', preset:'sce-prime', zip:'', rateIdx:-1,
        mKind:'tou', flatPrice:0.18, peakPrice:0.45, offPrice:0.22, peakStart:16, peakEnd:21, peakWeekends:false, superOn:true, superPrice:0.12, superStart:0, superEnd:6, fixed:15,
-       month:6, weekend:false, state:'US', gasCar:'auto', mpg:30, gas:4.47, dcfc:0.538, dcfcSet:false},
+       month:6, weekend:false, state:'US', gasCar:'auto', mpg:30, tank:14.5, gas:4.47, dcfc:0.538, dcfcSet:false},
     i:{mount:'hardwire', amps:48, charger:'', chargerPrice:0, panelAmps:200, spaces:'2', brand:'hom', breaker:'std', distance:25, route:'garage', trenchFt:40, driveway:false,
        sqft:2200, range:'gas', dryer:'elec', wh:'gas', acTons:3, heat:'gas', stripKw:10, pool:false, spa:false, well:false, existingEv:0, otherVa:0,
        state:'TX', laborIdx:92, permit:250, code:'2023', wire:'auto', maxVd:3, measuredKw:0, useMeasured:false},
@@ -7776,7 +7809,7 @@ if (typeof document !== 'undefined') (function(){
   function P_(){ return HG.prices || {}; }
   function gasCarFor(C){
     var id = C.gasCar==='auto' ? ((hgById(HG.vehicles||[], C.veh)||{}).twin || 'toyota-rav4') : C.gasCar;
-    return hgById(HG.gasCars||[], id) || {id:'custom', name:'A gas car', mpg:Number(C.mpg)||30, fuel:'regular'};
+    return hgById(HG.gasCars||[], id) || {id:'custom', name:'A gas car', mpg:Number(C.mpg)||30, tank:Number(C.tank)||14.5, fuel:'regular'};
   }
   function gasArea(state){
     var g = (P_().gasoline||{}), code = state && state!=='US' ? (g.stateArea||{})[state] : 'NUS';
@@ -7789,7 +7822,7 @@ if (typeof document !== 'undefined') (function(){
   /* Fill the comparison inputs from the data, unless the user typed their own */
   function syncCompare(C, force){
     var car = gasCarFor(C);
-    if (force || C.gasCar==='auto' || car.id!=='custom'){ if (car.id!=='custom') C.mpg = car.mpg; }
+    if (force || C.gasCar==='auto' || car.id!=='custom'){ if (car.id!=='custom'){ C.mpg = car.mpg; if (car.tank) C.tank = car.tank; } }
     var gp = gasPriceFor(C, car); if (gp && (force || !C.gasSet)) C.gas = gp;
     var dc = P_().dcfc; if (dc && dc.price && !C.dcfcSet) C.dcfc = dc.price;
   }
@@ -7857,8 +7890,9 @@ if (typeof document !== 'undefined') (function(){
     var twin = gasCarFor(Object.assign({}, C, {gasCar:'auto'}));
     var carOpts = [['auto','Matched to your EV: '+twin.name]].concat((HG.gasCars||[]).map(function(x){ return [x.id, x.name+', '+x.mpg+' mpg'+(x.fuel==='premium'?', premium':'')]; }));
     h += group('Compare with', true,
-      sl('c','gasCar','Gas car', carOpts, esc(car.name)+(car.trim?' ('+esc(car.trim)+')':'')+': '+car.mpg+' mpg combined, '+(car.fuel==='premium'?'premium':'regular')+' fuel.', true) +
+      sl('c','gasCar','Gas car', carOpts, esc(car.name)+(car.trim?' ('+esc(car.trim)+')':'')+': '+car.mpg+' mpg combined, '+(car.tank?car.tank+'-gallon tank, ':'')+(car.fuel==='premium'?'premium':'regular')+' fuel.', true) +
       f('c','mpg','Its fuel economy','mpg','',1,1) +
+      f('c','tank','Its fuel tank','gal','Standard tank for that trim. Yours is on the fuel door or in the manual.',0.1,1) +
       f('c','gas','Gas price','$/gal', ga ? 'EIA, week of '+niceDay(g.week)+': '+(ga.code==='NUS'?'U.S. average':esc(ga.a.name))+' '+(car.fuel==='premium'?'premium':'regular')+'.' : '', 0.01) +
       f('c','dcfc','Public DC fast charging','$/kWh', dc.price ? 'U.S. average, '+esc(dc.period)+', from Paren. States range from about '+cents(dc.low[1])+' to '+cents(dc.high[1])+'.' : '', 0.01));
     h += '<div class="tool-actions"><button type="button" class="btn" id="h-c-reset">Reset</button></div>';
@@ -7987,20 +8021,25 @@ if (typeof document !== 'undefined') (function(){
                 ['gas', esc(car.id==='custom'?'A gas car':car.name), perMile.gas, mpg+' mpg at '+money(gas,2)+' a gallon'+(car.fuel==='premium'?', premium':'')]];
     var mx = Math.max(perMile.home, perMile.dc, perMile.gas, 0.0001);
     var eg = function(pm){ return pm*mpg; };
-    var h = '<div class="panel hcmp"><h2>The same miles, three ways</h2><p class="sub">'+num(Math.round(yrMiles/100)*100)+' miles a year, the '+esc((hgById(HG.vehicles||[], C.veh)||{model:'EV'}).model)+' against '+(car.id==='custom'?'a gas car':'a '+esc(car.name))+'.</p><div class="hcards">';
+    var tank = Number(C.tank)||car.tank||14.5, tankMiles = tank*mpg, fill = function(pm){ return pm*tankMiles; };
+    var ev = hgById(HG.vehicles||[], C.veh)||{model:'EV'}, gasName = car.id==='custom'?'gas car':esc(car.name);
+    var h = '<div class="panel hcmp"><h2>One tank, three ways</h2><p class="sub">A full tank in '+(car.id==='custom'?'the gas car':'the '+gasName)+' is '+num(tank, tank%1 ? 1 : 0)+' gallons, good for about '+num(Math.round(tankMiles/5)*5)+' miles. Here\u2019s what those miles cost in the '+esc(ev.model)+', and at the pump.</p><div class="hcards">';
     rows.forEach(function(r, i){
       h += '<div class="hcard '+r[0]+'">'+PICON[r[0]]+'<b class="nm">'+r[1]+'</b><small>'+r[3]+'</small>'+
-        '<span class="big tw">'+cents(r[2])+'</span><small>per mile</small>'+
+        '<span class="big tw">'+money(fill(r[2]),2)+'</span><small>'+(r[0]==='gas'?'to fill the tank':'for the same miles')+'</small>'+
         '<span class="gauge"><b style="width:'+(r[2]/mx*100).toFixed(1)+'%"></b></span>'+
+        '<span class="row"><span>Per mile</span><b class="tw">'+cents(r[2])+'</b></span>'+
         '<span class="row"><span>A year</span><b class="tw">'+money(r[2]*yrMiles,0)+'</b></span>'+
         '<span class="row"><span>Per gallon, equivalent</span><b class="tw">'+money(eg(r[2]),2)+'</b></span></div>';
     });
     h += '</div>';
     var saveGas = (perMile.gas-perMile.home)*yrMiles, saveDc = (perMile.dc-perMile.home)*yrMiles;
-    var line = saveGas > 0 ? 'Charging at home here works out like paying <strong>'+money(eg(perMile.home),2)+' a gallon</strong>. Against the '+(car.id==='custom'?'gas car':esc(car.name))+', that\u2019s <strong>'+money(saveGas,0)+' a year</strong>'+(yrMiles?', or '+money(saveGas*5,0)+' over five years':'')+'.' :
+    var line = saveGas > 0 ? 'A fill-up in the '+gasName+' costs <strong>'+money(fill(perMile.gas),2)+'</strong>. The same miles from your own outlet cost <strong>'+money(fill(perMile.home),2)+'</strong>, which works out like paying '+money(eg(perMile.home),2)+' a gallon. Over '+num(Math.round(yrMiles/100)*100)+' miles a year that\u2019s <strong>'+money(saveGas,0)+'</strong> saved'+(yrMiles?', or '+money(saveGas*5,0)+' over five years':'')+'.' :
       'On this rate, home charging costs about the same as gas for this pair. Try a time-of-use or EV plan.';
     line += saveDc > 0 ? ' Doing all of it at public fast chargers instead would cost '+money(saveDc,0)+' a year more than home.' : '';
-    h += '<p class="verdict">'+line+'</p><p class="fh">\u201cPer gallon, equivalent\u201d is what it costs to drive as far as the gas car goes on one gallon. The Department of Energy calls it the eGallon. Public fast charging assumes about 5% lost on the way into the battery; home uses your charger\u2019s losses.</p></div>';
+    var battKwh = Number(C.kwh)||0, wallRate = y.wallKwh ? y.smart/y.wallKwh : 0;
+    var battLine = battKwh>0 && wallRate>0 && o.eff>0 ? ' Filling the '+esc(ev.model)+'\u2019s own '+num(battKwh)+' kWh battery from empty at home costs about '+money(battKwh/o.eff*wallRate,2)+', for roughly '+num(Math.round(battKwh*eff/5)*5)+' miles.' : '';
+    h += '<p class="verdict">'+line+'</p><p class="fh">The tank is the gas car\u2019s standard fuel tank, and the two electric numbers are what it costs to drive as far as that tank goes.'+battLine+' \u201cPer gallon, equivalent\u201d is what it costs to drive as far as the gas car goes on one gallon. The Department of Energy calls it the eGallon. Public fast charging assumes about 5% lost on the way into the battery; home uses your charger\u2019s losses.</p></div>';
     return h;
   }
   function renderC(){

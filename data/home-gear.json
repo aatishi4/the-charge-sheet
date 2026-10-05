@@ -1232,186 +1232,186 @@
       "id": "toyota-rav4",
       "name": "Toyota RAV4",
       "trim": "2025, 2.5L",
-      "mpg": 30,
+      "mpg": 30, "tank": 14.5,
       "fuel": "regular"
     },
     {
       "id": "toyota-rav4-hybrid",
       "name": "Toyota RAV4 Hybrid",
       "trim": "2025",
-      "mpg": 39,
+      "mpg": 39, "tank": 14.5,
       "fuel": "regular"
     },
     {
       "id": "honda-crv",
       "name": "Honda CR-V",
       "trim": "2026, 1.5T",
-      "mpg": 30,
+      "mpg": 30, "tank": 14.0,
       "fuel": "regular"
     },
     {
       "id": "honda-civic",
       "name": "Honda Civic",
       "trim": "2026, 2.0L",
-      "mpg": 36,
+      "mpg": 36, "tank": 12.4,
       "fuel": "regular"
     },
     {
       "id": "honda-accord",
       "name": "Honda Accord",
       "trim": "2026, 1.5T",
-      "mpg": 32,
+      "mpg": 32, "tank": 14.8,
       "fuel": "regular"
     },
     {
       "id": "toyota-camry",
       "name": "Toyota Camry",
       "trim": "2026, hybrid only",
-      "mpg": 51,
+      "mpg": 51, "tank": 13.0,
       "fuel": "regular"
     },
     {
       "id": "toyota-corolla",
       "name": "Toyota Corolla",
       "trim": "2026, 2.0L",
-      "mpg": 35,
+      "mpg": 35, "tank": 13.2,
       "fuel": "regular"
     },
     {
       "id": "nissan-rogue",
       "name": "Nissan Rogue",
       "trim": "2026, AWD",
-      "mpg": 31,
+      "mpg": 31, "tank": 14.5,
       "fuel": "regular"
     },
     {
       "id": "subaru-outback",
       "name": "Subaru Outback",
       "trim": "2026, 2.5L",
-      "mpg": 27,
+      "mpg": 27, "tank": 18.0,
       "fuel": "regular"
     },
     {
       "id": "honda-pilot",
       "name": "Honda Pilot",
       "trim": "2026, AWD",
-      "mpg": 21,
+      "mpg": 21, "tank": 18.5,
       "fuel": "regular"
     },
     {
       "id": "chevy-traverse",
       "name": "Chevrolet Traverse",
       "trim": "2026, AWD",
-      "mpg": 21,
+      "mpg": 21, "tank": 21.7,
       "fuel": "regular"
     },
     {
       "id": "kia-telluride",
       "name": "Kia Telluride",
       "trim": "2025, AWD",
-      "mpg": 20,
+      "mpg": 20, "tank": 18.8,
       "fuel": "regular"
     },
     {
       "id": "hyundai-palisade",
       "name": "Hyundai Palisade",
       "trim": "2026, AWD",
-      "mpg": 20,
+      "mpg": 20, "tank": 19.0,
       "fuel": "regular"
     },
     {
       "id": "ford-explorer",
       "name": "Ford Explorer",
       "trim": "2026, AWD",
-      "mpg": 23,
+      "mpg": 23, "tank": 17.9,
       "fuel": "regular"
     },
     {
       "id": "jeep-grand-cherokee",
       "name": "Jeep Grand Cherokee",
       "trim": "2026, 4WD",
-      "mpg": 22,
+      "mpg": 22, "tank": 23.0,
       "fuel": "regular"
     },
     {
       "id": "chevy-tahoe",
       "name": "Chevrolet Tahoe",
       "trim": "2026, 5.3L V8 4WD",
-      "mpg": 17,
+      "mpg": 17, "tank": 24.0,
       "fuel": "regular"
     },
     {
       "id": "ford-f150",
       "name": "Ford F-150",
-      "trim": "2026, 2.7L EcoBoost 4WD",
-      "mpg": 20,
+      "trim": "2026, 2.7L EcoBoost 4WD SuperCrew",
+      "mpg": 20, "tank": 36.0,
       "fuel": "regular"
     },
     {
       "id": "chevy-silverado",
       "name": "Chevrolet Silverado 1500",
       "trim": "2026, 5.3L V8 4WD",
-      "mpg": 17,
+      "mpg": 17, "tank": 24.0,
       "fuel": "regular"
     },
     {
       "id": "ram-1500",
       "name": "Ram 1500",
       "trim": "2026, 3.6L V6 4WD",
-      "mpg": 21,
+      "mpg": 21, "tank": 26.0,
       "fuel": "regular"
     },
     {
       "id": "toyota-tacoma",
       "name": "Toyota Tacoma",
       "trim": "2026, 4WD",
-      "mpg": 21,
+      "mpg": 21, "tank": 18.2,
       "fuel": "regular"
     },
     {
       "id": "bmw-330i",
       "name": "BMW 330i",
       "trim": "2026, RWD",
-      "mpg": 31,
+      "mpg": 31, "tank": 15.6,
       "fuel": "premium"
     },
     {
       "id": "bmw-530i",
       "name": "BMW 530i",
       "trim": "2026, RWD",
-      "mpg": 31,
+      "mpg": 31, "tank": 15.9,
       "fuel": "premium"
     },
     {
       "id": "mb-glc300",
       "name": "Mercedes-Benz GLC 300 4MATIC",
       "trim": "2026",
-      "mpg": 26,
+      "mpg": 26, "tank": 16.4,
       "fuel": "premium"
     },
     {
       "id": "mb-gle350",
       "name": "Mercedes-Benz GLE 350 4MATIC",
       "trim": "2026",
-      "mpg": 22,
+      "mpg": 22, "tank": 22.5,
       "fuel": "premium"
     },
     {
       "id": "lexus-rx350",
       "name": "Lexus RX 350",
       "trim": "2026, AWD",
-      "mpg": 24,
+      "mpg": 24, "tank": 17.8,
       "fuel": "premium"
     },
     {
       "id": "porsche-911",
       "name": "Porsche 911 Carrera",
       "trim": "2026",
-      "mpg": 21,
+      "mpg": 21, "tank": 16.9,
       "fuel": "premium"
     }
   ],
-  "gasNote": "EPA combined MPG for a common trim, via Edmunds' model-year MPG pages (fueleconomy.gov ratings), September 2026. Premium means the maker requires or recommends it.",
+  "gasNote": "EPA combined MPG for a common trim, via Edmunds' model-year MPG pages (fueleconomy.gov ratings), September 2026. Premium means the maker requires or recommends it. Tank is the standard fuel tank for that trim in gallons, from maker and Kelley Blue Book spec pages, October 2026; trucks and AWD versions vary by cab and drivetrain.",
   "imageNote": "Vehicle photos are from Wikimedia Commons under the licenses shown (credit required). Charger and battery images are the manufacturers' own product images, credited to them; confirm usage rights with each manufacturer before launch (the same arrangement as the commercial catalog).",
   "panel": [
     {
