@@ -24,6 +24,7 @@
 <script id="products-data" type="application/json">[]</script>
 <!--home-side--><script id="home-gear-data" type="application/json">[]</script><!--/home-side-->
 <script id="theme-boot">document.documentElement.classList.add('js');try{var t=localStorage.getItem('cs-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}addEventListener('pagereveal',function(e){var v=e.viewTransition,d=document.documentElement,f=null;try{f=sessionStorage.getItem('cs-vt');sessionStorage.removeItem('cs-vt')}catch(x){}if(!v||!f)return;d.classList.add('vt-fold','vt-'+f);v.finished.finally(function(){d.classList.remove('vt-fold','vt-'+f)})});</script>
+<script id="utm-boot">(function(){var K='cs-src',DAY=864e5,now=Date.now(),cur=null;function rd(){try{cur=JSON.parse(localStorage.getItem(K)||'null')}catch(e){cur=null}if(cur&&now-cur.t>30*DAY)cur=null}function wr(){try{localStorage.setItem(K,JSON.stringify(cur))}catch(e){}}try{rd();var q=new URLSearchParams(location.search),u={},any=false;['utm_source','utm_medium','utm_campaign','utm_content'].forEach(function(n){var v=(q.get(n)||'').replace(/[^\w.\-~ ]/g,'').slice(0,60);if(v){u[n]=v;any=true}});if(any&&!(cur&&cur.u&&cur.u.utm_source)){cur={t:now,u:u,l:location.pathname};wr()}else if(!cur){var r='';try{if(document.referrer){var h=new URL(document.referrer).hostname;if(h&&h!==location.hostname)r=h}}catch(e){}cur={t:now,u:{},r:r,l:location.pathname};wr()}}catch(e){}window.CS_SRC=function(){rd();var c=cur||{u:{}},u=c.u||{},l;if(u.utm_source)l=[u.utm_source,u.utm_medium,u.utm_campaign].filter(Boolean).join(' / ');else if(c.r)l='referral: '+c.r;else l='direct';return{label:l,utm:u,landing:c.l||'',ref:c.r||''}}})()</script>
 <link rel="preload" href="fonts/InstrumentSans-VF.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 @font-face{font-family:"Instrument Sans";src:url("fonts/InstrumentSans-VF.woff2") format("woff2");font-weight:400 700;font-stretch:75% 100%;font-style:normal;font-display:swap}
@@ -928,9 +929,14 @@ html.wlock,html.wlock body{overflow:hidden}
 .rmissing ul{list-style:none;padding:0;margin:.6rem 0 0;display:grid;gap:.4rem}
 .rmissing li a{color:var(--blue);font-weight:600}
 .rempty{padding:2.4rem 0;font-size:1.1rem;color:var(--slate);max-width:40em}
+.remail{max-width:560px;margin:2.2rem 0 0}
+.remail[hidden]{display:none}
+.remail h2{margin:0 0 .4rem;font-size:1.3rem}
+.contact .remail-opt{display:flex;gap:.6rem;align-items:flex-start;font-weight:400;font-size:.9rem;margin:.9rem 0 0}
+.contact .remail-opt input{width:auto;margin-top:.2rem}
 @media (max-width:640px){.rsec .rmeta{font-size:.8rem}.report{padding-bottom:1rem}}
 @media print{
-  .rbar,.report .rnamef,.rmissing,.rsec .rmeta button,.report-empty{display:none !important}
+  .rbar,.report .rnamef,.rmissing,.remail,.rsec .rmeta button,.report-empty{display:none !important}
   .report{padding:0;max-width:none}
   .rsec{break-inside:auto;border-top:1px solid #ccc}
   .rsec h2{font-size:15pt}
@@ -3245,7 +3251,7 @@ html.wlock,html.wlock body{overflow:hidden}
 <section id="view-report" hidden>
   <div class="tool-head">
     <h1>Project report</h1>
-    <p>Everything you put into the tools and everything they gave back, for one site, on one page. Hit "Save to report" on any tool and it lands here. Export it as a PDF for whoever has to say yes. It lives in this browser only, so nothing leaves your machine.</p>
+    <p>Everything you put into the tools and everything they gave back, for one site, on one page. Hit "Save to report" on any tool and it lands here. Export it as a PDF for whoever has to say yes. It lives in this browser only, so nothing leaves your machine unless you choose to email it.</p>
     <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>Built by <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
   </div>
   <div class="rbar" data-rtool="report"></div>
@@ -3257,7 +3263,7 @@ html.wlock,html.wlock body{overflow:hidden}
       <li>One site per report. Saving a tool again replaces its earlier entry, so keep going until the numbers are the ones you believe.</li>
       <li>The six dots show which tools are in the report. You don't need all six. A hotel doesn't need the fleet calculator.</li>
       <li>Export uses your browser's print dialog. Choose "Save as PDF" as the printer.</li>
-      <li>Nothing is uploaded. The report is stored in your browser, on this device, until you clear it.</li>
+      <li>Nothing is uploaded unless you email it to yourself or attach it to a message to me. The report is stored in your browser, on this device, until you clear it.</li>
     </ul>
   </article>
 </section>
@@ -4603,7 +4609,10 @@ function quoteHref(pr, P){
   var n = pr.type==='l2' ? Math.ceil(P.l2Ports/(pr.ports||1)) : P.dcCount, kw = pr.type==='l2' ? P.l2Kw : P.dcKw, ports = pr.type==='l2' ? P.l2Ports : P.dcCount*pr.ports;
   var body = 'Site planner configuration\n'+n+' x '+pr.oem+' '+pr.model+' at '+kw+' kW'+(pr.type==='l2'?' per port':' each')+', '+ports+' ports'+
     (P.siteName?'\nSite: '+P.siteName:'')+'\nSent from chargesheet.io site planner';
-  return 'mailto:'+pr.leadEmail+'?subject='+encodeURIComponent('Quote request: '+pr.model+' via The Charge Sheet')+'&body='+encodeURIComponent(body);
+  var src = typeof window!=='undefined' && window.CS_SRC ? window.CS_SRC() : null;
+  if (src && src.label!=='direct') body += '\nSource: '+src.label;
+  var cc = typeof CONFIG!=='undefined' && CONFIG.leadCc ? '&cc='+encodeURIComponent(CONFIG.leadCc) : '';
+  return 'mailto:'+pr.leadEmail+'?subject='+encodeURIComponent('Quote request: '+pr.model+' via The Charge Sheet')+'&body='+encodeURIComponent(body)+cc;
 }
 
 function batterySpec(P){
@@ -4913,7 +4922,9 @@ var CONFIG = {
   discussions: 'https://github.com/aatishi4/the-charge-sheet/discussions',
   formspree: 'https://formspree.io/f/moevldnd',     // paste your Formspree endpoint here, e.g. https://formspree.io/f/xxxxxxx
   photo: 'img/aatish.jpg',
-  photoSquare: 'img/aatish-square.jpg'
+  photoSquare: 'img/aatish-square.jpg',
+  leadCc: '',                       // optional: an address that gets a copy of every OEM quote request, e.g. hello@chargesheet.io (see DEPLOY.md)
+  reportEmail: '/api/report-email'  // the "Email me this report" function; the form only shows once the function says it is switched on
 };
 
 /* ========== DOM ========== */
@@ -5350,6 +5361,15 @@ if (typeof document !== 'undefined') (function(){
     var txt = out.join('\n');
     return txt.length > 20000 ? txt.slice(0,20000)+'\n[trimmed]' : txt;
   }
+  function srcAppend(fd){
+    try {
+      var s = window.CS_SRC && window.CS_SRC(); if (!s) return;
+      fd.append('source', s.label);
+      ['utm_source','utm_medium','utm_campaign','utm_content'].forEach(function(k){ if (s.utm[k]) fd.append(k, s.utm[k]); });
+      if (s.landing) fd.append('landing', s.landing);
+      if (s.ref) fd.append('referrer', s.ref);
+    } catch(e){}
+  }
   function makeWorkForm(slot, prefix){
     var tpl = document.getElementById('wform-tpl'); if (!slot || !tpl) return null;
     slot.innerHTML = tpl.innerHTML.replace(/__/g, prefix);
@@ -5371,6 +5391,7 @@ if (typeof document !== 'undefined') (function(){
       if (home) ['company','role','help','location','sites','timeline','report'].forEach(function(k){ fd.delete(k); });
       else { var h = fd.getAll('help'); fd.delete('help'); if (h.length) fd.append('help', h.join(', ')); if (!fd.get('report')) fd.delete('report'); }
       if (!fd.get('page')) fd.delete('page');
+      srcAppend(fd);
       st.textContent = 'Sending...';
       fetch(CONFIG.formspree, {method:'POST', headers:{'Accept':'application/json'}, body:fd})
         .then(function(r){ if (!r.ok) throw new Error(r.status); st.className = 'status ok'; st.textContent = 'Sent. It\u2019s in my inbox now, and I\u2019ll get back to you.'; var pg = F.page.value; form.reset(); F.page.value = pg; setWorkMode(WORKMODE); })
@@ -7049,6 +7070,38 @@ if (typeof document !== 'undefined') (function(){
     bar.innerHTML = '<button type="button" class="btn small'+(on?' quiet':'')+'" data-rsave="'+view+'">'+(on ? 'Update in report' : 'Save to report')+'</button>' + trackerHTML(view) + '<div class="status" hidden></div>';
     bar.querySelector('[data-rsave]').onclick = function(){ saveToReport(view); };
   }
+  /* "Email me this report": shown only when /api/report-email says it can actually send (see DEPLOY.md) */
+  var REMAIL_READY = null;
+  function mountReportEmail(){
+    if (!CONFIG.reportEmail || REMAIL_READY === false) return;
+    function draw(){
+      var box = document.getElementById('r-email'); if (!box) return;
+      box.hidden = false;
+      box.innerHTML = '<h2>Email me this report</h2>' +
+        '<p class="fh">A plain-text copy of everything above, to your inbox. I also get your email address and which tools you saved, so I can answer questions about the project. No sales team, no spam.</p>' +
+        '<form class="contact remail-f" novalidate><label for="r-mail">Your email</label><input id="r-mail" name="email" type="email" autocomplete="email" required>' +
+        '<label class="remail-opt" for="r-optin"><input id="r-optin" name="optin" type="checkbox"><span>Also send me new guides and posts, about one email a week. Unsubscribe any time.</span></label>' +
+        '<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">' +
+        '<button class="btn primary" type="submit">Email it to me</button><div class="status" role="status" hidden></div></form>';
+      var form = box.querySelector('form'), st = form.querySelector('.status');
+      form.onsubmit = function(e){
+        e.preventDefault(); st.hidden = false; st.className = 'status';
+        var F = form.elements, email = F.email.value.trim();
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ st.textContent = 'That email address doesn\u2019t look right. Check it and send again.'; return; }
+        st.textContent = 'Sending...';
+        fetch(CONFIG.reportEmail, {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({
+          email: email, optin: !!F.optin.checked, website: F.website.value, name: loadReport().name || '', report: reportText(),
+          page: location.pathname, source: window.CS_SRC ? window.CS_SRC() : null })})
+          .then(function(r){ if (!r.ok) throw new Error(r.status); st.className = 'status ok'; st.textContent = 'Sent. Check your inbox, and your spam folder if it is shy.'; F.email.value = ''; })
+          .catch(function(){ st.textContent = 'That didn\u2019t go through. Try again in a minute, or use Export PDF above.'; });
+      };
+    }
+    if (REMAIL_READY === true) { draw(); return; }
+    fetch(CONFIG.reportEmail, {headers:{'Accept':'application/json'}})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(j){ REMAIL_READY = !!(j && j.ready); if (REMAIL_READY) draw(); })
+      .catch(function(){ REMAIL_READY = false; });
+  }
   function renderReport(){
     var el = document.getElementById('r-body'); if (!el) return;
     var R = loadReport(), keys = RTOOLS.filter(function(t){ return !!R.items[t[0]]; });
@@ -7074,7 +7127,9 @@ if (typeof document !== 'undefined') (function(){
     if (keys.length && missing.length){
       h += '<div class="rmissing"><p class="fh" style="margin:0"><b>Not in the report yet.</b> Add the ones that apply to this site.</p><ul>'+missing.map(function(t){ return '<li><a href="'+viewHref(t[0])+'">'+esc(t[1])+'</a></li>'; }).join('')+'</ul></div>';
     }
+    if (keys.length) h += '<div class="remail" id="r-email" hidden></div>';
     el.innerHTML = h;
+    mountReportEmail();
     var nm = document.getElementById('r-name');
     if (nm) nm.oninput = function(){ R.name = nm.value.trim(); saveReport(); var b = el.querySelector('.rprint b'); if (b) b.textContent = R.name || 'Charging site'; };
     Array.prototype.forEach.call(el.querySelectorAll('[data-rdel]'), function(b){ b.onclick = function(){ delete R.items[b.getAttribute('data-rdel')]; saveReport(); renderReportBar('report'); renderReport(); }; });
