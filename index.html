@@ -1410,11 +1410,27 @@ html.wlock,html.wlock body{overflow:hidden}
 .hrtc-t thead th{color:var(--slate);font-weight:650}
 .hletter{margin-top:1rem}
 .hletter-p{white-space:pre-wrap;background:var(--white);border:1px solid var(--line);border-radius:var(--r-m);padding:1.3rem 1.4rem;font-family:Georgia,"Times New Roman",serif;font-size:1rem;line-height:1.6;color:var(--ink)}
+.plugs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.8rem;margin:1.2rem 0}
+.plugs.two{grid-template-columns:repeat(2,minmax(0,1fr));max-width:30rem}
+.plugc{background:var(--mist);border-radius:var(--r-m);padding:1rem}
+.plugc .plug{display:block;width:4.6rem;height:5.75rem;margin:0 auto .7rem}
+.plugc b{display:block;line-height:1.3}
+.prose .plugc p{margin:.3rem 0 0;font-size:.9rem;line-height:1.45;color:var(--slate)}
+@media(max-width:820px){.plugs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.plug .po{fill:var(--white);stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
+.plug .pa{fill:none;stroke:var(--ink);stroke-width:2}
+.plug .pd{fill:var(--blue)}
+.plug .ps{fill:var(--ink)}
+.plug .pt{fill:none;stroke:var(--slate);stroke-width:1.2}
+.hadcar{display:flex;gap:.9rem;align-items:center}
+.hadcar .plug{width:2.9rem;height:3.6rem;flex:none}
+.hadwhere{display:flex;gap:.6rem;align-items:flex-start}
+.hadwhere .plug{width:2.2rem;height:2.75rem;flex:none;margin-top:-.15rem}
 .hadhead{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:.8rem;background:var(--mist);border-radius:var(--r-m);padding:1rem 1.2rem;margin-bottom:1rem}
 .hadhead small{display:block;color:var(--slate);font-size:.85rem}.hadhead b{display:block;font-size:1.35rem;letter-spacing:-.02em}
 .hadport{display:flex;gap:.4rem;flex-wrap:wrap}
 .hadlist{display:flex;flex-direction:column;margin-top:1.2rem;border-top:1px solid var(--line)}
-.hadrow{display:grid;grid-template-columns:2.2rem minmax(0,15rem) 1fr;gap:.9rem;align-items:start;padding:.85rem 0;border-bottom:1px solid var(--line)}
+.hadrow{display:grid;grid-template-columns:2.2rem minmax(0,17rem) 1fr;gap:.9rem;align-items:start;padding:.85rem 0;border-bottom:1px solid var(--line)}
 .hadrow .ic{width:2rem;height:2rem;border-radius:50%;display:grid;place-items:center;font-weight:700}
 .hadrow.direct .ic{background:var(--blue);color:var(--white)}
 .hadrow.adapter .ic{background:var(--amber-soft);box-shadow:inset 0 0 0 1.5px var(--amber);color:var(--ink)}
@@ -3447,6 +3463,10 @@ html.wlock,html.wlock body{overflow:hidden}
 
     <h2 id="h-b-nacs">Plugs: NACS and J1772</h2>
     <p>Since 2025 most carmakers have switched to Tesla's plug, now standardized as SAE J3400 and usually called NACS. Older non-Tesla cars use J1772. Most home chargers come in either flavor, adapters work fine for AC charging at home, and the Tesla Universal Wall Connector has both built in. Buy the plug that suits the car you'll own next, not just the one you own now.</p>
+    <div class="plugs two">
+      <div class="plugc"><svg class="plug" viewBox="0 0 80 100" aria-hidden="true"><path class="po" d="M22,24 H58 Q70,24 70,36 V48 Q70,58 62,66 L52,76 Q40,84 28,76 L18,66 Q10,58 10,48 V36 Q10,24 22,24 Z"/><circle class="pd" cx="27" cy="43" r="9"/><circle class="pd" cx="53" cy="43" r="9"/><circle class="pa" cx="40" cy="61" r="5"/><circle class="ps" cx="31" cy="70" r="2.6"/><circle class="ps" cx="49" cy="70" r="2.6"/></svg><b>NACS (SAE J3400)</b><p>Teslas, and most new EVs from 2025 on.</p></div>
+      <div class="plugc"><svg class="plug" viewBox="0 0 80 100" aria-hidden="true"><path class="po" d="M33,21 V13 H47 V21"/><circle class="po" cx="40" cy="50" r="30"/><circle class="pa" cx="29" cy="41" r="6.5"/><circle class="pa" cx="51" cy="41" r="6.5"/><circle class="pa" cx="40" cy="66" r="6"/><circle class="ps" cx="20" cy="56" r="3"/><circle class="ps" cx="60" cy="56" r="3"/></svg><b>J1772</b><p>Non-Tesla EVs sold before the switch.</p></div>
+    </div>
 
     <h2 id="h-b-where">Where it goes</h2>
     <ul>
@@ -3807,12 +3827,12 @@ html.wlock,html.wlock body{overflow:hidden}
     </ul>
 
     <h2 id="h-r-plugs">The plugs, in one paragraph each</h2>
-    <ul>
-      <li><strong>NACS, also called J3400.</strong> Tesla's plug, now the North American standard. New cars from most brands have it built in.</li>
-      <li><strong>CCS.</strong> The larger plug on most non-Tesla EVs sold before the switch. Still on thousands of chargers and still fine.</li>
-      <li><strong>J1772.</strong> The round Level 2 plug at hotels, garages and shops. Slow, plentiful and often free.</li>
-      <li><strong>CHAdeMO.</strong> Older Nissan Leafs and a few others. Fading. If this is your plug, check every stop before you commit to the route.</li>
-    </ul>
+    <div class="plugs">
+      <div class="plugc"><svg class="plug" viewBox="0 0 80 100" aria-hidden="true"><path class="po" d="M22,24 H58 Q70,24 70,36 V48 Q70,58 62,66 L52,76 Q40,84 28,76 L18,66 Q10,58 10,48 V36 Q10,24 22,24 Z"/><circle class="pd" cx="27" cy="43" r="9"/><circle class="pd" cx="53" cy="43" r="9"/><circle class="pa" cx="40" cy="61" r="5"/><circle class="ps" cx="31" cy="70" r="2.6"/><circle class="ps" cx="49" cy="70" r="2.6"/></svg><b>NACS, also called J3400</b><p>Tesla's plug, now the North American standard. New cars from most brands have it built in.</p></div>
+      <div class="plugc"><svg class="plug" viewBox="0 0 80 100" aria-hidden="true"><path class="po" d="M34,10 V4 H46 V10"/><rect class="po" x="13" y="56" width="54" height="36" rx="18"/><circle class="po" cx="40" cy="32" r="23"/><circle class="pa" cx="31.5" cy="26" r="5"/><circle class="pa" cx="48.5" cy="26" r="5"/><circle class="pa" cx="40" cy="45" r="4.5"/><circle class="ps" cx="24.5" cy="37" r="2.4"/><circle class="ps" cx="55.5" cy="37" r="2.4"/><circle class="pd" cx="29" cy="74" r="9"/><circle class="pd" cx="51" cy="74" r="9"/></svg><b>CCS</b><p>The larger plug on most non-Tesla EVs sold before the switch. Still on thousands of chargers and still fine.</p></div>
+      <div class="plugc"><svg class="plug" viewBox="0 0 80 100" aria-hidden="true"><path class="po" d="M33,21 V13 H47 V21"/><circle class="po" cx="40" cy="50" r="30"/><circle class="pa" cx="29" cy="41" r="6.5"/><circle class="pa" cx="51" cy="41" r="6.5"/><circle class="pa" cx="40" cy="66" r="6"/><circle class="ps" cx="20" cy="56" r="3"/><circle class="ps" cx="60" cy="56" r="3"/></svg><b>J1772</b><p>The round Level 2 plug at hotels, garages and shops. Slow, plentiful and often free.</p></div>
+      <div class="plugc"><svg class="plug" viewBox="0 0 80 100" aria-hidden="true"><path class="po" d="M33,18 V10 H47 V18"/><circle class="po" cx="40" cy="50" r="33"/><circle class="pd" cx="21" cy="50" r="8"/><circle class="pd" cx="59" cy="50" r="8"/><circle class="pt" cx="40" cy="30" r="9.5"/><circle class="pt" cx="40" cy="70" r="9.5"/><circle class="ps" cx="36.5" cy="27" r="1.9"/><circle class="ps" cx="43.5" cy="27" r="1.9"/><circle class="ps" cx="36.5" cy="33" r="1.9"/><circle class="ps" cx="43.5" cy="33" r="1.9"/><circle class="ps" cx="36.5" cy="67" r="1.9"/><circle class="ps" cx="43.5" cy="67" r="1.9"/><circle class="ps" cx="36.5" cy="73" r="1.9"/><circle class="ps" cx="43.5" cy="73" r="1.9"/></svg><b>CHAdeMO</b><p>Older Nissan Leafs and a few others. Fading. If this is your plug, check every stop before you commit to the route.</p></div>
+    </div>
     <p>Adapters let a CCS car use many Tesla Superchargers and the other way round. The <a href="#hadapt">adapter finder</a> shows which chargers your car plugs straight into, and which adapter the rest need. Buy the one your carmaker sells or approves. A fast charger pushes hundreds of amps through it, and it is not the place to save forty dollars.</p>
 
     <h2 id="h-r-80">Should you charge to 100%?</h2>
@@ -4283,12 +4303,13 @@ html.wlock,html.wlock body{overflow:hidden}
   </div>
   <article class="prose">
     <h2 id="h-ad-plugs">The plugs, in one minute</h2>
-    <ul>
-      <li><strong>NACS</strong> (SAE J3400) is the small Tesla plug. Tesla Superchargers, Tesla Wall Connectors, and almost every new EV from 2025 to 2027.</li>
-      <li><strong>J1772</strong> is the round plug on most Level 2 chargers: home wall boxes, workplaces, parking garages. Every non-Tesla EV sold before 2025 takes it.</li>
-      <li><strong>CCS1</strong> is J1772 with two big DC pins underneath. Fast chargers like Electrify America and EVgo use it, and so do most EVs built before the switch.</li>
-      <li><strong>CHAdeMO</strong> is the old Japanese fast-charging plug, on the first two Nissan Leafs and the Outlander plug-in hybrid. New stations rarely include it.</li>
-    </ul>
+    <div class="plugs">
+      <div class="plugc"><svg class="plug" viewBox="0 0 80 100" aria-hidden="true"><path class="po" d="M22,24 H58 Q70,24 70,36 V48 Q70,58 62,66 L52,76 Q40,84 28,76 L18,66 Q10,58 10,48 V36 Q10,24 22,24 Z"/><circle class="pd" cx="27" cy="43" r="9"/><circle class="pd" cx="53" cy="43" r="9"/><circle class="pa" cx="40" cy="61" r="5"/><circle class="ps" cx="31" cy="70" r="2.6"/><circle class="ps" cx="49" cy="70" r="2.6"/></svg><b>NACS (SAE J3400)</b><p>The small Tesla plug. Tesla Superchargers, Tesla Wall Connectors, and almost every new EV from 2025 to 2027.</p></div>
+      <div class="plugc"><svg class="plug" viewBox="0 0 80 100" aria-hidden="true"><path class="po" d="M33,21 V13 H47 V21"/><circle class="po" cx="40" cy="50" r="30"/><circle class="pa" cx="29" cy="41" r="6.5"/><circle class="pa" cx="51" cy="41" r="6.5"/><circle class="pa" cx="40" cy="66" r="6"/><circle class="ps" cx="20" cy="56" r="3"/><circle class="ps" cx="60" cy="56" r="3"/></svg><b>J1772</b><p>The round plug on most Level 2 chargers: home wall boxes, workplaces, parking garages. Every non-Tesla EV sold before 2025 takes it.</p></div>
+      <div class="plugc"><svg class="plug" viewBox="0 0 80 100" aria-hidden="true"><path class="po" d="M34,10 V4 H46 V10"/><rect class="po" x="13" y="56" width="54" height="36" rx="18"/><circle class="po" cx="40" cy="32" r="23"/><circle class="pa" cx="31.5" cy="26" r="5"/><circle class="pa" cx="48.5" cy="26" r="5"/><circle class="pa" cx="40" cy="45" r="4.5"/><circle class="ps" cx="24.5" cy="37" r="2.4"/><circle class="ps" cx="55.5" cy="37" r="2.4"/><circle class="pd" cx="29" cy="74" r="9"/><circle class="pd" cx="51" cy="74" r="9"/></svg><b>CCS1</b><p>J1772 with two big DC pins underneath. Fast chargers like Electrify America and EVgo use it, and so do most EVs built before the switch.</p></div>
+      <div class="plugc"><svg class="plug" viewBox="0 0 80 100" aria-hidden="true"><path class="po" d="M33,18 V10 H47 V18"/><circle class="po" cx="40" cy="50" r="33"/><circle class="pd" cx="21" cy="50" r="8"/><circle class="pd" cx="59" cy="50" r="8"/><circle class="pt" cx="40" cy="30" r="9.5"/><circle class="pt" cx="40" cy="70" r="9.5"/><circle class="ps" cx="36.5" cy="27" r="1.9"/><circle class="ps" cx="43.5" cy="27" r="1.9"/><circle class="ps" cx="36.5" cy="33" r="1.9"/><circle class="ps" cx="43.5" cy="33" r="1.9"/><circle class="ps" cx="36.5" cy="67" r="1.9"/><circle class="ps" cx="43.5" cy="67" r="1.9"/><circle class="ps" cx="36.5" cy="73" r="1.9"/><circle class="ps" cx="43.5" cy="73" r="1.9"/></svg><b>CHAdeMO</b><p>The old Japanese fast-charging plug, on the first two Nissan Leafs and the Outlander plug-in hybrid. New stations rarely include it.</p></div>
+    </div>
+    <p class="fh">Looking into the end of the plug. The two large solid pins carry fast-charging (DC) power. NACS sends both kinds of power through the same two pins, which is why it is so small.</p>
     <h3>Rules that save you money and a melted plug</h3>
     <ul id="h-ad-rules">
       <li>Non-Teslas can use only Supercharger sites marked for all EVs. Older Tesla-only sites won’t start a session.</li>
@@ -9188,14 +9209,15 @@ if (typeof document !== 'undefined') (function(){
     var n = esc(brandName(a.maker, a.name));
     return (a.url ? '<a href="'+esc(a.url)+'" target="_blank" rel="noopener">'+n+'</a>' : n)+(incl ? ' (comes with the car)' : '');
   }
+  var PLUG = {NACS:'<svg class="plug" viewBox="0 0 80 100" aria-hidden="true"><path class="po" d="M22,24 H58 Q70,24 70,36 V48 Q70,58 62,66 L52,76 Q40,84 28,76 L18,66 Q10,58 10,48 V36 Q10,24 22,24 Z"/><circle class="pd" cx="27" cy="43" r="9"/><circle class="pd" cx="53" cy="43" r="9"/><circle class="pa" cx="40" cy="61" r="5"/><circle class="ps" cx="31" cy="70" r="2.6"/><circle class="ps" cx="49" cy="70" r="2.6"/></svg>', J1772:'<svg class="plug" viewBox="0 0 80 100" aria-hidden="true"><path class="po" d="M33,21 V13 H47 V21"/><circle class="po" cx="40" cy="50" r="30"/><circle class="pa" cx="29" cy="41" r="6.5"/><circle class="pa" cx="51" cy="41" r="6.5"/><circle class="pa" cx="40" cy="66" r="6"/><circle class="ps" cx="20" cy="56" r="3"/><circle class="ps" cx="60" cy="56" r="3"/></svg>', CCS1:'<svg class="plug" viewBox="0 0 80 100" aria-hidden="true"><path class="po" d="M34,10 V4 H46 V10"/><rect class="po" x="13" y="56" width="54" height="36" rx="18"/><circle class="po" cx="40" cy="32" r="23"/><circle class="pa" cx="31.5" cy="26" r="5"/><circle class="pa" cx="48.5" cy="26" r="5"/><circle class="pa" cx="40" cy="45" r="4.5"/><circle class="ps" cx="24.5" cy="37" r="2.4"/><circle class="ps" cx="55.5" cy="37" r="2.4"/><circle class="pd" cx="29" cy="74" r="9"/><circle class="pd" cx="51" cy="74" r="9"/></svg>', CHADEMO:'<svg class="plug" viewBox="0 0 80 100" aria-hidden="true"><path class="po" d="M33,18 V10 H47 V18"/><circle class="po" cx="40" cy="50" r="33"/><circle class="pd" cx="21" cy="50" r="8"/><circle class="pd" cx="59" cy="50" r="8"/><circle class="pt" cx="40" cy="30" r="9.5"/><circle class="pt" cx="40" cy="70" r="9.5"/><circle class="ps" cx="36.5" cy="27" r="1.9"/><circle class="ps" cx="43.5" cy="27" r="1.9"/><circle class="ps" cx="36.5" cy="33" r="1.9"/><circle class="ps" cx="43.5" cy="33" r="1.9"/><circle class="ps" cx="36.5" cy="67" r="1.9"/><circle class="ps" cx="43.5" cy="67" r="1.9"/><circle class="ps" cx="36.5" cy="73" r="1.9"/><circle class="ps" cx="43.5" cy="73" r="1.9"/></svg>'};
   var PLACES = [
-    ['homeJ', 'Home Level 2, J1772 plug', 'Most non-Tesla wall boxes and mobile cords'],
-    ['homeN', 'Home Level 2, NACS plug', 'Tesla Wall Connector and the NACS versions of other boxes'],
-    ['l2', 'Public Level 2', 'Workplaces, parking garages, shopping centers'],
-    ['dest', 'Tesla destination charger', 'Hotels and restaurants, Level 2'],
-    ['sc', 'Tesla Supercharger', 'DC fast charging'],
-    ['ccs', 'CCS fast charger', 'Electrify America, EVgo, most highway stations'],
-    ['cha', 'CHAdeMO fast charger', 'Older stations, being phased out']
+    ['homeJ', 'Home Level 2, J1772 plug', 'Most non-Tesla wall boxes and mobile cords', 'J1772'],
+    ['homeN', 'Home Level 2, NACS plug', 'Tesla Wall Connector and the NACS versions of other boxes', 'NACS'],
+    ['l2', 'Public Level 2', 'Workplaces, parking garages, shopping centers', 'J1772'],
+    ['dest', 'Tesla destination charger', 'Hotels and restaurants, Level 2', 'NACS'],
+    ['sc', 'Tesla Supercharger', 'DC fast charging', 'NACS'],
+    ['ccs', 'CCS fast charger', 'Electrify America, EVgo, most highway stations', 'CCS1'],
+    ['cha', 'CHAdeMO fast charger', 'Older stations, being phased out', 'CHADEMO']
   ];
   function adapterPlan(p){
     var R = {}, inl = p.inlet, acJ = p.ac==='J1772';
@@ -9252,10 +9274,10 @@ if (typeof document !== 'undefined') (function(){
     var p = (HG.ports||[])[Number(S.a.row)]; if (!p){ out.innerHTML = ''; return; }
     var R = adapterPlan(p), ok = 0, ad = 0;
     PLACES.forEach(function(pl){ if (R[pl[0]].s==='direct') ok++; else if (R[pl[0]].s==='adapter') ad++; });
-    var h = '<div class="hadhead"><div><small>'+esc(p.make)+'</small><b>'+esc(p.model)+'</b><span class="sub">'+esc(p.years)+'</span></div><div class="hadport"><span class="chip g2">'+esc(INLET[p.inlet]||p.inlet)+(p.ac?' + J1772 for AC':'')+'</span><span class="chip '+(p.sc?'g3':'gn')+'">'+(p.sc ? 'Supercharger access'+(p.since?' since '+niceMonth(p.since):'') : 'No Supercharger access')+'</span></div></div>';
+    var h = '<div class="hadhead"><div class="hadcar">'+(PLUG[p.inlet]||'')+(p.inlet==='CHADEMO'||p.ac==='J1772' ? PLUG.J1772 : '')+'<div><small>'+esc(p.make)+'</small><b>'+esc(p.model)+'</b><span class="sub">'+esc(p.years)+'</span></div></div><div class="hadport"><span class="chip g2">'+esc(INLET[p.inlet]||p.inlet)+(p.ac?' + J1772 for AC':'')+'</span><span class="chip '+(p.sc?'g3':'gn')+'">'+(p.sc ? 'Supercharger access'+(p.since?' since '+niceMonth(p.since):'') : 'No Supercharger access')+'</span></div></div>';
     h += '<div class="kpis">'+kpi(String(ok), 'Kinds of charger it plugs straight into')+kpi(String(ad), 'Need an adapter')+kpi(String(PLACES.length-ok-ad), 'Won’t work', PLACES.length-ok-ad ? 'neg' : '')+'</div>';
     h += '<div class="hadlist">'+PLACES.map(function(pl){ var r = R[pl[0]];
-      return '<div class="hadrow '+r.s+'"><span class="ic" aria-hidden="true">'+(r.s==='direct'?'✓':r.s==='adapter'?'⇄':'✕')+'</span><div><b>'+pl[1]+'</b><small>'+pl[2]+'</small></div><p><span class="vh">'+(r.s==='direct'?'Plugs in. ':r.s==='adapter'?'Adapter. ':'No. ')+'</span>'+r.t+'</p></div>'; }).join('')+'</div>';
+      return '<div class="hadrow '+r.s+'"><span class="ic" aria-hidden="true">'+(r.s==='direct'?'✓':r.s==='adapter'?'⇄':'✕')+'</span><div class="hadwhere">'+PLUG[pl[3]]+'<div><b>'+pl[1]+'</b><small>'+pl[2]+'</small></div></div><p><span class="vh">'+(r.s==='direct'?'Plugs in. ':r.s==='adapter'?'Adapter. ':'No. ')+'</span>'+r.t+'</p></div>'; }).join('')+'</div>';
     if (p.note) h += '<p class="flag">'+esc(p.note)+'</p>';
     h += '<p class="fh">Adapter names link to the maker’s page, which has the current price. Charging at a Supercharger also needs the carmaker’s or Tesla’s app.</p>';
     out.innerHTML = h; K.polish(out);
