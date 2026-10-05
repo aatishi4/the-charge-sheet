@@ -642,30 +642,37 @@ def gear_items(g):
     return [(k, x) for k in ('chargers', 'batteries', 'vehicles', 'panel', 'adapters') for x in g.get(k, [])]
 
 
+def brand_name(maker, model):
+    """'Polestar' + 'Polestar 3' is 'Polestar 3', not 'Polestar Polestar 3'."""
+    maker, model = (maker or '').strip(), (model or '').strip()
+    first = maker.split(' ')[0].lower() if maker else ''
+    return model if first and model.lower().startswith(first + ' ') else ('%s %s' % (maker, model)).strip()
+
+
 def gear_meta(kind, x):
     """(name, title, description) for a home gear page."""
     if kind == 'vehicles':
-        name = '%s %s' % (x['make'], x['model'])
+        name = brand_name(x['make'], x['model'])
         title = fit60('%s: Can It Power a House? V2H and V2L' % name, '%s: V2H and V2L' % name, name)
         v2l = ('%s kW from its outlets' % x['v2l']) if x.get('v2l') else 'no factory outlets'
         d = '%s (%s): %s, %s. About %s kWh battery, %s kW onboard charger.' % (
             name, x.get('years', ''), {'yes': 'can run a house today', 'legacy': 'V2H discontinued, existing owners only', 'announced': 'V2H announced, not shipping', 'no': 'no V2H in the US'}.get(x.get('v2h'), 'V2H unknown'), v2l, x.get('kwh', ''), x.get('obc', ''))
     elif kind == 'panel':
-        name = '%s %s' % (x['oem'], x['model'])
-        title = fit60('%s: %s for a Full Panel' % (name, x.get('kind', 'Load manager')), '%s: Price and Specs' % name, name)
+        name = brand_name(x['oem'], x['model'])
+        title = fit60('%s: %s for a Full Panel' % (name, x.get('kind', 'Load manager').capitalize()), '%s: Price and Specs' % name, name)
         d = '%s, %s: %s %s' % (name, x.get('kind', '').lower(), x.get('how', ''), ('About %s.' % usd(x['price'])) if x.get('price') else '')
     elif kind == 'adapters':
-        name = '%s %s' % (x['maker'], x['name'])
+        name = brand_name(x['maker'], x['name'])
         title = fit60('%s: Who Needs It and What It Costs' % name, '%s: Price and Fit' % name, name)
         d = '%s (%s, %s). %s %s' % (name, x.get('dir', '').replace('-to-', ' to '), 'fast charging' if x.get('level') == 'DC' else 'Level 2',
                                     x.get('who', ''), ('About %s.' % usd(x['price'])) if x.get('price') else '')
     elif kind == 'batteries':
-        name = '%s %s' % (x['oem'], x['model'])
+        name = brand_name(x['oem'], x['model'])
         title = fit60('%s: Home Battery Specs and Price' % name, '%s: Specs and Price' % name, name)
         d = '%s home battery: %s kWh usable, %s. About %s installed. Specs, surge, warranty and stacking.' % (
             name, x.get('kwh', ''), ('%s kW continuous' % x['kw']) if x.get('kw') else 'no inverter of its own', usd(x.get('price')))
     else:
-        name = '%s %s' % (x['oem'], x['model'])
+        name = brand_name(x['oem'], x['model'])
         title = fit60('%s: Home EV Charger Specs and Price' % name, '%s: Specs and Price' % name, name)
         bits = [('%s A' % x['amps']) if x.get('amps') else '', x.get('connector', ''),
                 {'hardwire': 'hardwired', 'plug': 'plug-in', 'both': 'plug-in or hardwired', 'cord': 'portable cord'}.get(x.get('install'), '')]

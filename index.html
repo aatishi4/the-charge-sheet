@@ -490,6 +490,7 @@ table.assume td:last-child{text-align:right;font-weight:600}
 .swres ul{margin:.2rem 0 .8rem;padding-left:1.2rem;color:var(--slate);font-size:.96rem}
 .swres li{margin:.3rem 0}
 .swres .swchk{margin:0;padding:.6rem .8rem;border-radius:var(--r-s);background:var(--amber-soft);font-size:.94rem}
+.swchk a{text-decoration:underline;text-underline-offset:.15em}
 @media (max-width:640px){.wfset{grid-template-columns:1fr}#wf .fig-top .seg button,#swfee .fig-top .seg button,.swrow .seg button{padding:.4rem .7rem}}
 .msgv .lk{stroke:var(--line);stroke-width:3;stroke-dasharray:2 8;stroke-linecap:round}
 .msgv .nd{fill:var(--white);stroke:var(--ink);stroke-width:2}
@@ -8889,6 +8890,7 @@ if (typeof document !== 'undefined') (function(){
   }
 
   /* ================= Gear ================= */
+  function brandName(maker, model){ maker = String(maker||''); model = String(model||''); var f = maker.split(' ')[0].toLowerCase(); return f && model.toLowerCase().indexOf(f+' ')===0 ? model : (maker+' '+model).trim(); }
   function gearHref(id){ return window.CS_PAGE ? K.viewHref('hgear')+id+'/' : '#hgear?p='+id; }
   var ICON = {
     wall:'<svg viewBox="0 0 120 90" aria-hidden="true"><rect class="ln fw" x="42" y="8" width="36" height="58" rx="9"/><rect class="fi" x="50" y="18" width="20" height="12" rx="3"/><circle class="fb" cx="60" cy="44" r="3.5"/><path class="ln" d="M60,66 C60,84 30,84 22,74"/><rect class="ln fw" x="12" y="66" width="14" height="10" rx="3"/></svg>',
@@ -8955,7 +8957,7 @@ if (typeof document !== 'undefined') (function(){
     box.innerHTML = h;
   }
   function gearDetail(kind, x){
-    var rows = [], use = '', title = kind==='vehicles' ? x.make+' '+x.model : kind==='adapters' ? x.maker+' '+x.name : x.oem+' '+x.model, ic;
+    var rows = [], use = '', title = kind==='vehicles' ? brandName(x.make, x.model) : kind==='adapters' ? brandName(x.maker, x.name) : brandName(x.oem, x.model), ic;
     if (kind==='panel' || kind==='adapters'){
       if (kind==='panel'){ ic = panelIcon(x);
         rows = [['Type', x.kind], ['How it works', x.how], ['Current', x.amps ? 'Up to '+x.amps+' A' : ''], ['Works with', x.worksWith], ['Installation', x.installNote], ['Listing', x.listing], ['App', x.app], ['Price', (x.price ? 'About '+money(x.price)+'. ' : '')+(x.priceNote||'')]];
