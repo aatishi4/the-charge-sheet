@@ -260,7 +260,7 @@ p.fh{margin:.2rem 0 1rem}
 .fig-in{background:var(--mist);border-radius:var(--r-l);padding:1.8rem}
 @media (max-width:640px){.fig-in{padding:1.1rem;border-radius:var(--r-m)}}
 .fig-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1.2rem}
-.fig-top h3{margin:0;font-size:1.15rem;font-weight:650;letter-spacing:-.01em}
+.fig-top h2,.fig-top h3{margin:0;font-size:1.15rem;font-weight:650;letter-spacing:-.01em}
 .fig-cap{font-size:.98rem;color:var(--slate);margin:1rem 0 0;max-width:46em;min-height:3em}
 .seg{display:inline-flex;background:var(--white);border:1px solid var(--line);border-radius:999px;padding:3px}
 .seg button{border:0;background:transparent;color:var(--slate);font-size:.88rem;font-weight:600;padding:.4rem 1rem;border-radius:999px;cursor:pointer}
@@ -1036,7 +1036,7 @@ html.wlock,html.wlock body{overflow:hidden}
 @media (max-width:640px){.spot{margin-top:1.2rem}.spot text{display:none}}
 
 /* ---------- Accessibility: links in text, dark-mode contrast ---------- */
-.prose p a,.prose li a,.prose dd a,.prose td a,.fh a,.post-author a,.lead a,.about p a,.results p a,.verdict a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em}
+.tool-head p a,.prose p a,.prose li a,.prose dd a,.prose td a,.fh a,.post-author a,.lead a,.about p a,.results p a,.verdict a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em}
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]) .btn.primary,:root:not([data-theme="light"]) .stepper .lane.on,:root:not([data-theme="light"]) .owpill.o{color:#0A1322}
   :root:not([data-theme="light"]) .tile.big .go{color:#1F4FD1}
@@ -1502,7 +1502,7 @@ html.wlock,html.wlock body{overflow:hidden}
 
   <div class="band mist" id="from-aatish">
     <div class="wrap letter">
-      <figure class="letter-photo"><picture><source type="image/webp" srcset="img/aatish-400.webp 400w, img/aatish-800.webp 800w" sizes="(max-width:760px) 240px, 400px"><img src="img/aatish.jpg" alt="Aatish Patel at a DC fast charger" width="800" height="1000" loading="lazy" decoding="async"></picture></figure>
+      <figure class="letter-photo"><picture><source type="image/webp" srcset="img/aatish-400.webp 400w, img/aatish-560.webp 560w, img/aatish-800.webp 800w" sizes="(max-width:760px) 240px, 300px"><img src="img/aatish.jpg" alt="Aatish Patel at a DC fast charger" width="800" height="1000" loading="lazy" decoding="async"></picture></figure>
       <div class="letter-body">
         <p class="kick">A note from the person who built this</p>
         <h2>Why I built this.</h2>
@@ -1647,7 +1647,7 @@ html.wlock,html.wlock body{overflow:hidden}
 <!-- ABOUT -->
 <section id="view-about" hidden>
   <div class="about">
-    <div class="portrait" id="portrait"><picture><source type="image/webp" srcset="img/aatish-400.webp 400w, img/aatish-800.webp 800w" sizes="(max-width:760px) 90vw, 400px"><img src="img/aatish.jpg" alt="Aatish Patel at a DC fast charger" width="800" height="1000" fetchpriority="high"></picture></div>
+    <div class="portrait" id="portrait"><picture><source type="image/webp" srcset="img/aatish-400.webp 400w, img/aatish-560.webp 560w, img/aatish-800.webp 800w" sizes="(max-width:760px) 260px, 320px"><img src="img/aatish.jpg" alt="Aatish Patel at a DC fast charger" width="800" height="1000" fetchpriority="high"></picture></div>
     <div>
       <h1>Hi, I'm Aatish. I built this.</h1>
       <p class="lede">Aatish Patel, officially. I build physical products and the businesses around them, and I've spent the last six years doing that in EV charging: founding XCharge North America, then taking XCharge public as COO.</p>
@@ -1691,7 +1691,7 @@ html.wlock,html.wlock body{overflow:hidden}
 
     </article>
 <div class="fig" id="pp"><div class="fig-in">
-  <div class="fig-top"><h3>Where the converting happens</h3>
+  <div class="fig-top"><h2>Where the converting happens</h2>
     <div class="seg" role="group" aria-label="Charger type"><button type="button" data-mode="ac" aria-pressed="true">Level 2 (AC)</button><button type="button" data-mode="dc" aria-pressed="false">DC fast</button></div></div>
   <svg class="pp" viewBox="0 0 760 230" role="img" aria-label="How power flows from the grid, through the charger, to the battery">
     <path class="w" d="M120,110 q10.625,-12 21.25,0 t21.25,0 t21.25,0 t21.25,0"/><path class="wf" d="M120,110 q10.625,-12 21.25,0 t21.25,0 t21.25,0 t21.25,0"/>
@@ -5309,7 +5309,7 @@ if (typeof document !== 'undefined') (function(){
       Array.prototype.forEach.call(document.querySelectorAll('[data-portrait-initial]'), function(sp){
         var sq = sp.getAttribute('data-portrait-initial')==='square' && CONFIG.photoSquare;
         sp.parentNode.innerHTML = sq ? '<img src="'+CONFIG.photoSquare+'" alt="Aatish Patel at a DC fast charger">'
-          : '<picture><source type="image/webp" srcset="/img/aatish-400.webp 400w, /img/aatish-800.webp 800w" sizes="(max-width:760px) 90vw, 400px"><img src="'+CONFIG.photo+'" alt="Aatish Patel at a DC fast charger" width="800" height="1000"></picture>';
+          : '<picture><source type="image/webp" srcset="/img/aatish-400.webp 400w, /img/aatish-560.webp 560w, /img/aatish-800.webp 800w" sizes="(max-width:760px) 260px, 320px"><img src="'+CONFIG.photo+'" alt="Aatish Patel at a DC fast charger" width="800" height="1000"></picture>';
       });
     }
   }
@@ -8873,7 +8873,7 @@ if (typeof document !== 'undefined') (function(){
       var m = mx(a,b2);
       return '<div class="hvrow"><span class="l">'+label+'</span><span class="c"><span class="t"><b class="car" style="width:'+(a/m*100).toFixed(1)+'%"></b></span><span class="tw">'+fmt(a)+'</span></span><span class="c"><span class="t"><b class="bat" style="width:'+(b2/m*100).toFixed(1)+'%"></b></span><span class="tw">'+fmt(b2)+'</span></span></div>';
     }
-    var h = '<div class="hvhead"><div class="car">'+(v.img?'<img class="hvthumb'+(v.imgFit==='photo'?'':' cut')+'" src="'+imgSrc(v)+'" alt="" loading="lazy">':'')+'<small>'+esc(v.make)+'</small><b>'+esc(v.model)+'</b><span class="chip '+(v.v2h==='yes'?'g3':v.v2h==='legacy'?'g1':'gn')+'">'+V2H_LABEL[v.v2h]+'</span></div><div class="vs">vs</div><div class="bat">'+(b.img?'<img class="hvthumb'+(b.imgFit==='photo'?'':' cut')+'" src="'+imgSrc(b)+'" alt="" loading="lazy">':'')+'<small>'+esc(b.oem)+'</small><b>'+(units>1?units+' × ':'')+esc(b.model)+'</b><span class="chip g2">Home battery</span></div></div>';
+    var h = '<div class="hvhead"><div class="car">'+(v.img?'<img class="hvthumb'+(v.imgFit==='photo'?'':' cut')+'" src="'+thumbSrc(v)+'" alt="" loading="lazy"'+fullBack(v)+'>':'')+'<small>'+esc(v.make)+'</small><b>'+esc(v.model)+'</b><span class="chip '+(v.v2h==='yes'?'g3':v.v2h==='legacy'?'g1':'gn')+'">'+V2H_LABEL[v.v2h]+'</span></div><div class="vs">vs</div><div class="bat">'+(b.img?'<img class="hvthumb'+(b.imgFit==='photo'?'':' cut')+'" src="'+imgSrc(b)+'" alt="" loading="lazy">':'')+'<small>'+esc(b.oem)+'</small><b>'+(units>1?units+' × ':'')+esc(b.model)+'</b><span class="chip g2">Home battery</span></div></div>';
     h += '<div class="hvrows"><div class="hvrow hvcols"><span class="l"></span><span class="c">Car</span><span class="c">Battery</span></div>'+
       row('Energy for the house', can?carKwh:0, bKwh, function(x){ return Math.round(x)+' kWh'; }) +
       row('Days of backup at '+load+' kWh a day', can?carDays:0, bDays, function(x){ return x>=10 ? Math.round(x)+' days' : x.toFixed(1)+' days'; }) +
@@ -8931,7 +8931,9 @@ if (typeof document !== 'undefined') (function(){
     return '';
   }
   function imgSrc(x){ return (window.CS_PAGE ? '/' : '') + x.img; }
-  function pic(x, fallback, alt){ return x.img ? '<span class="hgimg '+(x.imgFit==='photo'?'photo':'cut')+'"><img src="'+imgSrc(x)+'" alt="'+esc(alt)+'" loading="lazy" decoding="async"></span>' : fallback; }
+  function thumbSrc(x){ return imgSrc(x).replace(/\/([^\/]+)$/, '/thumb/$1'); }
+  function fullBack(x){ return ' onerror="this.onerror=null;this.src=\''+imgSrc(x)+'\'"'; }
+  function pic(x, fallback, alt, full){ return x.img ? '<span class="hgimg '+(x.imgFit==='photo'?'photo':'cut')+'"><img src="'+(full ? imgSrc(x) : thumbSrc(x))+'" alt="'+esc(alt)+'" loading="lazy" decoding="async"'+(full ? '' : fullBack(x))+'></span>' : fallback; }
   function credLine(x){ var c = x.imgCredit; if (!c) return ''; return '<a href="'+esc(c.url)+'" target="_blank" rel="noopener">'+esc(c.text)+'</a>'+(c.licenseUrl ? ' (<a href="'+esc(c.licenseUrl)+'" target="_blank" rel="noopener license">license</a>)' : ''); }
   function credits(list, name){ list = list.filter(function(x){ return x.imgCredit; }); if (!list.length) return '';
     return '<details class="hgcred"><summary>Image credits</summary><ul>'+list.map(function(x){ return '<li>'+esc(name(x))+': '+credLine(x)+'</li>'; }).join('')+'</ul></details>'; }
@@ -8967,6 +8969,7 @@ if (typeof document !== 'undefined') (function(){
     }
     h += '<p class="fh" style="margin-top:1.4rem">'+esc(HG.note||'')+' Want your product listed, or spotted an error? <a href="#about">Get in touch</a>.</p>';
     box.innerHTML = h;
+    [].slice.call(box.querySelectorAll('.hgimg img'), 0, 3).forEach(function(im){ im.loading = 'eager'; });  // the first row is on screen
   }
   function gearDetail(kind, x){
     var rows = [], use = '', title = kind==='vehicles' ? brandName(x.make, x.model) : brandName(x.oem, x.model), ic;
@@ -8976,7 +8979,7 @@ if (typeof document !== 'undefined') (function(){
         use = '<a class="btn" href="'+K.viewHref('hinstall')+'">Check your panel</a>';
       var site = x.website;
       return '<p class="sub"><a href="'+K.viewHref('hgear')+'?tab=panel">All panel helpers</a> <span class="dot">/</span> '+esc(title)+'</p>'+
-        '<div class="hwhero hgd"><div class="hgicon'+(x.img?' has-img':'')+'">'+pic(x, ic, title)+'</div><div><p class="sub">'+esc(x.oem)+'</p><h2>'+esc(x.model)+'</h2><p>'+esc(x.blurb||'')+'</p><p>'+use+(site?' <a class="btn secondary" href="'+esc(site)+'" target="_blank" rel="noopener">Maker’s page</a>':'')+'</p></div></div>'+
+        '<div class="hwhero hgd"><div class="hgicon'+(x.img?' has-img':'')+'">'+pic(x, ic, title, true)+'</div><div><p class="sub">'+esc(x.oem)+'</p><h2>'+esc(x.model)+'</h2><p>'+esc(x.blurb||'')+'</p><p>'+use+(site?' <a class="btn secondary" href="'+esc(site)+'" target="_blank" rel="noopener">Maker’s page</a>':'')+'</p></div></div>'+
         '<h2>Details</h2><div class="scroll" tabindex="0"><table><tbody>'+rows.filter(function(r){ return r[1]; }).map(function(r){ return '<tr><th>'+r[0]+'</th><td>'+esc(r[1])+'</td></tr>'; }).join('')+'</tbody></table></div>'+
         '<p class="fh">Source: '+(x.source ? '<a href="'+esc(x.source)+'" target="_blank" rel="noopener">'+esc(x.source.replace(/^https?:\/\/(www\.)?/,'').split('/')[0])+'</a>' : 'Maker’s page')+', October 2026.'+(x.imgCredit?' '+credLine(x)+'.':'')+'</p>';
     }
@@ -8997,7 +9000,7 @@ if (typeof document !== 'undefined') (function(){
       use = '<a class="btn" href="'+K.viewHref('hcharge')+'?veh='+x.id+'">Charging cost</a>'+((x.v2h==='yes'||x.v2h==='legacy')?' <a class="btn secondary" href="'+K.viewHref('hvcompare')+'?veh='+x.id+'">Compare with a battery</a>':'');
     }
     return '<p class="sub"><a href="'+K.viewHref('hgear')+'">All gear</a> <span class="dot">/</span> '+esc(title)+'</p>'+
-      '<div class="hwhero hgd"><div class="hgicon'+(x.img?' has-img':'')+'">'+pic(x, ic, title)+'</div><div><p class="sub">'+esc(kind==='vehicles'?x.make:x.oem)+'</p><h2>'+esc(kind==='vehicles'?x.model:x.model)+'</h2><p>'+esc(x.blurb||x.note||'')+'</p><p>'+use+(x.website?' <a class="btn secondary" href="'+esc(x.website)+'" target="_blank" rel="noopener">Manufacturer site</a>':'')+'</p></div></div>'+
+      '<div class="hwhero hgd"><div class="hgicon'+(x.img?' has-img':'')+'">'+pic(x, ic, title, true)+'</div><div><p class="sub">'+esc(kind==='vehicles'?x.make:x.oem)+'</p><h2>'+esc(kind==='vehicles'?x.model:x.model)+'</h2><p>'+esc(x.blurb||x.note||'')+'</p><p>'+use+(x.website?' <a class="btn secondary" href="'+esc(x.website)+'" target="_blank" rel="noopener">Manufacturer site</a>':'')+'</p></div></div>'+
       '<h2>Specifications</h2><div class="scroll" tabindex="0"><table><tbody>'+rows.filter(function(r){ return r[1]; }).map(function(r){ return '<tr><th>'+r[0]+'</th><td>'+esc(r[1])+'</td></tr>'; }).join('')+'</tbody></table></div>'+
       (x.note && x.blurb ? '<p class="fh">'+esc(x.note)+'</p>' : '')+
       '<p class="fh">Source: '+esc(x.source||'Manufacturer and public reporting, 2026')+'.'+(x.imgCredit?' '+credLine(x)+'.':'')+'</p>';
