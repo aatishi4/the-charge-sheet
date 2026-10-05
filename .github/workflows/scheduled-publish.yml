@@ -1,15 +1,15 @@
 name: Scheduled publish
 
 # Blog posts with a `publish:` time stay off chargesheet.io until a build runs
-# after that time. This wakes up on Tuesdays and Thursdays around 9am Central
-# and rebuilds the site if a post is due but not in the live feed yet.
-# Two crons because GitHub schedules in UTC: 14:00 UTC is 9am CDT, 15:00 UTC is 9am CST.
-# The check makes the second run a no-op.
+# after that time. This checks every half hour through the US morning and rebuilds
+# the site if a post is due but not in the live feed yet. When nothing is due it does nothing.
+# Why so many runs: GitHub starts scheduled workflows late. In this repo the 14:00 and 15:00 UTC
+# runs were starting around 19:00 to 20:00 UTC, so a 9am Central post went up mid-afternoon.
+# Starting the checks at 09:09 UTC means one of them lands close to 9am Central either way.
 
 on:
   schedule:
-    - cron: '0 14 * * 2,4'
-    - cron: '0 15 * * 2,4'
+    - cron: '9,39 9-16 * * *'
   workflow_dispatch:
 
 permissions:
