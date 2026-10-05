@@ -58,6 +58,8 @@ PAGES = [
      "What a battery fixes at a charging site (peak power, demand charges, a smaller service) and what it can't. Sizing, earnings, the 48E credit, and FEOC rules.", 'guide'),
     ('connectivity', 'ev-charger-connectivity', 'EV Charger Connectivity: Why Chargers Go Offline',
      'Most "broken charger" complaints are network problems. What depends on connectivity, cellular vs wired, why the IoT provider matters, and what to do offline.', 'guide'),
+    ('software', 'ev-charging-software-ocpp', 'EV Charging Software and OCPP: Choosing a Backend',
+     'What charging software does, what OCPP is and is not, what a backend costs and who pays, free vs premium platforms, payments, maps, and support.', 'guide'),
     ('vendors', 'buying-ev-chargers', 'Buying EV Chargers: Vendor Questions and Red Flags',
      'What to ask charger vendors, installers, and software providers, what a good answer sounds like, and the walk-away signs. For site hosts and operators.', 'guide'),
     ('fleet', 'fleet-ev-charging', 'Fleet EV Charging: Throughput, Power, and Operations',

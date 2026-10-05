@@ -479,8 +479,18 @@ table.assume td:last-child{text-align:right;font-weight:600}
 .stackkey b{color:var(--ink);font-weight:650;margin-left:.2rem;font-variant-numeric:tabular-nums}
 .wfset{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 2rem;margin-top:.6rem}
 .wfset .fld{grid-template-columns:1fr 8.5rem}
-#wf .fig-top .seg{flex-wrap:wrap}
-@media (max-width:640px){.wfset{grid-template-columns:1fr}#wf .fig-top .seg button{padding:.4rem .7rem}}
+#wf .fig-top .seg,#swfee .fig-top .seg{flex-wrap:wrap;border-radius:18px}
+.fi select{text-align-last:right}
+.swrow{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem 1rem;padding:.7rem 0;border-bottom:1px solid var(--line);font-size:.98rem}
+.swrow>span{flex:1 1 16rem;font-weight:600}
+.swrow .seg{flex-wrap:wrap;border-radius:18px}
+.swres{background:var(--white);border-radius:var(--r-m);padding:1.3rem 1.4rem;margin-top:1.2rem}
+.swres h4{margin:0 0 .45rem;font-size:1.25rem;font-weight:650;letter-spacing:-.01em}
+.swres p{margin:0 0 .6rem}
+.swres ul{margin:.2rem 0 .8rem;padding-left:1.2rem;color:var(--slate);font-size:.96rem}
+.swres li{margin:.3rem 0}
+.swres .swchk{margin:0;padding:.6rem .8rem;border-radius:var(--r-s);background:var(--amber-soft);font-size:.94rem}
+@media (max-width:640px){.wfset{grid-template-columns:1fr}#wf .fig-top .seg button,#swfee .fig-top .seg button,.swrow .seg button{padding:.4rem .7rem}}
 .msgv .lk{stroke:var(--line);stroke-width:3;stroke-dasharray:2 8;stroke-linecap:round}
 .msgv .nd{fill:var(--white);stroke:var(--ink);stroke-width:2}
 .msgv .ndt{fill:var(--ink);font-family:var(--font);font-size:14px;font-weight:600}
@@ -1492,7 +1502,7 @@ html.wlock,html.wlock body{overflow:hidden}
   <div class="band mist">
     <div class="wrap">
       <h2>Read it in order. Or don't.</h2>
-      <p class="lead">Eight short guides, from what happens inside the cable to paying for it and running a fleet depot. Each one stands on its own.</p>
+      <p class="lead">Nine short guides, from what happens inside the cable to paying for it and running a fleet depot. Each one stands on its own.</p>
       <ol class="path">
         <li><a href="#basics"><span class="pn">1</span><span><span class="pt">How charging works</span><span class="pd">What actually happens between the plug and the battery, and why the car, not the charger, is in charge.</span></span><span class="pm">9 min</span></a></li>
         <li><a href="#primer"><span class="pn">2</span><span><span class="pt">The business</span><span class="pd">Where the money comes from, where it goes, and the electric bill that ruins most spreadsheets.</span></span><span class="pm">8 min</span></a></li>
@@ -1500,8 +1510,9 @@ html.wlock,html.wlock body{overflow:hidden}
         <li><a href="#finance"><span class="pn">4</span><span><span class="pt">Paying for it</span><span class="pd">Cash, grants or a loan: the three ways to fund a site, and why most people should finance.</span></span><span class="pm">9 min</span></a></li>
         <li><a href="#storage"><span class="pn">5</span><span><span class="pt">Batteries</span><span class="pd">What storage fixes, what it earns, and the tax rules that can hand you 30% back or nothing at all.</span></span><span class="pm">11 min</span></a></li>
         <li><a href="#connectivity"><span class="pn">6</span><span><span class="pt">Connectivity</span><span class="pd">The invisible part of every charger, and the cause of more "it's broken" than anything with a power module in it.</span></span><span class="pm">7 min</span></a></li>
-        <li><a href="#vendors"><span class="pn">7</span><span><span class="pt">Buying</span><span class="pd">What to ask vendors, what a good answer sounds like, and when to politely leave the meeting.</span></span><span class="pm">8 min</span></a></li>
-        <li><a href="#fleet"><span class="pn">8</span><span><span class="pt">Fleet charging</span><span class="pd">Charging curves, the 80% rule, and why the people moving the cars matter as much as the chargers.</span></span><span class="pm">8 min</span></a></li>
+        <li><a href="#software"><span class="pn">7</span><span><span class="pt">Software and OCPP</span><span class="pd">The backend decides who charges, what they pay and what it costs you. What OCPP is, what it isn't, and how much software you actually need.</span></span><span class="pm">8 min</span></a></li>
+        <li><a href="#vendors"><span class="pn">8</span><span><span class="pt">Buying</span><span class="pd">What to ask vendors, what a good answer sounds like, and when to politely leave the meeting.</span></span><span class="pm">8 min</span></a></li>
+        <li><a href="#fleet"><span class="pn">9</span><span><span class="pt">Fleet charging</span><span class="pd">Charging curves, the 80% rule, and why the people moving the cars matter as much as the chargers.</span></span><span class="pm">8 min</span></a></li>
       </ol>
     </div>
   </div>
@@ -2413,6 +2424,156 @@ html.wlock,html.wlock body{overflow:hidden}
     <div class="note"><p><strong>Check a real site.</strong> The connectivity check grades the signal where your charger will stand and tells you what setup it needs. <a href="#sitecheck">Open the connectivity check</a>.</p></div>
   </article>
 </section>
+<section id="view-software" class="read" hidden>
+  <div class="tool-head">
+    <h1>Charging software and OCPP</h1>
+    <p>The charger is the part you can kick. The software behind it decides who gets to charge, what they pay, and whether you find out it's broken before the internet does. It's also a bill that shows up every month whether a single car does or not, so it deserves more thought than the demo usually gets.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>By <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
+    <div class="spot" aria-hidden="true"><svg viewBox="0 0 720 150" focusable="false"><rect class="ln d fw" pathLength="1" x="56" y="40" width="58" height="92" rx="11" style="--d:0.00s"/><rect class="fi" x="68" y="54" width="34" height="20" rx="4"/><circle class="fb" cx="85" cy="94" r="4"/><text x="85" y="148" text-anchor="middle">Charger</text><path class="lt" d="M114,86 H262"/><path class="lb flow" d="M114,86 H262"/><text x="188" y="74" text-anchor="middle" class="b">OCPP</text><rect class="ln d fw" pathLength="1" x="266" y="32" width="150" height="100" rx="10" style="--d:0.30s"/><path class="lt" d="M266,52 H416"/><circle class="fa" cx="280" cy="42" r="3"/><circle class="fs" cx="291" cy="42" r="3"/><rect class="fi grow" x="284" y="92" width="16" height="28" rx="3" style="--d:0.70s"/><rect class="fi grow" x="308" y="78" width="16" height="42" rx="3" style="--d:0.85s"/><rect class="fb grow" x="332" y="66" width="16" height="54" rx="3" style="--d:1.00s"/><path class="lt" d="M362,72 h40 M362,88 h30 M362,104 h36"/><text x="341" y="148" text-anchor="middle">Charging software</text><path class="lt" d="M416,82 C470,82 480,36 536,36 M416,82 H536 M416,82 C470,82 480,128 536,128"/><path class="lb flow" d="M416,82 C470,82 480,36 536,36"/><path class="lb flow" d="M416,82 H536"/><path class="lb flow" d="M416,82 C470,82 480,128 536,128"/><g class="fade" style="--d:0.90s"><rect class="ln fw" x="542" y="24" width="34" height="24" rx="4"/><path class="ln" d="M542,32 H576"/><text x="586" y="40">Payments</text></g><g class="fade" style="--d:1.10s"><path class="ln fw" d="M559,96 c-9,-12 -13,-17 -13,-23 a13,13 0 0 1 26,0 c0,6 -4,11 -13,23 z"/><circle class="fb" cx="559" cy="73" r="4"/><text x="586" y="86">Maps and apps</text></g><g class="fade" style="--d:1.30s"><rect class="ln fw" x="544" y="114" width="30" height="26" rx="4"/><path class="la" d="M551,133 v-6 M559,133 v-12 M567,133 v-9"/><text x="586" y="132">Pricing and reports</text></g></svg></div>
+  </div>
+  <article class="prose">
+    <ul class="toc" aria-label="On this page">
+      <li><a href="#sw-what">What it runs</a></li>
+      <li><a href="#sw-ocpp">OCPP</a></li>
+      <li><a href="#sw-fit">Hardware and payments</a></li>
+      <li><a href="#sw-cost">What it costs</a></li>
+      <li><a href="#sw-kinds">Free or premium</a></li>
+      <li><a href="#sw-found">Getting found</a></li>
+      <li><a href="#sw-support">Support</a></li>
+    </ul>
+
+    <h2 id="sw-what">The backend runs the station</h2>
+    <p>It goes by many names: backend, back office, charge management software, CSMS, "the network." They all mean the same thing, a server somewhere that every one of your chargers reports to. The charger moves the electrons. The backend does everything else.</p>
+    <ul>
+      <li><strong>Authorization.</strong> Every card tap, app start and RFID badge is a question the charger asks the backend. The backend says yes or no.</li>
+      <li><strong>Pricing and billing.</strong> Your price per kWh, session fees, idle fees and time-of-day rates live here, and so does the math that turns a meter reading into a charge on someone's card.</li>
+      <li><strong>Management.</strong> Live status, fault alerts, remote resets, firmware updates and power limits. This is how you fix a charger without driving to it.</li>
+      <li><strong>Reporting.</strong> Sessions, energy, revenue and uptime. Your lender, your grant program and your own curiosity will all ask for these.</li>
+      <li><strong>Visibility.</strong> Whether drivers can find your chargers in the apps and maps they already use.</li>
+    </ul>
+    <p>So when you choose a backend you're choosing who holds the keys to your site. Know what you're signing, how it works with your hardware, and how it works with the way you want to take payment. Those three, in that order.</p>
+
+    <h2 id="sw-ocpp">OCPP: what it is</h2>
+    <p>OCPP, the Open Charge Point Protocol, is the language a charger and a backend speak to each other. It's an open standard run by an industry group, the Open Charge Alliance, and nearly every charger you can buy for a commercial site speaks it. The charger opens a connection to a web address stored in its settings, and the two trade short messages: I'm awake, someone wants to charge, here's the meter, I've stopped.</p>
+    <p>The promise is simple. If the charger and the software both speak OCPP, you can swap either one without replacing the other. Hardware from one company, software from another, and the freedom to fire either.</p>
+</article>
+<div class="fig"><div class="fig-in stepper" data-stepper="ocpp"></div></div>
+<article class="prose">
+    <h3>The versions, briefly</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Version</th><th>What to know</th></tr></thead>
+      <tbody>
+        <tr><td>1.6J</td><td>The workhorse. Most chargers in the field run it and every backend supports it. Does the basics well.</td></tr>
+        <tr><td>2.0.1</td><td>Better security, far better diagnostics, proper support for Plug and Charge, and price shown on the charger's screen. What public funding programs have been asking for. Buy hardware that runs it or has a committed upgrade.</td></tr>
+        <tr><td>2.1</td><td>Adds to 2.0.1 rather than replacing it, mostly for cars sending power back out and smarter energy management. Nice to have. Not a reason to wait.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>What it isn't</h3>
+    <ul>
+      <li><strong>It isn't a payment system.</strong> OCPP carries "is this driver allowed" and "here's the meter." The card reader, the processor and the bank are a separate chain, bolted on by whoever integrated your setup.</li>
+      <li><strong>It isn't roaming.</strong> Letting another network's app start your charger is a different protocol, OCPI, running between backends.</li>
+      <li><strong>It isn't the car.</strong> The car and the charger talk over the cable in their own languages. OCPP never hears that conversation.</li>
+      <li><strong>It isn't a guarantee.</strong> "OCPP compliant" on a brochure means somewhere between "certified and tested with your backend" and "an intern once saw it connect." Vendors also add their own extensions, and the features you care about most may live in those.</li>
+      <li><strong>It isn't a business model.</strong> The protocol is free. Nothing in it says what the software costs, who gets paid first, or who picks up the phone.</li>
+    </ul>
+
+    <h3>Open only counts if you hold the keys</h3>
+    <p>OCPP gives you the right to leave. Whether you actually can comes down to a few dull details, and you want them in writing before you buy anything.</p>
+    <ul>
+      <li>You, the owner, can change the backend address on the charger yourself, without a fee and without asking permission.</li>
+      <li>The charger connects straight to your backend, not through the manufacturer's cloud with your backend hanging off the end of it.</li>
+      <li>This charger model, on this firmware, has been run with this backend at real sites. Ask for one you can call.</li>
+      <li>Your session data is yours and exports in bulk.</li>
+    </ul>
+
+    <h2 id="sw-fit">How it fits the charger and the card reader</h2>
+    <p>Three boxes have to agree before anyone gets a kWh: the charger, the backend and the payment terminal. Each is usually made by a different company, and the place where they meet is the place sessions go to die.</p>
+    <p>There are two common ways to wire it. In one, the card terminal reports to the backend, and the backend tells the charger to start. In the other, the terminal talks to the charger directly and the backend only hears about it afterwards. Both work. What matters is that somebody has done it before with your exact combination, and that you know the answers to a short list.</p>
+    <ul>
+      <li>Which card terminals does this backend work with, on this charger, today? Not on the roadmap. Today.</li>
+      <li>Whose name is on the driver's card statement, and who handles a refund?</li>
+      <li>Who holds the money between the tap and your bank account, and how many days does it sit there?</li>
+      <li>Can drivers pay by card without downloading anything? Federal funding rules and a growing number of states now expect it. Drivers always did.</li>
+      <li>If you bring your own processor, does the backend still charge its transaction fee?</li>
+    </ul>
+    <p>The card tap itself has more handoffs than you'd guess. <a href="#basics">How charging works</a> steps through them.</p>
+
+    <h2 id="sw-cost">What it costs, and who pays</h2>
+    <p>Backend pricing comes in a handful of shapes, usually stacked on top of each other. Get every one of them on a single page before you compare two quotes.</p>
+    <ul>
+      <li><strong>A fee per port.</strong> Monthly or yearly, per connector, owed whether it sold one session or a thousand.</li>
+      <li><strong>A fee per session.</strong> A flat amount each time someone charges.</li>
+      <li><strong>A share of revenue.</strong> A percentage of every dollar, on top of card processing.</li>
+      <li><strong>Setup and activation.</strong> One-time charges per charger or per site.</li>
+      <li><strong>Add-ons.</strong> Load management, roaming, a branded app, fleet billing and API access are often priced separately. So is the SIM card.</li>
+      <li><strong>The term.</strong> Multi-year contracts with automatic renewal and an annual increase are common. Read the exit clause before the feature list.</li>
+    </ul>
+    <p>Then there's the question of who pays. Some backends bill you. Others cost you nothing and add a service fee to the driver's session instead. That second kind is free on your statement, but the driver sees one number at the plug, and it's higher than the price you set.</p>
+    <p>Pricing flexibility belongs in the same conversation. You want to be able to charge by the kWh, add a session fee or an idle fee, run a cheaper overnight rate, and give your own fleet or tenants a different price than the public. If any of those is an upgrade, you want to know now.</p>
+</article>
+<div class="fig" id="swfee"><div class="fig-in">
+  <div class="fig-top"><h3>What the software takes</h3>
+    <div class="seg" role="group" aria-label="Fee structure"><button type="button" data-pre="free" aria-pressed="false">Free with the terminal</button><button type="button" data-pre="flat" aria-pressed="true">Flat subscription</button><button type="button" data-pre="full" aria-pressed="false">Full platform</button></div></div>
+  <div class="wfset">
+    <label class="fld"><span class="fl">Ports</span><span class="fi"><input type="number" inputmode="numeric" id="sf-ports" value="4" min="1" step="1"></span></label>
+    <label class="fld"><span class="fl">Sessions per port, per day</span><span class="fi"><input type="number" inputmode="decimal" id="sf-sess" value="6" min="0" step="0.5"></span></label>
+    <label class="fld"><span class="fl">Energy per session</span><span class="fi"><input type="number" inputmode="decimal" id="sf-kwh" value="40" min="1" step="1"><span class="u">kWh</span></span></label>
+    <label class="fld"><span class="fl">Your price</span><span class="fi"><input type="number" inputmode="decimal" id="sf-price" value="0.55" min="0" step="0.01"><span class="u">$/kWh</span></span></label>
+    <label class="fld"><span class="fl">Fee per port</span><span class="fi"><input type="number" inputmode="decimal" id="sf-mo" value="40" min="0" step="1"><span class="u">$/month</span></span></label>
+    <label class="fld"><span class="fl">Fee per session</span><span class="fi"><input type="number" inputmode="decimal" id="sf-txn" value="0" min="0" step="0.05"><span class="u">$</span></span></label>
+    <label class="fld"><span class="fl">Share of revenue</span><span class="fi"><input type="number" inputmode="decimal" id="sf-pct" value="0" min="0" max="50" step="0.5"><span class="u">%</span></span></label>
+    <label class="fld"><span class="fl">Session and revenue fees paid by</span><span class="fi"><select id="sf-who"><option value="you">You</option><option value="driver">The driver</option></select></span></label>
+  </div>
+  <div class="bwout"><div><b id="sf-yr">$0</b><span>Software cost to you, a year</span></div><div><b id="sf-kw">$0.00</b><span id="sf-kw-l">Per kWh you sell</span></div><div><b id="sf-drv">$0.00</b><span>What the driver pays per kWh, all in</span></div></div>
+  <p class="fig-cap" id="sf-cap"></p>
+  <p class="fh">The three buttons fill in example fee structures. The shapes are real and the numbers are placeholders, so type in your own quotes. Card processing is separate and comes on top of all of this. In the <a href="#planner">site planner</a> this is the network software line.</p>
+</div></div>
+<article class="prose">
+    <p>Whatever the number is, it's an operating cost. It comes out before you do, every month, and it belongs in the pro forma next to the electric bill. For a small site it's also one of the few costs you can choose not to have.</p>
+
+    <h2 id="sw-kinds">Free, plain and premium</h2>
+    <p>Strip the logos off and there are three kinds of backend.</p>
+    <ul>
+      <li><strong>The one that comes with the card reader.</strong> Several payment terminal companies include charger management with the terminal. It usually costs the operator nothing, because the driver pays a service fee on each session. It takes cards, sets a price, shows you what's online and sends you the money. For an independent with a few public ports, that's the whole job.</li>
+      <li><strong>The plain subscription.</strong> A flat fee per port and not much else. You get proper remote tools, pricing rules, exports and usually a choice of payment hardware. No revenue share, no app with your logo on it.</li>
+      <li><strong>The full platform.</strong> Branded driver app, roaming agreements, fleet accounts and invoicing, load management across sites, energy and battery controls, an API for everything. Built for companies running networks, and priced like it.</li>
+    </ul>
+    <p>The premium platforms are good at what they do. The question is whether you do any of it. Most independent operators with one or two sites will pay for a great many features to use four of them. A few things do push you up the ladder: grant money with reporting rules, fleets that need badges and invoices, more chargers than the building's power can run at once, or a real plan to have your own brand in drivers' pockets.</p>
+    <p>And free has its own fine print. The driver's fee makes your price look higher than the one you set, you're tied to that terminal, and the feature list ends where it ends. Go in knowing that, and it's a perfectly sensible place to start. You can move up later, provided you kept the keys.</p>
+</article>
+<div class="fig" id="swpick"><div class="fig-in">
+  <div class="fig-top"><h3>Which kind fits you</h3></div>
+  <div class="swq" id="swpick-q"></div>
+  <div class="swres" id="swpick-r" aria-live="polite"></div>
+  <p class="fh">A rule of thumb from running these sites, not a product recommendation. It names a kind of backend, never a company.</p>
+</div></div>
+<article class="prose">
+
+    <h2 id="sw-found">Getting found</h2>
+    <p>A charger nobody can find sells nothing. Drivers look in three places: the map on their phone, a charging app, and the navigation screen in the car. Getting into all three is partly the backend's job and partly yours.</p>
+    <ul>
+      <li><strong>The listing.</strong> Your site's address, connector types, power and price. You can add this yourself, for free, to PlugShare, to Google and Apple maps through a business listing, and to the Department of Energy's station locator, which a lot of other apps copy from.</li>
+      <li><strong>The live feed.</strong> Whether each plug is free, busy or broken right now. This only comes from the backend. Some publish it to the big maps and to carmakers' navigation as standard, some charge for it, and some don't do it at all.</li>
+      <li><strong>Roaming.</strong> Whether a driver can start your charger from an app they already have. Useful on a highway. Rarely essential at a site where everyone pays by card.</li>
+    </ul>
+    <p>Ask each backend exactly where your live status will appear, and ask to see a site of theirs showing up there. A green dot on the driver's map is the cheapest advertising you'll ever get. A stale listing that says "available" over a dead charger is the most expensive.</p>
+
+    <h2 id="sw-support">Support is your job</h2>
+    <p>Every backend has a support line. It's there to support you, the operator, when the software misbehaves. It is not there for the driver standing at your charger at 9pm with 6% battery, whatever the sales deck says. That driver doesn't know or care whose software it is. They know whose parking lot it is.</p>
+    <p>So set it up as if nobody is coming, because nobody is.</p>
+    <ul>
+      <li>Put a phone number on the charger that reaches a person who can do something. Yours, or someone you pay.</li>
+      <li>Make sure that person has a login that can restart a charger, start a session remotely and issue a refund.</li>
+      <li>Turn on alerts for faults and offline chargers, and send them to a phone that gets looked at.</li>
+      <li>Know the backend's response time for you, and get it in the contract.</li>
+    </ul>
+    <p>When you're ready to sit across the table from a vendor, <a href="#v-questions">Buying</a> has the questions to ask and what a good answer sounds like.</p>
+
+    <div class="note"><p><strong>Operator note.</strong> The best backend is the one you stop noticing. If you're in the dashboard every day, either something is wrong with it or you've bought a hobby.</p></div>
+  </article>
+</section>
+
 <section id="view-vendors" class="read" hidden>
   <div class="tool-head">
     <h1>Buying chargers without getting burned</h1>
@@ -2515,7 +2676,7 @@ html.wlock,html.wlock body{overflow:hidden}
     </dl>
 
     <h3>Charge management software (CMS)</h3>
-    <p class="fh">Examples: AMPECO, Driivz, Monta.</p>
+    <p class="fh">Examples: AMPECO, Driivz, Monta. What the software does, what it costs and how much of it you need: <a href="#software">Software and OCPP</a>.</p>
     <dl class="qa">
       <dt>Which OCPP version and features have you certified or tested with this hardware?</dt>
       <dd><span>Listen for</span>Named hardware models, a version number, and a list of supported features. Ideally, live sites running the same combination.</dd>
@@ -2857,7 +3018,7 @@ html.wlock,html.wlock body{overflow:hidden}
   </div>
   <article class="prose">
     <ul class="toc" aria-label="On this page"><li><a href="#g-power-and-energy">Power and energy</a></li><li><a href="#g-the-utility-and-the-bill">The utility and the bill</a></li><li><a href="#g-hardware-and-standards">Hardware and standards</a></li><li><a href="#g-software-payments-and-networks">Software, payments and networks</a></li><li><a href="#g-measuring-a-site">Measuring a site</a></li><li><a href="#g-money">Money</a></li><li><a href="#g-fleets-and-connectivity">Fleets and connectivity</a></li><li><a href="#g-at-home">At home</a></li></ul>
-    <h2 id="g-power-and-energy">Power and energy</h2><dl class="gloss"><dt id="g-kw">kW and kWh</dt><dd>kW is power: how fast energy moves. kWh is energy: how much moved. Drivers buy kWh. Demand charges bill kW. Most bad pro formas confuse the two exactly once.</dd><dt id="g-ac-dc">AC and DC</dt><dd>The grid delivers alternating current. Batteries store direct current. Something has to convert one to the other, and where that happens decides how fast a car charges. <a href="#b-ac">More in the charging guide</a>.</dd><dt id="g-level-1">Level 1</dt><dd>Charging from a standard 120 volt outlet, around 1.4 to 1.9 kW. Fine for a car that sits for days. Not a business.</dd><dt id="g-level-2">Level 2</dt><dd>AC charging at 208 or 240 volts, usually 7 to 19 kW. The car's onboard charger does the converting, so the car, not the wall unit, sets the speed.</dd><dt id="g-dcfc">DC fast charging</dt><dd>The charger converts to DC itself and feeds the battery directly, typically at 50 to 400 kW. Expensive to buy, expensive to power, and the only way to add serious range in a coffee break.</dd><dt id="g-onboard-charger">Onboard charger</dt><dd>The converter inside the car used for AC charging. Commonly 7.7 to 11 kW. It is why two cars on the same Level 2 unit can charge at different speeds.</dd><dt id="g-soc">State of charge (SOC)</dt><dd>How full the battery is, as a percentage. Arrival SOC is one of the biggest drivers of session length and revenue.</dd><dt id="g-taper">Taper</dt><dd>The slowdown as a battery fills. Fast charging holds near peak power to roughly half full, then eases off, then drops hard above 80%. <a href="#f-80">Why fleets stop at 80%</a>.</dd><dt id="g-power-sharing">Power sharing</dt><dd>Several dispensers splitting one power cabinet. "Four 150 kW stalls" can mean 600 kW split four ways when the site is busy. Ask before you sign.</dd></dl><h2 id="g-the-utility-and-the-bill">The utility and the bill</h2><dl class="gloss"><dt id="g-demand-charge">Demand charge</dt><dd>A monthly charge per kW on your highest short burst of power, usually measured over 15 or 30 minutes. One busy afternoon can set the charge for the whole month. <a href="#p-demand">Why it kills quiet sites</a>.</dd><dt id="g-billed-demand">Billed demand</dt><dd>The kW your utility actually bills, which can differ from what you drew because of minimums and ratchets.</dd><dt id="g-ratchet">Ratchet</dt><dd>A tariff rule that sets your minimum billed demand as a share of your highest peak over the past year. One bad month can follow you for eleven more.</dd><dt id="g-tou">Time of use (TOU)</dt><dd>Energy prices that change by time of day and season. Cheap at night, expensive in the late afternoon, when a lot of charging happens.</dd><dt id="g-ev-rate">EV rate</dt><dd>A tariff designed for charging, often with lower or phased-in demand charges. Always ask your utility whether one exists and whether you qualify.</dd><dt id="g-make-ready">Make-ready</dt><dd>Everything electrical and civil up to the charger itself: conduit, wire, panels, trenching, pads. Often more than the hardware. <a href="#install">Estimate it</a>.</dd><dt id="g-service-upgrade">Service upgrade</dt><dd>A bigger connection from the utility, often a new transformer. The utility decides whether you need one, what it costs, and when it happens.</dd><dt id="g-kva">kVA</dt><dd>Apparent power, the rating on transformers and services. For planning, close enough to kW, and the number your utility will ask about.</dd><dt id="g-interconnection">Interconnection</dt><dd>The utility approval needed before anything that can push power back to the grid, like a battery, is switched on. Budget months, not weeks.</dd></dl><h2 id="g-hardware-and-standards">Hardware and standards</h2><dl class="gloss"><dt id="g-evse">EVSE</dt><dd>Electric vehicle supply equipment. The charger. The acronym exists mostly to make RFPs longer.</dd><dt id="g-j1772">J1772</dt><dd>The standard Level 2 connector on most non-Tesla vehicles in North America.</dd><dt id="g-ccs1">CCS1</dt><dd>Combined Charging System. The long-time DC fast connector for non-Tesla vehicles in North America.</dd><dt id="g-nacs">NACS and SAE J3400</dt><dd>The connector Tesla designed, standardized as SAE J3400 and becoming the default in North America. New sites usually offer it alongside CCS1.</dd><dt id="g-chademo">CHAdeMO</dt><dd>An older DC fast standard, now mostly for legacy vehicles. Few new sites include it.</dd><dt id="g-power-module">Power module</dt><dd>The building block inside a DC charger cabinet, commonly 15 to 75 kW each. More modules, more power, more heat, more things to fail.</dd></dl><h2 id="g-software-payments-and-networks">Software, payments and networks</h2><dl class="gloss"><dt id="g-ocpp">OCPP</dt><dd>Open Charge Point Protocol. How a charger talks to its back-office software. Insist on it, so you can change software vendors without changing hardware.</dd><dt id="g-csms">Back office (CSMS)</dt><dd>The charging software that runs sessions, pricing, monitoring and remote fixes. Also called a charging station management system.</dd><dt id="g-ocpi">OCPI</dt><dd>Open Charge Point Interface. How networks share chargers and bill each other so drivers can roam.</dd><dt id="g-iso-15118">ISO 15118</dt><dd>The standard for richer communication between the car and the charger. It is what makes Plug and Charge possible.</dd><dt id="g-plug-and-charge">Plug and Charge</dt><dd>The car identifies itself and pays automatically when plugged in. No app, no card, when it works.</dd><dt id="g-cpo">CPO</dt><dd>Charge point operator. The company that runs the chargers and usually owns the relationship with the driver.</dd><dt id="g-emsp">eMSP</dt><dd>E-mobility service provider. An app or network that lets drivers start and pay for sessions on chargers it doesn't own.</dd><dt id="g-site-host">Site host</dt><dd>Whoever owns or controls the property. Sometimes also the owner of the chargers, sometimes just the landlord.</dd><dt id="g-preauth">Pre-authorization hold</dt><dd>A temporary hold a card terminal places before a session. Drivers see it as a charge, and complain accordingly.</dd><dt id="g-idle-fee">Idle fee</dt><dd>A per-minute fee once charging ends and the car stays plugged in. The polite way to free up a stall.</dd></dl><h2 id="g-measuring-a-site">Measuring a site</h2><dl class="gloss"><dt id="g-session">Session</dt><dd>One charge, from plug-in to unplug. This site counts a session when it delivered at least half a kWh.</dd><dt id="g-utilization">Utilization</dt><dd>The share of time a port is in use, or sessions per port per day. This site uses both. A ceiling check, not a goal.</dd><dt id="g-sessions-per-port">Sessions per port per day</dt><dd>The number that decides whether a public site pays. <a href="#benchmarks">See what real sites do</a>.</dd><dt id="g-uptime">Uptime</dt><dd>The share of time a charger reports itself available. A charger can be "up" and still fail every driver who tries it.</dd><dt id="g-success-rate">Session success rate</dt><dd>The share of attempts that actually delivered energy. The reliability number drivers experience.</dd><dt id="g-dwell-time">Dwell time</dt><dd>How long the car is parked. Match charger speed to dwell time and most design questions answer themselves.</dd><dt id="g-aadt">AADT</dt><dd>Annual average daily traffic. Vehicles passing a point on an average day. State DOTs publish it, and the <a href="#forecast">forecast</a> can look it up.</dd><dt id="g-capture-rate">Capture rate</dt><dd>The share of passing EVs that stop to charge. The least certain number in any forecast.</dd></dl><h2 id="g-money">Money</h2><dl class="gloss"><dt id="g-pro-forma">Pro forma</dt><dd>A projection of what a site costs, earns and returns over time. <a href="#planner">Build one</a>.</dd><dt id="g-npv-irr">NPV and IRR</dt><dd>Net present value is what the project is worth today after paying back the capital at your required return. IRR is the return at which NPV is zero.</dd><dt id="g-payback">Payback</dt><dd>How many years of operating profit it takes to earn back the build cost. Simple, popular, and blind to everything after year one of profit.</dd><dt id="g-dscr">Debt service coverage (DSCR)</dt><dd>Cash flow available for debt divided by debt payments. Lenders generally want 1.25x or better. <a href="#sbatool">Check yours</a>.</dd><dt id="g-sba">SBA 7(a) and 504</dt><dd>The two main SBA loan programs. 7(a) is one loan from one bank. A 504 splits the borrowed amount between a bank and a certified development company.</dd><dt id="g-credits">Federal credits: 30C and 48E</dt><dd>Tax credits for charging equipment and for energy storage respectively. Eligibility and timing rules change, so read the <a href="#p-incentives">incentives section</a> before you count on either.</dd><dt id="g-feoc">FEOC</dt><dd>Foreign entity of concern. Sourcing rules that can reduce or zero a federal credit if key components come from restricted suppliers. <a href="#s-48e">More in the batteries guide</a>.</dd><dt id="g-nevi">NEVI</dt><dd>The federal formula program funding highway fast charging through the states, generally covering up to 80% of project cost.</dd></dl><h2 id="g-fleets-and-connectivity">Fleets and connectivity</h2><dl class="gloss"><dt id="g-charge-window">Charge window</dt><dd>The hours a fleet vehicle is available to charge. Everything in fleet planning starts here.</dd><dt id="g-porter">Porter</dt><dd>The person who moves vehicles on and off chargers at a depot. Often the real bottleneck.</dd><dt id="g-rsrp">RSRP, RSRQ and SINR</dt><dd>Cellular signal measures: strength, quality under load, and signal over noise. <a href="#sitecheck">Grade a site</a> with them.</dd><dt id="g-multi-carrier-sim">Multi-carrier SIM</dt><dd>A SIM that can fail over between carriers. Cheap insurance for a charger that has to stay online.</dd></dl>
+    <h2 id="g-power-and-energy">Power and energy</h2><dl class="gloss"><dt id="g-kw">kW and kWh</dt><dd>kW is power: how fast energy moves. kWh is energy: how much moved. Drivers buy kWh. Demand charges bill kW. Most bad pro formas confuse the two exactly once.</dd><dt id="g-ac-dc">AC and DC</dt><dd>The grid delivers alternating current. Batteries store direct current. Something has to convert one to the other, and where that happens decides how fast a car charges. <a href="#b-ac">More in the charging guide</a>.</dd><dt id="g-level-1">Level 1</dt><dd>Charging from a standard 120 volt outlet, around 1.4 to 1.9 kW. Fine for a car that sits for days. Not a business.</dd><dt id="g-level-2">Level 2</dt><dd>AC charging at 208 or 240 volts, usually 7 to 19 kW. The car's onboard charger does the converting, so the car, not the wall unit, sets the speed.</dd><dt id="g-dcfc">DC fast charging</dt><dd>The charger converts to DC itself and feeds the battery directly, typically at 50 to 400 kW. Expensive to buy, expensive to power, and the only way to add serious range in a coffee break.</dd><dt id="g-onboard-charger">Onboard charger</dt><dd>The converter inside the car used for AC charging. Commonly 7.7 to 11 kW. It is why two cars on the same Level 2 unit can charge at different speeds.</dd><dt id="g-soc">State of charge (SOC)</dt><dd>How full the battery is, as a percentage. Arrival SOC is one of the biggest drivers of session length and revenue.</dd><dt id="g-taper">Taper</dt><dd>The slowdown as a battery fills. Fast charging holds near peak power to roughly half full, then eases off, then drops hard above 80%. <a href="#f-80">Why fleets stop at 80%</a>.</dd><dt id="g-power-sharing">Power sharing</dt><dd>Several dispensers splitting one power cabinet. "Four 150 kW stalls" can mean 600 kW split four ways when the site is busy. Ask before you sign.</dd></dl><h2 id="g-the-utility-and-the-bill">The utility and the bill</h2><dl class="gloss"><dt id="g-demand-charge">Demand charge</dt><dd>A monthly charge per kW on your highest short burst of power, usually measured over 15 or 30 minutes. One busy afternoon can set the charge for the whole month. <a href="#p-demand">Why it kills quiet sites</a>.</dd><dt id="g-billed-demand">Billed demand</dt><dd>The kW your utility actually bills, which can differ from what you drew because of minimums and ratchets.</dd><dt id="g-ratchet">Ratchet</dt><dd>A tariff rule that sets your minimum billed demand as a share of your highest peak over the past year. One bad month can follow you for eleven more.</dd><dt id="g-tou">Time of use (TOU)</dt><dd>Energy prices that change by time of day and season. Cheap at night, expensive in the late afternoon, when a lot of charging happens.</dd><dt id="g-ev-rate">EV rate</dt><dd>A tariff designed for charging, often with lower or phased-in demand charges. Always ask your utility whether one exists and whether you qualify.</dd><dt id="g-make-ready">Make-ready</dt><dd>Everything electrical and civil up to the charger itself: conduit, wire, panels, trenching, pads. Often more than the hardware. <a href="#install">Estimate it</a>.</dd><dt id="g-service-upgrade">Service upgrade</dt><dd>A bigger connection from the utility, often a new transformer. The utility decides whether you need one, what it costs, and when it happens.</dd><dt id="g-kva">kVA</dt><dd>Apparent power, the rating on transformers and services. For planning, close enough to kW, and the number your utility will ask about.</dd><dt id="g-interconnection">Interconnection</dt><dd>The utility approval needed before anything that can push power back to the grid, like a battery, is switched on. Budget months, not weeks.</dd></dl><h2 id="g-hardware-and-standards">Hardware and standards</h2><dl class="gloss"><dt id="g-evse">EVSE</dt><dd>Electric vehicle supply equipment. The charger. The acronym exists mostly to make RFPs longer.</dd><dt id="g-j1772">J1772</dt><dd>The standard Level 2 connector on most non-Tesla vehicles in North America.</dd><dt id="g-ccs1">CCS1</dt><dd>Combined Charging System. The long-time DC fast connector for non-Tesla vehicles in North America.</dd><dt id="g-nacs">NACS and SAE J3400</dt><dd>The connector Tesla designed, standardized as SAE J3400 and becoming the default in North America. New sites usually offer it alongside CCS1.</dd><dt id="g-chademo">CHAdeMO</dt><dd>An older DC fast standard, now mostly for legacy vehicles. Few new sites include it.</dd><dt id="g-power-module">Power module</dt><dd>The building block inside a DC charger cabinet, commonly 15 to 75 kW each. More modules, more power, more heat, more things to fail.</dd></dl><h2 id="g-software-payments-and-networks">Software, payments and networks</h2><dl class="gloss"><dt id="g-ocpp">OCPP</dt><dd>Open Charge Point Protocol. How a charger talks to its back-office software. Insist on it, so you can change software vendors without changing hardware. <a href="#sw-ocpp">What it is, and what it isn't</a>.</dd><dt id="g-csms">Back office (CSMS)</dt><dd>The charging software that runs sessions, pricing, monitoring and remote fixes. Also called a charging station management system. <a href="#software">How to choose one</a>.</dd><dt id="g-ocpi">OCPI</dt><dd>Open Charge Point Interface. How networks share chargers and bill each other so drivers can roam.</dd><dt id="g-iso-15118">ISO 15118</dt><dd>The standard for richer communication between the car and the charger. It is what makes Plug and Charge possible.</dd><dt id="g-plug-and-charge">Plug and Charge</dt><dd>The car identifies itself and pays automatically when plugged in. No app, no card, when it works.</dd><dt id="g-cpo">CPO</dt><dd>Charge point operator. The company that runs the chargers and usually owns the relationship with the driver.</dd><dt id="g-emsp">eMSP</dt><dd>E-mobility service provider. An app or network that lets drivers start and pay for sessions on chargers it doesn't own.</dd><dt id="g-site-host">Site host</dt><dd>Whoever owns or controls the property. Sometimes also the owner of the chargers, sometimes just the landlord.</dd><dt id="g-preauth">Pre-authorization hold</dt><dd>A temporary hold a card terminal places before a session. Drivers see it as a charge, and complain accordingly.</dd><dt id="g-idle-fee">Idle fee</dt><dd>A per-minute fee once charging ends and the car stays plugged in. The polite way to free up a stall.</dd></dl><h2 id="g-measuring-a-site">Measuring a site</h2><dl class="gloss"><dt id="g-session">Session</dt><dd>One charge, from plug-in to unplug. This site counts a session when it delivered at least half a kWh.</dd><dt id="g-utilization">Utilization</dt><dd>The share of time a port is in use, or sessions per port per day. This site uses both. A ceiling check, not a goal.</dd><dt id="g-sessions-per-port">Sessions per port per day</dt><dd>The number that decides whether a public site pays. <a href="#benchmarks">See what real sites do</a>.</dd><dt id="g-uptime">Uptime</dt><dd>The share of time a charger reports itself available. A charger can be "up" and still fail every driver who tries it.</dd><dt id="g-success-rate">Session success rate</dt><dd>The share of attempts that actually delivered energy. The reliability number drivers experience.</dd><dt id="g-dwell-time">Dwell time</dt><dd>How long the car is parked. Match charger speed to dwell time and most design questions answer themselves.</dd><dt id="g-aadt">AADT</dt><dd>Annual average daily traffic. Vehicles passing a point on an average day. State DOTs publish it, and the <a href="#forecast">forecast</a> can look it up.</dd><dt id="g-capture-rate">Capture rate</dt><dd>The share of passing EVs that stop to charge. The least certain number in any forecast.</dd></dl><h2 id="g-money">Money</h2><dl class="gloss"><dt id="g-pro-forma">Pro forma</dt><dd>A projection of what a site costs, earns and returns over time. <a href="#planner">Build one</a>.</dd><dt id="g-npv-irr">NPV and IRR</dt><dd>Net present value is what the project is worth today after paying back the capital at your required return. IRR is the return at which NPV is zero.</dd><dt id="g-payback">Payback</dt><dd>How many years of operating profit it takes to earn back the build cost. Simple, popular, and blind to everything after year one of profit.</dd><dt id="g-dscr">Debt service coverage (DSCR)</dt><dd>Cash flow available for debt divided by debt payments. Lenders generally want 1.25x or better. <a href="#sbatool">Check yours</a>.</dd><dt id="g-sba">SBA 7(a) and 504</dt><dd>The two main SBA loan programs. 7(a) is one loan from one bank. A 504 splits the borrowed amount between a bank and a certified development company.</dd><dt id="g-credits">Federal credits: 30C and 48E</dt><dd>Tax credits for charging equipment and for energy storage respectively. Eligibility and timing rules change, so read the <a href="#p-incentives">incentives section</a> before you count on either.</dd><dt id="g-feoc">FEOC</dt><dd>Foreign entity of concern. Sourcing rules that can reduce or zero a federal credit if key components come from restricted suppliers. <a href="#s-48e">More in the batteries guide</a>.</dd><dt id="g-nevi">NEVI</dt><dd>The federal formula program funding highway fast charging through the states, generally covering up to 80% of project cost.</dd></dl><h2 id="g-fleets-and-connectivity">Fleets and connectivity</h2><dl class="gloss"><dt id="g-charge-window">Charge window</dt><dd>The hours a fleet vehicle is available to charge. Everything in fleet planning starts here.</dd><dt id="g-porter">Porter</dt><dd>The person who moves vehicles on and off chargers at a depot. Often the real bottleneck.</dd><dt id="g-rsrp">RSRP, RSRQ and SINR</dt><dd>Cellular signal measures: strength, quality under load, and signal over noise. <a href="#sitecheck">Grade a site</a> with them.</dd><dt id="g-multi-carrier-sim">Multi-carrier SIM</dt><dd>A SIM that can fail over between carriers. Cheap insurance for a charger that has to stay online.</dd></dl>
     <h2 id="g-at-home">At home</h2><dl class="gloss"><dt id="g-nema-14-50">NEMA 14-50</dt><dd>The 240-volt, 50-amp outlet an electric range uses, and the one most plug-in home chargers want. It can carry 40 amps of charging, not 50, because a car is a continuous load. Buy the industrial-grade receptacle; the $12 one melts. <a href="#h-b-plug">Plug in or hardwire</a>.</dd><dt id="g-hardwired">Hardwired charger</dt><dd>A wall box wired straight to its circuit, no plug. The only way to get 48 amps or more at home, and one less connection to loosen and heat up. Harder to take with you when you move.</dd><dt id="g-load-calc">Load calculation</dt><dd>The math that says whether your panel can take a charger. It adds up what the house could draw at once and compares it with the service. The NEC gives two ways: nameplate loads, or a year of your actual peak demand from the utility. <a href="#hinstall">Run it for your house</a>.</dd><dt id="g-load-mgmt">Load management</dt><dd>A device that watches the house’s draw and slows the charger when the dryer and the oven are both on, so the service never overloads. Code lets you size the charger to the managed limit, which is often far cheaper than a service upgrade.</dd><dt id="g-scheduled">Scheduled charging</dt><dd>Telling the car or the charger to start at a set time, so it fills during off-peak hours. It costs nothing and is most of the savings on a time-of-use plan. <a href="#h-c-tou">Time of use, and the 4pm trap</a>.</dd><dt id="g-egallon">eGallon</dt><dd>What it costs to drive an EV as far as a gallon of gas would take a similar car. A fair way to compare the two at the pump sign. <a href="#hcharge">Compare for your car and your rate</a>.</dd><dt id="g-surge">Surge (locked-rotor current)</dt><dd>The kick a motor needs for a split second to start. An air conditioner can pull five or six times its running power. A battery with plenty of kWh can still fail to start one if its surge rating is too low. <a href="#h-a-surge">Why it catches people out</a>.</dd><dt id="g-transfer">Transfer switch</dt><dd>Disconnects the house from the grid before backup power flows, so you aren’t feeding a line a utility crew is working on. Required for any home backup: battery, generator or car.</dd><dt id="g-bidirectional">Bidirectional charging</dt><dd>Power flowing both ways between the car and what it’s plugged into. The umbrella over V2L, V2H and V2G. The car and the charger both have to support it.</dd><dt id="g-v2l">V2L (vehicle to load)</dt><dd>Outlets on the car, or an adapter in the charge port, that you plug things into. Usually 1.5 to 3.6 kW, up to 9.6 kW on some trucks. No house wiring involved.</dd><dt id="g-v2h">V2H (vehicle to home)</dt><dd>The car backs up the house through its panel, with hardware that disconnects from the grid first. From the house’s point of view, a very large battery. Few cars can do it today. <a href="#hvtoh">Which cars, and the catch</a>.</dd><dt id="g-v2g">V2G (vehicle to grid)</dt><dd>The car sends power back to the utility, usually during grid emergencies and usually for a payment. In the US, still almost entirely pilot programs.</dd></dl>
   </article>
 </section>
@@ -3969,7 +4130,7 @@ html.wlock,html.wlock body{overflow:hidden}
 <a class="wtab" id="wtab" href="#work" data-work><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6.5h16v10H9l-4 3.5v-3.5H4z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg><span>Work with me</span></a>
 <footer><div class="foot">
   <div><b>The Charge Sheet</b><p>A free, open source guide to EV charging, at home and in business, built and given away by <a href="#about">Aatish Patel</a>. Ballpark numbers and honest opinions. Not financial advice.</p><p>Working on a real site? <a href="#work" data-work>Tell me about it</a>.</p><p>Text CC BY 4.0. Code MIT.</p></div>
-  <div><b>Learn</b><a href="#basics">How charging works</a><a href="#primer">The business</a><a href="#realestate">Real estate</a><a href="#finance">Paying for it</a><a href="#storage">Batteries</a><a href="#connectivity">Connectivity</a><a href="#vendors">Buying</a><a href="#fleet">Fleet charging</a></div>
+  <div><b>Learn</b><a href="#basics">How charging works</a><a href="#primer">The business</a><a href="#realestate">Real estate</a><a href="#finance">Paying for it</a><a href="#storage">Batteries</a><a href="#connectivity">Connectivity</a><a href="#software">Software</a><a href="#vendors">Buying</a><a href="#fleet">Fleet charging</a></div>
   <div><b>Tools</b><a href="#planner">Site planner</a><a href="#install">Install estimator</a><a href="#sbatool">SBA loan check</a><a href="#fleettool">Fleet throughput</a><a href="#forecast">Utilization forecast</a><a href="#sitecheck">Connectivity check</a><a href="#hardware">Chargers</a><a href="#report">Project report</a></div>
   <!--home-side--><div><b>At home</b><a href="#hhub">Overview</a><a href="#hbasics">Charging at home</a><a href="#hcost">What it costs</a><a href="#hbattery">Home batteries</a><a href="#hvtoh">Your car as a battery</a><a href="#hrent">Apartments, condos and HOAs</a><a href="#hstart">Start here</a><a href="#hcharge">Charging cost</a><a href="#hinstall">Home install estimator</a><a href="#hrebates">Charger rebates</a><a href="#hbackup">Backup sizer</a><a href="#hvcompare">V2H vs battery</a><a href="#hadapt">Adapter finder</a><a href="#hgear">Home gear</a></div><!--/home-side--><div><b>More</b><a href="#work" data-work>Work with me</a><a href="#benchmarks">Benchmarks</a><a href="#method">Method and sources</a><a href="#glossary">Glossary</a><a href="/blog/">Blog</a><a href="#about">About</a><a href="https://github.com/aatishi4/the-charge-sheet" rel="noopener">Source code</a></div>
 </div></footer>
@@ -4504,11 +4665,11 @@ if (typeof document !== 'undefined') (function(){
 
   /* Router */
   /* ---------- Site structure and router ---------- */
-  var VIEWS = ['home','basics','primer','realestate','finance','storage','connectivity','vendors','fleet','benchmarks','method','planner','install','sbatool','fleettool','forecast','sitecheck','report','glossary','about','work',
+  var VIEWS = ['home','basics','primer','realestate','finance','storage','connectivity','software','vendors','fleet','benchmarks','method','planner','install','sbatool','fleettool','forecast','sitecheck','report','glossary','about','work',
     'hhub','hbasics','hcost','hbattery','hvtoh','hrent','hstart','hcharge','hinstall','hrebates','hbackup','hvcompare','hadapt','hgear'];
   var HOME_VIEWS = ['hhub','hbasics','hcost','hbattery','hvtoh','hrent','hstart','hcharge','hinstall','hrebates','hbackup','hvcompare','hadapt','hgear'];
   var GROUPS = {
-    learn: {title:'Learn', nav:'gn-learn', pages:[['basics','How charging works'],['primer','The business'],['realestate','Real estate'],['finance','Paying for it'],['storage','Batteries'],['connectivity','Connectivity'],['vendors','Buying'],['fleet','Fleet charging']]},
+    learn: {title:'Learn', nav:'gn-learn', pages:[['basics','How charging works'],['primer','The business'],['realestate','Real estate'],['finance','Paying for it'],['storage','Batteries'],['connectivity','Connectivity'],['software','Software'],['vendors','Buying'],['fleet','Fleet charging']]},
     data:  {title:'Benchmarks', nav:'gn-data', pages:[['benchmarks','Benchmarks'],['method','Method and sources'],['glossary','Glossary']]},
     tools: {title:'Tools', nav:'gn-tools', pages:[['planner','Site planner'],['install','Install estimator'],['sbatool','SBA loan check'],['fleettool','Fleet throughput'],['forecast','Utilization forecast'],['sitecheck','Connectivity check'],['hardware','Chargers'],['report','Project report']]},
     hlearn: {title:'At home', nav:'gn-hlearn', pages:[['hhub','Overview'],['hbasics','Charging at home'],['hcost','What it costs'],['hbattery','Home batteries'],['hvtoh','Car as a battery'],['hrent','Apartments and HOAs']]},
@@ -4772,6 +4933,20 @@ if (typeof document !== 'undefined') (function(){
         {s:'Charge', t:'Charging', x:'The session runs, and meter readings stream back to the software throughout.', l:[3,4], b:'Missing meter readings turn into billing disputes you will lose.'},
         {s:'Capture', t:'Capture', x:'The session ends. The software works out the real amount and the processor captures it, releasing the rest of the hold.', l:[4,2,1], b:'A drop here leaves you with energy delivered and nothing billed.'},
         {s:'Settle', t:'Roaming settlement', x:'If the driver started from another network\u2019s app, the session also crossed a roaming link, and the two networks settle up later.', l:[4,5], b:'Someone else\u2019s outage becomes your driver\u2019s one-star review.'}
+      ]
+    },
+    ocpp: {
+      title:'One session, in OCPP',
+      lanes:['Driver','Charger','Charging software','Payment','Maps and apps'],
+      after:'Seven kinds of message run nearly every public charger there is. None of them says what the software costs, who gets paid first, or who answers the phone. That part is the contract, not the protocol.',
+      steps:[
+        {s:'Boot', t:'Boot', x:'The charger powers up, opens a connection to the web address in its settings, and introduces itself: make, model, serial number, firmware. The software accepts it and tells it how often to check in.', l:[1,2], b:'That web address is the whole relationship. If you can\u2019t change it yourself, you can\u2019t change software.'},
+        {s:'Status', t:'Status', x:'Each connector reports what it\u2019s doing: available, charging, faulted. This is where your uptime number comes from, and the dot on the driver\u2019s map.', l:[1,2,4], b:'A charger can say \u201cavailable\u201d while failing every session. Status is not success.'},
+        {s:'Authorize', t:'Authorize', x:'A driver taps a card, a badge or a button in an app. The charger asks the software whether this one is good, and waits for a yes.', l:[0,1,2,3], b:'The card reader isn\u2019t part of basic OCPP. How its yes reaches the charger is something somebody built, and it\u2019s the first thing to test.'},
+        {s:'Start', t:'Start', x:'The charger reports the meter reading at the start, and the software opens a transaction with a number on it.', l:[1,2]},
+        {s:'Meter', t:'Meter values', x:'Every so often the charger sends the kWh so far. The software prices them with your rate as they come in.', l:[1,2], b:'Lose these and the bill becomes an opinion.'},
+        {s:'Stop', t:'Stop', x:'The charger sends the final reading and why it stopped. The software works out the total and the card gets charged.', l:[1,2,3], b:'If the connection was down, the charger is supposed to save the messages and send them later. Ask what yours does.'},
+        {s:'Remote', t:'Remote commands', x:'Messages go the other way too. The software can restart the charger, start or stop a session, change a setting, push firmware, or cap the power. This is how things get fixed from a couch.', l:[2,1], b:'Whoever has the login has the wrench. Make sure that\u2019s you.'}
       ]
     }
   };
@@ -5305,6 +5480,84 @@ if (typeof document !== 'undefined') (function(){
     }
     segs.forEach(function(b){ b.onclick = function(){ yIn.value = b.getAttribute('data-y'); draw(); }; });
     sl.oninput = yIn.oninput = pIn.oninput = draw; draw();
+  }
+
+  /* ---------- Software guide: what the backend takes ---------- */
+  function initSwFee(){
+    var root = document.getElementById('swfee'); if (!root) return;
+    var g = function(id){ return document.getElementById(id); };
+    var PRE = {free:{mo:0, txn:0.5, pct:0, who:'driver'}, flat:{mo:40, txn:0, pct:0, who:'you'}, full:{mo:60, txn:0, pct:5, who:'you'}};
+    var segs = [].slice.call(root.querySelectorAll('.seg button'));
+    g('sf-ports').value = PDEF.dcCount; g('sf-sess').value = PDEF.dcSessions; g('sf-kwh').value = PDEF.dcKwh; g('sf-price').value = PDEF.dcPrice;
+    function n(id){ return Math.max(0, Number(g(id).value)||0); }
+    function draw(){
+      var ports = n('sf-ports'), kwh = n('sf-kwh'), price = n('sf-price');
+      var sessions = ports*n('sf-sess')*365, sold = sessions*kwh, rev = sold*price;
+      var fixed = ports*n('sf-mo')*12, variable = sessions*n('sf-txn') + rev*n('sf-pct')/100;
+      var driver = g('sf-who').value==='driver';
+      var you = fixed + (driver ? 0 : variable), perSession = sessions ? variable/sessions : 0;
+      var drvKwh = price + (driver && kwh ? perSession/kwh : 0);
+      g('sf-yr').textContent = money(you, 0);
+      g('sf-kw').textContent = sold ? money(you/sold, 3) : '$0';
+      g('sf-kw-l').textContent = 'Per kWh you sell'+(rev ? ', '+pct(you/rev, 1)+' of revenue' : '');
+      g('sf-drv').textContent = money(drvKwh, 2);
+      segs.forEach(function(b){ var p = PRE[b.getAttribute('data-pre')];
+        b.setAttribute('aria-pressed', (p.mo===n('sf-mo') && p.txn===n('sf-txn') && p.pct===n('sf-pct') && p.who===g('sf-who').value) ? 'true' : 'false'); });
+      var cap;
+      if (!sessions) cap = 'No sessions, no revenue. The per-port fee of <strong>'+money(fixed,0)+'</strong> a year is still due, which is the thing to remember about per-port fees.';
+      else {
+        cap = 'On '+num(Math.round(sessions))+' sessions and '+moneyK(rev)+' of revenue a year, the software costs you <strong>'+money(you,0)+'</strong> a year, or '+money(you*5,0)+' over five.';
+        if (driver && variable>0) cap += ' Drivers pay another <strong>'+money(perSession,2)+'</strong> per session on top of your price, '+money(variable,0)+' a year that never touches your books. They see '+money(drvKwh,2)+' per kWh where you set '+money(price,2)+'.';
+        else if (fixed>0 && variable>0) cap += ' '+money(fixed,0)+' of that is owed with or without a single car. The other '+money(variable,0)+' grows with every session you sell.';
+        else if (fixed>0) cap += ' All of it is owed with or without a single car, so it hurts most in the first slow year.';
+        else if (variable>0) cap += ' All of it scales with sales: nothing in a dead month, more in a good one.';
+        else cap += ' Check the quote again. Somebody is being paid somehow.';
+      }
+      g('sf-cap').innerHTML = cap;
+    }
+    segs.forEach(function(b){ b.onclick = function(){ var p = PRE[b.getAttribute('data-pre')]; g('sf-mo').value = p.mo; g('sf-txn').value = p.txn; g('sf-pct').value = p.pct; g('sf-who').value = p.who; draw(); }; });
+    [].forEach.call(root.querySelectorAll('input,select'), function(i){ i.oninput = i.onchange = draw; });
+    draw();
+  }
+
+  /* ---------- Software guide: which kind of backend fits ---------- */
+  function initSwPick(){
+    var qEl = document.getElementById('swpick-q'), rEl = document.getElementById('swpick-r'); if (!qEl || !rEl) return;
+    var Q = [
+      ['size', 'How big is this?', [['one','One site'],['few','A few sites'],['net','A network']]],
+      ['who', 'Who charges here?', [['pub','The public, by card'],['mix','Public plus fleet or tenants'],['fleet','Mostly my own fleet']]],
+      ['grant', 'Grant or utility money with reporting rules?', [['n','No'],['y','Yes']]],
+      ['power', 'More chargers than the power can run at once, or a battery on site?', [['n','No'],['y','Yes']]],
+      ['brand', 'Want your own app, or other networks\u2019 drivers roaming in?', [['n','No'],['y','Yes']]]
+    ];
+    var A = {size:'one', who:'pub', grant:'n', power:'n', brand:'n'};
+    var KIND = [
+      {t:'The backend that comes with the card reader', x:'A few public ports, paid by card, nothing exotic. A backend bundled with the payment terminal does this job, and it usually costs you nothing because the driver pays a small fee per session.',
+       c:['What the driver\u2019s fee is, and how it shows on the screen before they tap.','When the money lands in your account.','That you can point the charger at a different backend later.']},
+      {t:'A plain subscription backend', x:'You need more than the basics but not the whole catalog. A flat per-port fee with no revenue share is the shape to look for, with the one or two features below included rather than sold as extras.',
+       c:['That the features you need are in the base price.','Per-port pricing in year three, with a cap on increases.','Which card terminals it works with on your charger, today.']},
+      {t:'A full platform', x:'This is what the premium platforms are for. You\u2019ll use enough of the feature list to justify the price, and running without it would cost you more in spreadsheets and phone calls.',
+       c:['The all-in cost per kWh at your real volume, not the brochure\u2019s.','Contract length, renewal and the exit clause.','References running your hardware, at your size.']}
+    ];
+    qEl.innerHTML = Q.map(function(q){
+      return '<div class="swrow"><span>'+q[1]+'</span><div class="seg" role="group" aria-label="'+q[1]+'">'+q[2].map(function(o){ return '<button type="button" data-q="'+q[0]+'" data-v="'+o[0]+'">'+o[1]+'</button>'; }).join('')+'</div></div>';
+    }).join('');
+    function draw(){
+      [].forEach.call(qEl.querySelectorAll('button'), function(b){ b.setAttribute('aria-pressed', A[b.getAttribute('data-q')]===b.getAttribute('data-v') ? 'true' : 'false'); });
+      var why = [], score = 0;
+      if (A.size==='few'){ score += 1; why.push('Several sites are easier to run from one dashboard with proper alerts and exports.'); }
+      if (A.size==='net'){ score += 3; why.push('A network needs roles, reporting and automation that the simple tools don\u2019t have.'); }
+      if (A.who==='mix'){ score += 1; why.push('Fleet or tenant drivers need badges and a different price than the public.'); }
+      if (A.who==='fleet'){ score += 1; why.push('A fleet needs badges, per-vehicle records and scheduling more than it needs a card reader.'); }
+      if (A.grant==='y'){ score += 1; why.push('Funding programs ask for uptime and session reports, and often a current OCPP version and public status data. Check the program\u2019s list against the backend\u2019s.'); }
+      if (A.power==='y'){ score += 1; why.push('Sharing limited power across chargers, or running a battery, takes real load management.'); }
+      if (A.brand==='y'){ score += 2; why.push('A branded app and roaming agreements only come with the bigger platforms.'); }
+      var k = KIND[score>=3 ? 2 : score>=1 ? 1 : 0];
+      rEl.innerHTML = '<h4>'+k.t+'</h4><p>'+k.x+'</p>'+(why.length ? '<ul>'+why.map(function(w){ return '<li>'+w+'</li>'; }).join('')+'</ul>' : '')+
+        '<p class="swchk"><b>Check before you sign.</b> '+k.c.join(' ')+'</p>';
+    }
+    qEl.onclick = function(e){ var b = e.target.closest ? e.target.closest('button[data-q]') : null; if (!b) return; A[b.getAttribute('data-q')] = b.getAttribute('data-v'); draw(); };
+    draw();
   }
 
   /* ---------- Diagram: what happens when a driver taps Start ---------- */
@@ -7361,6 +7614,7 @@ if (typeof document !== 'undefined') (function(){
   if (onView('basics')) initChargeCurve();
   if (onView('primer')) initWaterfall();
   if (onView('connectivity')) initMsgPath();
+  if (onView('software')){ initSwFee(); initSwPick(); }
   if (onView('vendors')) initLayers();
   if (onView('realestate')) initRE();
   if (onView('realestate')) initScarcity();

@@ -7,7 +7,7 @@ No sign-up, no sales pitch, no tracking cookies. Open source.
 
 ## What's inside
 
-**Eight guides**, meant to be read in order or dipped into:
+**Nine guides**, meant to be read in order or dipped into:
 
 1. How charging works
 2. The business
@@ -15,8 +15,9 @@ No sign-up, no sales pitch, no tracking cookies. Open source.
 4. Paying for it
 5. Batteries
 6. Connectivity
-7. Buying
-8. Fleet charging
+7. Software and OCPP
+8. Buying
+9. Fleet charging
 
 **Six tools:**
 

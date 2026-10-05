@@ -152,6 +152,27 @@ CONNECT = svg(
     '<path class="la dash" d="M540,112 H690"/><text x="615" y="130" text-anchor="middle" class="a">Payments, authorization, pricing</text>'
 )
 
+# 6b. Software: one charger, one back office, three things hanging off it
+SOFTWARE = svg(
+    '<rect class="ln d fw" pathLength="1" x="56" y="40" width="58" height="92" rx="11"%s/>' % d(0) +
+    '<rect class="fi" x="68" y="54" width="34" height="20" rx="4"/><circle class="fb" cx="85" cy="94" r="4"/>' +
+    '<text x="85" y="148" text-anchor="middle">Charger</text>' +
+    '<path class="lt" d="M114,86 H262"/><path class="lb flow" d="M114,86 H262"/>' +
+    '<text x="188" y="74" text-anchor="middle" class="b">OCPP</text>' +
+    '<rect class="ln d fw" pathLength="1" x="266" y="32" width="150" height="100" rx="10"%s/>' % d(.3) +
+    '<path class="lt" d="M266,52 H416"/><circle class="fa" cx="280" cy="42" r="3"/><circle class="fs" cx="291" cy="42" r="3"/>' +
+    '<rect class="fi grow" x="284" y="92" width="16" height="28" rx="3"%s/>' % d(.7) +
+    '<rect class="fi grow" x="308" y="78" width="16" height="42" rx="3"%s/>' % d(.85) +
+    '<rect class="fb grow" x="332" y="66" width="16" height="54" rx="3"%s/>' % d(1.0) +
+    '<path class="lt" d="M362,72 h40 M362,88 h30 M362,104 h36"/>' +
+    '<text x="341" y="148" text-anchor="middle">Charging software</text>' +
+    '<path class="lt" d="M416,82 C470,82 480,36 536,36 M416,82 H536 M416,82 C470,82 480,128 536,128"/>' +
+    '<path class="lb flow" d="M416,82 C470,82 480,36 536,36"/><path class="lb flow" d="M416,82 H536"/><path class="lb flow" d="M416,82 C470,82 480,128 536,128"/>' +
+    '<g class="fade"%s><rect class="ln fw" x="542" y="24" width="34" height="24" rx="4"/><path class="ln" d="M542,32 H576"/><text x="586" y="40">Payments</text></g>' % d(.9) +
+    '<g class="fade"%s><path class="ln fw" d="M559,96 c-9,-12 -13,-17 -13,-23 a13,13 0 0 1 26,0 c0,6 -4,11 -13,23 z"/><circle class="fb" cx="559" cy="73" r="4"/><text x="586" y="86">Maps and apps</text></g>' % d(1.1) +
+    '<g class="fade"%s><rect class="ln fw" x="544" y="114" width="30" height="26" rx="4"/><path class="la" d="M551,133 v-6 M559,133 v-12 M567,133 v-9"/><text x="586" y="132">Pricing and reports</text></g>' % d(1.3)
+)
+
 # 7. Buying: the six layers, stacked, with one that needs a hard look
 _layers = ['Service', 'Installation', 'Hardware', 'Payments', 'Software', 'Your brand']
 VENDORS = svg(
@@ -213,4 +234,4 @@ BLOG = svg(
 )
 
 SPOTS = {'basics': BASICS, 'primer': BUSINESS, 'realestate': REALESTATE, 'finance': FINANCE, 'storage': STORAGE,
-         'connectivity': CONNECT, 'vendors': VENDORS, 'fleet': FLEET, 'benchmarks': BENCH}
+         'connectivity': CONNECT, 'software': SOFTWARE, 'vendors': VENDORS, 'fleet': FLEET, 'benchmarks': BENCH}

@@ -26,6 +26,7 @@ CARDS = {
     'ev-charging-station-financing': ('Guide', 'Paying for a charging site: cash, grants, or a loan.'),
     'battery-storage-ev-charging': ('Guide', 'Batteries fix power problems, not energy problems.'),
     'ev-charger-connectivity': ('Guide', 'Most broken chargers are network problems.'),
+    'ev-charging-software-ocpp': ('Guide', 'The software decides who charges, and what it costs you.'),
     'buying-ev-chargers': ('Guide', 'Buying chargers without getting burned.'),
     'fleet-ev-charging': ('Guide', 'Fleet charging is a logistics business.'),
     'ev-charging-benchmarks': ('Data', 'What real charging sites actually do.'),
