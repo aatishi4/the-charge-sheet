@@ -1338,6 +1338,20 @@ html.wlock,html.wlock body{overflow:hidden}
 .hcard .row{display:flex;justify-content:space-between;gap:.5rem;font-size:.86rem;padding-top:.3rem;border-top:1px solid var(--line);margin-top:.25rem}
 .hcard .row span{color:var(--slate)}
 .hcard .row b{font-variant-numeric:tabular-nums}
+.hm-st{flex:0 1 15rem}
+.hr-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem;margin-top:1.2rem}
+.hr-card{background:var(--white);border-radius:var(--r-m);padding:1.1rem 1.1rem 1rem;display:flex;flex-direction:column;gap:.15rem;border-top:4px solid var(--line)}
+.hr-card.best{border-top-color:var(--blue)}
+.hr-card .nm{font-size:1rem}
+.hr-card small{color:var(--slate);font-size:.8rem}
+.hr-card .big{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;letter-spacing:-.03em;line-height:1.05;margin-top:.5rem;font-variant-numeric:tabular-nums}
+.hr-card .row{display:flex;justify-content:space-between;gap:.5rem;font-size:.86rem;padding-top:.3rem;border-top:1px solid var(--line);margin-top:.25rem}
+.hr-card .row span{color:var(--slate)}
+.hr-tl{display:flex;gap:2px;height:14px;margin:.7rem 0 .5rem;min-width:20%;transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.hr-tl i{display:block;height:100%;border-radius:4px;min-width:3px}
+.hr-tl i.d{background:var(--blue)}.hr-tl i.c{background:var(--amber)}
+.hq-notes{margin:.8rem 0 0;color:var(--slate);font-size:.94rem}
+@media (max-width:640px){.hr-cards{grid-template-columns:1fr}}
 @media (max-width:640px){.hcards{grid-template-columns:1fr}.hcard{display:grid;grid-template-columns:auto 1fr auto;column-gap:.8rem;align-items:center}.hcard svg{grid-row:span 2;margin:0}.hcard .big{grid-column:3;grid-row:1 / span 2;margin:0;font-size:1.6rem}.hcard>small:nth-of-type(2){display:none}.hcard .gauge,.hcard .row{grid-column:1/-1}}
 /* ---------- The price sign ---------- */
 .hegal-ctl{display:flex;flex-wrap:wrap;gap:.5rem}
@@ -3286,7 +3300,7 @@ html.wlock,html.wlock body{overflow:hidden}
   </div>
   <div class="band"><div class="wrap">
     <a class="hstartcard" href="#hstart"><svg viewBox="0 0 220 90" aria-hidden="true"><path class="lt" d="M8,80 H212"/><path class="ln" d="M20,80 V40 L60,16 L100,40 V80"/><rect class="ln fw" x="34" y="50" width="16" height="22" rx="2"/><path class="lb" d="M74,58 H120 V66 H140"/><rect class="ln fw" x="140" y="52" width="14" height="24" rx="4"/><circle class="fb" cx="147" cy="61" r="2.5"/><path class="ln" d="M160,80 V72 Q162,66 170,65 L178,61 Q181,59 186,59 H200 Q206,59 208,64 L210,67 Q214,68 214,72 V80 Z"/><text x="176" y="34" class="vs">?</text></svg><div><span class="hkick2">Start here</span><h2>What do you actually need?</h2><p>Your car, your commute, where you park and your panel. One answer: what to install, what it costs, what your utility pays back, and what to ask the electrician.</p><span class="go">Answer five questions</span></div></a>
-    <h2>Five things to read.</h2>
+    <h2>Seven things to read.</h2>
     <p class="lead">In order, or not. Each one ends with a tool that runs the numbers for your house.</p>
     <ol class="path">
       <li><a href="#hbasics"><span class="pn">01</span><span><span class="pt">Charging at home</span><span class="pd">Level 1 or Level 2, plug in or hardwire, a cord or a wall box, and why the car gets a vote.</span></span><span class="pm">8 min</span></a></li>
@@ -3294,6 +3308,8 @@ html.wlock,html.wlock body{overflow:hidden}
       <li><a href="#hbattery"><span class="pn">03</span><span><span class="pt">Home batteries</span><span class="pd">What a battery does, what it doesn't, and why kilowatts and kilowatt-hours are not the same thing.</span></span><span class="pm">8 min</span></a></li>
       <li><a href="#hvtoh"><span class="pn">04</span><span><span class="pt">Your car as a battery</span><span class="pd">V2L, V2H and V2G, which cars can actually do it today, and the catch nobody mentions.</span></span><span class="pm">7 min</span></a></li>
       <li><a href="#hrent"><span class="pn">05</span><span><span class="pt">Apartments, condos and HOAs</span><span class="pd">No driveway, a board, or a landlord. Your state's right-to-charge law, your options, and a letter to send.</span></span><span class="pm">6 min</span></a></li>
+      <li><a href="#hroad"><span class="pn">06</span><span><span class="pt">Charging on the road</span><span class="pd">How many stops, why 80% beats 100%, what it costs, and the etiquette nobody tells you.</span></span><span class="pm">9 min</span></a></li>
+      <li><a href="#hquote"><span class="pn">07</span><span><span class="pt">Hiring an electrician</span><span class="pd">Who to call, what a proper quote says, and the red flags. Bring your quote and check it.</span></span><span class="pm">7 min</span></a></li>
     </ol>
   </div></div>
   <div class="band mist"><div class="wrap">
@@ -3762,6 +3778,204 @@ html.wlock,html.wlock body{overflow:hidden}
     <div class="note"><p><strong>Never backfeed a house through an outlet.</strong> A cord with two male plugs, from a car's outlet or a generator into a dryer socket, is known in the trade as a suicide cord, for good reason. It energizes the utility's lines, which can kill a line worker, and it energizes the exposed prongs of the plug in your hand. If you want to run the house from a car's outlets, have an electrician install a proper transfer switch or interlock. It's a few hundred dollars. It's the cheapest thing on this page.</p></div>
   </article>
 </section>
+<!-- HOME SIDE: ON THE ROAD -->
+<section id="view-hroad" class="read" hidden>
+  <div class="tool-head">
+    <h1>Charging on the road</h1>
+    <p>At home, charging is something the car does while you sleep. On a road trip it's something you do, in a parking lot, while deciding whether you want a pretzel. Here's how to make it short, cheap and free of dirty looks.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>By <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
+    <div class="spot" aria-hidden="true"><svg viewBox="0 0 720 150" focusable="false">
+      <path class="lt" d="M30,118 H690"/><path class="lt dash" d="M30,132 H690"/>
+      <path class="lb d" pathLength="1" d="M60,118 C160,118 180,60 260,60 S380,118 460,118 S560,70 660,70" style="--d:.2s"/>
+      <circle class="fb" cx="60" cy="118" r="6"/><text x="60" y="148" text-anchor="middle">Home, 100%</text>
+      <g class="fade" style="--d:.9s"><rect class="ln fw" x="248" y="20" width="24" height="40" rx="6"/><circle class="fb" cx="260" cy="32" r="3"/><text x="260" y="78" text-anchor="middle" class="b">Stop 1</text></g>
+      <g class="fade" style="--d:1.3s"><rect class="ln fw" x="448" y="78" width="24" height="40" rx="6"/><circle class="fb" cx="460" cy="90" r="3"/><text x="460" y="148" text-anchor="middle" class="b">Stop 2</text></g>
+      <circle class="fa ping" cx="660" cy="70" r="7"/><circle class="fa" cx="660" cy="70" r="6"/><text x="660" y="52" text-anchor="middle" class="a">There</text>
+    </svg></div>
+  </div>
+  <article class="prose">
+    <ul class="toc" aria-label="On this page">
+      <li><a href="#h-r-before">Before you leave</a></li><li><a href="#h-r-plugs">Plugs</a></li><li><a href="#h-r-80">80% or 100%</a></li><li><a href="#h-r-stops">How many stops</a></li><li><a href="#h-r-cost">What it costs</a></li><li><a href="#h-r-manners">Etiquette</a></li><li><a href="#h-r-broken">When it's broken</a></li>
+    </ul>
+
+    <h2 id="h-r-before">Before you leave</h2>
+    <ul>
+      <li><strong>Leave full.</strong> The night before a trip is the one time charging to 100% at home is exactly right. It's the cheapest energy of the whole journey.</li>
+      <li><strong>Let the car plan it.</strong> Put the destination in the car's own navigation. Most EVs pick the stops, tell you how long each one takes, and warm the battery on the way in so it charges faster.</li>
+      <li><strong>Set up payment first.</strong> Download the apps for the networks on your route and add a card at home, not at the charger with one bar of signal. A contactless card works at most newer chargers and few of the older ones.</li>
+      <li><strong>Know your plug.</strong> And pack the adapter, if your car needs one. The <a href="#hadapt">adapter finder</a> will tell you.</li>
+      <li><strong>Expect less range than the sticker.</strong> Highway speeds cost 10 to 20%. Cold weather can cost another 20 to 30%. The car's estimate is usually honest about this. The brochure wasn't.</li>
+    </ul>
+
+    <h2 id="h-r-plugs">The plugs, in one paragraph each</h2>
+    <ul>
+      <li><strong>NACS, also called J3400.</strong> Tesla's plug, now the North American standard. New cars from most brands have it built in.</li>
+      <li><strong>CCS.</strong> The larger plug on most non-Tesla EVs sold before the switch. Still on thousands of chargers and still fine.</li>
+      <li><strong>J1772.</strong> The round Level 2 plug at hotels, garages and shops. Slow, plentiful and often free.</li>
+      <li><strong>CHAdeMO.</strong> Older Nissan Leafs and a few others. Fading. If this is your plug, check every stop before you commit to the route.</li>
+    </ul>
+    <p>Adapters let a CCS car use many Tesla Superchargers and the other way round. The <a href="#hadapt">adapter finder</a> shows which chargers your car plugs straight into, which adapter the rest need, and what it costs. Buy the one your carmaker sells or approves. A fast charger pushes hundreds of amps through it, and it is not the place to save forty dollars.</p>
+
+    <h2 id="h-r-80">Should you charge to 100%?</h2>
+    <p>At home before the trip, yes. At a fast charger, almost never.</p>
+    <p>A battery takes power quickly when it's empty and slowly when it's nearly full, like the last few people squeezing onto a train. On many cars the charge from 80% to 100% takes about as long as the charge from 10% to 80% did. You wait twice as long for a third more range.</p>
+    <p>So the fast way to travel is to arrive low, charge to somewhere around 80%, and leave. More stops, shorter stops, less time overall. The exceptions are real but few: the next charger is a long way off, it's bitterly cold, or you're stopping for a sit-down meal anyway and the car might as well keep eating too.</p>
+    <p>One battery note. Cars with LFP batteries are happy to sit at 100%, and the maker usually says to do it weekly. Others prefer 80% day to day. Neither kind minds a full charge right before a trip.</p>
+</article>
+<div class="fig" id="hrplan"><div class="fig-in">
+  <div class="fig-top"><h3>Plan the stops</h3></div>
+  <div class="wfset" id="hr-in"></div>
+  <div class="hr-cards" id="hr-out" aria-live="polite"></div>
+  <p class="fig-cap" id="hr-cap"></p>
+  <p class="fh">A planning sketch, not navigation. It assumes chargers exactly where you need them, arriving at each with 10%, five minutes to park and plug in, and a typical charging curve scaled to your car's peak power. Your car's own trip planner knows the real chargers, the real hills and the real weather.</p>
+</div></div>
+<article class="prose">
+
+    <h2 id="h-r-stops">How many stops, really</h2>
+    <p>Rule of thumb: the first leg is the long one, because you left home full. After that, each fast-charge stop buys you about two thirds of the car's highway range, since you're running between roughly 10% and 80%.</p>
+    <p>For most current EVs that works out to a stop every two to three hours of driving, for 15 to 30 minutes. Which is, give or take, how often people stop anyway. The difference is that you don't get to choose not to.</p>
+    <p>If you're staying overnight, the best stop is the one you sleep through. A hotel with a Level 2 charger sends you off at 100% without a minute of waiting, and it's worth filtering for when you book.</p>
+
+    <h2 id="h-r-cost">What it costs</h2>
+    <p>Fast charging is priced like convenience, because it is. Expect to pay two to four times your home rate.</p>
+    <ul>
+      <li><strong>Per kWh</strong> is the normal way. A few places still charge per minute, which punishes cars that charge slowly.</li>
+      <li><strong>Memberships</strong> knock a good chunk off on some networks for a monthly fee. Worth it for one long trip, then cancel.</li>
+      <li><strong>Idle fees</strong> start a few minutes after the car is done and add up by the minute. They exist to make you move. They work.</li>
+      <li><strong>The card hold.</strong> Tap a card and the charger holds a set amount until the session settles. It isn't the price, and it falls off in a day or two.</li>
+    </ul>
+    <p>Against a gas car, a trip on fast chargers alone costs about the same. The savings come from the full battery you left home with and from every other week of the year. The <a href="#hcharge">charging cost calculator</a> does that comparison for your car.</p>
+
+    <h2 id="h-r-manners">Etiquette</h2>
+    <p>Nobody hands you a rulebook. This is it.</p>
+    <ul>
+      <li><strong>A charging space is for charging.</strong> Not parking near the door. That goes for EVs that aren't plugged in as much as for the pickup that definitely isn't.</li>
+      <li><strong>Move when you're done.</strong> Set a phone alert. The person waiting can see your car is at 100%. They've been looking at it for ten minutes.</li>
+      <li><strong>If there's a line, leave at 80%.</strong> The slow last 20% is the most expensive time on the whole site, and other people are paying for it.</li>
+      <li><strong>Take the charger that fits your car.</strong> If your car tops out at 100 kW, leave the 350 kW unit for someone who can use it, when there's a choice.</li>
+      <li><strong>Park so the cable reaches without blocking a second stall.</strong> Charge ports are in different corners on different cars. Sometimes that means pulling in at an odd angle. Sometimes it means picking another stall.</li>
+      <li><strong>Don't unplug a stranger.</strong> The one accepted exception is a Level 2 where their car has clearly finished and the next plug won't reach. Even then, some people will mind.</li>
+      <li><strong>Hang the cable up.</strong> Connectors left on the ground get driven over, and then nobody charges.</li>
+      <li><strong>Report the broken one.</strong> Thirty seconds in the app saves the next driver twenty minutes.</li>
+    </ul>
+
+    <h2 id="h-r-broken">When the charger doesn't work</h2>
+    <p>It happens less than it used to and more than it should. In order:</p>
+    <ul>
+      <li>Unplug, wait ten seconds, push the connector in firmly until it clicks, and start again. A half-seated plug is the most common failure there is.</li>
+      <li>Try a different way to pay. If the card reader fails, the app often works, and the other way round.</li>
+      <li>Move to another stall. Chargers fail one at a time far more often than whole sites do.</li>
+      <li>Call the number on the charger. They can often start it remotely.</li>
+      <li>Leave. This is why you arrive with 10% and not 2%.</li>
+    </ul>
+    <p>If you're curious why any of this goes wrong, <a href="#basics">How charging works</a> walks through the handshake between the car and the charger. It's a small miracle it ever works at all.</p>
+
+    <div class="note"><p><strong>From someone who built these.</strong> A site with eight chargers and one broken is a good site. A site with two chargers and one broken is a queue. When the car offers you a choice, pick the bigger site.</p></div>
+  </article>
+</section>
+
+<!-- HOME SIDE: HIRING AN ELECTRICIAN -->
+<section id="view-hquote" class="read" hidden>
+  <div class="tool-head">
+    <h1>Hiring an electrician without getting taken</h1>
+    <p>A home charger install is half a day's work for someone who knows what they're doing. Quotes for the same job still vary by three times. Some of that is your house. The rest is whether the quote includes the parts you can't see, and whether you can tell.</p>
+    <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>By <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
+    <div class="spot" aria-hidden="true"><svg viewBox="0 0 720 150" focusable="false">
+      <rect class="ln d fw" pathLength="1" x="70" y="16" width="150" height="122" rx="6" style="--d:0s"/>
+      <path class="lt" d="M88,40 h114 M88,58 h114 M88,76 h80 M88,94 h100"/>
+      <path class="lb d" pathLength="1" d="M178,34 l6,6 l12,-13" style="--d:.6s"/><path class="lb d" pathLength="1" d="M178,52 l6,6 l12,-13" style="--d:.8s"/>
+      <path class="la d" pathLength="1" d="M180,70 l12,12 M192,70 l-12,12" style="--d:1s"/>
+      <path class="ln" d="M88,118 h60"/><text x="176" y="122" class="a fade" style="--d:1.3s">$ ?</text>
+      <text x="145" y="150" text-anchor="middle">The quote</text>
+      <path class="lt" d="M250,76 H330"/><path class="lb flow" d="M250,76 H330"/>
+      <rect class="ln d fw" pathLength="1" x="340" y="30" width="70" height="96" rx="5" style="--d:.4s"/>
+      <path class="lt" d="M352,48 h20 M378,48 h20 M352,62 h20 M378,62 h20 M352,76 h20 M378,76 h20 M352,90 h20"/><rect class="fb fade" x="378" y="86" width="20" height="8" rx="2" style="--d:1.2s"/>
+      <text x="375" y="144" text-anchor="middle">The panel</text>
+      <path class="lb d" pathLength="1" d="M410,90 H500 V70 H560" style="--d:1s"/>
+      <rect class="ln d fw" pathLength="1" x="562" y="44" width="34" height="56" rx="8" style="--d:1.2s"/><circle class="fb" cx="579" cy="60" r="4"/>
+      <text x="579" y="118" text-anchor="middle">The charger</text>
+      <g class="fade" style="--d:1.7s"><circle class="ln fw" cx="650" cy="40" r="16"/><path class="lb" d="M642,40 l6,6 l10,-12"/><text x="650" y="72" text-anchor="middle" class="b">Inspected</text></g>
+    </svg></div>
+  </div>
+  <article class="prose">
+    <ul class="toc" aria-label="On this page">
+      <li><a href="#h-q-who">Who to call</a></li><li><a href="#h-q-visit">The visit</a></li><li><a href="#h-q-quote">The quote</a></li><li><a href="#h-q-permit">The permit</a></li><li><a href="#h-q-flags">Red flags</a></li><li><a href="#h-q-after">After</a></li>
+    </ul>
+
+    <h2 id="h-q-who">Who to call</h2>
+    <p>A licensed electrician who has installed EV chargers before. Both halves matter. A charger pulls its full load for hours on end, which is harder on a circuit than nearly anything else in the house, and the rules for it are specific.</p>
+    <ul>
+      <li>Ask how many they've done, and which chargers.</li>
+      <li>Get three quotes. Not for the lowest price. For the one that's different from the other two, in either direction.</li>
+      <li>Check the license number with your state. It takes two minutes.</li>
+      <li>Your utility and your carmaker both keep installer lists. Useful as a starting point. Not a guarantee of price.</li>
+    </ul>
+
+    <h2 id="h-q-visit">What they should look at before quoting</h2>
+    <p>A number given over the phone with no photos is a guess with a dollar sign on it. A proper quote starts with someone, in person or by picture, looking at four things.</p>
+    <ul>
+      <li><strong>The panel.</strong> Its size, its brand, and whether there's a free space for a new breaker.</li>
+      <li><strong>The load.</strong> What else the house runs, added up, to see whether the service can take a charger. This is a real calculation. If nobody does it, nobody knows. <a href="#hinstall">Run it yourself first</a> and you'll know whether their answer makes sense.</li>
+      <li><strong>The route.</strong> How the wire gets from the panel to the charger: along a garage wall, through an attic, or under a driveway. This is most of the price.</li>
+      <li><strong>The charger.</strong> Which one, how many amps, hardwired or plugged in. <a href="#hstart">Start here</a> works out the setup for your car and your panel in two minutes, so you walk in knowing what to ask for.</li>
+    </ul>
+
+    <h2 id="h-q-quote">What a good quote says</h2>
+    <p>You're not checking the electrician's math. You're checking that the paper commits them to the things that matter.</p>
+</article>
+<div class="fig" id="hqcheck"><div class="fig-in">
+  <div class="fig-top"><h3>Check your quote</h3></div>
+  <div class="wfset" id="hq-in"></div>
+  <div class="swq" id="hq-q"></div>
+  <div class="swres" id="hq-r" aria-live="polite"></div>
+  <p class="fh">Breaker sizing follows the National Electrical Code's rule for continuous loads: the circuit is rated at 125% of what the charger draws. Your local code and inspector have the last word. For what the job should cost, run it through the <a href="#hinstall">install estimator</a> and compare.</p>
+</div></div>
+<article class="prose">
+    <p>The numbers, for reference. A charger is a continuous load, so the breaker has to be a size up from the charging current.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Charger set to</th><th>Breaker</th><th>Adds about</th></tr></thead>
+      <tbody>
+        <tr><td>16 amps</td><td>20 amps</td><td>11 miles an hour</td></tr>
+        <tr><td>24 amps</td><td>30 amps</td><td>17 miles an hour</td></tr>
+        <tr><td>32 amps</td><td>40 amps</td><td>23 miles an hour</td></tr>
+        <tr><td>40 amps</td><td>50 amps</td><td>29 miles an hour</td></tr>
+        <tr><td>48 amps</td><td>60 amps, hardwired only</td><td>34 miles an hour</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="h-q-permit">The permit is not optional</h2>
+    <p>Nearly every jurisdiction requires a permit for a new 240-volt circuit. It costs a little and it buys a lot: a second person, with no stake in the job, checks the work.</p>
+    <ul>
+      <li>Skip it and your insurer has a reason to argue after a fire.</li>
+      <li>Most utility rebates ask for the permit number. <a href="#hrebates">Look up yours by ZIP</a> before the work starts, since some need approval first.</li>
+      <li>It shows up, or doesn't, when you sell the house.</li>
+    </ul>
+    <p>The electrician pulls the permit, not you. An offer to do it cheaper without one tells you how they'll treat everything else you can't see.</p>
+
+    <h2 id="h-q-flags">Red flags</h2>
+    <ul>
+      <li>"You don't need a permit for this."</li>
+      <li>A price with no site visit and no photos.</li>
+      <li>A panel upgrade recommended before anyone has done a load calculation. Sometimes you do need one. Often a smaller charger or a load manager does the job for a tenth of the price. The <a href="#hgear">gear shelf</a> has a row of them.</li>
+      <li>Aluminum wire offered to save money without telling you. It's legal when sized and terminated correctly. It should be your choice, in writing.</li>
+      <li>A plug-in install with a cheap receptacle. The $12 one melts. Ask for an industrial-grade one by name, or hardwire.</li>
+      <li>A large deposit, cash only, or a price that's good until tonight.</li>
+      <li>One line on the quote: "Install EV charger."</li>
+    </ul>
+
+    <h2 id="h-q-after">After the install</h2>
+    <ul>
+      <li>Wait for the inspection before the final payment.</li>
+      <li>Check that the charger's own current setting matches the circuit. A 48-amp charger on a 40-amp breaker has to be set down to 32. It's a setting in the app or a switch inside the box, and it gets missed.</li>
+      <li>Make sure the new breaker is labeled in the panel.</li>
+      <li>Keep the permit, the inspection record and the invoice together. The rebate form and your future buyer will both want them.</li>
+      <li>Then set a <a href="#hcost">charging schedule</a>, which is where the actual savings are.</li>
+    </ul>
+
+    <div class="note"><p><strong>Trade secret, such as it is.</strong> The best installers ask you more questions than you ask them. If the visit takes five minutes and ends with a round number, keep looking.</p></div>
+  </article>
+</section>
+
 <!-- HOME SIDE: CHARGING COST AND SCHEDULE -->
 <section id="view-hcharge" hidden>
   <div class="tool-head">
@@ -3961,11 +4175,26 @@ html.wlock,html.wlock body{overflow:hidden}
     <h1>EV charging in an apartment, condo or HOA</h1>
     <p>About a third of American households don't have a driveway of their own. Charging still works. It just involves a landlord, a board or a parking garage, and a polite letter. Here is what the law says in your state, the options from cheapest to most involved, and a letter you can send tonight.</p>
     <p class="byline"><img src="img/aatish-96.jpg" alt="" width="32" height="32" loading="lazy"><span>By <a href="#about">Aatish Patel</a>, founder of XCharge North America</span></p>
+    <div class="spot" aria-hidden="true"><svg viewBox="0 0 720 150" focusable="false">
+      <path class="lt" d="M40,132 H680"/>
+      <rect class="ln d fw" pathLength="1" x="70" y="22" width="150" height="110" rx="6" style="--d:0s"/>
+      <rect class="fi fade" x="88" y="38" width="24" height="18" rx="2" style="--d:.3s"/><rect class="fa fade" x="133" y="38" width="24" height="18" rx="2" style="--d:.5s"/><rect class="fi fade" x="178" y="38" width="24" height="18" rx="2" style="--d:.4s"/>
+      <rect class="fi fade" x="88" y="68" width="24" height="18" rx="2" style="--d:.6s"/><rect class="fi fade" x="133" y="68" width="24" height="18" rx="2" style="--d:.35s"/><rect class="fa fade" x="178" y="68" width="24" height="18" rx="2" style="--d:.7s"/>
+      <rect class="ln fw" x="134" y="104" width="22" height="28" rx="2"/>
+      <text x="145" y="148" text-anchor="middle">Their building</text>
+      <path class="lt" d="M220,112 H360"/><path class="lb flow" d="M220,112 H360"/>
+      <rect class="ln d fw" pathLength="1" x="362" y="84" width="26" height="48" rx="6" style="--d:.6s"/><circle class="fb" cx="375" cy="98" r="3.5"/>
+      <path class="lb d" pathLength="1" d="M388,108 C410,108 410,122 432,122" style="--d:1s"/>
+      <path class="ln d" pathLength="1" d="M430,132 V118 Q434,106 450,104 L468,94 Q474,90 484,90 H518 Q530,90 536,100 L542,108 Q552,110 552,120 V132 Z" style="--d:.9s"/>
+      <circle class="ln fw" cx="456" cy="132" r="9"/><circle class="ln fw" cx="526" cy="132" r="9"/>
+      <text x="490" y="148" text-anchor="middle">Your space</text>
+      <g class="fade" style="--d:1.4s"><rect class="ln fw" x="600" y="50" width="62" height="78" rx="4"/><path class="lt" d="M610,66 h42 M610,78 h42 M610,90 h30"/><path class="la" d="M612,112 q8,-10 16,0 t16,0"/><text x="631" y="148" text-anchor="middle" class="a">The ask</text></g>
+    </svg></div>
   </div>
   <article class="prose">
     <ul class="toc" aria-label="On this page">
-      <li><a href="#h-rt-short">The short version</a></li><li><a href="#h-rt-opts">Your options</a></li><li><a href="#h-rt-law">Right-to-charge laws</a></li>
-      <li><a href="#h-rt-ask">What they'll ask for</a></li><li><a href="#h-rt-bill">Who pays for the electricity</a></li><li><a href="#h-rt-letter">The letter</a></li>
+      <li><a href="#h-rt-short">The short version</a></li><li><a href="#h-rt-opts">Your options</a></li><li><a href="#h-rt-walk">Can I charge here?</a></li><li><a href="#h-rt-law">Right-to-charge laws</a></li>
+      <li><a href="#h-rt-ask">What they'll ask for</a></li><li><a href="#h-rt-bill">Who pays for the electricity</a></li><li><a href="#h-rt-shared">Shared chargers</a></li><li><a href="#h-rt-letter">The letter</a></li>
     </ul>
     <h2 id="h-rt-short">The short version</h2>
     <ul>
@@ -3984,6 +4213,16 @@ html.wlock,html.wlock body{overflow:hidden}
       <li><strong>DC fast charging once a week.</strong> Twenty to forty minutes, at about three times the price of home power. It works, and it is the most expensive way to own an EV. The <a href="#hcharge">charging cost calculator</a> compares it with gas.</li>
     </ol>
 
+    <p>One thing not to do: run an extension cord out a window and across a sidewalk. It's a trip hazard, a fire risk and, in most cities, a ticket.</p>
+  </article>
+  <div class="fig" id="h-rt-walk"><div class="fig-in">
+    <div class="fig-top"><h3>Can I charge where I live?</h3></div>
+    <div class="swq" id="hm-q"></div>
+    <div class="swres" id="hm-r" aria-live="polite"></div>
+    <p class="fh">A starting point, not legal advice. The state summary and the letter below follow whatever you pick here.</p>
+  </div></div>
+  <article class="prose">
+
     <h2 id="h-rt-law">Right-to-charge laws by state</h2>
     <p>These laws stop a condo association or HOA, and in a few states a landlord, from saying no to a charger in a space you own or rent, as long as you follow reasonable rules and pay for it. They don't make the building pay, and they don't cover shared spaces you don't have the right to use. Pick your state.</p>
   </article>
@@ -3997,6 +4236,7 @@ html.wlock,html.wlock body{overflow:hidden}
     <div id="h-rtc-all"></div>
 
     <h2 id="h-rt-ask">What the board or landlord will ask for</h2>
+    <p>Boards and landlords say no to three things: cost, liability and precedent. Take all three off the table before they bring them up.</p>
     <ul>
       <li><strong>A licensed electrician and a permit.</strong> Non-negotiable, and you'd want both anyway.</li>
       <li><strong>Insurance.</strong> Usually a certificate showing your liability coverage, sometimes naming the association. California asks condo owners for a $1 million umbrella policy.</li>
@@ -4005,6 +4245,9 @@ html.wlock,html.wlock body{overflow:hidden}
       <li><strong>What happens when you leave.</strong> Remove it and restore the space, or leave it for the next person. Several state laws make you tell a buyer it's there.</li>
     </ul>
 
+    <p>It also helps to say that you won't be the last person to ask. A building that works out a policy once gets to stop having this conversation.</p>
+    <div class="note"><p><strong>From the other side of the table.</strong> I've sat in the meetings where property owners decide this. The requests that get approved arrive with a quote, a drawing and a sentence that says "at my cost." The ones that get tabled say "I'd like to discuss options."</p></div>
+
     <h2 id="h-rt-bill">Who pays for the electricity</h2>
     <p>The board's real worry is rarely the charger. It's that you'll run up the common electric bill. Solve that before they ask.</p>
     <ul>
@@ -4012,6 +4255,12 @@ html.wlock,html.wlock body{overflow:hidden}
       <li><strong>A smart charger that meters itself.</strong> Most networked chargers report kilowatt-hours to the minute. You pay the association each month from the app's numbers.</li>
       <li><strong>A flat fee.</strong> Simple and slightly unfair to someone. At 300 miles a week and 18 cents a kWh, a car uses about $70 of electricity a month.</li>
     </ul>
+
+    <p>The expensive surprise is distance. Your meter may be in a room at the far end of the garage, and every foot between it and your space is copper, conduit and labor. The <a href="#hinstall">install estimator</a> shows how fast that adds up, and <a href="#hquote">Hiring an electrician</a> covers what the quote should say. If the building's supply is full, ask about load management before anyone quotes a new transformer.</p>
+
+    <h2 id="h-rt-shared">When the building should do it instead</h2>
+    <p>If parking isn't assigned, or five neighbors are about to ask for the same thing, one charger per space stops making sense. A handful of shared Level 2 chargers, managed so they split the available power, serves far more cars for the same money.</p>
+    <p>That's a business decision for the owner, and there's a whole other side of this site about it. If you're the one pitching it, send them <a href="#primer">The business</a> and <a href="#software">Software and OCPP</a>. If you're the owner reading this, hello. Your tenants are about to start asking.</p>
 
     <h2 id="h-rt-letter">The letter</h2>
     <p>Fill in the blanks. It cites your state's law if there is one, offers to pay for everything, and asks for a written answer by a date. Copy it, print it, or open it in your email. Nothing you type is sent anywhere.</p>
@@ -4132,7 +4381,7 @@ html.wlock,html.wlock body{overflow:hidden}
   <div><b>The Charge Sheet</b><p>A free, open source guide to EV charging, at home and in business, built and given away by <a href="#about">Aatish Patel</a>. Ballpark numbers and honest opinions. Not financial advice.</p><p>Working on a real site? <a href="#work" data-work>Tell me about it</a>.</p><p>Text CC BY 4.0. Code MIT.</p></div>
   <div><b>Learn</b><a href="#basics">How charging works</a><a href="#primer">The business</a><a href="#realestate">Real estate</a><a href="#finance">Paying for it</a><a href="#storage">Batteries</a><a href="#connectivity">Connectivity</a><a href="#software">Software</a><a href="#vendors">Buying</a><a href="#fleet">Fleet charging</a></div>
   <div><b>Tools</b><a href="#planner">Site planner</a><a href="#install">Install estimator</a><a href="#sbatool">SBA loan check</a><a href="#fleettool">Fleet throughput</a><a href="#forecast">Utilization forecast</a><a href="#sitecheck">Connectivity check</a><a href="#hardware">Chargers</a><a href="#report">Project report</a></div>
-  <!--home-side--><div><b>At home</b><a href="#hhub">Overview</a><a href="#hbasics">Charging at home</a><a href="#hcost">What it costs</a><a href="#hbattery">Home batteries</a><a href="#hvtoh">Your car as a battery</a><a href="#hrent">Apartments, condos and HOAs</a><a href="#hstart">Start here</a><a href="#hcharge">Charging cost</a><a href="#hinstall">Home install estimator</a><a href="#hrebates">Charger rebates</a><a href="#hbackup">Backup sizer</a><a href="#hvcompare">V2H vs battery</a><a href="#hadapt">Adapter finder</a><a href="#hgear">Home gear</a></div><!--/home-side--><div><b>More</b><a href="#work" data-work>Work with me</a><a href="#benchmarks">Benchmarks</a><a href="#method">Method and sources</a><a href="#glossary">Glossary</a><a href="/blog/">Blog</a><a href="#about">About</a><a href="https://github.com/aatishi4/the-charge-sheet" rel="noopener">Source code</a></div>
+  <!--home-side--><div><b>At home</b><a href="#hhub">Overview</a><a href="#hbasics">Charging at home</a><a href="#hcost">What it costs</a><a href="#hbattery">Home batteries</a><a href="#hvtoh">Your car as a battery</a><a href="#hrent">Apartments, condos and HOAs</a><a href="#hroad">On the road</a><a href="#hquote">Hiring an electrician</a><a href="#hstart">Start here</a><a href="#hcharge">Charging cost</a><a href="#hinstall">Home install estimator</a><a href="#hrebates">Charger rebates</a><a href="#hbackup">Backup sizer</a><a href="#hvcompare">V2H vs battery</a><a href="#hadapt">Adapter finder</a><a href="#hgear">Home gear</a></div><!--/home-side--><div><b>More</b><a href="#work" data-work>Work with me</a><a href="#benchmarks">Benchmarks</a><a href="#method">Method and sources</a><a href="#glossary">Glossary</a><a href="/blog/">Blog</a><a href="#about">About</a><a href="https://github.com/aatishi4/the-charge-sheet" rel="noopener">Source code</a></div>
 </div></footer>
 <script>
 
@@ -4666,13 +4915,13 @@ if (typeof document !== 'undefined') (function(){
   /* Router */
   /* ---------- Site structure and router ---------- */
   var VIEWS = ['home','basics','primer','realestate','finance','storage','connectivity','software','vendors','fleet','benchmarks','method','planner','install','sbatool','fleettool','forecast','sitecheck','report','glossary','about','work',
-    'hhub','hbasics','hcost','hbattery','hvtoh','hrent','hstart','hcharge','hinstall','hrebates','hbackup','hvcompare','hadapt','hgear'];
-  var HOME_VIEWS = ['hhub','hbasics','hcost','hbattery','hvtoh','hrent','hstart','hcharge','hinstall','hrebates','hbackup','hvcompare','hadapt','hgear'];
+    'hhub','hbasics','hcost','hbattery','hvtoh','hrent','hroad','hquote','hstart','hcharge','hinstall','hrebates','hbackup','hvcompare','hadapt','hgear'];
+  var HOME_VIEWS = ['hhub','hbasics','hcost','hbattery','hvtoh','hrent','hroad','hquote','hstart','hcharge','hinstall','hrebates','hbackup','hvcompare','hadapt','hgear'];
   var GROUPS = {
     learn: {title:'Learn', nav:'gn-learn', pages:[['basics','How charging works'],['primer','The business'],['realestate','Real estate'],['finance','Paying for it'],['storage','Batteries'],['connectivity','Connectivity'],['software','Software'],['vendors','Buying'],['fleet','Fleet charging']]},
     data:  {title:'Benchmarks', nav:'gn-data', pages:[['benchmarks','Benchmarks'],['method','Method and sources'],['glossary','Glossary']]},
     tools: {title:'Tools', nav:'gn-tools', pages:[['planner','Site planner'],['install','Install estimator'],['sbatool','SBA loan check'],['fleettool','Fleet throughput'],['forecast','Utilization forecast'],['sitecheck','Connectivity check'],['hardware','Chargers'],['report','Project report']]},
-    hlearn: {title:'At home', nav:'gn-hlearn', pages:[['hhub','Overview'],['hbasics','Charging at home'],['hcost','What it costs'],['hbattery','Home batteries'],['hvtoh','Car as a battery'],['hrent','Apartments and HOAs']]},
+    hlearn: {title:'At home', nav:'gn-hlearn', pages:[['hhub','Overview'],['hbasics','Charging at home'],['hcost','What it costs'],['hbattery','Home batteries'],['hvtoh','Car as a battery'],['hrent','Apartments and HOAs'],['hroad','On the road'],['hquote','Hiring an electrician']]},
     htools: {title:'Home tools', nav:'gn-htools', pages:[['hstart','Start here'],['hcharge','Charging cost'],['hinstall','Install estimator'],['hrebates','Rebates'],['hbackup','Backup sizer'],['hvcompare','V2H vs battery'],['hadapt','Adapters'],['hgear','Gear']]}
   };
   var GROUP_OF = {}, NAME_OF = {home:'The Charge Sheet', about:'About', work:'Work with me'};
@@ -7983,7 +8232,7 @@ if (typeof document !== 'undefined') (function(){
     var s = el('home-gear-data'), d = null;
     try { d = s ? JSON.parse(s.textContent) : null; } catch(e){ d = null; }
     if (d && d.vehicles && d.vehicles.length){ HG = d; done(); return; }
-    if (location.protocol==='file:' || ['hhub','hbasics','hcost','hbattery','hvtoh','hrent','hstart','hcharge','hinstall','hrebates','hbackup','hvcompare','hadapt','hgear'].indexOf(K.current())<0){ done(); return; }
+    if (location.protocol==='file:' || ['hhub','hbasics','hcost','hbattery','hvtoh','hrent','hroad','hquote','hstart','hcharge','hinstall','hrebates','hbackup','hvcompare','hadapt','hgear'].indexOf(K.current())<0){ done(); return; }
     var base = window.CS_PAGE ? '/' : '';
     fetch(base+'data/home-gear.json').then(function(r){ return r.json(); }).then(function(j){
       HG = j;
@@ -8463,7 +8712,7 @@ if (typeof document !== 'undefined') (function(){
     if (HBRAND[I.brand] && HBRAND[I.brand].bad) ask.push('Should this panel be replaced first, and what does that cost on its own?');
     ask.push('Is the permit included, and who schedules the inspection?');
     ask.push('Does my utility offer a rebate, and does it need a particular charger or rate?');
-    h += '<div class="panel"><h2>What to ask your electrician</h2><ul class="recs">'+ask.map(function(a){ return '<li>'+a+'</li>'; }).join('')+'</ul></div>';
+    h += '<div class="panel"><h2>What to ask your electrician</h2><ul class="recs">'+ask.map(function(a){ return '<li>'+a+'</li>'; }).join('')+'</ul><p class="fh">Got a quote in hand? <a href="'+K.viewHref('hquote')+'">Check it line by line</a>.</p></div>';
     if (S.pro && !c.L1){
       var cd = c.conductor;
       h += '<div class="panel hpropanel"><h2>Pro: the circuit</h2><div class="scroll" tabindex="0"><table><tbody>'+
@@ -8850,7 +9099,7 @@ if (typeof document !== 'undefined') (function(){
   }
   function rtcTeaser(st){
     var L = rtcOf(st); if (!st) return '';
-    return '<div class="panel"><h2>Renting, or living under an HOA?</h2><p>'+(L ? esc(STNAME[st])+' has a right-to-charge law covering '+esc(L.hoa.toLowerCase())+(L.renters && !/^Not/.test(L.renters) ? ', and renters' : '')+'.' : esc(STNAME[st])+' has no statewide right-to-charge law in the DOE database, so it’s a request, not a right.')+' <a href="'+K.viewHref('hrent')+'">What it means, and a letter to send</a>.</p></div>';
+    return '<div class="panel"><h2>Renting, or living under an HOA?</h2><p>'+(L ? esc(STNAME[st])+' has a right-to-charge law covering '+esc(L.hoa.toLowerCase().replace(/\bhoa/g,'HOA'))+(L.renters && !/^Not/.test(L.renters) ? ', and renters' : '')+'.' : esc(STNAME[st])+' has no statewide right-to-charge law in the DOE database, so it’s a request, not a right.')+' <a href="'+K.viewHref('hrent')+'">What it means, and a letter to send</a>.</p></div>';
   }
 
   /* ================= Right to charge (HG.rtc) and the letter ================= */
@@ -8927,6 +9176,7 @@ if (typeof document !== 'undefined') (function(){
   }
   function renderL(){
     var out = el('h-l-out'); if (!out) return;
+    if (walkDraw) walkDraw();
     var txt = letterText(), subj = 'Request: EV charging'+(S.l.unit?' at '+S.l.unit:'');
     out.innerHTML = '<div class="hletter-p" id="h-l-txt">'+esc(txt)+'</div><div class="tool-actions"><button type="button" class="btn" id="h-l-copy">Copy the letter</button><button type="button" class="btn" id="h-l-print">Print</button><a class="btn" id="h-l-mail" href="mailto:?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(txt)+'">Open in email</a></div><p class="fh" id="h-l-st">Nothing you type here is saved on a server or sent anywhere. Your browser remembers it on this device.</p>';
     el('h-l-copy').onclick = function(){
@@ -9142,7 +9392,7 @@ if (typeof document !== 'undefined') (function(){
     h += '<div class="panel" id="h-s-reb"><h2>Rebates and your rate</h2>'+(s.zipDone && /^\d{5}$/.test(String(s.zipDone)) ? '<p class="status">Looking up '+esc(s.zipDone)+'...</p>' : '<p class="sub">Add your ZIP code above to see your utility’s charger rebates and EV rates. The federal home charger credit ended June 30, 2026, so local programs are what’s left.</p>')+'</div>';
     // next steps
     var steps = [];
-    if (P.lvl!=='l1' && !(s.outlet==='1450' && !P.tight)) steps.push('Get two or three quotes from licensed electricians. Ask each for the load calculation and the wire and breaker size. <a href="'+K.viewHref('hinstall')+'">The install estimator</a> shows what a sane quote looks like.');
+    if (P.lvl!=='l1' && !(s.outlet==='1450' && !P.tight)) steps.push('Get two or three quotes from licensed electricians. Ask each for the load calculation and the wire and breaker size. <a href="'+K.viewHref('hinstall')+'">The install estimator</a> shows what a sane quote looks like, and <a href="'+K.viewHref('hquote')+'">Hiring an electrician</a> checks the one you get.');
     steps.push('Check your utility for a charger rebate before you buy, and whether it needs a particular charger or rate.');
     steps.push('Switch to a time-of-use or EV rate if your utility has one, and schedule charging after the peak. <a href="'+K.viewHref('hcharge')+'?veh='+esc(s.veh)+'">See what it saves</a>.');
     if (P.car.inlet!=='NACS') steps.push('Keep a NACS adapter in mind for road trips. <a href="'+K.viewHref('hadapt')+'">Check your car</a>.');
@@ -9333,12 +9583,183 @@ if (typeof document !== 'undefined') (function(){
     save(); renderGear();
   });
 
+  /* ================= Guide tools: apartments, road trips, quotes ================= */
+  function segRow(key, label, opts, cur){
+    return '<div class="swrow"><span>'+label+'</span><div class="seg" role="group" aria-label="'+esc(label)+'">'+opts.map(function(o){
+      return '<button type="button" data-q="'+key+'" data-v="'+o[0]+'" aria-pressed="'+(cur===o[0]?'true':'false')+'">'+o[1]+'</button>'; }).join('')+'</div></div>';
+  }
+  function rawSel(id, label, opts, cur, unit){
+    return '<label class="fld"><span class="fl">'+label+'</span><span class="fi"><select id="'+id+'">'+opts.map(function(p){
+      return p[0]==='__g' ? '<optgroup label="'+esc(p[1])+'">' : p[0]==='__/g' ? '</optgroup>' : '<option value="'+esc(p[0])+'"'+(String(p[0])===String(cur)?' selected':'')+'>'+esc(p[1])+'</option>'; }).join('')+'</select></span></label>';
+  }
+  function rawNum(id, label, val, unit, step, min){
+    return '<label class="fld"><span class="fl">'+label+'</span><span class="fi"><input type="number" inputmode="decimal" id="'+id+'" value="'+val+'" step="'+(step||'any')+'" min="'+(min||0)+'">'+(unit?'<span class="u">'+unit+'</span>':'')+'</span></label>';
+  }
+
+  /* ---------- Can I charge where I live? (feeds the state card and the letter below it) ---------- */
+  var walkDraw = null;
+  function initWalk(){
+    var qEl = el('hm-q'), rEl = el('hm-r'); if (!qEl || !rEl) return;
+    var A = {park:'mine', outlet:'unsure', miles:'mid'};
+    function pathOf(){ return A.park==='street' ? 'none' : A.park==='shared' ? 'shared' : (A.outlet==='yes' && A.miles!=='high') ? 'l1' : 'l2'; }
+    function draw(){
+      var Lw = S.l, owner = Lw.who==='owner', who = owner ? 'board' : 'landlord', st = Lw.st, nm = STNAME[st] || st;
+      qEl.innerHTML =
+        segRow('who', 'Do you rent or own?', [['renter','I rent'],['owner','I own, with an HOA or board']], Lw.who) +
+        segRow('park', 'Where do you park?', [['mine','My own assigned space'],['shared','Shared lot, first come'],['street','On the street']], A.park) +
+        segRow('outlet', 'Is there an outlet within a cord\u2019s reach of the space?', [['yes','Yes'],['no','No'],['unsure','Not sure']], A.outlet) +
+        segRow('miles', 'How far do you drive on a normal day?', [['low','Under 30 miles'],['mid','30 to 60'],['high','Over 60']], A.miles) +
+        '<div class="swrow"><span>Which state?</span><span class="fi hm-st"><select id="hm-state" aria-label="State">'+STATES.map(function(x){ return '<option value="'+x[0]+'"'+(x[0]===st?' selected':'')+'>'+esc(x[1])+'</option>'; }).join('')+'</select></span></div>';
+      el('hm-state').onchange = function(){ S.l.st = this.value; var sel = el('h-rtc-st'); if (sel){ sel.value = this.value; if (sel.onchange) sel.onchange(); else { save(); draw(); } } };
+      var path = pathOf();
+      var T = {
+        l1:{t:'Start with the outlet you already have', x:'A normal outlet adds roughly 40 miles overnight, which covers your driving'+(A.miles==='mid'?' on most days, with a top-up now and then':'')+'. It needs permission and a fair way to pay for the power, not an electrician. If it turns out to be too slow, you\u2019ve lost nothing and you\u2019ll know exactly what to ask for next.',
+          s:['Check the outlet is on its own circuit. If it trips with the car plugged in, it\u2019s shared.','Offer a flat monthly amount for electricity. At 30 miles a day it\u2019s about a dollar or two a night.','Use the cord that came with the car, plugged straight in. No extension cords.']},
+        l2:{t:'Ask for your own Level 2 at your space', x:(A.miles==='high'?'At your mileage a wall outlet won\u2019t keep up. ':A.outlet==='no'?'With no outlet nearby, something has to be wired either way, so wire the right thing. ':'Look for an outlet first. If there is one, try it before you spend anything. If there isn\u2019t, this is the route. ')+'A Level 2 charger on its own circuit fills the car overnight. You pay for it, a licensed electrician installs it, and the '+who+' approves where it goes.',
+          s:['Get one electrician to look at the route from the power source to your space before you ask. Distance is the price.','Decide how the electricity gets billed: your meter, a charger that reports its own use, or a flat fee.','Put the request in writing, with the quote attached.']},
+        shared:{t:'Push for shared chargers, not your own', x:'Without a space that\u2019s yours, a personal charger has nowhere to live. The realistic ask is a few shared Level 2 chargers that the building owns and residents pay to use. That\u2019s a decision for the '+who+', so your job is to make it an easy one.',
+          s:['Find the other EV drivers in the building, and the ones who\u2019d buy one if they could charge. Numbers move boards.','<a href="'+K.viewHref('hrebates')+'">Look up the rebates</a> for multifamily buildings in your ZIP. They change the math.','Until then, plan around work and public charging.']},
+        none:{t:'Plan around charging somewhere else', x:'Street parking means no plug you control. That\u2019s workable at '+(A.miles==='high'?'your mileage, but it will mean a fast charge two or three times a week':'your mileage with about one fast charge a week')+', or a Level 2 at work if you can get one.',
+          s:['Ask your employer about workplace charging before anything else.','Find the Level 2 chargers at places you already go. An hour here and there adds up.','Ask your city about curbside charging. Some have programs, and most have a waiting list.']}
+      }[path];
+      var L = rtcOf(st), renterLaw = L && L.renters && !/^Not/.test(L.renters), law;
+      if (path==='none') law = 'Right-to-charge laws cover parking you have a right to use, so they don\u2019t help with the street.';
+      else if (!L) law = '<strong>'+esc(nm)+'</strong> has no statewide right-to-charge law in the DOE database. It\u2019s a request, not a right, so the letter has to do the work. A complete request at your own cost still gets approved more often than you\u2019d think.';
+      else if (owner) law = '<strong>'+esc(nm)+'</strong> has a right-to-charge law covering '+esc(L.hoa.toLowerCase().replace(/\bhoa/g,'HOA'))+'. The board can set reasonable rules, but can\u2019t simply refuse.';
+      else if (renterLaw) law = '<strong>'+esc(nm)+'</strong> is one of the few states whose right-to-charge law covers renters. The landlord can set reasonable conditions, but can\u2019t simply refuse.';
+      else law = '<strong>'+esc(nm)+'</strong> has a right-to-charge law, but it protects owners in associations, not renters. You\u2019re asking, not telling, so the letter has to do the work.';
+      if (path==='shared' && L) law += ' It applies to a space you have exclusive use of, so it helps less with a shared lot.';
+      rEl.innerHTML = '<h4>'+T.t+'</h4><p>'+T.x+'</p><ul>'+T.s.map(function(x){ return '<li>'+x+'</li>'; }).join('')+'</ul><p class="swchk"><b>The law.</b> '+law+' <a href="#h-rt-law" data-hm-law>The details for '+esc(nm)+'</a>.</p>'+
+        (path==='none' ? '' : '<div class="ctl" style="margin-top:1rem"><button type="button" class="btn small" id="hm-go">Write the letter for this</button></div>');
+      var law2 = rEl.querySelector('[data-hm-law]'); if (law2) law2.onclick = function(e){ var t = el('h-rt-law'); if (t){ e.preventDefault(); t.scrollIntoView({behavior:REDUCED?'auto':'smooth', block:'start'}); } };
+      var go = el('hm-go'); if (go) go.onclick = function(){
+        S.l.plan = path; S.l.to = owner ? 'board' : 'landlord'; save(); renderLIn(); renderL();
+        var t = el('h-rt-letter'); if (t) t.scrollIntoView({behavior:REDUCED?'auto':'smooth', block:'start'});
+      };
+    }
+    qEl.onclick = function(e){
+      var b = e.target.closest ? e.target.closest('button[data-q]') : null; if (!b) return;
+      var k = b.getAttribute('data-q'), v = b.getAttribute('data-v');
+      if (k==='who'){ S.l.who = v; S.l.to = v==='owner' ? 'board' : 'landlord'; save(); renderLIn(); renderL(); } else { A[k] = v; draw(); }
+    };
+    walkDraw = draw; draw();
+  }
+
+  /* ---------- Road trip stop planner ---------- */
+  function fastFrac(soc){ return soc<=0.4 ? 1 : soc<=0.8 ? 1-(soc-0.4)/0.4*0.65 : Math.max(0.06, 0.35-(soc-0.8)/0.2*0.27); }
+  function fastMin(from, to, kwh, kw){
+    if (!(to>from) || !(kw>0)) return 0;
+    var n = 200, d = (to-from)/n, h = 0;
+    for (var i=0;i<n;i++){ h += d*kwh/(kw*fastFrac(from+(i+0.5)*d)); }
+    return h*60;
+  }
+  function initRoad(){
+    var inEl = el('hr-in'), out = el('hr-out'), capEl = el('hr-cap'); if (!inEl || !out) return;
+    var COND = {mild:[0.9,65,'65 mph, mild weather'], fast:[0.8,75,'75 mph, mild weather'], cold:[0.62,75,'75 mph, freezing']};
+    var v0 = hgById(HG.vehicles||[], S.c.veh) || (HG.vehicles||[])[0] || {id:'x', model:'EV', kwh:75, eff:3.6};
+    var R = {veh:v0.id, kwh:v0.kwh, eff:v0.eff, miles:500, cond:'fast', peak:150, price:(P_().dcfc||{}).price || 0.54};
+    function drawIn(){
+      inEl.innerHTML = rawSel('hr-veh', 'Car', vehOpts().filter(function(o){ return o[0]!=='custom'; }), R.veh) +
+        rawNum('hr-miles', 'Trip, one way', R.miles, 'miles', 10, 10) +
+        rawNum('hr-kwh', 'Battery', R.kwh, 'kWh', 1, 10) +
+        rawNum('hr-eff', 'Efficiency, everyday', R.eff, 'mi/kWh', 0.1, 1) +
+        rawSel('hr-cond', 'Conditions', Object.keys(COND).map(function(k){ return [k, COND[k][2]]; }), R.cond) +
+        rawNum('hr-peak', 'Fastest your car charges', R.peak, 'kW', 10, 20) +
+        rawNum('hr-price', 'Fast charging price', R.price, '$/kWh', 0.01, 0);
+      el('hr-veh').onchange = function(){ var v = hgById(HG.vehicles||[], this.value); if (v){ R.veh = v.id; R.kwh = v.kwh; R.eff = v.eff; drawIn(); draw(); } };
+      ['miles','kwh','eff','peak','price'].forEach(function(k){ el('hr-'+k).oninput = function(){ R[k] = Number(this.value)||0; draw(); }; });
+      el('hr-cond').onchange = function(){ R.cond = this.value; draw(); };
+    }
+    function runPlan(top){
+      var c = COND[R.cond], effH = R.eff*c[0], per = R.kwh*effH;                 /* highway miles on a full battery */
+      var first = 0.9*per, leg = (top-0.1)*per, segs = [], kwhAdd = 0, chg = 0, stops = 0;
+      var left = R.miles;
+      if (!(per>0) || !(leg>0)) return null;
+      var d = Math.min(left, first); segs.push(['d', d/c[1]*60]); left -= d;
+      while (left>0.5 && stops<40){
+        var go = Math.min(left, leg), to = 0.1 + go/per, m = fastMin(0.1, to, R.kwh, R.peak) + 5;
+        stops++; chg += m; kwhAdd += (to-0.1)*R.kwh; segs.push(['c', m]); segs.push(['d', go/c[1]*60]); left -= go;
+      }
+      var drive = R.miles/c[1]*60;
+      return {top:top, stops:stops, chg:chg, drive:drive, total:drive+chg, cost:kwhAdd/0.95*R.price, segs:segs, leg:leg, first:first, full:fastMin(0.1, top, R.kwh, R.peak)};
+    }
+    function hm(min){ var h = Math.floor(min/60), m = Math.round(min-h*60); if (m===60){ h++; m = 0; } return (h?h+' h ':'')+m+' min'; }
+    function draw(){
+      var a = runPlan(0.8), b = runPlan(1.0);
+      if (!a || !b || !(R.miles>0)){ out.innerHTML = ''; capEl.textContent = 'Enter a trip and a car.'; return; }
+      var mx = Math.max(a.total, b.total);
+      out.innerHTML = [a,b].map(function(p){
+        var best = p.total<=Math.min(a.total,b.total)+0.01;
+        return '<div class="hr-card'+(best && a.stops+b.stops>0?' best':'')+'"><b class="nm">Charge to '+Math.round(p.top*100)+'% at each stop</b>'+
+          '<span class="big tw">'+hm(p.total)+'</span><small>door to door</small>'+
+          '<div class="hr-tl" style="width:'+(p.total/mx*100).toFixed(1)+'%" role="img" aria-label="Driving and charging time">'+p.segs.map(function(s){ return '<i class="'+s[0]+'" style="flex:'+s[1].toFixed(1)+'"></i>'; }).join('')+'</div>'+
+          '<span class="row"><span>Stops</span><b class="tw">'+p.stops+'</b></span>'+
+          '<span class="row"><span>Time at chargers</span><b class="tw">'+(p.stops?hm(p.chg):'None')+'</b></span>'+
+          '<span class="row"><span>A full stop, 10% to '+Math.round(p.top*100)+'%</span><b class="tw">'+hm(p.full+5)+'</b></span>'+
+          '<span class="row"><span>Fast charging cost</span><b class="tw">'+money(p.cost,0)+'</b></span></div>';
+      }).join('');
+      var v = hgById(HG.vehicles||[], R.veh) || {model:'car'}, cap;
+      if (a.stops===0) cap = 'You make it on the charge you left home with, arriving with 10% or more. Find a plug at the other end and this is a free trip. That first full battery is worth about <strong>'+num(Math.round(a.first/5)*5)+' miles</strong> at these speeds.';
+      else {
+        var diff = b.total - a.total;
+        cap = 'Leaving home full, the '+esc(v.model)+' goes about <strong>'+num(Math.round(a.first/5)*5)+' miles</strong> before the first stop, then about '+num(Math.round(a.leg/5)*5)+' miles per stop charging to 80%. ';
+        cap += diff>1 ? 'Charging to 100% '+(b.stops<a.stops?'saves '+(a.stops-b.stops)+(a.stops-b.stops===1?' stop':' stops')+' and still ':'')+'costs you <strong>'+hm(diff)+'</strong> more. The last 20% is where the time goes.' :
+          diff<-1 ? 'On this trip charging to 100% comes out <strong>'+hm(-diff)+'</strong> ahead, because it saves '+(a.stops-b.stops)+(a.stops-b.stops===1?' stop':' stops')+' and the last stop is a short one. That\u2019s unusual. Change the distance a little and it flips.' :
+          'On this trip the two come out about even.';
+        var g = hgById(HG.gasCars||[], v.twin);
+        if (g && g.tank){ var gp = gasPriceFor(S.c, g) || S.c.gas, gs = Math.max(0, Math.ceil(R.miles/(g.tank*g.mpg*0.9))-1);
+          cap += ' A '+esc(g.name)+' would do it on '+money(R.miles/g.mpg*gp,0)+' of gas with '+(gs===0?'no stops for fuel':gs+(gs===1?' fuel stop':' fuel stops'))+', and then stop anyway.'; }
+      }
+      capEl.innerHTML = cap;
+    }
+    drawIn(); draw();
+  }
+
+  /* ---------- Check your quote ---------- */
+  function initQuote(){
+    var inEl = el('hq-in'), qEl = el('hq-q'), rEl = el('hq-r'); if (!inEl || !qEl || !rEl) return;
+    var NEED = {16:20, 24:30, 32:40, 40:50, 48:60};
+    var Q = [['lic','License number and proof of insurance'],['permit','Permit and inspection included'],['load','A load calculation, or a line about panel capacity'],['wire','Wire size and type'],
+      ['route','The route: distance, conduit, any trenching or patching'],['items','Labor, materials and permit as separate lines'],['fixed','A fixed price, and what would change it'],['warr','A workmanship warranty'],['pay','Final payment after inspection']];
+    var ASK = {lic:'Their license number and a certificate of insurance.', permit:'Who pulls the permit, what it costs, and that the price includes the inspection.', load:'The load calculation, or their reason the panel has room.', wire:'The wire gauge, and whether it\u2019s copper or aluminum.',
+      route:'How the wire gets from the panel to the charger, and who patches what.', items:'A breakdown, so you can compare it with the other quotes.', fixed:'Whether this is a fixed price or an estimate, and what triggers a change.', warr:'How long they stand behind the work. A year is normal.', pay:'Payment terms that hold the last payment until it passes inspection.'};
+      var A = {conn:'hard', amps:48, brk:'?'}; Q.forEach(function(q){ A[q[0]] = 'u'; });
+    inEl.innerHTML = rawSel('hq-conn', 'How it connects', [['hard','Hardwired'],['plug','Plugs into a 240-volt outlet']], A.conn) +
+      rawSel('hq-amps', 'Charger set to', [16,24,32,40,48].map(function(a){ return [a, a+' amps']; }), A.amps) +
+      rawSel('hq-brk', 'Breaker on the quote', [['?','Doesn\u2019t say']].concat([20,30,40,50,60,70,80,100].map(function(a){ return [a, a+' amps']; })), A.brk);
+    qEl.innerHTML = '<p class="fh" style="margin:.8rem 0 0">Does the quote say it, in writing?</p>'+Q.map(function(q){ return segRow(q[0], q[1], [['y','Yes'],['n','No'],['u','Doesn\u2019t say']], A[q[0]]); }).join('');
+    function draw(){
+      [].forEach.call(qEl.querySelectorAll('button[data-q]'), function(b){ b.setAttribute('aria-pressed', A[b.getAttribute('data-q')]===b.getAttribute('data-v') ? 'true' : 'false'); });
+      var amps = Number(A.amps), need = NEED[amps], brk = A.brk==='?' ? null : Number(A.brk), bad = [], notes = [];
+      if (A.conn==='plug' && amps>40) bad.push('A plug-in charger tops out at 40 amps. At 48 it has to be hardwired, or set down.');
+      if (brk===null) notes.push('The quote doesn\u2019t give a breaker size. For '+amps+' amps of charging it should be <strong>'+need+' amps</strong>.');
+      else if (brk<need) bad.push('A '+brk+'-amp breaker can\u2019t carry a charger set to '+amps+' amps. It needs '+need+', or the charger has to be set down to '+Math.floor(brk*0.8)+' amps.');
+      else if (brk>need) notes.push('A '+brk+'-amp breaker is larger than '+amps+' amps of charging needs. That\u2019s fine if the wire is sized for '+brk+' amps, and it leaves room to turn the charger up later.');
+      else notes.push('A '+brk+'-amp breaker is the right size for '+amps+' amps of charging.');
+      if (A.conn==='plug') notes.push('Plug-in installs need a GFCI breaker and an industrial-grade receptacle. Make sure both are named on the quote.');
+      var miss = Q.filter(function(q){ return A[q[0]]!=='y'; }), nope = Q.filter(function(q){ return A[q[0]]==='n'; }).length;
+      var t, x;
+      if (A.permit==='n'){ t = 'Don\u2019t sign this one'; x = 'No permit means no inspection, a harder insurance claim if anything ever goes wrong, and usually no rebate. An electrician who skips it is telling you how they treat the parts you can\u2019t see.'; }
+      else if (bad.length){ t = 'Something doesn\u2019t add up'; x = 'The electrical details on this quote don\u2019t fit together. It may be a typo. Ask before anything gets wired.'; }
+      else if (miss.length<=1){ t = 'This is a proper quote'; x = 'It commits to the things that matter. Now compare the price with the other two, and with the install estimator.'; }
+      else if (miss.length<=4){ t = 'Decent, with gaps'; x = 'Most of it is there. Get the rest added to the quote itself before you sign. A good electrician won\u2019t mind, and the answer is often \u201cyes, that\u2019s included.\u201d'; }
+      else { t = 'This is a price, not a quote'; x = 'There isn\u2019t enough on paper to hold anyone to anything'+(nope?'':'. That doesn\u2019t make it a bad electrician. It makes it a quote you can\u2019t compare')+'. Send the list below and see what comes back.'; }
+      rEl.innerHTML = '<h4>'+t+'</h4><p>'+x+'</p>'+
+        (bad.length ? '<p class="swchk"><b>Fix first.</b> '+bad.join(' ')+'</p>' : '')+
+        (miss.length ? '<p style="margin-top:.8rem"><b>Ask for these in writing:</b></p><ul>'+miss.map(function(q){ return '<li>'+ASK[q[0]]+'</li>'; }).join('')+'</ul>' : '')+
+        '<p class="hq-notes">'+notes.join(' ')+'</p>';
+    }
+    qEl.onclick = function(e){ var b = e.target.closest ? e.target.closest('button[data-q]') : null; if (!b) return; A[b.getAttribute('data-q')] = b.getAttribute('data-v'); draw(); };
+    [['hq-conn','conn'],['hq-amps','amps'],['hq-brk','brk']].forEach(function(p){ el(p[0]).onchange = function(){ A[p[1]] = this.value; draw(); }; });
+    draw();
+  }
+
   /* ================= Side switch, next links, routing ================= */
-  var HLEARN = [['hbasics','Charging at home'],['hcost','What it costs'],['hbattery','Home batteries'],['hvtoh','Your car as a battery']];
+  var HLEARN = [['hbasics','Charging at home'],['hcost','What it costs'],['hbattery','Home batteries'],['hvtoh','Your car as a battery'],['hrent','Apartments, condos and HOAs'],['hroad','Charging on the road'],['hquote','Hiring an electrician']];
   HLEARN.forEach(function(p, i){
     var sec = el('view-'+p[0]); if (!sec || sec.querySelector('.nextpage')) return;
     var nx = HLEARN[i+1], d = document.createElement('div'); d.className = 'nextpage';
-    var tool = {hbasics:['hinstall','Price your install'], hcost:['hcharge','Run your charging numbers'], hbattery:['hbackup','Size a backup battery'], hvtoh:['hvcompare','Compare a car with a battery']}[p[0]];
+    var tool = {hbasics:['hinstall','Price your install'], hcost:['hcharge','Run your charging numbers'], hbattery:['hbackup','Size a backup battery'], hvtoh:['hvcompare','Compare a car with a battery'], hrent:['hrebates','Look up rebates by ZIP'], hroad:['hadapt','Find your adapter'], hquote:['hinstall','Price your install']}[p[0]];
     d.innerHTML = '<a href="'+K.viewHref(tool[0])+'"><small>Try it</small><b>'+tool[1]+'</b></a>' + (nx ? '<a class="hnext2" href="'+K.viewHref(nx[0])+'"><small>Next</small><b>'+nx[1]+'</b></a>' : '');
     sec.appendChild(d);
   });
@@ -9373,6 +9794,9 @@ if (typeof document !== 'undefined') (function(){
       if (view==='hcost'){ initTou(); initEgal(); }
       if (view==='hbattery') initTap();
       if (view==='hvtoh') initDays();
+      if (view==='hrent') initWalk();
+      if (view==='hroad') initRoad();
+      if (view==='hquote') initQuote();
     }
   }
   window.CSHOME = {route:onRoute};

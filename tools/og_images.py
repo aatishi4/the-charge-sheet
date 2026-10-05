@@ -53,6 +53,8 @@ HOME_CARDS = {
     'home/home-battery-backup-calculator': ('Free home tool', 'How much battery does your outage need?'),
     'home/v2h-vs-home-battery': ('Free home tool', 'Can your EV replace a home battery?'),
     'home/home-ev-chargers-batteries': ('Home gear', 'Chargers, batteries, and every EV that can send power back.'),
+    'home/ev-road-trip-charging': ('Home guide', 'Arrive low, leave at 80%, hang up the cable.'),
+    'home/hiring-electrician-ev-charger': ('Home guide', 'Is that a quote, or just a price?'),
     'home/start': ('Start here', 'What home charging do you actually need?'),
     'home/ev-charger-rebates': ('Free home tool', 'The charger rebates your utility doesn\u2019t advertise.'),
     'home/ev-charging-adapter-finder': ('Free home tool', 'Which adapter does your EV actually need?'),

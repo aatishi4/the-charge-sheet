@@ -34,7 +34,7 @@ No sign-up, no sales pitch, no tracking cookies. Open source.
 
 A second side of the site, switched in the header between **Business** and **Home**, for people charging at home:
 
-- Four guides: charging at home (Level 1 and 2, plug-in or hardwired, cord or wall box), what it costs (time of use and EV rates), home batteries, and V2L, V2H and V2G.
+- Seven guides: charging at home (Level 1 and 2, plug-in or hardwired, cord or wall box), what it costs (time of use and EV rates), home batteries, V2L, V2H and V2G, apartments, condos and HOAs (right-to-charge laws, a walkthrough and a letter), charging on the road (with a stop planner), and hiring an electrician (with a quote checker).
 - Four tools: a home charging cost and schedule calculator with a ZIP code utility rate lookup, a home install estimator with an NEC 220.83 panel load check and a pro mode, a backup battery sizer, and a V2H versus home battery comparison.
 - A gear page of home chargers, home batteries and bidirectional EVs, from `data/home-gear.json`.
 
