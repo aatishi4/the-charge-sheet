@@ -12,7 +12,7 @@ None of that knowledge was secret. It was just scattered: across vendor brochure
 
 ## What this site is
 
-The Charge Sheet is the thing I wanted on day one, for both sides of the plug. Guides and free tools for charging at home, and for charging as a business: what happens between the car and the charger, what it costs in a garage or across a 20-stall site, and how to get it right. Every assumption is visible, and the benchmark data comes from real sites, not forecasts.
+The Charge Sheet is the thing I wanted on day one, for both sides of the plug. Guides and free tools for charging at home, and for charging as a business: what happens between the car and the charger, what it costs in a garage or across a 20-stall site, and how to get it right. Every assumption is visible.
 
 And yes, the home side is personal. I run a Tesla Wall Connector on its own circuit, with a NEMA outlet as backup. I have opinions about both.
 
