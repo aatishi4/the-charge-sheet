@@ -20,10 +20,10 @@ function json(body, status) {
 
 function originOk(request) {
   const o = request.headers.get('origin');
-  if (!o) return true;
+  if (!o) return false; // browsers always send Origin on a POST from the page
   try {
     const h = new URL(o).hostname;
-    return h === 'chargesheet.io' || h.endsWith('.chargesheet.io') || h.endsWith('.pages.dev') || h === 'localhost';
+    return h === 'chargesheet.io' || h.endsWith('.chargesheet.io') || h === 'the-charge-sheet.pages.dev' || h.endsWith('.the-charge-sheet.pages.dev') || h === 'localhost';
   } catch (e) { return false; }
 }
 

@@ -7129,7 +7129,7 @@ if (typeof document !== 'undefined') (function(){
     }
     if (keys.length) h += '<div class="remail" id="r-email" hidden></div>';
     el.innerHTML = h;
-    mountReportEmail();
+    if (keys.length) mountReportEmail();  // an empty report has nothing to send, so don't ask
     var nm = document.getElementById('r-name');
     if (nm) nm.oninput = function(){ R.name = nm.value.trim(); saveReport(); var b = el.querySelector('.rprint b'); if (b) b.textContent = R.name || 'Charging site'; };
     Array.prototype.forEach.call(el.querySelectorAll('[data-rdel]'), function(b){ b.onclick = function(){ delete R.items[b.getAttribute('data-rdel')]; saveReport(); renderReportBar('report'); renderReport(); }; });
