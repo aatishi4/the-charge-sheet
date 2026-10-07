@@ -619,6 +619,7 @@ def product_desc(p):
 
 V2H_LABEL = {'yes': 'Can run a house today', 'legacy': 'Discontinued, existing owners only',
              'announced': 'Announced, not shipping', 'no': 'No V2H in the US'}
+GEAR_NEEDS = {'powerwall-3': 'Tesla Powerwall 3'}  # vehicles whose V2H only works through a home battery (v2hNeeds)
 
 
 def usd(v):
@@ -653,7 +654,7 @@ def gear_meta(kind, x):
         title = fit60('%s: Can It Power a House? V2H and V2L' % name, '%s: V2H and V2L' % name, name)
         v2l = ('%s kW from its outlets' % x['v2l']) if x.get('v2l') else 'no factory outlets'
         d = '%s (%s): %s, %s. About %s kWh battery, %s kW onboard charger.' % (
-            name, x.get('years', ''), {'yes': 'can run a house today', 'legacy': 'V2H discontinued, existing owners only', 'announced': 'V2H announced, not shipping', 'no': 'no V2H in the US'}.get(x.get('v2h'), 'V2H unknown'), v2l, x.get('kwh', ''), x.get('obc', ''))
+            name, x.get('years', ''), {'yes': 'can run a house today', 'legacy': 'V2H discontinued, existing owners only', 'announced': 'V2H announced, not shipping', 'no': 'no V2H in the US'}.get(x.get('v2h'), 'V2H unknown') if not (x.get('v2h') == 'yes' and x.get('v2hNeeds')) else 'can run a house through a %s' % GEAR_NEEDS.get(x['v2hNeeds'], 'home battery'), v2l, x.get('kwh', ''), x.get('obc', ''))
     elif kind == 'panel':
         name = brand_name(x['oem'], x['model'])
         title = fit60('%s: %s for a Full Panel' % (name, x.get('kind', 'Load manager').capitalize()), '%s: Price and Specs' % name, name)
@@ -709,7 +710,8 @@ def gear_detail_html(kind, x, name):
         rows = [('Years', x.get('years', '')), ('Battery', 'About %s kWh' % x.get('kwh', '')), ('Onboard charger', '%s kW AC' % x.get('obc', '')),
                 ('Efficiency', 'About %s miles per kWh' % x.get('eff', '')),
                 ('V2L', ('%s kW' % x['v2l'] + ('. ' + x['v2lNote'] if x.get('v2lNote') else '')) if x.get('v2l') else 'None from the factory'),
-                ('V2H', V2H_LABEL.get(x.get('v2h'), '') + (', up to %s kW' % x['v2hKw'] if x.get('v2hKw') else '')),
+                ('V2H', V2H_LABEL.get(x.get('v2h'), '') + (', up to %s kW' % x['v2hKw'] if x.get('v2hKw') else '') + ('. Applies to %s' % x['v2hScope'] if x.get('v2hScope') else '')),
+                ('Also needs', '%s. No V2H without it' % GEAR_NEEDS.get(x['v2hNeeds'], x['v2hNeeds']) if x.get('v2hNeeds') else ''),
                 ('Type', x.get('dc', '')), ('V2G', x.get('v2g', '')), ('Export floor', ('%s%%' % x['floor']) if x.get('floor') else '')]
     table = ''.join('<tr><th>%s</th><td>%s</td></tr>' % (esc(a), esc(str(b))) for a, b in rows if b)
     maker = x.get('make') if kind == 'vehicles' else x.get('oem')

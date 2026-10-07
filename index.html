@@ -3764,13 +3764,14 @@ html.wlock,html.wlock body{overflow:hidden}
       <li><strong>DC bidirectional.</strong> The wall unit does the conversion, like a battery inverter, and talks to the car over the fast-charging plug. Wallbox's Quasar 2 and dcbel's Ara work this way.</li>
       <li><strong>Either way you need an isolation device.</strong> A transfer switch, a backup gateway, or a home hub that opens the connection to the grid. It's the same safety job a home battery's gateway does.</li>
     </ul>
-    <p>All-in, installed, figure on $5,000 to $15,000 depending on the car, the house, and how much of the panel has to change. That's before the car, which you were buying anyway.</p>
+    <p>All-in, installed, figure on $5,000 to $15,000 depending on the car, the house, and how much of the panel has to change. That's before the car, which you were buying anyway. The exception is a Tesla Model 3 or Model Y in a house that already has a Powerwall 3: the Powerwall does the isolating, so the only thing left to buy is a wall connector.</p>
 
     <h2 id="h-v-who">Which cars can do it today</h2>
-    <p>As of September 2026, in the US:</p>
+    <p>As of October 2026, in the US:</p>
     <ul>
       <li><strong>GM's Ultium cars</strong>: Silverado EV, Sierra EV, Equinox EV, Blazer EV, Lyriq, Escalade IQ, Hummer EV and others, with GM Energy's V2H bundle, about $9,000 before installation. Eligibility varies by trim and year, so use GM's checker.</li>
-      <li><strong>Tesla Cybertruck</strong>, with the Powershare Gateway and Universal Wall Connector, up to 11.5 kW. Not the Model 3 or Model Y, whatever you read elsewhere.</li>
+      <li><strong>Tesla Cybertruck</strong>, with the Powershare Gateway and Universal Wall Connector, up to 11.5 kW.</li>
+      <li><strong>Tesla Model 3 and Model Y</strong>, as of October 2026, with two strings attached. The car has to be one ordered on October 1, 2026 or later (some built earlier qualify; the touchscreen will tell you under Software, Additional Vehicle Information). And the house has to have a Powerwall 3 and a Tesla Wall Connector. No Powerwall, no V2H. Not the Model S or Model X.</li>
       <li><strong>Kia EV9</strong>, with Wallbox's Quasar 2 and Power Recovery Unit, in a handful of states. The car stops exporting at 20%.</li>
       <li><strong>Volvo EX90 (2025), Polestar 3 and the older Nissan Leaf</strong>, through dcbel's Ara, mainly in California so far.</li>
       <li><strong>Ford F-150 Lightning</strong>: the original V2H setup, Charge Station Pro plus Home Integration System, was discontinued in 2026. Existing owners are supported. New ones are pointed to a manual transfer switch on the truck's outlets.</li>
@@ -3790,7 +3791,7 @@ html.wlock,html.wlock body{overflow:hidden}
       <div class="hcon"><h3>Against</h3><ul>
         <li>The car has to be home. Outages don't check your calendar.</li>
         <li>Most setups are backup only. A home battery also saves money every day on time of use; most US V2H doesn't do daily cycling yet.</li>
-        <li>The hardware works with one brand, sometimes one model.</li>
+        <li>The hardware works with one brand, sometimes one model. Tesla's Model 3 and Model Y only do it through Tesla's own home battery.</li>
         <li>Some carmakers set a minimum charge or limit export, and warranty language on extra cycling varies. Read yours.</li>
         <li>Availability is patchy by state, and one early system has already been discontinued.</li>
       </ul></div>
@@ -4118,10 +4119,10 @@ html.wlock,html.wlock body{overflow:hidden}
   </div>
   <article class="prose">
     <h2 id="h-vc-how">How it works</h2>
-    <p>The car's usable backup is its battery size minus the share you keep for driving, or the carmaker's floor if that's higher. The battery's is its rated capacity less a 5% reserve. Days of backup divide each by what the house uses in a day during an outage. Power is the most either can deliver at once. Cost is the V2H hardware plus typical installation for the car, and the installed price for the battery.</p>
+    <p>The car's usable backup is its battery size minus the share you keep for driving, or the carmaker's floor if that's higher. The battery's is its rated capacity less a 5% reserve. Days of backup divide each by what the house uses in a day during an outage. Power is the most either can deliver at once. Cost is the V2H hardware plus typical installation for the car, and the installed price for the battery. A Tesla Model 3 or Model Y only backs up a house through a Powerwall 3, so for those the car's column is the car and one Powerwall together.</p>
     <p>Battery sizes for cars are approximate, because most carmakers don't publish usable capacity. V2H availability changes fast: check the carmaker's own eligibility page before you buy anything.</p>
     <h3>Questions people ask</h3>
-    <p><strong>Can my car power my house?</strong> Only if the car, the charger and the hardware that disconnects the house from the grid all support it. Most EVs sold in the US can't yet. <a href="#hgear">The gear page</a> lists the ones that can, and the ones that only do V2L.</p>
+    <p><strong>Can my car power my house?</strong> Only if the car, the charger and the hardware that disconnects the house from the grid all support it. Plenty of EVs sold in the US still can't, and some that can need a particular home battery. <a href="#hgear">The gear page</a> lists the ones that can, and the ones that only do V2L.</p>
     <p><strong>What if I need to drive during the outage?</strong> You unplug and go, with whatever you kept in reserve. That's the trade: the house goes dark while the car is gone, unless there's a battery or a generator too. It's why the tool asks how much to keep for driving.</p>
     <p><strong>Is V2H cheaper than a home battery?</strong> Not always. The bidirectional charger, the transfer hardware and the electrician can add up to about what a battery costs. What you get for the money is several times the capacity, because the battery is already parked in the garage. The tool puts both prices side by side.</p>
     <p><strong>Does it wear out the car's battery?</strong> Backing up the house through a few outages a year is a handful of cycles, which is noise next to driving. Using the car as a daily home battery is different. Read the warranty first: some carmakers limit what they cover when the car powers a home.</p>
@@ -8918,8 +8919,10 @@ if (typeof document !== 'undefined') (function(){
     if (!v || !b){ out.innerHTML = '<p class="empty">Loading the vehicle list...</p>'; return; }
     var units = Math.max(1, Math.round(Number(V.units)||1)), load = Math.max(1, Number(V.load)||20), peak = Number(V.peak)||0;
     var floor = Math.max(Number(V.reserve)||0, v.floor||0);
-    var carKwh = v2hUsable(v, Number(V.reserve)||0), carKw = v.v2hKw || 0;
-    var carCost = (v.v2hCost||0) + (v.v2hInstall||0);
+    var carOnly = v2hUsable(v, Number(V.reserve)||0), carKwh = carOnly, carKw = v.v2hKw || 0;
+    var addCost = (v.v2hCost||0) + (v.v2hInstall||0), carCost = addCost;
+    var need = v.v2hNeeds ? hgById(HG.batteries||[], v.v2hNeeds) : null; // cars that only back up a house through a home battery
+    if (need){ carKwh += need.kwh*0.95; carCost += need.price; }
     var bKwh = b.kwh*units*0.95, bKw = b.kw*units, bCost = b.price + (units-1)*b.addPrice;
     var carDays = carKw ? carKwh/load : 0, bDays = bKwh/load;
     var can = v.v2h==='yes' || v.v2h==='legacy';
@@ -8929,7 +8932,7 @@ if (typeof document !== 'undefined') (function(){
       return '<div class="hvrow"><span class="l">'+label+'</span><span class="c"><span class="t"><b class="car" style="width:'+(a/m*100).toFixed(1)+'%"></b></span><span class="tw">'+fmt(a)+'</span></span><span class="c"><span class="t"><b class="bat" style="width:'+(b2/m*100).toFixed(1)+'%"></b></span><span class="tw">'+fmt(b2)+'</span></span></div>';
     }
     var h = '<div class="hvhead"><div class="car">'+(v.img?'<img class="hvthumb'+(v.imgFit==='photo'?'':' cut')+'" src="'+thumbSrc(v)+'" alt="" loading="lazy"'+fullBack(v)+'>':'')+'<small>'+esc(v.make)+'</small><b>'+esc(v.model)+'</b><span class="chip '+(v.v2h==='yes'?'g3':v.v2h==='legacy'?'g1':'gn')+'">'+V2H_LABEL[v.v2h]+'</span></div><div class="vs">vs</div><div class="bat">'+(b.img?'<img class="hvthumb'+(b.imgFit==='photo'?'':' cut')+'" src="'+imgSrc(b)+'" alt="" loading="lazy">':'')+'<small>'+esc(b.oem)+'</small><b>'+(units>1?units+' × ':'')+esc(b.model)+'</b><span class="chip g2">Home battery</span></div></div>';
-    h += '<div class="hvrows"><div class="hvrow hvcols"><span class="l"></span><span class="c">Car</span><span class="c">Battery</span></div>'+
+    h += '<div class="hvrows"><div class="hvrow hvcols"><span class="l"></span><span class="c">'+(need?'Car + '+esc(need.model):'Car')+'</span><span class="c">Battery</span></div>'+
       row('Energy for the house', can?carKwh:0, bKwh, function(x){ return Math.round(x)+' kWh'; }) +
       row('Days of backup at '+load+' kWh a day', can?carDays:0, bDays, function(x){ return x>=10 ? Math.round(x)+' days' : x.toFixed(1)+' days'; }) +
       row('Power at once', carKw, bKw, function(x){ return x ? x.toFixed(1)+' kW' : 'none'; }) +
@@ -8937,7 +8940,11 @@ if (typeof document !== 'undefined') (function(){
       row('Cost per kWh of backup', can && carKwh ? carCost/carKwh : 0, bCost/bKwh, function(x){ return x ? money(x,0) : 'n/a'; }) + '</div>';
     var v1;
     if (!can) v1 = esc(v.make+' '+v.model)+' can’t run a house in the US today'+(v.v2h==='announced'?', though it has been announced':'')+'. '+(v.v2l?'Its '+v.v2l+' kW outlets can run a fridge and some lights on extension cords, which is V2L, not V2H.':'');
-    else {
+    else if (need){
+      v1 = 'The '+esc(v.model)+' can’t back up a house on its own. It only works through a '+esc(need.oem+' '+need.model)+', so the car’s column is the car and one '+esc(need.model)+' together. '+
+        'Keeping '+floor+'% for driving, the car adds <strong>'+Math.round(carOnly)+' kWh</strong> to the battery’s '+Math.round(need.kwh*0.95)+'. '+
+        'If the '+esc(need.model)+' is already on the wall, the car costs about <strong>'+money(addCost)+'</strong> to add. If it isn’t, you’re buying the battery either way.';
+    } else {
       v1 = 'Keeping '+floor+'% for driving, the '+esc(v.model)+' holds <strong>'+Math.round(carKwh)+' kWh</strong> for the house, '+(carKwh>bKwh ? '<strong>'+(carKwh/bKwh).toFixed(1)+' times</strong> the battery’s' : 'less than the battery’s')+'. ';
       v1 += carCost < bCost ? 'It also costs less to set up, because the expensive part is already in the garage.' : 'The battery costs less to set up here.';
     }
@@ -8948,18 +8955,20 @@ if (typeof document !== 'undefined') (function(){
     if (v.note) h += '<p class="fh">'+esc(v.note)+'</p>';
     var pros = [], cons = [];
     if (can){
-      pros.push(Math.round(carKwh)+' kWh available, without buying a battery.');
+      pros.push(need ? Math.round(carOnly)+' kWh on top of the battery, for the price of a wall connector.' : Math.round(carKwh)+' kWh available, without buying a battery.');
       if (v.seamless) pros.push('Switches over automatically when the grid drops, with the right hardware.');
       if (v.v2g) pros.push('V2G: '+esc(v.v2g)+'.');
       cons.push('Only works when the car is home and plugged in.');
       cons.push('Backup only, in most US setups today. No daily time-of-use savings.');
       if (v.v2h==='legacy') cons.push('The home hardware is discontinued. Existing owners only.');
+      if (need) cons.push('Needs a '+esc(need.oem+' '+need.model)+'. No '+esc(need.model)+', no V2H.');
+      if (v.v2hScope) cons.push('Not every car qualifies: '+esc(v.v2hScope)+'.');
       if (v.floor) cons.push('Stops at '+v.floor+'% charge.');
     }
     pros.push('Battery: always home, cycles every day on time of use, and pays into grid programs where they exist.');
     cons.push('Battery: '+Math.round(bKwh)+' kWh is less than most cars carry, and '+moneyK(bCost)+' is a lot of insurance.');
     h += '<div class="hpcgrid"><div class="hpro"><h3>For</h3><ul>'+pros.map(function(p){ return '<li>'+p+'</li>'; }).join('')+'</ul></div><div class="hcon"><h3>Against</h3><ul>'+cons.map(function(p){ return '<li>'+p+'</li>'; }).join('')+'</ul></div></div>';
-    if (can) h += '<p class="fh" style="margin-top:1rem">Hardware: '+esc((hgById(HG.chargers||[], v.v2hHw)||{}).model||'')+', about '+money(v.v2hCost||0)+' plus a typical '+money(v.v2hInstall||0)+' to install. Houses vary a lot.</p>';
+    if (can) h += '<p class="fh" style="margin-top:1rem">Hardware: '+(need?esc(need.oem+' '+need.model)+', about '+money(need.price)+' installed, plus a ':'')+esc((hgById(HG.chargers||[], v.v2hHw)||{}).model||'')+', about '+money(v.v2hCost||0)+' plus a typical '+money(v.v2hInstall||0)+' to install. Houses vary a lot.</p>';
     out.innerHTML = h; K.polish(out);
   }
 
@@ -9051,7 +9060,7 @@ if (typeof document !== 'undefined') (function(){
     } else {
       ic = vIcon(x);
       rows = [['Years', x.years], ['Battery', 'About '+x.kwh+' kWh'], ['Onboard charger', x.obc+' kW AC'], ['Efficiency', 'About '+x.eff+' miles per kWh'], ['V2L', x.v2l?x.v2l+' kW'+(x.v2lNote?'. '+x.v2lNote:''):'None from the factory'],
-        ['V2H', V2H_LABEL[x.v2h]+(x.v2hKw?', up to '+x.v2hKw+' kW':'')], ['Home hardware', x.v2hHw?((hgById(HG.chargers||[], x.v2hHw)||{}).model||'')+', about '+money(x.v2hCost):''], ['Type', x.dc||''], ['V2G', x.v2g||''], ['Export floor', x.floor?x.floor+'%':'']];
+        ['V2H', V2H_LABEL[x.v2h]+(x.v2hKw?', up to '+x.v2hKw+' kW':'')+(x.v2hScope?'. Applies to '+x.v2hScope:'')], ['Home hardware', x.v2hHw?((hgById(HG.chargers||[], x.v2hHw)||{}).model||'')+', about '+money(x.v2hCost):''], ['Also needs', x.v2hNeeds?(function(n){ return n?n.oem+' '+n.model+'. No V2H without it':''; })(hgById(HG.batteries||[], x.v2hNeeds)):''], ['Type', x.dc||''], ['V2G', x.v2g||''], ['Export floor', x.floor?x.floor+'%':'']];
       use = '<a class="btn" href="'+K.viewHref('hcharge')+'?veh='+x.id+'">Charging cost</a>'+((x.v2h==='yes'||x.v2h==='legacy')?' <a class="btn secondary" href="'+K.viewHref('hvcompare')+'?veh='+x.id+'">Compare with a battery</a>':'');
     }
     return '<p class="sub"><a href="'+K.viewHref('hgear')+'">All gear</a> <span class="dot">/</span> '+esc(title)+'</p>'+
