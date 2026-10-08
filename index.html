@@ -22,6 +22,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#2462F5">
 <script id="products-data" type="application/json">[]</script>
+<script id="cost-data" type="application/json">{"_about":"Budget unit costs behind the install cost estimator (ev-charger-installation-cost). National-average installed prices in US dollars; the estimator scales labor-driven lines by local labor. Screening figures, not quotes.","version":1,"updated":"2026-10-07","trench_usd_ft":{"soil":14,"asphalt":48,"concrete":70,"bore":38,"wall":6},"trench_conduit_factor":{"per_extra":0.08,"max":1.6},"wire_usd_ft":{"cu":{"14":0.22,"12":0.3,"10":0.45,"8":0.75,"6":1.15,"4":1.8,"3":2.25,"2":2.8,"1":3.6,"1/0":4.4,"2/0":5.5,"3/0":6.9,"4/0":8.6,"250":10.5,"300":12.5,"350":14.5,"400":16.5,"500":20.5,"600":25.0},"al":{"6":0.55,"4":0.7,"3":0.85,"2":0.95,"1":1.2,"1/0":1.4,"2/0":1.65,"3/0":2.0,"4/0":2.35,"250":2.8,"300":3.2,"350":3.6,"400":4.0,"500":4.8,"600":5.8}},"conduit":[{"size":"3/4","area_sqin":0.203,"material_usd_ft":0.9,"labor_usd_ft":8},{"size":"1","area_sqin":0.333,"material_usd_ft":1.3,"labor_usd_ft":9},{"size":"1-1/4","area_sqin":0.581,"material_usd_ft":1.8,"labor_usd_ft":11},{"size":"1-1/2","area_sqin":0.794,"material_usd_ft":2.2,"labor_usd_ft":12},{"size":"2","area_sqin":1.316,"material_usd_ft":2.9,"labor_usd_ft":14},{"size":"2-1/2","area_sqin":1.878,"material_usd_ft":4.6,"labor_usd_ft":17},{"size":"3","area_sqin":2.907,"material_usd_ft":6.0,"labor_usd_ft":20},{"size":"3-1/2","area_sqin":3.895,"material_usd_ft":7.5,"labor_usd_ft":23},{"size":"4","area_sqin":5.022,"material_usd_ft":9.0,"labor_usd_ft":26}],"conduit_material_markup":1.15,"breaker_usd":[[60,450],[100,900],[200,2200],[400,5500],[600,9000],[800,14000],[1200,24000],[2000,40000],[3000,60000]],"branch_breaker_factor":0.8,"disconnect_usd":[[60,900],[100,1300],[200,2400],[400,5200],[600,8500],[800,13000],[1200,22000],[3000,40000]],"panel_usd":[[225,5500],[400,9500],[600,16000],[800,26000],[1200,42000],[2000,70000],[3000,95000]],"stepdown":{"min_usd":6000,"usd_per_kva":160,"panel_usd":3500},"concrete_usd_cy":650,"pads":{"dc":{"ft":[4,6,1],"min_usd":900},"l2":{"ft":[2,2,1.5],"min_usd":500},"panel":{"ft":[4,6,0.5],"min_usd":900}},"bollard_usd":1100,"stall_usd":575,"accessible_usd":2500,"paving_usd_sqft":8,"engineering_pct":10,"contingency_pct":10}</script>
 <!--home-side--><script id="home-gear-data" type="application/json">[]</script><!--/home-side-->
 <script id="theme-boot">document.documentElement.classList.add('js');try{var t=localStorage.getItem('cs-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}addEventListener('pagereveal',function(e){var v=e.viewTransition,d=document.documentElement,f=null;try{f=sessionStorage.getItem('cs-vt');sessionStorage.removeItem('cs-vt')}catch(x){}if(!v||!f)return;d.classList.add('vt-fold','vt-'+f);v.finished.finally(function(){d.classList.remove('vt-fold','vt-'+f)})});</script>
 <script id="utm-boot">(function(){var K='cs-src',DAY=864e5,now=Date.now(),cur=null;function rd(){try{cur=JSON.parse(localStorage.getItem(K)||'null')}catch(e){cur=null}if(cur&&now-cur.t>30*DAY)cur=null}function wr(){try{localStorage.setItem(K,JSON.stringify(cur))}catch(e){}}try{rd();var q=new URLSearchParams(location.search),u={},any=false;['utm_source','utm_medium','utm_campaign','utm_content'].forEach(function(n){var v=(q.get(n)||'').replace(/[^\w.\-~ ]/g,'').slice(0,60);if(v){u[n]=v;any=true}});if(any&&!(cur&&cur.u&&cur.u.utm_source)){cur={t:now,u:u,l:location.pathname};wr()}else if(!cur){var r='';try{if(document.referrer){var h=new URL(document.referrer).hostname;if(h&&h!==location.hostname)r=h}}catch(e){}cur={t:now,u:{},r:r,l:location.pathname};wr()}}catch(e){}window.CS_SRC=function(){rd();var c=cur||{u:{}},u=c.u||{},l;if(u.utm_source)l=[u.utm_source,u.utm_medium,u.utm_campaign].filter(Boolean).join(' / ');else if(c.r)l='referral: '+c.r;else l='direct';return{label:l,utm:u,landing:c.l||'',ref:c.r||''}}})()</script>
@@ -4713,27 +4714,30 @@ var AMPCU = [20,25,35,50,65,85,100,115,130,150,175,200,230,255,285,310,335,380,4
 var AMPAL = [0,20,30,40,50,65,75,90,100,120,135,155,180,205,230,250,270,310,340];
 var RCU   = [3.07,1.93,1.21,0.764,0.491,0.308,0.245,0.194,0.154,0.122,0.0967,0.0766,0.0608,0.0515,0.0429,0.0367,0.0321,0.0258,0.0214];
 var RAL   = [0,3.18,2.00,1.26,0.808,0.508,0.403,0.319,0.253,0.201,0.159,0.126,0.100,0.0847,0.0707,0.0605,0.0529,0.0424,0.0353];
-var PCU   = [0.22,0.30,0.45,0.75,1.15,1.80,2.25,2.80,3.60,4.40,5.50,6.90,8.60,10.50,12.50,14.50,16.50,20.50,25.00];
-var PAL   = [0,0,0,0,0.55,0.70,0.85,0.95,1.20,1.40,1.65,2.00,2.35,2.80,3.20,3.60,4.00,4.80,5.80];
+/* Unit costs come from the cost-data block in <head>, so other tools can read the same published numbers. */
+var COSTS = JSON.parse(document.getElementById('cost-data').textContent);
+var PCU   = WSZ.map(function(s){ return COSTS.wire_usd_ft.cu[s] || 0; });
+var PAL   = WSZ.map(function(s){ return COSTS.wire_usd_ft.al[s] || 0; });
 var WAREA = [.0097,.0133,.0211,.0366,.0507,.0824,.0973,.1158,.1562,.1855,.2223,.2679,.3237,.3970,.4608,.5242,.5863,.7073,.8676];
-var CONDUIT = [['3/4',.203,0.9,8],['1',.333,1.3,9],['1-1/4',.581,1.8,11],['1-1/2',.794,2.2,12],['2',1.316,2.9,14],['2-1/2',1.878,4.6,17],['3',2.907,6.0,20],['3-1/2',3.895,7.5,23],['4',5.022,9.0,26]];
+var CONDUIT = COSTS.conduit.map(function(c){ return [c.size, c.area_sqin, c.material_usd_ft, c.labor_usd_ft]; });
 var OCPD_STD = [15,20,25,30,35,40,45,50,60,70,80,90,100,110,125,150,175,200,225,250,300,350,400,450,500,600,700,800,1000,1200,1600,2000,2500,3000];
 var EGC_CU = [[15,0],[20,1],[60,2],[100,3],[200,4],[300,5],[400,6],[500,7],[600,8],[800,9],[1000,10],[1200,11],[1600,12],[2000,13],[3000,15]];
 var EGC_AL = [[15,1],[20,2],[60,3],[100,4],[200,5],[300,7],[400,8],[500,9],[600,10],[800,11],[1000,12],[1200,13],[1600,15],[2000,16],[3000,17]];
-var TRENCH = {soil:14, asphalt:48, concrete:70, bore:38};
+var TRENCH = COSTS.trench_usd_ft;
 function stepCost(table, amps){ for (var i=0;i<table.length;i++) if (amps<=table[i][0]) return table[i][1]; return table[table.length-1][1]; }
-var BREAKER_C = [[60,450],[100,900],[200,2200],[400,5500],[600,9000],[800,14000],[1200,24000],[2000,40000],[3000,60000]];
-var DISC_C    = [[60,900],[100,1300],[200,2400],[400,5200],[600,8500],[800,13000],[1200,22000],[3000,40000]];
-var PANEL_C   = [[225,5500],[400,9500],[600,16000],[800,26000],[1200,42000],[2000,70000],[3000,95000]];
+var BREAKER_C = COSTS.breaker_usd;
+var DISC_C    = COSTS.disconnect_usd;
+var PANEL_C   = COSTS.panel_usd;
+function padCost(kind, concreteYd){ var p = COSTS.pads[kind]; return Math.max(p.min_usd, p.ft[0]*p.ft[1]*p.ft[2]/27*concreteYd); }
 var PANEL_STD = [225,400,600,800,1200,2000,3000];
 function nextStd(list, a){ for (var i=0;i<list.length;i++) if (list[i]>=a-1e-9) return list[i]; return list[list.length-1]; }
 function wireName(i){ return i>=13 ? WSZ[i]+' kcmil' : i>=9 ? WSZ[i]+' AWG' : '#'+WSZ[i]+' AWG'; }
 
 var EDEF = {dcCount:2, dcKw:150, dcEff:94, l2Count:2, l2Amps:48, svcVolt:'480', svcAmps:1200, existingKw:250,
   distance:150, ftAsphalt:60, ftConcrete:10, ftBore:0, ftWall:20, spacing:12, branchSurface:'asphalt',
-  material:'al', maxVd:3, layout:'auto', laborAdj:100, wireAdj:100, concreteYd:650,
-  bollardsDc:2, bollardsL2:1, bollardCost:1100, stallCost:575, ada:true, adaCost:2500, patchSqft:0, patchRate:8,
-  engPct:10, contPct:10, noSpaces:false};
+  material:'al', maxVd:3, layout:'auto', laborAdj:100, wireAdj:100, concreteYd:COSTS.concrete_usd_cy,
+  bollardsDc:2, bollardsL2:1, bollardCost:COSTS.bollard_usd, stallCost:COSTS.stall_usd, ada:true, adaCost:COSTS.accessible_usd, patchSqft:0, patchRate:COSTS.paving_usd_sqft,
+  engPct:COSTS.engineering_pct, contPct:COSTS.contingency_pct, noSpaces:false};
 
 /* Size one circuit: returns the cheapest code-compliant option for this run. */
 function sizeCircuit(o){
@@ -4757,7 +4761,7 @@ function sizeCircuit(o){
         for (var c=0;c<CONDUIT.length;c++) if (CONDUIT[c][1]>=area){ ci = c; break; }
         if (ci<0) continue;
         var wire = n*o.L*(o.phases*PR[i] + egPrice)*o.wireAdj/100;
-        var cond = n*o.L*(CONDUIT[ci][2]*1.15 + CONDUIT[ci][3]*o.laborAdj/100);
+        var cond = n*o.L*(CONDUIT[ci][2]*COSTS.conduit_material_markup + CONDUIT[ci][3]*o.laborAdj/100);
         var cost = wire + cond;
         if (!best || cost < best.cost) best = {mat:m, n:n, idx:i, eg:eg, ci:ci, vd:vd, wire:wire, cond:cond, cost:cost, ocpd:ocpd, req:req, I:o.I, L:o.L};
         break;
@@ -4789,9 +4793,9 @@ function estimateInstall(E, over){
   var seg = {asphalt:ft(E.ftAsphalt)*scale, concrete:ft(E.ftConcrete)*scale, bore:ft(E.ftBore)*scale, wall:ft(E.ftWall)*scale};
   seg.soil = Math.max(0, dist - seg.asphalt - seg.concrete - seg.bore - seg.wall);
   function trenchCost(conduits, len, surf){
-    var f = Math.min(1.6, 1 + 0.08*Math.max(0, conduits-1));
-    if (surf) return len*(surf==='wall' ? 6 : TRENCH[surf])*f*la;
-    return ((seg.soil*TRENCH.soil + seg.asphalt*TRENCH.asphalt + seg.concrete*TRENCH.concrete + seg.bore*TRENCH.bore)*f + seg.wall*6*Math.min(1.6,f))*la;
+    var tf = COSTS.trench_conduit_factor, f = Math.min(tf.max, 1 + tf.per_extra*Math.max(0, conduits-1));
+    if (surf) return len*TRENCH[surf]*f*la;
+    return ((seg.soil*TRENCH.soil + seg.asphalt*TRENCH.asphalt + seg.concrete*TRENCH.concrete + seg.bore*TRENCH.bore)*f + seg.wall*TRENCH.wall*Math.min(tf.max,f))*la;
   }
   var rowLen = Math.max(0, (n-1)*sp);
   var rowSurf = E.branchSurface==='soil' ? 'soil' : E.branchSurface==='concrete' ? 'concrete' : 'asphalt';
@@ -4828,13 +4832,13 @@ function estimateInstall(E, over){
     B.wire = B.feeder.wire + B.circuits.reduce(function(a,c){ return a + c.s.wire; }, 0);
     B.conduit = B.feeder.cond + B.circuits.reduce(function(a,c){ return a + c.s.cond; }, 0);
     B.gear = stepCost(BREAKER_C, B.feeder.ocpd)*la + stepCost(PANEL_C, panelA)*la +
-      B.circuits.reduce(function(a,c){ return a + stepCost(BREAKER_C, c.s.ocpd)*0.8*la; }, 0) + disconnects(B.circuits);
+      B.circuits.reduce(function(a,c){ return a + stepCost(BREAKER_C, c.s.ocpd)*COSTS.branch_breaker_factor*la; }, 0) + disconnects(B.circuits);
     B.panelA = panelA;
-    B.pads = Math.max(900, (4*6*0.5)/27*E.concreteYd)*la;
+    B.pads = padCost('panel', E.concreteYd)*la;
   }
 
   // ---- Shared site work
-  var dcPad = Math.max(900, (4*6*1)/27*E.concreteYd)*la, l2Pad = Math.max(500, (2*2*1.5)/27*E.concreteYd)*la;
+  var dcPad = padCost('dc', E.concreteYd)*la, l2Pad = padCost('l2', E.concreteYd)*la;
   var site = {
     pads: E.dcCount*dcPad + E.l2Count*l2Pad,
     safety: (E.dcCount*E.bollardsDc + E.l2Count*E.bollardsL2)*E.bollardCost*la + (E.dcCount+E.l2Count)*E.stallCost*la + (E.ada ? E.adaCost*la : 0),
@@ -4843,7 +4847,7 @@ function estimateInstall(E, over){
   var xfmr = 0, xkva = 0;
   if (needXfmr){
     xkva = nextStd([15,30,45,75,112.5,150,225,300,500], E.l2Count*l2kVA*1.25);
-    xfmr = (Math.max(6000, xkva*160) + 3500)*la;
+    xfmr = (Math.max(COSTS.stepdown.min_usd, xkva*COSTS.stepdown.usd_per_kva) + COSTS.stepdown.panel_usd)*la;
     notes.push('Level 2 chargers run on 208 or 240 volts, and this building is 480 volts, so the estimate adds a '+xkva+' kVA step-down transformer and a small panel for them.');
   }
   if (!ph3 && E.dcCount>0) notes.push('DC fast chargers almost always need three-phase power. A single-phase building usually means a new service from the utility before anything else.');
