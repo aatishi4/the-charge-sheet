@@ -1,0 +1,20 @@
+<svg viewBox="0 0 720 270" focusable="false">
+<text x="20" y="32" class="b">Fastned retail bonds</text>
+<rect class="lt" x="20" y="40" width="560" height="22" rx="5"/>
+<rect class="fb growx" x="20" y="40" width="134" height="22" rx="5" style="--d:0.10s"/>
+<text x="164" y="57" class="b fade" style="--d:1.20s">6%</text>
+<text x="20" y="90">Loan with personal guarantee</text>
+<rect class="lt" x="20" y="98" width="560" height="22" rx="5"/>
+<rect class="fs growx" x="20" y="98" width="269" height="22" rx="5" style="--d:0.35s"/>
+<text x="299" y="115" class="fade" style="--d:1.45s">12%</text>
+<text x="20" y="148">Loan, no guarantee</text>
+<rect class="lt" x="20" y="156" width="560" height="22" rx="5"/>
+<rect class="fs growx" x="20" y="156" width="448" height="22" rx="5" style="--d:0.60s"/>
+<text x="478" y="173" class="fade" style="--d:1.70s">20%</text>
+<text x="20" y="206" class="a">Worst offer: 2 years, 50% down + house</text>
+<rect class="lt" x="20" y="214" width="560" height="22" rx="5"/>
+<rect class="fa growx" x="20" y="214" width="493" height="22" rx="5" style="--d:0.85s"/>
+<text x="523" y="231" class="a fade" style="--d:1.95s">22%</text>
+<path class="lt dash" d="M20,250 H580"/>
+<text x="20" y="266" class="fade" style="--d:2.40s">Interest rate. Sources: my loan quotes; Fastned</text>
+</svg>
