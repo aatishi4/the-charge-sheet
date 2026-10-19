@@ -1,0 +1,13 @@
+<svg viewBox="0 0 720 252" focusable="false">
+<text x="40" y="24">Sessions per quarter</text>
+<text x="400" y="24">National utilization</text>
+<path class="lt" d="M40,196 H330 M400,196 H690"/>
+<path class="lt dash" d="M365,36 V206"/>
+<rect class="fs grow" x="60" y="85" width="96" height="111" rx="5" style="--d:0.10s"/><text x="108" y="75" text-anchor="middle" class=" fade" style="--d:0.90s">39.9M</text><text x="108" y="214" text-anchor="middle">Q3 2025</text>
+<rect class="fb grow" x="200" y="56" width="96" height="140" rx="5" style="--d:0.30s"/><text x="248" y="46" text-anchor="middle" class="b fade" style="--d:1.10s">50.4M</text><text x="248" y="214" text-anchor="middle">Q3 2026</text>
+<rect class="fs grow" x="420" y="104" width="96" height="92" rx="5" style="--d:0.60s"/><text x="468" y="94" text-anchor="middle" class=" fade" style="--d:1.40s">16.4%</text><text x="468" y="214" text-anchor="middle">Q3 2025</text>
+<rect class="fa grow" x="560" y="107" width="96" height="89" rx="5" style="--d:0.80s"/><text x="608" y="97" text-anchor="middle" class="a fade" style="--d:1.60s">15.9%</text><text x="608" y="214" text-anchor="middle">Q3 2026</text>
+<text x="306" y="80" class="b fade" style="--d:1.40s">+26%</text>
+<path class="la dash fade" d="M410,104 H676" style="--d:1.60s"/>
+<text x="40" y="246" class="fade" style="--d:2.00s">US DC fast charging. Source: Paren, Q3 2026</text>
+</svg>
