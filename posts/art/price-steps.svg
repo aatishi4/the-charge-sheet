@@ -1,0 +1,15 @@
+<svg viewBox="0 0 720 230" focusable="false">
+<path class="lt" d="M60,190 H700 M60,30 V190"/>
+<text x="52" y="45" text-anchor="end" class="a">65¢</text>
+<text x="52" y="135" text-anchor="end">50¢</text>
+<rect class="fs fade" x="62" y="100" width="120" height="60" rx="4" style="--d:0.10s"/>
+<text x="122" y="180" text-anchor="middle" class="fade" style="--d:0.30s">Opening price</text>
+<path class="la d" pathLength="1" d="M182,100 H232 V70 H282 V40 H690" style="--d:0.50s"/>
+<text x="240" y="122" class="a fade" style="--d:1.00s">+5¢ a month</text>
+<path class="lt dash" d="M300,26 H690"/>
+<text x="490" y="20" text-anchor="middle" class="a fade" style="--d:1.60s">Held about two years</text>
+<path class="lb d" pathLength="1" d="M300,176 C420,170 540,150 680,128" style="--d:1.60s"/>
+<path class="lb fade" d="M668,124 L682,127 L672,138" style="--d:2.40s"/>
+<text x="600" y="168" class="b fade" style="--d:2.40s">Utilization</text>
+<text x="60" y="222" class="fade" style="--d:2.60s">Illustrative, not to scale</text>
+</svg>

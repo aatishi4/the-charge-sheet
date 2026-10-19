@@ -1,0 +1,23 @@
+<svg viewBox="0 0 720 150" focusable="false">
+<path class="lt" d="M20,128 H700"/>
+<path class="ln d" pathLength="1" d="M110,128 V72" style="--d:0.00s"/>
+<rect class="la fas d" pathLength="1" x="62" y="22" width="96" height="50" rx="6" style="--d:0.10s"/>
+<rect class="fa fade" x="76" y="36" width="12" height="22" rx="2" style="--d:0.60s"/>
+<rect class="fa fade" x="94" y="36" width="12" height="22" rx="2" style="--d:0.72s"/>
+<rect class="fa fade" x="112" y="36" width="12" height="22" rx="2" style="--d:0.84s"/>
+<rect class="fa fade" x="130" y="36" width="12" height="22" rx="2" style="--d:0.96s"/>
+<circle class="la ping" cx="110" cy="47" r="30" style="--d:1.40s"/>
+<rect class="ln d fw" pathLength="1" x="250" y="78" width="22" height="50" rx="4" style="--d:0.20s"/><rect class="fi fade" x="254" y="86" width="14" height="10" rx="2" style="--d:0.70s"/><path class="lb d" pathLength="1" d="M272,100 c14,0 16,8 12,16" style="--d:0.90s"/>
+<rect class="ln d fw" pathLength="1" x="400" y="78" width="22" height="50" rx="4" style="--d:0.35s"/><rect class="fi fade" x="404" y="86" width="14" height="10" rx="2" style="--d:0.85s"/><path class="lb d" pathLength="1" d="M422,100 c14,0 16,8 12,16" style="--d:1.05s"/>
+<rect class="ln d fw" pathLength="1" x="550" y="78" width="22" height="50" rx="4" style="--d:0.50s"/><rect class="fi fade" x="554" y="86" width="14" height="10" rx="2" style="--d:1.00s"/><path class="lb d" pathLength="1" d="M572,100 c14,0 16,8 12,16" style="--d:1.20s"/>
+<g class="bob" transform="translate(212,0)"><path class="ln d fw" pathLength="1" d="M60,126 v-16 q0,-8 8,-8 h10 l12,-12 h34 l14,12 h6 q8,0 8,8 v16 z" style="--d:0.90s"/><circle class="ln fw fade" cx="78" cy="126" r="7" style="--d:1.20s"/><circle class="ln fw fade" cx="130" cy="126" r="7" style="--d:1.20s"/></g>
+<g class="bob" transform="translate(362,0)"><path class="ln d fw" pathLength="1" d="M60,126 v-16 q0,-8 8,-8 h10 l12,-12 h34 l14,12 h6 q8,0 8,8 v16 z" style="--d:1.10s"/><circle class="ln fw fade" cx="78" cy="126" r="7" style="--d:1.40s"/><circle class="ln fw fade" cx="130" cy="126" r="7" style="--d:1.40s"/></g>
+<ellipse class="fade fi" cx="650" cy="118" rx="30" ry="8" style="--d:1.20s"/>
+<ellipse class="fade fas" cx="650" cy="107" rx="30" ry="8" style="--d:1.35s"/>
+<ellipse class="fade fi" cx="650" cy="96" rx="30" ry="8" style="--d:1.50s"/>
+<ellipse class="fade fas" cx="650" cy="85" rx="30" ry="8" style="--d:1.65s"/>
+<ellipse class="fade fi" cx="650" cy="74" rx="30" ry="8" style="--d:1.80s"/>
+<ellipse class="fade fas" cx="650" cy="63" rx="30" ry="8" style="--d:1.95s"/>
+<ellipse class="la fade" cx="650" cy="51" rx="30" ry="8" style="--d:2.10s"/>
+<text x="250" y="148">Priced like a business</text>
+</svg>
