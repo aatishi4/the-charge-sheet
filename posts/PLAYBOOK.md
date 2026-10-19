@@ -36,12 +36,14 @@ Last updated 2026-09-28. The working manual for the blog: the Monday run reads i
 - Same voice rules. One argument per essay. A concrete story or number in the first three paragraphs.
 - If the answer isn't enough for a full essay, put it in the "For the backlog" list with his words and the follow-up question it needs.
 
-## The questions (4 to 6 per week)
+## The questions (3 per week, one per story; rewritten 2026-10-12 from Aatish's feedback)
 
-- 2 or 3 story questions, one per picked story: ask for his take, not a summary. Good: "Walmart is at $0.43 and owns the parking lot. If you were a c-store owner with two DCFCs down the road, do you match, ignore, or change what you sell?" Bad: "What do you think about Walmart's pricing?"
-- 1 history question: pair one story with a historical parallel and ask whether it holds or breaks. Include the one-line history so he doesn't have to look it up. Keep it plain: state the parallel in one sentence, then ask one simple either/or. (2026-09-28: the railroad gauge question read as too abstract and he skipped it.)
-- 1 or 2 evergreen prompts from the Essay prompt bank (or a backlog follow-up if Aatish pasted any into the run). Rotate; don't repeat within 8 weeks.
-- Each question answerable out loud in about 2 minutes. Number them. Put the 3 stories (headline, 2-line summary, source link) above the questions so he has context.
+- Exactly 3 questions, one per story. No separate history question, essay prompt or follow-up list. Pending follow-ups for scheduled posts wait in the Idea backlog; raise one only if a post can't go out without it.
+- Kinds of question that get his best answers: hot takes ("Is X the iPhone or the Nokia? Pick one."), advice to a reader ("What would you tell a host whose network just got sold?"), and war stories from his six years ("Tell me about a site that...").
+- Never role-play hypotheticals. No "If you ran a fleet on the Atlanta lane..." or "You host four DCFCs on a TOU tariff...".
+- Never obvious. If any industry insider would give the same answer, rewrite it. Aim for a question with a contrarian or surprising answer.
+- Cross-industry and history analogies are the brand. Build at least one question around a nerdy, specific parallel (Swiss mechanical watches vs quartz, Nokia vs iPhone, iPhone vs Android, gas stations, AC vs DC). Put the analogy inside the story question as an either/or rather than asking it separately.
+- Short: each question 2 to 3 sentences, answerable out loud in about 2 minutes. Story block above each question: bold headline, 2 to 3 lines with the key number in bold, source links.
 
 ## News scan
 
