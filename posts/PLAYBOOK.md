@@ -135,10 +135,14 @@ Every post gets line art in the site's style. Photos are optional.
 
 ## Topic log (one line per post; newest first)
 
-Schedule set 2026-09-28, shifted 7 days later on 2026-09-29. Next open slot: Tue 2026-11-03 (use -06:00 from Nov 1). "Why I built The Charge Sheet" (Tue Oct 13) is pinned as the first post: never displace it, even for a weekly.
+Schedule set 2026-09-28, shifted 7 days later on 2026-09-29; 2026-10-19 run added a weekly and two essays. Next open slot: Thu 2026-11-12 (-06:00). "Why I built The Charge Sheet" (Tue Oct 13) is pinned as the first post: never displace it, even for a weekly.
 
+- 2026-11-10 Tue essay (scheduled): Nobody lends on a charger. They lend on you. (his 22% two-year offer with his house as collateral; 12 to 20% typical; SBA works if you bring comparables and skin in the game; Fastned 6% driver bonds.)
+- 2026-11-05 Thu essay (scheduled): Charging is a business, not a charity. (his 45-55 to 65 cent price steps, utilization up; pricing for convenience; Tesla +15%.)
+- 2026-11-03 Tue essay (moved from 2026-10-27 for the weekly): Nobody gets ten sessions on day one.
+- 2026-10-27 Tue weekly (scheduled): Flat utilization is a good sign. Paren Q3 sessions +26%, utilization 15.9% (his take: healthy market, hold at 11%); Tesla +15% vs others flat (short take); Fastned 6% retail bonds (short take).
 - 2026-10-29 Thu essay (scheduled): Uptime says the charger is online. It doesn't say it works (his take: uptime means reporting; failures are POS/CMS/charger handoffs, pre-auth holds, port timeouts; measure first-time charge success, 80%+ is good). About 600 words; wants one anonymized story before it goes out.
-- 2026-10-27 Tue essay (scheduled): Nobody gets ten sessions on day one (utilization ramp, with his one-a-week to two-to-three-a-day story over 2 to 2.5 years).
+- (was 2026-10-27, now 2026-11-03) Tue essay: Nobody gets ten sessions on day one (utilization ramp, with his one-a-week to two-to-three-a-day story over 2 to 2.5 years).
 - 2026-10-22 Thu essay (scheduled): What I'd tell a hotel owner about a free charger (own it, don't sublease; finance it).
 - 2026-10-20 Tue weekly (scheduled): Half the cables should still be CCS. Ionna's first NACS-only sites (his take: half the cables CCS until ~80% of new EVs have NACS); Tesla Semi volume production, 1.7 kWh/mile, 1.2 MW (his take: production isn't adoption); Colorado $23.2M for 270 ports at 35 sites (facts only).
 - 2026-10-15 Thu weekly (scheduled): 2,500 electric semis ordered, zero chargers announced. ZET SCALE order (his take: chicken and egg, infrastructure cost vs diesel); California SB 969 / SB 1283 / AB 1820 (facts only); Cox August new EVs -46.9%, used +14.7% (facts only).

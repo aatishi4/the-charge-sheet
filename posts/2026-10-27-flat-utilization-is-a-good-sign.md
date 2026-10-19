@@ -1,13 +1,13 @@
 ---
 title: Flat utilization is a good sign
 description: Sessions up 26% while utilization held flat, Tesla's 15% price increase, and Fastned borrowing from its own drivers at 6%.
-date: 2026-10-19
+date: 2026-10-27
+publish: 2026-10-27T09:00:00-05:00
 tags: [utilization, pricing, networks, financing, tesla]
 kind: weekly
-draft: true
 ---
 
-Three numbers from last week, and one thing I would do about them.
+Three numbers from mid-October worth your time, and one thing I would do about them.
 
 ## 1. Sessions up 26%, utilization flat. That's a healthy market.
 

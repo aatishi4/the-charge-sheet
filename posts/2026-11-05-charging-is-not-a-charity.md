@@ -1,10 +1,10 @@
 ---
 title: Charging is a business, not a charity
 description: I raised my price 5 cents at a time to 65 cents a kWh and utilization went up. Price for convenience, not for apology.
-date: 2026-10-19
+date: 2026-11-05
+publish: 2026-11-05T09:00:00-06:00
 tags: [pricing, site-hosts, business-model, tesla]
 kind: essay
-draft: true
 ---
 
 When two of my sites opened, one of them at a hotel, I priced charging between **45 and 55 cents a kWh**. That was roughly what the local Electrify America and Tesla stations charged at the time. I wanted to see how people would react and how they'd use the stations. They used them. Nothing crazy.
@@ -21,7 +21,7 @@ If you run a hotel, I've written separately about [what I'd tell you about a fre
 
 A lot of charging is priced as if the operator owes the driver a favor. It doesn't have to be. Charging is inelastic to price. People worry about that more than they should, and the biggest network in the country just showed why.
 
-Paren's [Q3 2026 report](https://www.paren.app/reports/us-ev-fast-charging-q3-2026) has Tesla's average non-member price at **$0.569 per kWh**, up **15%** in a year, and its member price at **$0.396**, up 9%. Everyone else averages about **$0.533** and has been flat for **five straight quarters**. Over the same year, US fast-charging sessions grew **26%**, and Tesla still built about **31%** of the new fast-charging ports added in Q3. Gas, meanwhile, averaged a record **$4.33** a gallon in September, according to [AAA](https://gasprices.aaa.com/national-average-dips-following-record-setting-september/). I covered those numbers in [this week's roundup](/blog/flat-utilization-is-a-good-sign/).
+Paren's [Q3 2026 report](https://www.paren.app/reports/us-ev-fast-charging-q3-2026) has Tesla's average non-member price at **$0.569 per kWh**, up **15%** in a year, and its member price at **$0.396**, up 9%. Everyone else averages about **$0.533** and has been flat for **five straight quarters**. Over the same year, US fast-charging sessions grew **26%**, and Tesla still built about **31%** of the new fast-charging ports added in Q3. Gas, meanwhile, averaged a record **$4.33** a gallon in September, according to [AAA](https://gasprices.aaa.com/national-average-dips-following-record-setting-september/). I covered those numbers in [an October roundup](/blog/flat-utilization-is-a-good-sign/).
 
 That's supply and demand working. Tesla has a robust system, people want to use it, and of course it's going to charge for it and make a profit. I wouldn't call that the Apple model. I'd call it a sustainable business model. You have to look at charging as a business, not a charity. Charging more because people will pay it helps your bottom line and makes the business more sustainable.
 

@@ -1,10 +1,10 @@
 ---
 title: Nobody lends on a charger. They lend on you.
 description: The worst loan I was offered for a charging site was 22% over two years, with my house as collateral. Here's why, and what actually gets financed.
-date: 2026-10-19
+date: 2026-11-10
+publish: 2026-11-10T09:00:00-06:00
 tags: [financing, sba, site-hosts, fastned]
 kind: essay
-draft: true
 ---
 
 The worst loan offer I got for a charging site was about **22% interest on a two-year term**. On top of that, they wanted **50% or more down**, plus collateral. My house, among other things.
@@ -35,7 +35,7 @@ SBA is a great way to get hotels and assets like that up and running, and chargi
 
 ## Or skip the bank entirely
 
-Dutch operator Fastned found another way. It pays for part of its build with five-year retail bonds sold to its own customers at **6%**, about **€337 million** raised by June ([electrive](https://www.electrive.com/2026/10/16/fastned-increases-charging-revenue-and-accelerates-network-expansion/)). Its stations are bringing in about **€395,000 a year each** so far in 2026 ([Renewable Energy Magazine](https://www.renewableenergymagazine.com/electric_hybrid_vehicles/fastned-accelerates-build-pace-as-q3-revenue-20261015)). I covered the quarter in [this week's roundup](/blog/flat-utilization-is-a-good-sign/).
+Dutch operator Fastned found another way. It pays for part of its build with five-year retail bonds sold to its own customers at **6%**, about **€337 million** raised by June ([electrive](https://www.electrive.com/2026/10/16/fastned-increases-charging-revenue-and-accelerates-network-expansion/)). Its stations are bringing in about **€395,000 a year each** so far in 2026 ([Renewable Energy Magazine](https://www.renewableenergymagazine.com/electric_hybrid_vehicles/fastned-accelerates-build-pace-as-q3-revenue-20261015)). I covered the quarter in [an October roundup](/blog/flat-utilization-is-a-good-sign/).
 
 If you've ever put down a deposit to reserve a Rivian or a Lucid, or backed something on Kickstarter, you've already lent a company money, at 0%. Fastned pays its drivers 6%. Paying 6% to build a revenue-producing asset is pretty good. Compared with the 12 to 22% above, especially with inflation where it is, 6% is golden.
 
