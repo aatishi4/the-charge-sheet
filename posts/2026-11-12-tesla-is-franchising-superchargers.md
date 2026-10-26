@@ -1,10 +1,10 @@
 ---
 title: Tesla is franchising the Supercharger. Charging needs franchise rules.
 description: Tesla built 41% fewer Superchargers last quarter and is letting hosts buy the stalls. That's the McDonald's play. Now it needs McDonald's rules.
-date: 2026-10-26
+date: 2026-11-12
+publish: 2026-11-12T09:00:00-06:00
 tags: [tesla, superchargers, franchising, site-hosts, operations]
 kind: essay
-draft: true
 ---
 
 In the third quarter, Tesla added a net **2,108 Supercharger stalls**. That's **41% fewer** than a year earlier and the slowest third quarter since 2021, per [State of Charge's read of Tesla's Q3 numbers](https://evchargingstations.com/chargingnews/tesla-supercharger-q3-2026/). In the same quarter, the network logged a record **69 million sessions**, up **29%** ([State of Charge](https://evchargingstations.com/chargingnews/tesla-supercharging-q3-2026/)).
