@@ -25,6 +25,10 @@ CSS = '''
 .spot .flow{stroke-dasharray:3 13;animation:spotflow 1.4s linear infinite}
 .spot .ping{transform-box:fill-box;transform-origin:center;animation:spotping 2.4s ease-out infinite;animation-delay:var(--d,0s)}
 .spot .bob{animation:spotbob 3s ease-in-out infinite}
+.spot .fill{transform-box:fill-box;transform-origin:0 50%;transform:scaleX(var(--from,0));animation:spotfillx 2.2s cubic-bezier(.4,.1,.2,1) forwards;animation-delay:var(--d,0s)}
+.spot .filly{transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(var(--from,0));animation:spotfilly 2.2s cubic-bezier(.4,.1,.2,1) forwards;animation-delay:var(--d,0s)}
+.spot .drive{opacity:0;transform:translateX(var(--dx,-160px));animation:spotdrive 1.7s cubic-bezier(.2,.7,.25,1) forwards;animation-delay:var(--d,0s)}
+.spot .rise{opacity:0;transform:translateY(10px);animation:spotrise .7s cubic-bezier(.3,.6,.2,1) forwards;animation-delay:var(--d,0s)}
 @keyframes spotdraw{to{stroke-dashoffset:0}}
 @keyframes spotfade{to{opacity:1}}
 @keyframes spotgrow{to{transform:scaleY(1)}}
@@ -32,12 +36,17 @@ CSS = '''
 @keyframes spotflow{to{stroke-dashoffset:-32}}
 @keyframes spotping{0%{transform:scale(.6);opacity:.9}100%{transform:scale(1.9);opacity:0}}
 @keyframes spotbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes spotfillx{to{transform:scaleX(1)}}
+@keyframes spotfilly{to{transform:scaleY(1)}}
+@keyframes spotdrive{0%{opacity:0}12%{opacity:1}100%{opacity:1;transform:translateX(0)}}
+@keyframes spotrise{to{opacity:1;transform:translateY(0)}}
 @media (prefers-reduced-motion: reduce){
   .spot .d{animation:none;stroke-dashoffset:0}
   .spot .fade{animation:none;opacity:1}
   .spot .grow,.spot .growx{animation:none;transform:none}
   .spot .flow,.spot .ping,.spot .bob{animation:none}
   .spot .ping{opacity:0}
+  .spot .fill,.spot .filly,.spot .drive,.spot .rise{animation:none;transform:none;opacity:1}
 }
 .js .spot.io:not(.play) *{animation-play-state:paused}
 @media print{.spot{display:none}}

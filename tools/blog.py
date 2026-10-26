@@ -32,7 +32,9 @@ Blog extras, each on a line of its own:
     {{art ramp-vs-forecast | Caption, in Markdown.}}
         An animated line-art figure from posts/art/ramp-vs-forecast.svg. It plays
         when scrolled into view (the site's spot classes: d, fade, grow, growx,
-        flow, ping, bob). The caption doubles as the figure's accessible label.
+        fill, filly, drive, rise, flow, ping, bob, and count for numbers that count
+        up). Build drawings from tools/parts.py. The caption doubles as the
+        figure's accessible label.
 
     {{photo /img/blog/depot.jpg | Alt text | Photo: Name on [Unsplash](https://unsplash.com/...)}}
         A photo with a credit line. Keep photos in img/blog/.
