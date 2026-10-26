@@ -51,7 +51,22 @@ def art_svg(name):
         return ''
     svg = open(path, encoding='utf-8').read().strip()
     svg = re.sub(r'<\?xml.*?\?>|<!--.*?-->', '', svg, flags=re.S).strip()
+    check_motion(svg, name)
     return re.sub(r'>\s+<', '><', svg)
+
+
+# Motion classes that animate the CSS transform. A CSS transform replaces an element's transform="..."
+# attribute while it runs, so the shape jumps to the drawing's origin. Put the position on a wrapping
+# <g transform="..."> and the motion class on an inner <g> (tools/parts.py does this for you).
+MOVING = {'grow', 'growx', 'ping', 'bob', 'drive', 'fill', 'filly', 'rise'}
+
+
+def check_motion(svg, name):
+    for tag in re.findall(r'<[a-zA-Z][^>]*>', svg):
+        cls = re.search(r'\bclass="([^"]*)"', tag)
+        if cls and MOVING & set(cls.group(1).split()) and re.search(r'\stransform="', tag):
+            raise SystemExit('blog: posts/art/%s.svg puts a motion class and transform="" on the same element; '
+                             'wrap it: <g transform="..."><g class="...">...</g></g>\n  %s' % (name, tag[:120]))
 
 
 def strip_tags(t):

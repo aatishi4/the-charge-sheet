@@ -6,7 +6,7 @@
 <rect class="ln d fw" pathLength="1" x="440" y="70" width="26" height="58" rx="4" style="--d:0.30s"/>
 <rect class="fi fade" x="445" y="78" width="16" height="12" rx="2" style="--d:0.80s"/>
 <path class="lb d" pathLength="1" d="M466,96 c16,0 18,10 14,18" style="--d:1.00s"/>
-<g class="bob" transform="translate(430,0)"><path class="ln d fw" pathLength="1" d="M60,126 v-16 q0,-8 8,-8 h10 l12,-12 h34 l14,12 h6 q8,0 8,8 v16 z" style="--d:0.50s"/><circle class="ln fw fade" cx="78" cy="126" r="7" style="--d:0.90s"/><circle class="ln fw fade" cx="130" cy="126" r="7" style="--d:0.90s"/></g>
+<g transform="translate(430,0)"><g class="bob"><path class="ln d fw" pathLength="1" d="M60,126 v-16 q0,-8 8,-8 h10 l12,-12 h34 l14,12 h6 q8,0 8,8 v16 z" style="--d:0.50s"/><circle class="ln fw fade" cx="78" cy="126" r="7" style="--d:0.90s"/><circle class="ln fw fade" cx="130" cy="126" r="7" style="--d:0.90s"/></g></g>
 <path class="lt" d="M540,74 C520,40 480,36 456,56"/><path class="la flow" d="M540,74 C520,40 480,36 456,56"/>
 <circle class="fa fade" cx="530" cy="52" r="5" style="--d:1.40s"/>
 <circle class="fa fade" cx="504" cy="40" r="5" style="--d:1.60s"/>
