@@ -1,29 +1,3 @@
 <svg viewBox="0 0 720 150" focusable="false">
-<path class="lt" d="M20,128 H700"/>
-<path class="ln d" pathLength="1" d="M84,128 V58 M96,128 V58 M74,128 H106" style="--d:0.00s"/>
-<circle class="ln d fw" pathLength="1" cx="90" cy="38" r="22" style="--d:0.15s"/>
-<path class="fa fade" d="M93,22 L80,41 H89 L86,54 L100,34 H91 Z" style="--d:0.60s"/>
-<circle class="lb ping" cx="90" cy="38" r="22" style="--d:1.00s"/>
-<path class="lt" d="M112,38 C170,38 200,60 220,72"/><path class="lb flow" d="M112,38 C170,38 200,60 220,72"/>
-<path class="ln d fw" pathLength="1" d="M220,128 V84 L246,70 L272,84 V128 Z" style="--d:0.40s"/>
-<rect class="fi fade" x="238" y="100" width="16" height="28" rx="2" style="--d:0.90s"/>
-<rect class="ln d fw" pathLength="1" x="286" y="92" width="14" height="36" rx="3" style="--d:0.60s"/>
-<rect class="fb fade" x="289" y="98" width="8" height="8" rx="1.5" style="--d:1.10s"/>
-<rect class="ln d fw" pathLength="1" x="310" y="92" width="14" height="36" rx="3" style="--d:0.70s"/>
-<rect class="fb fade" x="313" y="98" width="8" height="8" rx="1.5" style="--d:1.20s"/>
-<path class="lt" d="M112,38 C280,38 360,60 380,72"/><path class="lb flow" d="M112,38 C280,38 360,60 380,72"/>
-<path class="ln d fw" pathLength="1" d="M380,128 V84 L406,70 L432,84 V128 Z" style="--d:0.65s"/>
-<rect class="fi fade" x="398" y="100" width="16" height="28" rx="2" style="--d:1.15s"/>
-<rect class="ln d fw" pathLength="1" x="446" y="92" width="14" height="36" rx="3" style="--d:0.85s"/>
-<rect class="fb fade" x="449" y="98" width="8" height="8" rx="1.5" style="--d:1.35s"/>
-<rect class="ln d fw" pathLength="1" x="470" y="92" width="14" height="36" rx="3" style="--d:0.95s"/>
-<rect class="fb fade" x="473" y="98" width="8" height="8" rx="1.5" style="--d:1.45s"/>
-<path class="lt" d="M112,38 C480,38 560,60 580,72"/><path class="lb flow" d="M112,38 C480,38 560,60 580,72"/>
-<path class="ln d fw" pathLength="1" d="M580,128 V84 L606,70 L632,84 V128 Z" style="--d:0.90s"/>
-<rect class="fi fade" x="598" y="100" width="16" height="28" rx="2" style="--d:1.40s"/>
-<rect class="ln d fw" pathLength="1" x="646" y="92" width="14" height="36" rx="3" style="--d:1.10s"/>
-<rect class="fb fade" x="649" y="98" width="8" height="8" rx="1.5" style="--d:1.60s"/>
-<rect class="ln d fw" pathLength="1" x="670" y="92" width="14" height="36" rx="3" style="--d:1.20s"/>
-<rect class="fb fade" x="673" y="98" width="8" height="8" rx="1.5" style="--d:1.70s"/>
-<g class="bob" transform="translate(494,0)"><path class="ln d fw" pathLength="1" d="M0,126 v-12 q0,-6 6,-6 h8 l10,-10 h26 l10,10 h4 q6,0 6,6 v12 z" style="--d:0.90s"/><circle class="ln fw fade" cx="14" cy="126" r="5" style="--d:1.20s"/><circle class="ln fw fade" cx="54" cy="126" r="5" style="--d:1.20s"/></g>
-<text x="700" y="148" text-anchor="end">One brand, many owners</text></svg>
+<path class="lt" d="M20,128 H700"/><path class="ln d" pathLength="1" d="M84,128 V60 M96,128 V60 M74,128 H106" style="--d:0.00s"/><circle class="ln d fw" pathLength="1" cx="90" cy="38" r="22" style="--d:0.15s"/><path class="fa fade" d="M93.0,22.2 L80.1,41.0 L89.0,41.0 L86.0,53.8 L99.9,34.0 L91.0,34.0 Z" style="--d:0.55s"/><circle class="lb ping" cx="90" cy="38" r="22" style="--d:0.95s"/><path class="lt" d="M112,38 C170,38 200,60 220,72"/><path class="lb flow" d="M112,38 C170,38 200,60 220,72"/><path class="ln d fw" pathLength="1" d="M220,128 V84 L246,70 L272,84 V128 Z" style="--d:0.40s"/><rect class="fi fade" x="238" y="100" width="16" height="28" rx="2" style="--d:0.90s"/><rect class="ln d fw" pathLength="1" x="286" y="92" width="14" height="36" rx="3" style="--d:0.60s"/><rect class="fb fade" x="289" y="98" width="8" height="8" rx="1.5" style="--d:1.10s"/><rect class="ln d fw" pathLength="1" x="310" y="92" width="14" height="36" rx="3" style="--d:0.70s"/><rect class="fb fade" x="313" y="98" width="8" height="8" rx="1.5" style="--d:1.20s"/><path class="lt" d="M112,38 C280,38 360,60 380,72"/><path class="lb flow" d="M112,38 C280,38 360,60 380,72"/><path class="ln d fw" pathLength="1" d="M380,128 V84 L406,70 L432,84 V128 Z" style="--d:0.65s"/><rect class="fi fade" x="398" y="100" width="16" height="28" rx="2" style="--d:1.15s"/><rect class="ln d fw" pathLength="1" x="446" y="92" width="14" height="36" rx="3" style="--d:0.85s"/><rect class="fb fade" x="449" y="98" width="8" height="8" rx="1.5" style="--d:1.35s"/><rect class="ln d fw" pathLength="1" x="470" y="92" width="14" height="36" rx="3" style="--d:0.95s"/><rect class="fb fade" x="473" y="98" width="8" height="8" rx="1.5" style="--d:1.45s"/><path class="lt" d="M112,38 C480,38 560,60 580,72"/><path class="lb flow" d="M112,38 C480,38 560,60 580,72"/><path class="ln d fw" pathLength="1" d="M580,128 V84 L606,70 L632,84 V128 Z" style="--d:0.90s"/><rect class="fi fade" x="598" y="100" width="16" height="28" rx="2" style="--d:1.40s"/><rect class="ln d fw" pathLength="1" x="646" y="92" width="14" height="36" rx="3" style="--d:1.10s"/><rect class="fb fade" x="649" y="98" width="8" height="8" rx="1.5" style="--d:1.60s"/><rect class="ln d fw" pathLength="1" x="670" y="92" width="14" height="36" rx="3" style="--d:1.20s"/><rect class="fb fade" x="673" y="98" width="8" height="8" rx="1.5" style="--d:1.70s"/><g transform="translate(494,128)"><g class="drive" style="--d:1.00s;--dx:-200px"><path class="ln d fw" pathLength="1" d="M0,-2 v-12 q0,-6 6,-6 h8 l10,-10 h26 l10,10 h4 q6,0 6,6 v12 z" style="--d:1.00s"/><circle class="ln fw" cx="14" cy="-2" r="5"/><circle class="ln fw" cx="54" cy="-2" r="5"/></g></g><text x="700" y="148" text-anchor="end">One brand, many owners</text>
+</svg>
