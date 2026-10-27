@@ -256,6 +256,25 @@ def show_drafts():
     return bool(branch) and branch != 'main'
 
 
+def upcoming_times(root):
+    """Publish times (UTC, ISO 8601) of scheduled posts that aren't live as of this build.
+
+    The build writes these to /blog/schedule.json. The scheduler Worker reads that file and
+    rebuilds the site once one of the times has passed. Times only: no slugs or titles leak.
+    """
+    folder = os.path.join(root, 'posts')
+    now = now_utc()
+    out = set()
+    for name in os.listdir(folder) if os.path.isdir(folder) else []:
+        if not re.match(r'^\d{4}-\d{2}-\d{2}-[a-z0-9-]+\.md$', name):
+            continue
+        meta, _ = parse_front_matter(open(os.path.join(folder, name), encoding='utf-8').read())
+        t = parse_time(meta.get('publish'))
+        if t and t > now and not meta.get('draft'):
+            out.add(t.strftime('%Y-%m-%dT%H:%M:%SZ'))
+    return sorted(out)
+
+
 def load_posts(root):
     folder = os.path.join(root, 'posts')
     posts = []

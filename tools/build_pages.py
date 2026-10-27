@@ -864,6 +864,9 @@ def build_blog(posts, head, pre_main, post_main, hollow_all, anchors, updated):
             '<atom:link href="%s/blog/feed.xml" rel="self" type="application/rss+xml"/>%s</channel></rss>\n') % (
         SITE, esc(BLOG_DESC), SITE, items)
     open(os.path.join(OUT, 'blog', 'feed.xml'), 'w', encoding='utf-8').write(feed)
+    # For the scheduler Worker (workers/scheduled-publish): when one of these times passes, this build is stale.
+    json.dump({'built': blog.now_utc().strftime('%Y-%m-%dT%H:%M:%SZ'), 'upcoming': blog.upcoming_times(ROOT)},
+              open(os.path.join(OUT, 'blog', 'schedule.json'), 'w'), separators=(',', ':'))
     print('Blog: %d posts (%d drafts).' % (len(posts), sum(1 for p in posts if p['draft'])))
     return urls
 

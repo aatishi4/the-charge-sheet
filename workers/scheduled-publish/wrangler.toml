@@ -1,0 +1,9 @@
+# Optional: deploy from the command line with `npx wrangler deploy` in this folder,
+# then `npx wrangler secret put DEPLOY_HOOK`. Or paste index.js into the dashboard
+# (see "Scheduled posts" in DEPLOY.md). Either way works; you only need one.
+name = "charge-sheet-scheduler"
+main = "index.js"
+compatibility_date = "2026-10-01"
+
+[triggers]
+crons = ["*/5 * * * *"]

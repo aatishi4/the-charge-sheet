@@ -112,3 +112,23 @@ The home side lives in `index.html` between `<!--home-side-->` markers, with its
 - **Watch the Formspree plan.** The free plan caps submissions per month. If the Work with me form and report emails together get near it, upgrade or point `FORMSPREE_URL` at a second form.
 - **Abuse.** The function rejects posts that don't look like a report the site made, and any text with a link. Add a Cloudflare rate limit rule on `/api/report-email` (for example 5 requests per minute per IP) under **Security > WAF > Rate limiting rules**.
 
+
+## 10. Scheduled posts: publishing on time
+
+A post with a `publish:` time stays off the live site until a build runs after that time. Something has to start that build. GitHub's scheduled workflows can't be trusted to do it: in this repo they started anywhere from 2 to 8 hours late, and some days not at all. So a small Cloudflare Worker does it instead.
+
+**How it works.** Every build writes `/blog/schedule.json`: the build time plus the publish times (no titles) of posts that weren't live yet. The Worker reads it every 5 minutes. When a publish time has passed and the live build is older than it, the Worker calls the Pages deploy hook and the post is up a minute or two later. If the build is broken it gives up after 30 minutes (six tries) so it can't eat the monthly build quota.
+
+**Set it up once (about 10 minutes):**
+
+1. **Deploy hook.** Cloudflare dashboard > **Workers & Pages** > the-charge-sheet > **Settings** > **Builds** > **Deploy hooks** > Add. Name it `scheduled-publish`, branch `main`. Copy the URL. Treat it like a password: anyone with it can trigger builds.
+2. **Worker.** **Workers & Pages** > **Create** > **Create Worker**. Name it `charge-sheet-scheduler`, deploy the hello-world, then **Edit code**, replace everything with `workers/scheduled-publish/index.js`, and **Deploy**.
+3. **Secret.** The Worker > **Settings** > **Variables and Secrets** > Add. Type **Secret**, name `DEPLOY_HOOK`, value the hook URL from step 1.
+4. **Cron.** The Worker > **Settings** > **Trigger events** > Add > **Cron Triggers**. Expression `*/5 * * * *`.
+5. **GitHub backup.** Repo > **Settings** > **Secrets and variables** > **Actions** > New secret `CF_DEPLOY_HOOK`, same URL. The old workflow stays on as a backstop and now uses the hook instead of empty commits.
+
+Prefer the command line? In `workers/scheduled-publish/`, run `npx wrangler deploy` then `npx wrangler secret put DEPLOY_HOOK`. That replaces steps 2 to 4.
+
+**Check it.** Open the Worker's `workers.dev` URL. It shows what it would do right now (`"nothing due"` plus the upcoming times) without triggering anything. On a publish day, the Worker's **Logs** tab shows a `due ...; rebuilding` line at 9:00 Central.
+
+The Worker only needs editing if the domain changes (`SITE` at the top of the file).
