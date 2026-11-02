@@ -137,8 +137,10 @@ Every post gets line art in the site's style. Photos are optional.
 
 ## Topic log (one line per post; newest first)
 
-Schedule set 2026-09-28, shifted 7 days later on 2026-09-29; 2026-10-19 run added a weekly and two essays. Next open slot: Thu 2026-11-12 (-06:00). "Why I built The Charge Sheet" (Tue Oct 13) is pinned as the first post: never displace it, even for a weekly.
+Schedule set 2026-09-28, shifted 7 days later on 2026-09-29; 2026-10-19 run added a weekly and two essays. 2026-10-26 added the Tesla essay (Thu 11/12); 2026-11-02 run added the robotaxi weekly (Tue 11/17). Next open slot: Thu 2026-11-19 (-06:00). "Why I built The Charge Sheet" (Tue Oct 13) is pinned as the first post: never displace it, even for a weekly.
 
+- 2026-11-17 Tue weekly (scheduled): Robotaxis are a new kind of tenant. Price them like real estate. Waymos filling San Diego fast chargers (his take: new tenant class, price like the real estate, landlords bake charging into the asset); California 97% per-port uptime rules (his take: good start, "dispensed" says nothing about how much power, needs open hourly port data like Tesla shares); Blink renames to Blink Energy, $100M ATM (facts only).
+- 2026-11-12 Thu essay (scheduled): Tesla is franchising the Supercharger. Charging needs franchise rules. (41% fewer net new stalls, sessions +29%; Supercharger for Business is the McDonald's play; franchise bar: experience, 2 to 4 years of liquidity, brand standards, placement rules.)
 - 2026-11-10 Tue essay (scheduled): Nobody lends on a charger. They lend on you. (his 22% two-year offer with his house as collateral; 12 to 20% typical; SBA works if you bring comparables and skin in the game; Fastned 6% driver bonds.)
 - 2026-11-05 Thu essay (scheduled): Charging is a business, not a charity. (his 45-55 to 65 cent price steps, utilization up; pricing for convenience; Tesla +15%.)
 - 2026-11-03 Tue essay (moved from 2026-10-27 for the weekly): Nobody gets ten sessions on day one.

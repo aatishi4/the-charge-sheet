@@ -1,17 +1,17 @@
 ---
 title: Robotaxis are a new kind of tenant. Price them like real estate.
 description: Waymos are filling public fast chargers, California redefines what "up" means, and Blink renames itself Blink Energy.
-date: 2026-11-02
+date: 2026-11-17
+publish: 2026-11-17T09:00:00-06:00
 tags: [robotaxis, fleet, pricing, reliability, uptime, networks]
 kind: weekly
-draft: true
 ---
 
-Three things from last week worth your time, and one thing I would do about them.
+Three things from late October worth your time, and one thing I would do about them.
 
 ## 1. Robotaxis are a new kind of tenant
 
-The [Los Angeles Times](https://www.yahoo.com/news/us/articles/come-droves-robotaxis-hogging-ev-130237419.html) reported on October 30 that Waymo robotaxis are filling public fast chargers in San Diego. One driver waited **an hour** last month and described three Waymos at a station with four spots. EVgo says its San Diego stations are open to everyone, robotaxis included, and it had **120 stalls** set aside for AV companies earlier this year. The city says autonomous vehicles pay the same fees as anyone else. Waymo says it staffs some public sites, tries not to bunch up, and builds its own charging as a market matures. Drivers have made the same complaint in [Las Vegas](https://www.ktnv.com/news/local-ev-drivers-say-waymo-robotaxis-hogging-public-charging-stations), Nashville and St. Louis ([InsideEVs](https://insideevs.com/news/813929/waymo-ev-charging-problem-california/)).
+The [Los Angeles Times](https://www.yahoo.com/news/us/articles/come-droves-robotaxis-hogging-ev-130237419.html) reported on October 30 that Waymo robotaxis are filling public fast chargers in San Diego. One driver told the Times he waited **an hour** and described three Waymos at a station with four spots. EVgo says its San Diego stations are open to everyone, robotaxis included, and it had **120 stalls** set aside for AV companies earlier this year. The city says autonomous vehicles pay the same fees as anyone else. Waymo says it staffs some public sites, tries not to bunch up, and builds its own charging as a market matures. Drivers have made the same complaint in [Las Vegas](https://www.ktnv.com/news/local-ev-drivers-say-waymo-robotaxis-hogging-public-charging-stations), Nashville and St. Louis ([InsideEVs](https://insideevs.com/news/813929/waymo-ev-charging-problem-california/)).
 
 **Why it matters:** robotaxis are a new tenant class, and it doesn't really exist yet. They aren't a traditional fleet. A delivery fleet needs warehouse space and not as much infrastructure. They aren't a taxi company either, which needs a repair shop and driver facilities. A robotaxi needs to be in an urban environment so it can reach riders, and it needs a heavy dose of charging.
 
@@ -35,7 +35,7 @@ I wrote about why uptime and a working charge aren't the same thing in [Uptime s
 
 ## 3. Blink Charging becomes Blink Energy
 
-Blink said on October 29 that it plans to rename itself Blink Energy and add energy management and battery storage to charging. The next day it filed an [S-3](https://www.sec.gov/Archives/edgar/data/1429764/000149315226049471/forms-3.htm) with an at-the-market program to sell up to **$100 million** of stock. The filing lists the last sale price at **$0.41** and **145.2 million** shares outstanding, which works out to about **$60 million** of market value. Blink's load-management software runs at **52** of its own DC fast-charging sites, and 26 of them actively use it. One cut its billed peak demand **23%** in its first month ([EV Fleet World](https://evfleetworld.co.uk/blink-charging-pivots-to-blink-energy-to-drive-battery-storage-and-energy-management-expansion/)). Blink reports third-quarter results on November 5.
+Blink said on October 29 that it plans to rename itself Blink Energy and add energy management and battery storage to charging. The next day it filed an [S-3](https://www.sec.gov/Archives/edgar/data/1429764/000149315226049471/forms-3.htm) with an at-the-market program to sell up to **$100 million** of stock. The filing lists the last sale price at **$0.41** and **145.2 million** shares outstanding, which works out to about **$60 million** of market value. Blink's load-management software runs at **52** of its own DC fast-charging sites, and 26 of them actively use it. One cut its billed peak demand **23%** in its first month ([EV Fleet World](https://evfleetworld.co.uk/blink-charging-pivots-to-blink-energy-to-drive-battery-storage-and-energy-management-expansion/)). Its third-quarter results were scheduled for November 5.
 
 ## What I'd do
 
