@@ -1,0 +1,16 @@
+<svg viewBox="0 0 720 242" focusable="false">
+<text x="20" y="32" class="b">Rated power</text>
+<rect class="lt" x="20" y="40" width="440" height="22" rx="5"/>
+<rect class="fb growx" x="20" y="40" width="440" height="22" rx="5" style="--d:0.10s"/>
+<text x="470" y="57" class="b count fade" data-dur="1.8" style="--d:0.30s">150 kW</text>
+<text x="20" y="90" class="a">Failed power module</text>
+<rect class="lt" x="20" y="98" width="440" height="22" rx="5"/>
+<rect class="fa growx" x="20" y="98" width="220" height="22" rx="5" style="--d:0.35s"/>
+<text x="250" y="115" class="a count fade" data-dur="1.8" style="--d:0.55s">75 kW. Up?</text>
+<text x="20" y="148" class="a">Capped by the grid</text>
+<rect class="lt" x="20" y="156" width="440" height="22" rx="5"/>
+<rect class="fa growx" x="20" y="156" width="117" height="22" rx="5" style="--d:0.60s"/>
+<text x="147.333" y="173" class="a count fade" data-dur="1.8" style="--d:0.80s">40 kW. Up?</text>
+<path class="lt dash" d="M20,198 H460"/>
+<text x="20" y="226" class="fade" style="--d:1.45s">Every one of them dispensed electricity</text>
+</svg>
