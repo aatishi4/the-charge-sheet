@@ -2,7 +2,7 @@
 title: Nobody gets ten sessions on day one
 description: The line in a charging pro forma that everyone gets wrong isn't capex or opex. It's utilization, and it's wrong because it's the easiest one to wish up.
 date: 2026-11-03
-publish: 2026-11-03T09:00:00-06:00
+publish: 2026-11-03T07:00:00-06:00
 tags: [utilization, pro forma, site planning]
 kind: essay
 ---

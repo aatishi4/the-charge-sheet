@@ -2,7 +2,7 @@
 title: Charging is a business, not a charity
 description: I raised my price 5 cents at a time to 65 cents a kWh and utilization went up. Price for convenience, not for apology.
 date: 2026-11-05
-publish: 2026-11-05T09:00:00-06:00
+publish: 2026-11-05T07:00:00-06:00
 tags: [pricing, site-hosts, business-model, tesla]
 kind: essay
 ---

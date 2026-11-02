@@ -2,7 +2,7 @@
 title: Nobody lends on a charger. They lend on you.
 description: The worst loan I was offered for a charging site was 22% over two years, with my house as collateral. Here's why, and what actually gets financed.
 date: 2026-11-10
-publish: 2026-11-10T09:00:00-06:00
+publish: 2026-11-10T07:00:00-06:00
 tags: [financing, sba, site-hosts, fastned]
 kind: essay
 ---

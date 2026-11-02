@@ -2,7 +2,7 @@
 title: Tesla is franchising the Supercharger. Charging needs franchise rules.
 description: Tesla built 41% fewer Superchargers last quarter and is letting hosts buy the stalls. That's the McDonald's play. Now it needs McDonald's rules.
 date: 2026-11-12
-publish: 2026-11-12T09:00:00-06:00
+publish: 2026-11-12T07:00:00-06:00
 tags: [tesla, superchargers, franchising, site-hosts, operations]
 kind: essay
 ---

@@ -7,7 +7,7 @@ Last updated 2026-09-28. The working manual for the blog: the Monday run reads i
 1. Monday morning (about 7am CT) a scheduled run scans the past 7 days of news, picks 3 stories, and asks Aatish 4 to 6 questions.
 2. Aatish answers in that run whenever he gets to it. Messy, voice-transcribed, one-word answers are all fine. "Skip" is a valid answer.
 3. The run drafts the weekly post (and an essay if an answer earned one), pushes to a `post/<slug>` branch, and sends the preview link.
-4. Nothing goes live until Aatish says merge. Merged posts go out on the next open Tuesday or Thursday at 9am Central.
+4. Nothing goes live until Aatish says merge. Merged posts go out on the next open Tuesday or Thursday at 7am Central.
 
 ## Voice
 
@@ -94,10 +94,10 @@ Every post gets line art in the site's style. Photos are optional.
 
 ## Publishing schedule
 
-- Posts go live **Tuesdays and Thursdays at 9:00am Central**. Scheduled posts carry `publish: YYYY-MM-DDT09:00:00-05:00` in front matter (use `-05:00` during daylight time, `-06:00` from the first Sunday in November to the second Sunday in March), and `date:` and the file name match that day. Scheduled posts have no `draft: true`.
+- Posts go live **Tuesdays and Thursdays at 7:00am Central**, ahead of every LinkedIn post that day (his earliest is 8:30am; teasers go at 9:30am). Moved from 9:00am on 2026-11-02. Scheduled posts carry `publish: YYYY-MM-DDT07:00:00-05:00` in front matter (use `-05:00` during daylight time, `-06:00` from the first Sunday in November to the second Sunday in March), and `date:` and the file name match that day. Scheduled posts have no `draft: true`.
 - Until its publish time a post shows only on preview builds, with a "Scheduled <date>" badge. It is left out of the live blog, feed, sitemap and home page.
-- A Cloudflare Worker (`workers/scheduled-publish/`, setup in DEPLOY.md section 10) checks `/blog/schedule.json` every 5 minutes and calls the Pages deploy hook as soon as a post's `publish:` time passes, so posts go up within a few minutes of 9:00am Central. The GitHub Scheduled publish workflow (`.github/workflows/scheduled-publish.yml`) is a backstop only: GitHub starts it hours late. `tools/due_posts.py` does its check; `BLOG_NOW=2026-10-13T14:05:00Z python3 tools/build_pages.py` shows what the live site will look like at a given time.
-- On "merge": remove `draft: true`, give the post the next open slot (rules below), rename the file to that date, set `date:` and `publish:`, and merge to main. The post goes live at 9am on its day, not at merge. Tell Aatish the date it landed on.
+- A Cloudflare Worker (`workers/scheduled-publish/`, setup in DEPLOY.md section 10) checks `/blog/schedule.json` every 5 minutes and calls the Pages deploy hook as soon as a post's `publish:` time passes, so posts go up within a few minutes of 7:00am Central. The GitHub Scheduled publish workflow (`.github/workflows/scheduled-publish.yml`) is a backstop only: GitHub starts it hours late. `tools/due_posts.py` does its check; `BLOG_NOW=2026-10-13T14:05:00Z python3 tools/build_pages.py` shows what the live site will look like at a given time.
+- On "merge": remove `draft: true`, give the post the next open slot (rules below), rename the file to that date, set `date:` and `publish:`, and merge to main. The post goes live at 7am on its day, not at merge. Tell Aatish the date it landed on.
 - Slot rule: a weekly takes the earliest Tuesday that doesn't already hold a weekly, and any essay it displaces moves to the next open slot. Essays take the next open slot in order.
 - A weekly that goes out more than a few days after its news opens with "Three things from <period> worth your time..." instead of "this week", and cross-links earlier posts it builds on.
 - On a post's publish day, confirm `https://chargesheet.io/blog/<slug>/` returns 200 and the post is in `/blog/feed.xml`.

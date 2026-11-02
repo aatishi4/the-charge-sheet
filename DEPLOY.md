@@ -129,6 +129,6 @@ A post with a `publish:` time stays off the live site until a build runs after t
 
 Prefer the command line? In `workers/scheduled-publish/`, run `npx wrangler deploy` then `npx wrangler secret put DEPLOY_HOOK`. That replaces steps 2 to 4.
 
-**Check it.** Open the Worker's `workers.dev` URL. It shows what it would do right now (`"nothing due"` plus the upcoming times) without triggering anything. On a publish day, the Worker's **Logs** tab shows a `due ...; rebuilding` line at 9:00 Central.
+**Check it.** Open the Worker's `workers.dev` URL. It shows what it would do right now (`"nothing due"` plus the upcoming times) without triggering anything. On a publish day, the Worker's **Logs** tab shows a `due ...; rebuilding` line just after 7:00 Central.
 
 The Worker only needs editing if the domain changes (`SITE` at the top of the file).

@@ -2,7 +2,7 @@
 title: Robotaxis are a new kind of tenant. Price them like real estate.
 description: Waymos are filling public fast chargers, California redefines what "up" means, and Blink renames itself Blink Energy.
 date: 2026-11-17
-publish: 2026-11-17T09:00:00-06:00
+publish: 2026-11-17T07:00:00-06:00
 tags: [robotaxis, fleet, pricing, reliability, uptime, networks]
 kind: weekly
 ---
